@@ -22,14 +22,25 @@ app.get("/",async(req , res)=>{
    res.render("listing/listing.ejs",{listingData})
 })
 
+// create route
+app.get("/listing/new",async (req, res)=>{
+    res.render("create/create.ejs")
+
+})
+
+app.post("/listing/new",async (req ,res)=>{
+    let newListing = new listing(req.body.g) 
+    await newListing.save()
+    console.log(req.body.g)
+    res.send("working...")
+})
 
 // Show route
 app.get("/:id",async(req,res)=>{
     let { id } = req.params;
-    let show = await listing.findById(id)
-    res.render("listing/show.ejs", {show})
+    let hotelView = await listing.findById(id);
+    res.render("show/show.ejs", {hotelView})
 })
-
 
 
 app.listen(3000,()=>{

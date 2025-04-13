@@ -1,0 +1,13 @@
+<%- include('../header/header.ejs') %>
+<body>
+    <h1>Create</h1>
+    <form action="/listing/new" method="post">
+        <input type="text" placeholder="Enter title" name="g[title]">
+        <input type="text" placeholder="image" name="g[image]">
+        <input type="text" placeholder="Enter price" name="g[price]">
+        <input type="text" placeholder="Enter location" name="g[location]">
+        <input type="text" placeholder="Enter country" name="g[country]">
+        <textarea name="description" id="" placeholder="g[description]"></textarea>
+        <button>Sumide</button>
+    </form>
+</body>

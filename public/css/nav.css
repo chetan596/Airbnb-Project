@@ -193,6 +193,10 @@ nav{
 .filter-box img{
     height: 24px;
 }
+a{
+    text-decoration: none;
+    color: black;
+}
 .filter-box p{
     font-size: 0.7rem;
     font-weight: 500;

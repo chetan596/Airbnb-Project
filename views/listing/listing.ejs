@@ -1,43 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airbnb</title>
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="listing.css">
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-    rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-
+<%- include('../header/header.ejs') %>
 <body>
-    <nav>
-        <div class="main-nav">
-            <div class="nav1"><img src="https://img.icons8.com/?size=256&id=103424&format=png" alt="logo">
-                <h3>airbnb</h3>
-            </div>
-            <div class="nav2">
-                <div class="nav-right"><p>Anywhere</p></div>
-                <div class="nav-cnter">
-                  <p>Any week</p>
-                </div>
-                <div class="nav-left"><p>Add guests</p> <i class="ri-search-line"></i></div>
-            </div>
-            <div class="nav3">
-                <div class="nav-listing"><p>Airbnb your home</p></div>
-                <div class="nav-lag"><i class="ri-global-line"></i></div>
-                <div class="nav-loginBox">
-                    <i class="ri-menu-line"></i>
-                    <div class="login-img">
-                        <img src="https://i.pinimg.com/736x/ee/c5/cf/eec5cf10cb80af4e4b1c6674445be559.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+  <%- include('nav.ejs') %>
     <div class="main-1">
         <div class="filter">
             <div class="filter-box">
@@ -100,7 +63,7 @@
       <div class="listing">
    <% for( listing of listingData ) { %>
   <a href="/<%=listing._id%>">  <div class="listing-box">
-    <img src="<%= listing.image %>" alt="">
+    <img draggable="false" loading="lazy" src="<%= listing.image %>" alt="">
     <div class="listing-cont">
       <div class="reting">
         <p><%= listing.title %></p>
@@ -109,12 +72,13 @@
           <p>4.3</p>
         </div>
       </div>
-      <p class="kol">236 Kilometeres away</p>
+      <p class="kol"><%= listing.country %></p>
       <p class="kol">12-13 Mar</p>
-      <div class="price"><span>&#8377;<%=listing.price.toLocaleString()%></span><p>for 5 nights</p></div>
+      <div class="price"><span>&#8377;<%=listing.price.toLocaleString("en-In")%></span><p>for 5 nights</p></div>
     </div>
   </div></a>
    <% } %>
+
 
         </div>
       </div>

@@ -8,7 +8,7 @@ main().then(() => {
 
 })
 async function main() {
-    await mongoose.connect("mongodb://127.0.0.1:27017/Airbnb'")
+    await mongoose.connect("mongodb://127.0.0.1:27017/Airbnb")
 }
 
 const listingSchema = new Schema({
@@ -22,6 +22,7 @@ const listingSchema = new Schema({
     image: {
         type: String,
         default : "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg",
+        set : (v) => v === "" ? "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg" : v ,
     },
     price: {
         type: Number
