@@ -3,8 +3,10 @@ main{
     width: 100%;
     padding: 0px 2.2rem;
     margin-top: 13%;
+    
 }
 .listing{
+    font-family: "Poppins", sans-serif;
     height: 100%;
     width: 100%;
     display: grid;
@@ -26,6 +28,7 @@ main{
 .listing-box img{
     height: 284px;
     width: 100%;
+    object-fit: cover;
     border-radius: 20px;
 }
 .listing-cont{

@@ -1,9 +1,58 @@
 <%- include('../header/header.ejs') %>
 <body>
-    <h2>Show deleli</h2>
-<h3><%= hotelView.title %></h3>
-<h3><%= hotelView.price %></h3>
-<h3><%= hotelView.location %></h3>
-<h3><%= hotelView.country %></h3>
-<h3><%= hotelView.description %></h3>
+   <div class="showNav">
+    <%- include('../listing/nav.ejs') %>
+   </div>
+   <div class="listingBox">
+    <div class="hotel-hading ">
+        <h2><%= hotelView.title %></h2>
+        <div class="shar-box">
+          <a href="">
+            <div class="shar-box1">
+                <i class="ri-share-2-line"></i>
+                <p>Share</p>
+            </div>
+          </a>
+       <a href="">
+        <div class="shar-box1">
+            <i class="ri-heart-3-line"></i>
+            <p>Save</p>
+        </div>
+       </a>
+        </div>
+    </div>
+    <div class="hotel-image">
+        <span class="mainImage">
+            <img src="<%= hotelView.image %>" alt="">
+    </span>
+        <div class="mainImage2">
+            <div class="imagebox1">
+                <div class="image-boxs1">
+                    <img src="https://images.unsplash.com/photo-1689729738920-edea97589328?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                </div>
+                <div class="image-boxs1">
+                    <img class="cc" src="https://images.unsplash.com/photo-1582533401888-825fb21aedf1?q=80&w=1512&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                </div>
+               
+            </div>
+            <div class="imagebox1">
+                <div class="image-boxs1 ">
+                    <img src="https://images.unsplash.com/photo-1582533401893-cf3acb4680e8?q=80&w=1542&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                </div>
+                <div class="image-boxs1 ">
+                    <img class="ff" src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="info-price">
+        <h3>Entire villa in Jaipur, India</h3>
+        <p>12 guests .4 bedrooms .4 beds .5 bathrooms</p>
+        <div class="reting-box">
+            <i class="ri-star-fill"></i>
+            <a href="">2 reviews</a>
+        </div>
+    </div>
+   </div>
+
 </body>

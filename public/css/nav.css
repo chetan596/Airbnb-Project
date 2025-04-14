@@ -3,17 +3,17 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
 
 }
 html,body{
     height: 100%;
     width: 100%;
     
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 nav{
+    font-family: "Poppins", sans-serif;
     height: 5.3rem;
     width: 100%;
     padding: 0.4rem 2rem;
@@ -21,7 +21,7 @@ nav{
     /* background-color: aquamarine; */
     position: fixed;
     top: 0px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 .main-nav{
     display: flex;
@@ -119,7 +119,7 @@ nav{
     transition: background-color 0.3s ease;
 }
 .nav-listing:hover{
-    background-color: #F7F7F7;
+    background-color:#E0E0E0;
 }
 .nav-lag{
     display: flex;
@@ -132,7 +132,7 @@ nav{
     cursor: pointer;
 }
 .nav-lag:hover{
-    background-color: #F7F7F7;
+    background-color:#E0E0E0;
 }
 .nav-loginBox{
     height: 3rem;

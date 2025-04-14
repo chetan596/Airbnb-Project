@@ -36,10 +36,10 @@ app.post("/listing/new",async (req ,res)=>{
 })
 
 // Show route
-app.get("/:id",async(req,res)=>{
-    let { id } = req.params;
-    let hotelView = await listing.findById(id);
-    res.render("show/show.ejs", {hotelView})
+app.get("/:id",async (req,res)=>{
+    let {id } = req.params;
+    let hotelView = await listing.findById(id)
+   res.render("show/show.ejs" , {hotelView})
 })
 
 
