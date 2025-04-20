@@ -304,4 +304,6 @@ a{
   .switch input:checked + .slider::before {
     transform: translateX(15px);
   }
-  
+  .ffff{
+    background-color: aqua;
+}

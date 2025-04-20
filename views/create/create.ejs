@@ -1,13 +1,148 @@
 <%- include('../header/header.ejs') %>
-<body>
-    <h1>Create</h1>
-    <form action="/listing/new" method="post">
-        <input type="text" placeholder="Enter title" name="g[title]">
-        <input type="text" placeholder="image" name="g[image]">
-        <input type="text" placeholder="Enter price" name="g[price]">
-        <input type="text" placeholder="Enter location" name="g[location]">
-        <input type="text" placeholder="Enter country" name="g[country]">
-        <textarea name="description" id="" placeholder="g[description]"></textarea>
-        <button>Sumide</button>
-    </form>
-</body>
+
+   <body>
+      <nav class="host-home-nav">
+         <div class="nav-host">
+            <div class="navHost-log">
+               <img src="https://img.icons8.com/?size=256&id=103424&format=png" alt="">
+            </div>
+            <div class="host-home">
+               <a href="/become-a-host">Airbnb Setup</a>
+            </div>
+         </div>
+      </nav>
+      <main class="h-main">
+         <div class="host-main">
+            <div class="host-hading">
+               <span>
+                  <h2>Your home could</h2>
+                  <h2>make ₹<div class="some-element">
+                        <div class="odometer" id="odometer">15,582</div>
+                     </div>
+                  </h2>
+                  <h2>on Airbnb</h2>
+               </span>
+               <div class="sddf ">
+                  <p class="night"><span class="num-night">15</span> nights </p>
+                  <p>. ₹2,226/night</p>
+               </div>
+               <p class="host-about">Learn how we <span>estimate earnings</span></p>
+               <div class="rang">
+                  <input type="range" min="1" max="30">
+                  <div class="rang-num">
+                     20 nights
+                  </div>
+               </div>
+            </div>
+            <div class="host-maps"></div>
+         </div>
+         <div class="mb-img">
+            <div class="mg-text">
+               <h2>It’s easy to list your</h2>
+               <h2>home on Airbnb</h2>
+            </div>
+            <div class="mb-box">
+               <img
+                  src="https://a0.muscache.com/im/pictures/canvas/Canvas-1727297260081/original/e97a2325-f789-49df-b474-25c77476d433.jpeg?im_w=1200"
+                  alt="">
+
+            </div>
+            <div class="mb-msg">
+               <div class="mb-msg1">
+                  <span class="mb-i"><i class="ri-home-2-line"></i></span>
+                  <span class="mb-about">
+                     <p class="mb-about1">Create a listing for your</p>
+                     <p>place in just a few steps</p>
+                  </span>
+               </div>
+               <div class="mb-msg1"><span class="mb-i"><i class="ri-timer-line"></i></span>
+                  <span class="mb-about">
+                     <p class="mb-about1">Go at your own pace, and</p>
+                     <p>make changes whenever</p>
+                  </span>
+               </div>
+               <div class="mb-msg1"><span class="mb-i"><i class="ri-message-3-line"></i></span>
+                  <span class="mb-about">
+                     <p class="mb-about1">Get 1:1 support from</p>
+                     <p>experienced hosts at any time</p>
+                  </span>
+               </div>
+            </div>
+         </div>
+        <div class="dddiii">
+         <div class="md-hd">
+           <div class="mg-hd-mnner">
+            <h2><span>air</span>cover </h2>
+            <p>for Hosts</p>
+           </div>
+           <div class="mg-main-h">
+            <h2>However you host,</h2>
+            <h2>you’re protected</h2>
+           </div>
+           <div class="mg-abut">
+            <p>Top-to-bottom protection, included every time</p>
+            <p>you host your home on Airbnb.</p>
+           </div>
+           <div class="mg-und">
+           <div class="ng-und-p">
+            <p>Up to $3m USD damage protection</p>
+            <i class="ri-check-line"></i>
+           </div>
+           <div class="ng-und-p">
+            <p>Up to $1m USD liability insurance</p>
+            <i class="ri-check-line"></i>
+           </div>
+           <div class="ng-und-p gg">
+            <p>24-hour safety line</p>
+            <i class="ri-check-line"></i>
+           </div>
+           </div>
+         </div>
+            <div class="mg-bnt">
+            <div class="gtgt">
+               <span >  <h3>Leran about AirCover</h3></span>
+            </div>
+            <div class="mg-abb">
+               <p>Host Damage Protection reimburses for certain guest damages during Airbnb stays. It’s not insurance and</p>
+               <p>may apply if guests don’t pay. Liability insurance is provided by 3rd parties.Check details and exclusions. </p>
+            </div>
+            </div>
+        </div>
+        <div class="tool">
+         <div class="t-h">
+            <h2>All the tools you need</h2>
+            <h2>to host, all in one app</h2>
+         </div>
+         <div class="tool-img">
+            <div class="tool-img1">
+               <img src="https://a0.muscache.com/im/mux/zloG6NYW02XHNHOQyQL1a2Nn00HCkEHHfp01vq6O00lPLUA/thumbnail.jpg?time=0.0&im_w=320" alt="">
+               <div class="tool-tet">
+                  <p class="tett">Listing edito</p>
+                  <p>Showcase every detail of your home</p>
+               </div>
+            </div>
+            <div class="tool-img1">
+               <img src="https://a0.muscache.com/im/mux/aWJrkS4U1OZPMEAYeaXgDMJG00GSW0046fXLrHi9eShF4/thumbnail.jpg?time=0.0&im_w=320" alt="">
+               <div class="tool-tet">
+                  <p class="tett">Calendar</p>
+                  <p>Manage your availability and pricing</p>
+               </div>
+            </div>
+            <div class="tool-img1">
+               <img src="https://a0.muscache.com/im/mux/NS1z701ZgXNLeqkVNZ02U3cI4h1O4QbsRaNdBDgrsYcTc/thumbnail.jpg?time=0.0&im_w=320" alt="">
+               <div class="tool-tet">
+                  <p class="tett">Messages
+                  </p>
+                  <p>Quickly message guests and support</p>
+               </div>
+            </div>
+         </div>
+        </div>
+      </main>
+      <div class="mg-ad">
+            
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.5/odometer.min.js"></script>
+      <script src="/landingHost.js"></script>
+ 
+   </body>

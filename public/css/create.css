@@ -1,0 +1,356 @@
+.host-home-nav{
+    height: 5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.993);
+    
+}
+.nav-host{
+    height: 100%;
+    width: 100%;
+    padding: 0px  3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navHost-log{
+    width: 11rem;
+}
+.host-home{
+    width: 11rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-host img{
+    height: 100%;
+    width: 2.5rem;
+}
+.host-home a{
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    padding: 12px 26px;
+    border-radius: 30px;
+    background-color: #cf4861;
+}
+.h-main{
+    height: 100%;
+    width: 100%;
+}
+.host-main{
+    height: 100%;
+    width: 100%;
+    padding: 0px 80px;
+
+}
+.host-main{
+    display: flex;
+    margin-top: 10rem;
+
+}
+.host-hading{
+    height: 85%;
+    width: 50%;
+    text-align: center;
+    padding: 0px 2rem;
+    padding-top: 3.5rem;
+    /* background-color: rgb(179, 133, 77); */
+}
+.host-hading h2{
+    font-size: 4rem;
+    font-weight: 700;
+    word-spacing: 2px;
+    line-height: 67px;
+    letter-spacing: -3px;
+    color: #222222;
+}
+.sddf{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #222222f4;
+}
+
+.night{
+    text-decoration: underline;
+}
+.host-about{
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #222222b7;
+}
+.host-about span{
+    text-decoration: underline;
+} 
+.host-maps{
+    height: 85%;
+    width: 50%;
+    border-radius: 1.5rem;
+    background-color: rgba(128, 126, 131, 0.445);
+}
+.some-element{
+    /* background-color: #cf4861; */
+    display: inline-block;
+  
+    align-items: center;
+}
+.rang{
+    padding: 1rem 6.5rem;
+  
+    width: 33rem;
+    height: 7rem;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+.rang input{
+    -webkit-appearance: none;
+    height: 4px;
+    width: 19rem;
+    background:linear-gradient(to right, #D70466 0%, #D70466 47%, #d3d3d3 47%, #d3d3d3 100%);
+    border-radius: 5px;
+  cursor: pointer;
+}
+.rang input::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0px 2px 10px black;
+}
+.rang input[type=range]::-webkit-progress-value{
+    background-color: #E31C5F;
+}
+.rang-num{
+    position: relative;
+    bottom:  6rem;
+    height: 2.8rem;
+    width: 6.5rem;
+    left: 42%;
+    border-radius: 4rem;
+    background-color: #222222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    color: white;
+    transition: left 0.1s ease;
+}
+.hidden{
+    visibility: hidden;
+}
+.vid{
+    visibility: visible;
+}
+.mg-text{
+    text-align: center;
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: #222222;
+    word-spacing: -6px;
+    line-height: 3.9rem;
+}
+.mb-img{
+    height: 136vh;
+    width: 100%;
+    padding: 0rem 80px;
+    
+}
+.mb-box{
+    /* height: 50erm; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+.mb-box img{
+    height: 78%;
+    width: 71%;
+  
+}
+.mb-msg{
+    height: 17%;
+    width: 100%;
+    margin-top: 4rem;
+    /* background-color: black; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 10rem;
+}
+.mb-msg1{
+    height: 100%;
+    width: 30%;
+    text-align: center;
+
+}
+.mb-i{
+    padding: 0.8rem 0.9rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    background-color: #F7F7F7;
+}
+.mb-about1{
+    margin-top: 2rem;
+}
+.mb-about{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #222222;
+}
+.dddiii{
+    height: 140%;
+    width: 100%;
+    padding: 0px 80px;
+}
+.md-hd{
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    padding: 3.7rem;
+}
+.mg-hd-mnner h2{
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+    line-height: 38px;
+}
+.mg-hd-mnner p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #222222;
+}
+.mg-hd-mnner span{
+    color: #FF3957;
+}
+.mg-main-h {
+    padding: 2rem ;
+}
+.mg-main-h h2{
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #222222;
+    line-height: 4rem;
+    letter-spacing: -2px;
+}
+
+.mg-abut p{
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #2222229d;
+    line-height: 2.2rem;
+    letter-spacing: -1px;
+}
+.mg-und{
+    height: 17rem;
+    width: 100%;
+    /* background-color: #cf4861; */
+    padding: 3rem 13.5rem;
+    text-align: left;
+}
+.ng-und-p{
+    width: 100%;
+    height: 3rem;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1.7rem;
+    padding-top: 2.5rem;
+    border-bottom: 1px solid #22222238;
+}
+
+.ng-und-p p{
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #222222;
+    padding-bottom: 1rem;
+}
+.ng-und-p i{
+    font-size: 2.1rem;
+    font-weight: 100;
+    color: #088E0D;
+}
+.gg{
+    border-bottom: none;
+}
+.mg-bnt{
+    text-align: center;
+    height: 6rem;
+    color: white;
+}
+.mg-bnt span{
+    display: inline-block;
+        padding: 1.1rem 3rem;
+    background-color: black;
+    border-radius: 4rem;
+}
+.mg-abb{
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.2rem;
+    color: #222222c7;
+    padding: 2rem;
+}
+.tool{
+    height: 120%;
+    width: 100%;
+    padding: 0rem 80px;
+    
+}
+.t-h{
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #222222;
+    line-height: 4rem;
+    letter-spacing: -2px;
+    padding: 2rem;
+}
+.tool-img{
+    height: 75%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 4rem;
+}
+
+.tool-img1{
+    height: 87%;
+    width: 31.4%;
+ 
+} 
+.tool-img1 img{
+    height: 86%;
+    width: 100%;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+
+    /* background-color: #cf4861; */
+}
+.tool-tet{
+    height: 6rem;
+    width: 100%;
+    text-align: center;
+    padding: 1.4rem 0.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #222222;
+    line-height: 1.5rem;
+}
+.tett{
+    color: #0c0c0c;
+    font-weight: 500;
+    font-size: 1.2rem;
+}

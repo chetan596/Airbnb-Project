@@ -1,0 +1,241 @@
+.b-nono{
+    border: none;
+    position: relative;
+}
+.nav-flex{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-f1{
+    height: 100%;
+    width: 18%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding-right: 3rem; */
+}
+.nav-f22{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-f1 img{
+    height: 50%;
+    color: black;
+
+}
+
+.nav-f1 a{
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #222222;
+    padding: 0.5rem 1.3rem;
+    border-radius: 3.7rem;
+    border: 1px solid #222222a9;
+    background-color: white;
+}
+
+.m-nono{
+    margin: 0px;
+    height: 86%;
+}
+.m-flex{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /* background-color: aqua; */
+    font-family: "Poppins", sans-serif;
+}
+.m-flexl{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(8, 63, 63); */
+}
+.ccx{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: blue; */
+    text-align: center;
+}
+.m-hj{
+    height: 18%;
+    width: 55%;
+   transition: opacity 1.2s ease, transform 1.2s ease;
+    /* background-color: rgba(92, 92, 92, 0.534); */
+}
+.animetion{
+    opacity: 0;
+    transform: scale(0.95);
+}
+.m-hj h2{
+    color: #222222;
+    font-size: 2.3rem;
+    font-weight: 500;
+    line-height: 2.7rem;
+    letter-spacing: 1px;
+}
+.m-f-l{
+    text-align: left;
+}
+
+.m-stap-box{
+    height: 95%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: baseline;
+   
+}
+.m-b0xs-1{
+    height: 27%;
+    width: 74%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.082);
+    justify-content: space-between;
+    transition: opacity 1.2s ease, transform 1.2s ease;
+}
+.m-num{
+    display: flex;
+    gap: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #222222;
+}
+.m-num h3{
+    font-size: 1rem;
+    font-weight: 600;
+}
+.m-po{
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-left: 1.2rem;
+    line-height: 15px;
+    margin-top: 0.2rem;
+    color: #222222ad;
+}
+.m-stap-box img{
+    height: 57%;
+    object-fit: cover;
+    border-radius: 0.3rem;
+}
+
+.f-foot{
+    height: 15%;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    z-index: 3;
+    bottom: -1px;
+}
+.f-flex{
+
+    width: 100%;
+    /* background-color: #222222; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.s-com{
+    height: 0.4rem;
+    width: 33.2%;
+    border-radius: 0.3rem;
+    display: flex;
+    background-color: rgba(207, 207, 207, 0.479);
+   
+}
+
+.s-line{
+    height: 100%;
+    width: 14.29%;
+    /* background: linear-gradient(to right , black,#2c2c2c); */
+   
+ 
+}
+.s-line-1{
+    height: 100%;
+   width: 0%;
+   transition: width 0.5s ease 0.5s;
+    background-color: #000000;
+}
+.opop{
+    width: 100%;
+}
+.toto{
+    transition: width 0s ease ;
+}
+.s-line-2{
+    height: 100%;
+   width: 0%;
+   transition: width 0.5s ease 0.2s;
+
+    background: linear-gradient(to right , black,#2c2c2c);
+}
+.s-line-3{
+    height: 100%;
+   width: 0%;
+   transition: width 0.5s ease 0.5s;
+
+    background: linear-gradient(to right , black,#2c2c2c);
+}
+.s-line-4{
+    height: 100%;
+   width: 0%;
+   transition: width 0.5s ease 0.5s;
+
+    background: linear-gradient(to right , black,#2c2c2c);
+}
+.s-line-5{
+    height: 100%;
+   width: 0%;
+   transition: width 0.5s ease 0.5s;
+
+    background: linear-gradient(to right , black,#2c2c2c);
+}
+.s-line-6{
+    height: 100%;
+   width: 0%;
+   transition: width 0.5s ease 0.5s;
+
+    background: linear-gradient(to right , black,#2c2c2c);
+}
+.s-line-7{
+    height: 100%;
+   width: 0%;
+   transition: width 0.5s ease 0.5s;
+
+    background: linear-gradient(to right , black,#2c2c2c);
+}
+.grow{
+    width: 14.29%;
+}
+.st-bnt{
+    height: 100%;
+    width: 100%;
+    /* background-color: blue; */
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.s-bnt1{
+    padding: 1.5rem 5.5rem;
+    padding-bottom: 2rem;
+    
+}
+
+.s-bnt1 a{
+    padding: 1rem 1.7rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 600;
+    /* font-size: 0.7rem;    */
+    background: linear-gradient(135deg, #FF3957, #FFA3A3);
+}

@@ -1,88 +1,99 @@
 <%- include('../header/header.ejs') %>
-<body>
-  <%- include('nav.ejs') %>
-    <div class="main-1">
+
+  <body>
+    <%- include('nav.ejs') %>
+      <div class="main-1">
         <div class="filter">
-            <div class="filter-box">
-              <img src="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg" alt="">
-                <p>Amazing pools</p>
-            </div>
-            <div class="filter-box">
-              <img src="https://a0.muscache.com/im/pictures/mediaverse/category_icon/original/3e5243c8-4d15-4c6b-97e3-7ba2bb7bb880.png" alt="">
-                <p>Icons</p>
-            </div>
-            <div class="filter-box">
-              <img src="https://a0.muscache.com/pictures/aaa02c2d-9f0d-4c41-878a-68c12ec6c6bd.jpg" alt="">
-                <p>farms</p>
-            </div>
-            <div class="filter-box">
-              <img src="https://a0.muscache.com/pictures/7630c83f-96a8-4232-9a10-0398661e2e6f.jpg" alt="">
-                <p>Rooms</p>
-            </div>
-            <div class="filter-box">
-              <img src="https://a0.muscache.com/pictures/8a43b8c6-7eb4-421c-b3a9-1bd9fcb26622.jpg" alt="">
-                <p>Creative spaces</p>
-            </div>
-            <div class="filter-box">
-              <img src="https://a0.muscache.com/pictures/d7445031-62c4-46d0-91c3-4f29f9790f7a.jpg" alt="">
-                <p>Earth homes</p>
-            </div>
-            <div class="filter-box">
-              <img src="https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg" alt="">
-                <p>Amazing views</p>
-            </div>
-            <div class="filter-box">
-              <img src="https://a0.muscache.com/pictures/732edad8-3ae0-49a8-a451-29a8010dcc0c.jpg" alt="">
-                <p>Cabin</p>
-            </div>
-            <div class="filter-box">
-              <img src="https://a0.muscache.com/pictures/6ad4bd95-f086-437d-97e3-14d12155ddfe.jpg" alt="">
-                <p>Countrysie</p>
-            </div>
-           
+          <div class="filter-box">
+            <img src="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg" alt="">
+            <p>Amazing pools</p>
+          </div>
+          <div class="filter-box">
+            <img
+              src="https://a0.muscache.com/im/pictures/mediaverse/category_icon/original/3e5243c8-4d15-4c6b-97e3-7ba2bb7bb880.png"
+              alt="">
+            <p>Icons</p>
+          </div>
+          <div class="filter-box">
+            <img src="https://a0.muscache.com/pictures/aaa02c2d-9f0d-4c41-878a-68c12ec6c6bd.jpg" alt="">
+            <p>farms</p>
+          </div>
+          <div class="filter-box">
+            <img src="https://a0.muscache.com/pictures/7630c83f-96a8-4232-9a10-0398661e2e6f.jpg" alt="">
+            <p>Rooms</p>
+          </div>
+          <div class="filter-box">
+            <img src="https://a0.muscache.com/pictures/8a43b8c6-7eb4-421c-b3a9-1bd9fcb26622.jpg" alt="">
+            <p>Creative spaces</p>
+          </div>
+          <div class="filter-box">
+            <img src="https://a0.muscache.com/pictures/d7445031-62c4-46d0-91c3-4f29f9790f7a.jpg" alt="">
+            <p>Earth homes</p>
+          </div>
+          <div class="filter-box">
+            <img src="https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg" alt="">
+            <p>Amazing views</p>
+          </div>
+          <div class="filter-box">
+            <img src="https://a0.muscache.com/pictures/732edad8-3ae0-49a8-a451-29a8010dcc0c.jpg" alt="">
+            <p>Cabin</p>
+          </div>
+          <div class="filter-box">
+            <img src="https://a0.muscache.com/pictures/6ad4bd95-f086-437d-97e3-14d12155ddfe.jpg" alt="">
+            <p>Countrysie</p>
+          </div>
+
         </div>
-       <div class="box-filter">
-        <div class="next-btn">
-          <div class="b-n-t"><i class="ri-arrow-right-s-line"></i></div>
-      </div>
-      <div class="fil-box">
-        <i class="ri-equalizer-line"></i>
-        <p>Filters</p>
-      </div>
-       </div>
-       <div class="text-box">
-        <p>Display total taxes</p>
-        <label class="switch">
-          <input type="checkbox">
-          <span class="slider"></span>
-        </label>
-       </div>
-      
-    </div>
-   <main>
-      <div class="listing">
-   <% for( listing of listingData ) { %>
-  <a href="/<%=listing._id%>">  <div class="listing-box">
-    <img draggable="false" loading="lazy" src="<%= listing.image %>" alt="">
-    <div class="listing-cont">
-      <div class="reting">
-        <p><%= listing.title %></p>
-        <div class="star">
-          <i class="ri-star-fill"></i>
-          <p>4.3</p>
+        <div class="box-filter">
+          <div class="next-btn">
+            <div class="b-n-t"><i class="ri-arrow-right-s-line"></i></div>
+          </div>
+          <div class="fil-box">
+            <i class="ri-equalizer-line"></i>
+            <p>Filters</p>
+          </div>
         </div>
+        <div class="text-box">
+          <p>Display total taxes</p>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+
       </div>
-      <p class="kol"><%= listing.country %></p>
-      <p class="kol">12-13 Mar</p>
-      <div class="price"><span>&#8377;<%=listing.price.toLocaleString("en-In")%></span><p>for 5 nights</p></div>
-    </div>
-  </div></a>
-   <% } %>
+      <main>
+        <div class="listing">
+          <% for( listing of listingData ) { %>
+            <a href="/<%=listing._id%>">
+              <div class="listing-box">
+                <img draggable="false" loading="lazy" src="<%= listing.image %>" alt="">
+                <div class="listing-cont">
+                  <div class="reting">
+                    <p>
+                      <%= listing.title %>
+                    </p>
+                    <div class="star">
+                      <i class="ri-star-fill"></i>
+                      <p>4.3</p>
+                    </div>
+                  </div>
+                  <p class="kol">
+                    <%= listing.country %>
+                  </p>
+                  <p class="kol">12-13 Mar</p>
+                  <div class="price"><span>&#8377;<%=listing.price.toLocaleString("en-In")%></span>
+                    <p>for 5 nights</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <% } %>
 
 
         </div>
-      </div>
-   </main>
-</body>
+        </div>
+      </main>
+  </body>
 
-</html>
+  </html>
