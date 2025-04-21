@@ -1,6 +1,6 @@
 function name(params) {
-    document.querySelector(".s-line-2").style.width = "100%"
-  
+  document.querySelector(".s-line-2").style.width = "100%"
+
 }
 name()
 document.querySelector(".s-line-1").classList.add("toto")

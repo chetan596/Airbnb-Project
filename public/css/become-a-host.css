@@ -166,53 +166,47 @@
    transition: width 0.5s ease 0.5s;
     background-color: #000000;
 }
-.opop{
-    width: 100%;
-}
-.toto{
-    transition: width 0s ease ;
-}
+
 .s-line-2{
     height: 100%;
    width: 0%;
    transition: width 0.5s ease 0.2s;
-
-    background: linear-gradient(to right , black,#2c2c2c);
+   background-color: #000000
 }
 .s-line-3{
     height: 100%;
    width: 0%;
    transition: width 0.5s ease 0.5s;
 
-    background: linear-gradient(to right , black,#2c2c2c);
+    background-color: #000000
 }
 .s-line-4{
     height: 100%;
    width: 0%;
    transition: width 0.5s ease 0.5s;
 
-    background: linear-gradient(to right , black,#2c2c2c);
+    background-color: #000000
 }
 .s-line-5{
     height: 100%;
    width: 0%;
    transition: width 0.5s ease 0.5s;
 
-    background: linear-gradient(to right , black,#2c2c2c);
+    background-color: #000000
 }
 .s-line-6{
     height: 100%;
    width: 0%;
    transition: width 0.5s ease 0.5s;
 
-    background: linear-gradient(to right , black,#2c2c2c);
+    background-color: #000000
 }
 .s-line-7{
     height: 100%;
    width: 0%;
    transition: width 0.5s ease 0.5s;
 
-    background: linear-gradient(to right , black,#2c2c2c);
+    background-color: #000000
 }
 .grow{
     width: 14.29%;
@@ -238,4 +232,10 @@
     font-weight: 600;
     /* font-size: 0.7rem;    */
     background: linear-gradient(135deg, #FF3957, #FFA3A3);
+}
+.opop{
+    width: 100% !important;
+}
+.toto{
+    transition: width 0s ease !important;
 }

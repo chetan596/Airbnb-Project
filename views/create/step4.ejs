@@ -10,7 +10,7 @@
                             <p>Your address only shared with gursts after they've made a reservation</p>
                         </div>
 
-                        <form action="">
+                        <form action="/location" method="post" id="my-from">
 
                            <div class="inp-flex">
                              <div class="s3-loca-s">
@@ -140,32 +140,50 @@
                             <div class="inpe-2">
                                 <div class="s3-loca-s2 s3-tp-bor">
                                     <label class="lable1">Flat,house,etc.(if applicable)</label>
-                                    <input type="text">
+                                    <span class="lo-span"><i class="ri-error-warning-line"></i></span>
+                                    <input type="text"  name="Flat,house" >
                                 </div>
-                                 <div class="s3-loca-s2">
-                                    <label class="lable1">Street address</label>
-                                    <input type="text">
-                                </div>
+                                 
                                 <div class="s3-loca-s2">
                                     <label class="lable1">neaeby landmark (if applicable)</label>
-                                    <input type="text">
+                                    <span class="lo-span"><i class="ri-error-warning-line"></i></span>
+                                    <input type="text"  name="neaeby,landmark">
                                 </div>
-                                 <div class="s3-loca-s2">
-                                    <label class="lable1">City/town</label>
-                                    <input type="text">
+                                <div class="s3-loca-s2" id="street">
+                                    <label class="lable1">Street address</label>
+                                    <span class="lo-span" id="span1"><i class="ri-error-warning-line"></i></span>
+                                    <input type="text" id="Street addres" name="Street,address">
                                 </div>
-                                <div class="s3-loca-s2">
+                                <div class="s3-loca-s2" id="state">
                                     <label class="lable1">State/union territory</label>
-                                    <input type="text">
+                                    <span class="lo-span" id="span4"><i class="ri-error-warning-line"></i></span>
+                                    <input type="text" id="State/union territory" name="State/union territory">
                                 </div>
-                                 <div class="s3-loca-s2 s3-bt-bor">
+                                <div class="s3-loca-s2" id="district">
+                                    <label class="lable1">District/locality</label>
+                                    <span class="lo-span" id="span2"><i class="ri-error-warning-line"></i></span>
+                                    <input type="text" id="District/locality" name="District/locality">
+                                </div>
+                                 <div class="s3-loca-s2" id="city">
+                                    <label class="lable1">City/town</label>
+                                    <span class="lo-span" id="span3"><i class="ri-error-warning-line"></i></span>
+                                    <input type="text" id="City/town">
+                                </div>
+                               
+                                 <div class="s3-loca-s2 s3-bt-bor  " id="pinCode">
                                     <label class="lable1">PIN code</label>
-                                    <input type="number">
+                                    <span class="lo-span" id="span5"><i class="ri-error-warning-line"></i></span>
+                                    <input type="number" id="pin code" name="PIN code">
                                 </div>
                             </div>
                            </div>
-                            
+                          
                         </form>
+                        <div class="velidetion-err-msg-box">
+                          <div class="lip">poiuyt</div>
+                           <p class="err-msg"></p>
+                        </div>
+                        
                     </div>
                 </div>
             </main>

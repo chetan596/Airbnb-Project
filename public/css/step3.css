@@ -98,10 +98,3 @@
 .selected{
     border: 2px solid black;
 }
-.s-line-2{
-    height: 100%;
-   width: 0%;
-   transition: width 0.5s ease 0.5s;
-
-    background: linear-gradient(to right , black,#2c2c2c);
-}

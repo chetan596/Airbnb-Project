@@ -53,13 +53,31 @@ app.get("/privacy-type",(req,res)=>{
 app.get("/location",(req,res)=>{
     res.render("create/step4.ejs")
 })
+
+
+app.post("/location",(req,res)=>{
+    res.redirect("/floor-plan")
+    console.log(req.body);
+    
+})
+app.get("/floor-plan",(req,res)=>{
+    res.render("create/step5.ejs")
+})
+app.post("/floor-planrt",(req,res)=>{
+    console.log(req.body)
+    res.redirect("/fgfg")
+})
+app.get("/fgfg",(req,res)=>{
+    res.send("working----")
+})
 // Show route
 
-app.get("/:id",async (req,res )=>{
-    let { id } = req.params;
-  let hotelView = await listing.findById(id);
-  res.render("show/show.ejs" ,{hotelView})
-})
+// app.get("/:id",async (req,res )=>{
+//     let { id } = req.params;
+//   let hotelView = await listing.findById(id);
+// //   console.log(id , hotelView)
+//   res.render("show/show.ejs" ,{hotelView})
+// })
 
 app.listen(3000,()=>{
     console.log("The server hav been started.");

@@ -1,0 +1,110 @@
+<%- include('../header/header.ejs') %>
+<body>
+    <%- include('createNav.ejs') %>
+
+    <main class="m-nono s-5main">
+
+        <div class="st-5-main">
+            <div class="s5-ctn">
+                <div class="st-5hading">
+                    <h1>Let's start with the basics </h1>
+
+                </div>
+                <form class="s5-form" action="/floor-planrt" method="post" id="my-from">
+                    <h3>How many people can stay here?</h3>
+
+                    <div class="s5-gust-box">
+                        <div class="s5-gust-name">
+                            <p>Guests</p>
+                        </div>
+                        <div class="s5-gust-num">
+                            <div class="s5-gust-plas plas1">
+                                <i class="ri-subtract-line"></i>
+                            </div>
+                            <div class="s5-gust-totel">
+                                <!-- <div class="input-cover">
+
+                                </div> -->
+                                <input type="number" id="Guests" name="Guests">
+                                <div class="input-cover" >
+
+                                </div>
+                            </div>
+                            <div class="s5-gust-mines mines1">
+                                <i class="ri-add-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="s5-gust-box gp-e-w">
+                        <div class="s5-gust-name">
+                            <p>Bedrooms</p>
+                        </div>
+                        <div class="s5-gust-num">
+                            <div class="s5-gust-plas plas2">
+                                <i class="ri-subtract-line"></i>
+                            </div>
+                            <div class="s5-gust-totel">
+                                <!-- <div class="input-cover">
+
+                                </div> -->
+                                <input type="number" id="Bedrooms" name="Bedrooms">
+                                <div class="input-cover">
+
+                                </div>
+                            </div>
+                            <div class="s5-gust-mines mines2">
+                                <i class="ri-add-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="s5-gust-box h-po-w">
+                        <div class="s5-gust-name">
+                            <p>Bed</p>
+                        </div>
+                        <div class="s5-gust-num">
+                            <div class="s5-gust-plas plas3">
+                                <i class="ri-subtract-line"></i>
+                            </div>
+                            <div class="s5-gust-totel">
+                                <!-- <div class="input-cover">
+
+                                </div> -->
+                                <input type="number" id="Bed" name="Bed">
+                                <div class="input-cover">
+
+                                </div>
+                            </div>
+                            <div class="s5-gust-mines mines3">
+                                <i class="ri-add-line"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="s5-fr-p">Does every bedroom have a look?</h3>
+                    <div class="radio-group">
+                        <div class="s5-bnt1 rs5-r1">
+                            <label>
+                                <input type="radio" name="answer" value="on">
+                                Yes
+                              </label>
+                        </div>
+                        <div class="s5-bnt1 rs5-r2">
+                            <label>
+                                <input type="radio" name="answer" value="on">
+                                No
+                              </label>
+                        </div>
+                    
+                        
+                      </div>
+                    
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+
+    <%- include('stepFooter.ejs') %>
+    <script src="/step5Animetion.js"></script>
+</body>
