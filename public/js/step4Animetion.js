@@ -3,9 +3,7 @@ function name(params) {
   
   }
   name();
-document.querySelector(".s-line-1").classList.add("toto")
 document.querySelector(".s-line-1").classList.add("opop")
-document.querySelector(".s-line-2").classList.add("toto")
 document.querySelector(".s-line-2").classList.add("opop")
 let nextBnt = document.querySelector(".s2-bnt-next");
 
@@ -81,7 +79,6 @@ nextBnt.addEventListener("click",(e)=>{
          finalError.style.display = "none"
          nextBnt.setAttribute("href" ,"/next")
          nextBnt.classList.remove("desebal");
-         nextBnt.setAttribute("href" ,"/next")
          console.log("save");
          
     }

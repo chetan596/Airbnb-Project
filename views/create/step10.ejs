@@ -1,0 +1,24 @@
+<%- include('../header/header.ejs') %>
+<body>
+    <%- include('createNav.ejs') %>
+    <main class="m-nono s-109">
+        <div class="s10-main">
+            <div class="s10-titel-box">
+                <h1>
+                    Now, let's give your hotel a title
+                </h1>
+                <p>Short titles work best. Have fun with it - you can alwaye change it later.</p>
+                <form action="/title" method="post">
+                   <textarea name="title" id="" cols="30" rows="10"></textarea>
+                </form>
+                <div class="yuio">
+                    <i class="ri-error-warning-line  opi"></i><p class="title-count" id="wordCount"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <%- include('stepFooter.ejs') %>
+    <script src="/step10Animetion.js"></script>
+</body>

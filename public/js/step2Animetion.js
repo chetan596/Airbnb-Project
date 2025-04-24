@@ -1,8 +1,5 @@
 function name(params) {
   document.querySelector(".s-line-1").style.width = "100%";
-  setTimeout(()=>{
-   
-  },1000);
 
 }
 name();

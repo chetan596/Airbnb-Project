@@ -118,9 +118,6 @@
     /* padding: 0.5rem 0.5rem; */
     
 }
-.s5-gust-totel input::-webkit-inner-spin-button,.s5-gust-totel input::-webkit-outer-spin-button{
-    -webkit-appearance: none;
-}
 
 .input-cover{
     height: 100%;
@@ -129,7 +126,7 @@
     position: relative;
     bottom: 37px;
     z-index: 1;
-    background-color: rgba(0, 255, 255, 0);
+    background-color: rgba(74, 230, 230, 0);
 }
 .s5-gust-mines{
     height: 2.1rem;

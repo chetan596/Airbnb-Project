@@ -1,0 +1,102 @@
+.s-109{
+    height: 72% !important;
+    font-family: "Poppins", sans-serif;
+}
+.s10-main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aqua; */
+}
+
+.s10-titel-box{
+    height: 50%;
+    width: 37%;
+    /* background-color: aquamarine; */
+}
+.s10-titel-box h1{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #222222;
+    padding: 0.3rem 0rem;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: slideUp 0.6s ease forwards;
+    animation-delay: 0.2s;
+}
+.s10-titel-box p{
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #22222296;
+    /* padding: 0.8rem 0rem; */
+    opacity: 0;
+    transform: translateY(40px);
+    animation: slideUp 0.6s ease forwards;
+    animation-delay: 0.4s;
+}
+
+.s10-titel-box form{
+    height: 50%;
+    width: 100%;
+    margin-top: 1.4rem;
+    /* background-color: blueviolet; */
+}
+
+.s10-titel-box textarea{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-family: "Roboto", sans-serif;
+    color: #000000d3;
+    border: 2px solid black;
+    border-radius: 0.4rem;
+    padding: 1rem;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: slideUp 0.6s ease forwards;
+    animation-delay: 0.6s;
+}
+.yuio{
+    display: flex;
+    height: 3rem ;
+    width: 15rem;
+    align-items: center;
+}
+.error{
+    color: red !important;
+    color: #141414 ;
+    
+}
+.opi{
+    /* height: 2rem; */
+    display: inline-block;
+    color: red;
+    margin-right: 0.2rem;
+    visibility: hidden;
+}
+.loiurr{
+    visibility: visible;
+}
+#wordCount{
+    padding: 1rem 3px !important;
+    color: #141414 ;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    opacity: 0 ;
+    transform: translateY(40px);
+    animation: slideUp 0.6s ease forwards;
+    animation-delay: 0.8s !important;
+}
+
+a{
+    cursor: pointer;
+}
+
+.s-11-71{
+    height: 71% !important;
+}

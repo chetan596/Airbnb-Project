@@ -32,7 +32,7 @@
 
 .a-room{
     height: 26%;
-    /* width: 100%; */
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -45,7 +45,7 @@
 }
 .romm2{
     height: 26%;
-    /* width: 100%; */
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -96,5 +96,5 @@
 }
 
 .selected{
-    border: 2px solid black;
+    border: 2px solid black !important;
 }

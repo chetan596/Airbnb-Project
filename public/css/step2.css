@@ -79,7 +79,8 @@
 }
 
 .selected{
-    border: 2px solid black;
+    border: 2px solid black !important;
+    background-color: #f1f1f199 !important;
 }
 
 

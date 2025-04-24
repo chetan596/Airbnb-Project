@@ -1,9 +1,4 @@
-function name(params) {
-  document.querySelector(".s-line-2").style.width = "100%"
 
-}
-name()
-document.querySelector(".s-line-1").classList.add("opop")
 let nextBnt = document.querySelector(".s2-bnt-next");
 desebal(nextBnt)
 function desebal(egg){
@@ -23,7 +18,7 @@ selBxs.forEach((card)=>{
     if(!selectedValue){
       console.log("ddddf")
     }else{
-      nextBnt.setAttribute("href" , "/location")
+      nextBnt.setAttribute("href" , "/fgrt")
       nextBnt.classList.remove("desebal");
   console.log("reove");
   
@@ -39,7 +34,7 @@ function submitData() {
   fetch("/room-type",{
     method : "POST",
     headers : {"Content-Type" : "application/json"},
-    body : JSON.stringify({value: selectedValue})
+    body : JSON.stringify({instantBook: selectedValue})
   }).then(res => res.json())
     .then((data) =>{}).catch((err)=>{
       console.log("-----Error-----");

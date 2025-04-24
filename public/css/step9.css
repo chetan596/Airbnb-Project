@@ -1,0 +1,80 @@
+.s9-maina{
+    height: 150% !important;
+    width: 100%;
+
+}
+
+
+.s9-fgs{
+    height: 100% !important;
+}
+.box9-griad{
+    grid-template-rows: repeat(3, 93px) !important;
+    height: 37% !important;
+    padding-top: 1.7rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 0.7rem;
+    grid-row-gap: 0.7rem;
+}
+.box9-griad23{
+    grid-template-rows: repeat(5, 93px) !important;
+    height: 82% !important;
+    padding-top: 1.7rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 0.7rem;
+    grid-row-gap: 0.7rem;
+}
+
+.gtyu{
+    animation-delay: 1.3s !important;
+    font-weight: 500;
+    color: #222222 !important;
+}
+
+
+.lopiu{
+    border-radius: 0.5rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: border 0.3s ease;
+    transform: translateY(50px);
+    animation: slideUp 0.6s ease forwards;
+    transition: 0.3s;
+    border: 1px solid #2222222d;
+    line-height: 13px;
+}
+.s9-pqwe{
+    padding: 0.5rem 1rem;
+    padding-bottom: 0px !important;
+}
+.s9-pqwe p{
+    font-size: 0.8rem;
+    font-weight: 400;
+    padding-left: 0.4rem;
+}
+.lopiu:hover{
+    border: 2px solid black;
+}
+.selected2{
+    border: 2px solid black !important;
+    background-color: #f1f1f199 !important;
+}
+.s-grid-boxs123{
+    border-radius: 0.5rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: border 0.3s ease;
+    transform: translateY(50px);
+    animation: slideUp 0.6s ease forwards;
+    transition: 0.3s;
+    border: 1px solid #2222222d;
+    
+
+}
+.s-grid-boxs123:hover{
+    border: 2px solid rgb(0, 0, 0);
+}

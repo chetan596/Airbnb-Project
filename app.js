@@ -65,9 +65,64 @@ app.get("/floor-plan",(req,res)=>{
 })
 app.post("/floor-planrt",(req,res)=>{
     console.log(req.body)
-    res.redirect("/fgfg")
+    res.redirect("/bathrooms")
 })
-app.get("/fgfg",(req,res)=>{
+app.get("/bathrooms",(req,res)=>{
+    res.render("create/step6.ejs")
+})
+app.post("/bathrooms",(req,res)=>{
+    console.log(req.body)
+    res.redirect("/occupancy")
+})
+app.get("/occupancy",(req ,res)=>{
+    res.render("create/step7.ejs")
+})
+app.post("/occupancy",(req ,res)=>{
+    console.log(req.body, "1")
+    res.redirect("/fgrt")
+})
+app.post("/occupancy2",(req ,res)=>{
+    console.log(req.body, "2")
+    res.redirect("/fgrt")
+})
+app.get("/stand-out",(req,res)=>{
+    res.render("create/step8.ejs")
+})
+app.get("/amenities",(req,res)=>{
+    res.render("create/step9.ejs")
+})
+app.get("/title",(req,res)=>{
+    res.render("create/step10.ejs")
+})
+app.post("/title",(req,res)=>{
+    console.log(req.body)
+    res.redirect("/description")
+})
+app.get("/description",(req,res)=>{
+    res.render("create/step11.ejs")
+})
+app.post("/description",(req,res)=>{
+    console.log(req.body)
+    res.redirect("/describe")
+})
+app.get("/describe",(req,res)=>{
+    res.render("create/step12.ejs")
+})
+app.post("/describe",(req,res)=>{
+    console.log(req.body)
+    res.redirect("/finish-setup")
+})
+app.get("/finish-setup",(req,res)=>{
+    res.render("create/step13.ejs")
+})
+app.get("/instant-book",(req,res)=>{
+    res.render("create/step14.ejs")
+})
+app.post("/instant-book",(req,res)=>{
+    console.log(req.body);
+    
+})
+app.get("/fgrt",(req,res)=>{
     res.send("working----")
 })
 // Show route

@@ -1,21 +1,21 @@
 <%- include('../header/header.ejs') %>
 <body>
     <%- include('createNav.ejs') %>
-
     <main class="m-nono s-5main">
-
         <div class="st-5-main">
-            <div class="s5-ctn">
+            <div class="s5-ctn wewe-3">
                 <div class="st-5hading">
-                    <h1>Let's start with the basics </h1>
+                    <h1>What kind of bathroom are available to guest?</h1>
 
                 </div>
-                <form class="s5-form" action="/floor-planrt" method="post" id="my-from">
-                    <h3>How many people can stay here?</h3>
+                <form class="s5-form" action="/bathrooms" method="post" id="my-from">
 
-                    <div class="s5-gust-box">
-                        <div class="s5-gust-name">
-                            <p>Guests</p>
+                    <div class="s5-gust-box  s-6-uie">
+                        <div class="s5-gust-name n-we">
+                           <div>
+                            <p class="s6-1p">Private and attached</p>
+                            <p class="s6-2p">It's connected to the guest's room and is just for them.</p>
+                           </div>
                         </div>
                         <div class="s5-gust-num">
                             <div class="s5-gust-plas plas1">
@@ -36,9 +36,12 @@
                         </div>
                     </div>
                     <div class="s5-gust-box gp-e-w">
-                        <div class="s5-gust-name">
-                            <p>Bedrooms</p>
-                        </div>
+                        <div class="s5-gust-name n-we">
+                            <div>
+                             <p class="s6-1p">Dedicated</p>
+                             <p class="s6-2p">It's private, but accessed vai a shared space such as a hallway.</p>
+                            </div>
+                         </div>
                         <div class="s5-gust-num">
                             <div class="s5-gust-plas plas2">
                                 <i class="ri-subtract-line"></i>
@@ -48,7 +51,7 @@
 
                                 </div> -->
                                 <input type="number" id="Bedrooms" name="Bedrooms">
-                                <div class="poiu">
+                                <div class="input-cover">
 
                                 </div>
                             </div>
@@ -58,9 +61,12 @@
                         </div>
                     </div>
                     <div class="s5-gust-box h-po-w">
-                        <div class="s5-gust-name">
-                            <p>Bed</p>
-                        </div>
+                        <div class="s5-gust-name n-we">
+                            <div>
+                             <p class="s6-1p">Shared</p>
+                             <p class="s6-2p">It's shared with other people</p>
+                            </div>
+                         </div>
                         <div class="s5-gust-num">
                             <div class="s5-gust-plas plas3">
                                 <i class="ri-subtract-line"></i>
@@ -80,31 +86,14 @@
                         </div>
                     </div>
 
-                    <h3 class="s5-fr-p">Does every bedroom have a look?</h3>
-                    <div class="radio-group">
-                        <div class="s5-bnt1 rs5-r1">
-                            <label>
-                                <input type="radio" name="Does" value="yes">
-                                Yes
-                              </label>
-                        </div>
-                        <div class="s5-bnt1 rs5-r2">
-                            <label>
-                                <input type="radio" name="Does" value="no">
-                                No
-                              </label>
-                        </div>
-                    
-                        
-                      </div>
+                   
                     
                 </form>
             </div>
         </div>
-
     </main>
 
 
     <%- include('stepFooter.ejs') %>
-    <script src="/step5Animetion.js"></script>
+    <script src="/step6Animetion.js"></script>
 </body>
