@@ -1,0 +1,68 @@
+<%- include('../header/header.ejs') %>
+
+<body>
+    <%- include('createNav.ejs') %>
+    <main class="s16-main">
+        <div class="s16main-1">
+            <div class="s16-price">
+                <div class="price-hading">
+                    <h3>Not, set your price</h3>
+                    <p>You can change it anytime.</p>
+                </div>
+                <div class="main-price-box">
+                    
+                <form action="/price" method="post">
+                    <span class="ru-ion"><i class="fa-solid fa-indian-rupee-sign"></i></span><input type="text" readonly name="price">
+                   
+                    <div class="edit-box">
+                        <i class="fa-solid fa-pen"></i>
+                    </div>
+                    <div class="show-totel-price">
+                        <p class="deroo">Guest price before taxes  <i class="fa-solid fa-indian-rupee-sign  qwecc"></i> <span class="cc">0</span> <span class="pojy"><i class="ri-arrow-drop-down-line"></i></span> </p>
+
+                    </div>
+                    
+                    
+                </form>
+               
+                </div>
+                <div class="prise-boxss12">
+                          
+                           <div class="opimd">
+                            <div class="gatboxss14">
+                                <div class="ainpree  top-fhrur">
+                                    <p>Base price</p>
+                                    <span class="tyhb"><i class="fa-solid fa-indian-rupee-sign"></i><p class="bse-price"></p></span>
+                                </div>
+                                <div class="ainpree bottom-fhrur">
+                                    <p>Guest service fee</p>
+                                    <span class="tyhb"><i class="fa-solid fa-indian-rupee-sign"></i> <p class=" service-fee"></p></span>
+                                   
+                                </div>
+
+                                <div class="eijrfa">
+                                    <p>Guest price before taxes</p>
+                                    <span class="tyhb"><i class="fa-solid fa-indian-rupee-sign"></i> <p class="t-o-l"></p></span>
+                                   
+                                </div>
+                            </div>
+
+                            <div class="ljhg">
+                                <p>You earn</p>
+                                <span class="tyhb"><i class="fa-solid fa-indian-rupee-sign"></i> <p class="you-earnnd"></p></span>
+                            </div>
+                            
+                           </div>
+
+                           
+
+
+                      
+                </div>
+            </div>
+           
+        </div>
+    </main>
+    <%- include('stepFooter.ejs') %>
+    <script src="/step16Aimetion.js"></script>
+</body>

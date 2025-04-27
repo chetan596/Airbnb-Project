@@ -1,205 +1,136 @@
-const hotels = [
-    {
-      title: "Oceanview Paradise",
-      description: "Relax in this beautiful seaside hotel with panoramic ocean views.",
-      image: "https://source.unsplash.com/featured/?hotel,beach",
-      price: 220,
-      location: "Malibu",
-      country: "USA"
-    },
-    {
-      title: "Mountain Peak Resort",
-      description: "A cozy retreat in the heart of the Rockies.",
-      image: "https://source.unsplash.com/featured/?hotel,mountain",
-      price: 180,
-      location: "Aspen",
-      country: "USA"
-    },
-    {
-      title: "The Royal Heritage",
-      description: "Experience the grandeur of Indian royalty.",
-      image: "https://source.unsplash.com/featured/?hotel,palace",
-      price: 150,
-      location: "Jaipur",
-      country: "India"
-    },
-    {
-      title: "Tokyo Business Inn",
-      description: "Compact and comfortable rooms for business travelers.",
-      image: "https://source.unsplash.com/featured/?hotel,tokyo",
-      price: 95,
-      location: "Tokyo",
-      country: "Japan"
-    },
-    {
-      title: "Bali Bliss Resort",
-      description: "A tropical paradise surrounded by lush greenery.",
-      image: "https://source.unsplash.com/featured/?hotel,bali",
-      price: 200,
-      location: "Ubud",
-      country: "Indonesia"
-    },
-    {
-      title: "Parisian Charm Hotel",
-      description: "Charming boutique hotel in the heart of Paris.",
-      image: "https://source.unsplash.com/featured/?hotel,paris",
-      price: 250,
-      location: "Paris",
-      country: "France"
-    },
-    {
-      title: "Alpine View Lodge",
-      description: "Scenic views and cozy ambiance near the Alps.",
-      image: "https://source.unsplash.com/featured/?hotel,alps",
-      price: 170,
-      location: "Geneva",
-      country: "Switzerland"
-    },
-    {
-      title: "The Desert Mirage",
-      description: "Luxury oasis in the middle of the desert.",
-      image: "https://source.unsplash.com/featured/?hotel,desert",
-      price: 300,
-      location: "Dubai",
-      country: "UAE"
-    },
-    {
-      title: "City Central Inn",
-      description: "Modern hotel close to shopping and nightlife.",
-      image: "https://source.unsplash.com/featured/?hotel,city",
-      price: 120,
-      location: "New York",
-      country: "USA"
-    },
-    {
-      title: "Lakeside Tranquility",
-      description: "Peaceful stay by a serene lake with nature all around.",
-      image: "https://source.unsplash.com/featured/?hotel,lake",
-      price: 140,
-      location: "Queenstown",
-      country: "New Zealand"
-    },
-    {
-      title: "Sahara Sky Lodge",
-      description: "Experience the vastness of the Sahara with all comforts.",
-      image: "https://source.unsplash.com/featured/?hotel,sahara",
-      price: 160,
-      location: "Merzouga",
-      country: "Morocco"
-    },
-    {
-      title: "Himalayan Haven",
-      description: "A peaceful mountain lodge with spiritual vibes.",
-      image: "https://source.unsplash.com/featured/?hotel,himalaya",
-      price: 110,
-      location: "Kathmandu",
-      country: "Nepal"
-    },
-    {
-      title: "London Royal Suites",
-      description: "Elegant suites with royal decor in central London.",
-      image: "https://source.unsplash.com/featured/?hotel,london",
-      price: 280,
-      location: "London",
-      country: "UK"
-    },
-    {
-      title: "Sydney Waterfront Inn",
-      description: "Wake up to Sydney's iconic harbor views.",
-      image: "https://source.unsplash.com/featured/?hotel,sydney",
-      price: 210,
-      location: "Sydney",
-      country: "Australia"
-    },
-    {
-      title: "Cuban Colonial Stay",
-      description: "Step back in time in this colonial-style hotel.",
-      image: "https://source.unsplash.com/featured/?hotel,havana",
-      price: 90,
-      location: "Havana",
-      country: "Cuba"
-    },
-    {
-      title: "Bangkok Boutique Hotel",
-      description: "Chic and modern hotel in the heart of Bangkok.",
-      image: "https://source.unsplash.com/featured/?hotel,bangkok",
-      price: 85,
-      location: "Bangkok",
-      country: "Thailand"
-    },
-    {
-      title: "Canadian Wilderness Lodge",
-      description: "Get closer to nature in this cozy northern retreat.",
-      image: "https://source.unsplash.com/featured/?hotel,canada",
-      price: 130,
-      location: "Banff",
-      country: "Canada"
-    },
-    {
-      title: "Santorini Sunset Villas",
-      description: "Gorgeous cliffside villas with sunset views.",
-      image: "https://source.unsplash.com/featured/?hotel,santorini",
-      price: 270,
-      location: "Santorini",
-      country: "Greece"
-    },
-    {
-      title: "Cape Town Cliff Resort",
-      description: "Marvelous views of the ocean and Table Mountain.",
-      image: "https://source.unsplash.com/featured/?hotel,capetown",
-      price: 190,
-      location: "Cape Town",
-      country: "South Africa"
-    },
-    {
-      title: "Berlin Urban Hotel",
-      description: "Trendy spot in Berlin’s vibrant city center.",
-      image: "https://source.unsplash.com/featured/?hotel,berlin",
-      price: 125,
-      location: "Berlin",
-      country: "Germany"
-    },
-    {
-      title: "Icelandic Ice Hotel",
-      description: "Sleep in a frozen wonderland, literally.",
-      image: "https://source.unsplash.com/featured/?hotel,iceland",
-      price: 230,
-      location: "Reykjavik",
-      country: "Iceland"
-    },
-    {
-      title: "Petra Desert Camp",
-      description: "Cultural desert camp near the wonders of Petra.",
-      image: "https://source.unsplash.com/featured/?hotel,petra",
-      price: 100,
-      location: "Wadi Musa",
-      country: "Jordan"
-    },
-    {
-      title: "Barcelona Art Hotel",
-      description: "Modern art-themed hotel in Spain’s creative hub.",
-      image: "https://source.unsplash.com/featured/?hotel,barcelona",
-      price: 160,
-      location: "Barcelona",
-      country: "Spain"
-    },
-    {
-      title: "Rio Carnival Lodge",
-      description: "Stay in the heart of Brazil’s festive city.",
-      image: "https://source.unsplash.com/featured/?hotel,rio",
-      price: 140,
-      location: "Rio de Janeiro",
-      country: "Brazil"
-    },
-    {
-      title: "Shanghai Skyline Hotel",
-      description: "Views of the futuristic skyline and bustling city.",
-      image: "https://source.unsplash.com/featured/?hotel,shanghai",
-      price: 150,
-      location: "Shanghai",
-      country: "China"
-    }
-];
+const mongoose = require("mongoose");
+// const data = require("./data")
+const Schema = mongoose.Schema;
+main().then(() => {
+    console.log("The databass was successfully connectd");
+}).catch((err) => {
+    console.log("----Error---", err);
 
-module.exports = {data : hotels}
+})
+async function main() {
+    await mongoose.connect("mongodb://127.0.0.1:27017/Airbnb")
+}
+const hotelCreateData = new Schema({
+    hotelType : {
+        type : Array,   
+    },
+    roomType : {
+        type : Array,
+    },
+    occupancy : {
+        type : Array,
+    },
+    amenities : {
+        type : Array,
+    },
+    describe: {
+        type : Array,
+    },
+    instantBook: {
+        type : Array,
+    }
+})
+
+let data= mongoose.model("data", hotelCreateData)
+
+
+const data11 = new data({
+    hotelType : [
+  { title: "House", image: "https://media-hosting.imagekit.io/5db01f53fd6a4336/WhatsApp%20Image%202025-04-19%20at%2018.42.25_55362321.jpg?Expires=1839691225&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=BM8S4MUuvph6BCDvTFg5DhZwQgIbgSgw-OGslQW6rYfTEc3CoZsSh3duglJ95OJUdoZoJ4bN1Q0ztTr3jJhNLv7BITrwS27iGpefWmvC6FIceNTYpkGK-g1lOUNDQC9HnhapsgVEcbqOAYOgfuVGCqcLdEkGGff2uOqp~oE6~dfliHBi2uNCDZyEIcs-C3e8xQCcNM71HFX5dBb~kZxpojzfz3MqnB-W0GM9E9~X1~USZ~xN8mLgDqzdO3PQ~BmGBdb3yWHcdGD-BmSCaBV1rmwCWWD9cQTEaxHdJDWD0LBJPmLLT6hL9V4mtTrhYHwo~EhUNyCQOfveuDKNZpMCvw__" },
+  { title: "Flat/Apartment", image: "https://media-hosting.imagekit.io/c205ac9172e3449d/WhatsApp%20Image%202025-04-19%20at%2019.42.57_9bde11be.jpg?Expires=1839694828&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=WBwZpFGZSztPmVbg7d9NNFU3sqLBmchkzc8fNDbr6QVEHtq~71KnRjMWo4SjaTHnTpacNXYnhx7r0UhnCSBfRF-vc1HOTT4ZMhtOaNqTZxsPfE1eWVYWX40kXZjHllHFp2I352sp-wxFgtMaRYvjMyH1yovszml96Ad6es6Py5tKWhqb0DBrMREQLYYS0tjItq~pn-PJJS~-WnpD07tKNkrFLeUnrbXXX6q08HwB1QYAaVjGpoCJRXbEaRbPfwAkwEpNAQUN5LGgVVPFkli1bue42meEqg07i4YFlugqLxfPHweBTY0E9oBDIKcht9ecf4D-7PLVB01jVJK5XUAQUA__" },
+  { title: "Barn", image: "https://media-hosting.imagekit.io/3de6e228ab954a90/Minimalist%20Barn%20Icon.png?Expires=1839697512&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=THwd6dOV5ipMaOM~Zpo-EG7Pbo3w0ej-KaGylFc0TFebYtO984kAAfNZ1WiBHHSlzdv3k25cMfbN3nlLMEvfm4G4be0hwwrgEyDkfqz8D-9GMMupHpPDAvxUwYXDX14j9DmGP4l2Mf6958iLAChwVRAVqfdYfS0~qwRyZyWg0ft7l-ONqrX~0fc6nxwdndfvLavJtZrRIlrhrFy6ymlkREZt7uFhGWS2ewptMUSnWMijvG43mxPB9c2KMp1ozOpq5JwkxBnKNA2Id66RGAlAkXG2k4OVDbntElF8RkjV23Cyma4-yaVu~ll8UsFPX6GJSgyrEPuyqPywR0MtAZAREg__" },
+  { title: "Bed&amp;Breakfast", image: "https://media-hosting.imagekit.io/d49f113b42474199/ChatGPT%20Image%20Apr%2019,%202025,%2006_15_54%20PM.png?Expires=1839696881&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=AkA2W09m8eMLtI4npFAbgjzAzsvRSwPRrFvxDo6OPs5F~Z1iCPM0dp5aZ6Ygx8LVDolLAbSAyQgmJ54vrKutY7BKhfQpXyv9vb8wSW75m9UGkfModziBiyry8~~mnISTmkuj8MPLyPoTijyVw5pkX-6BnDHQvfL4LeCRalEpuQ6woNKP5wRCVdiqkzq3QGdCqOPcbaoFVy9TzK1qEKuuK61qQilROVSCAP3Me9CX-JqJAdxNHEsQtaBDnACrPORw8mSgkRwvZ4SuyHerTZx0TxMi8v9B~gFtmZwHpWVzQKn0Q5boCCzM45fslxCG6E1ZPzHXbYP0ljKrphLQ1U1lXQ__" },
+  { title: "Boat", image: "https://media-hosting.imagekit.io/ee851e69e237407e/ChatGPT%20Image%20Apr%2019,%202025,%2006_18_45%20PM.png?Expires=1839697428&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=rbAnAFb7tYVbb2asqaTL9uUODLP6tbq1TwVLetXGGUV46Y7f5sSFB4dMUZk0bd3eXlHr1JyPIExf0WbFi1KwO4T2FiJjLhYndZFGdimpo6S9O0W4pq89p87SOC~jtdoXflARqWxJ7a7chjcMz3YNGk3~vry5MgR6yl2x9SHTpVDDWZAFHRSGLSJNubKL9pWT-dhjAieRexDib3LUGYNm0caJlgPqN~vWTPN0PUeziRMnMhfjVdjOFFV3Ql9-N5Km5YfSC9JQn6Aft00xP8t9Bg7OqPKqDPbbM9ImuflApcGJr~Uf1pCu2KowRgWpD4Ta37a6MyisRUiihp6anGJVNQ__" },
+  { title: "Campervan/Moto...", image: "https://media-hosting.imagekit.io/f7e40c3563c44f37/ChatGPT%20Image%20Apr%2019,%202025,%2006_34_47%20PM.png?Expires=1839697971&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=jAQ2-DGZO2DiSjQMUMyYtZXlsPuemOpodfqleCvUObb3~M9NpWFHd9eRPsF1KpB1DBSUJzLHVaVFre28mdG7JkWB19mrzZHSn1LoRG8ktZLC2pchJ7WAOua1RyqSRQuPuFRcmEGZ1BA4laW0j6A0cITwvV3fia-8kFh3PHdO~G-n4SFyfUCwIaSAOgJDJLZOiwA7E8IYWT9zFo4hnmASIl9zF0iAcROs2C7DpB8KNl6xh~SYSRGG3J19qffpwZSlAJdKQFr~yKaa7~KZGmkKKcthfyaQgoRRz1SikAolb1aSVnq782GWW~wn6ZjpOOZRKjL8jivRgxrrA-uu8lNV7w__" },
+  { title: "Casa&nbsp;Particular", image: "https://media-hosting.imagekit.io/df224f01bb43494a/ChatGPT%20Image%20Apr%2019,%202025,%2006_39_27%20PM.png?Expires=1839698178&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Dxt9pAp49u68p-94hVAdU5~T1DJVcjLuK8jFvYzFU8QW-nMumBHr9eF3j3XAtuZvE5sj8ik8U-61pTKLireASLr3R6EvUs1TUKoIms3EqQmQNyx2WVqAo55sRNxGuXn-MCaCVutjfjtwyz2ymNta8Ca1CJn5pAifVWM36QU-2GUiwovnhEL0U41iA3klcKUepd4q2v4MbvJ1zREmDLklpdWZFQwtcCHQ1bPK1BfXGZWZSL6kQ~V4YWm8A6Bf6w1Kr9wg4lwixr72J~5J2zXpYsaZRk0rNAwbeFd0c1RKRfYNvX2DASQjJZYy58aWmGAJ084mhmBvXeQJXam4c2qa7A__" },
+  { title: "Hotel", image: "https://media-hosting.imagekit.io/1c83f2fcf54d4f84/ChatGPT%20Image%20Apr%2019,%202025,%2006_20_45%20PM.png?Expires=1839701485&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=JiuDLmIdfUtxUhKIarjCcfirLnqlhrWBNgUt34D2PbJhWYtByZwPL8EXaByktjgaPUroIAVP7XEIrPxTjSk8jvP5~OlJQ9ZOmuu5zmOcZJYfHd0vDx66PA~DG1HZXalg9LBBnbSwgxR48lWX90EzC18cpFyWQAz0dPjznwoYDxhBbfN1OGnJ66wHtrVwOJ3jgQeITYy~jikUKLA~PG4cmS8-iqwkGHAPwa6Iu7RksvFHdUsw-O4sgH9Tn~Nhvm-19yAOy8Xom~j861Nmg3jpPxtLnCPzpSPsUJwEsDIUv8dKKMvmLKTPNILHpZpSXTFD4Pdajt1R1F~lJBhDgt~33Q__" },
+  { title: "Guest&nbsp;house", image: "https://media-hosting.imagekit.io/c196583be61b4e15/ChatGPT%20Image%20Apr%2019,%202025,%2006_17_58%20PM.png?Expires=1839700514&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=yPkrRfA~ytTOB75~RY2VWyy2CsBHHozyQSKBN-C6Q2~i607sNZ9KyN8IPW8bpGMtkCgRC-uSLEw3kFjH-rJdcEUYd24Cc5H9gN73R5jRJ8RM5FkKivQ2jqo1CJtjacIE6P-5ccbmDLjTz2u642tcGEENtT6F4-lPfIl48EaNc~T0gzO3GN3q8voxbfHcIivsotVxTP60ZG4qHNl1TgnGa5sYfRNyXRSKy1M7qmF4M8Phk2J8rMNJJGBydwGB8mmFGczuSnMYgYPAii362Oh3FCMOCXSgGofdcwGdruiDutoin5DgEgxKeH26Ml9kBYAoGBHGNR11YgLndlyOW4cTuw__" },
+  { title: "House&nbsp;boat", image: "https://media-hosting.imagekit.io/d6fcfc0eca884f71/ChatGPT%20Image%20Apr%2019,%202025,%2006_39_04%20PM.png?Expires=1839701776&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=ioDVvSKaVr10gFcdEyQHyxb-ZzAUleZYjuSP6Ko7Ah~lhghOuNjijSy~D0AJhmljgTNliscbAg1-HWQ9bXWHCCrYqP278p2K7HyeJ9FWqpgOHOEYnaaRvHzxmVTJtbPLE0M5IGXjmjAIfDks6Ptw5dPBRMAJ9w0HR6n1ugyYaEdGBs~s1H5IUkdw0JLhRs~2MhsL~H0fAVpnHfb2wMR9PLtHwOkewJuHQpAvfnCcuk9AT6OSozLNadLGHOw9kOiVQUEHOTZ4oJ9XAiXzbC26bmRfC9uxdSNlmN9PL9q9w7Sw3XLao0v2msjNHoFdL7ws1OQF7WNUdsfngWvfFHilkA__" },
+  { title: "Riad", image: "https://media-hosting.imagekit.io/587d31936aa24b94/ChatGPT%20Image%20Apr%2019,%202025,%2006_55_28%20PM.png?Expires=1839702739&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=cCj-CuDgsupfWPqFpgf9est4SJuuoglWuy9HO7QNUZolW7fLPKSwjjAuliXVcaWZaRMBXIpJsWSp~ZFrQj9C~SwbFIuiBqV7OPxdLRzk7YXeVzdqziKz9eE4jnz937xe0FX8FiK88DRwFPzUdrJ~njXAwWEZ4wQxszvaWjp-w1lJ5S13dmW~~39SUv23QQn9xf-0zW4h3LVclQQXBqwUpWyBsGWq-mM9DhCxIdnMmdQH2cmfduPYhxZVYigp0TFRSybFE982aKDF1LyMMcyyl1EPElRLTE0T2gWycOtF7Faey~XoehnEWgM36hhx5zGtcPHYAa53fBqoiltg1JGMJg__" },
+  { title: "Kezhan", image: "https://media-hosting.imagekit.io/214da031298a40ae/ChatGPT%20Image%20Apr%2019,%202025,%2006_34_01%20PM.png?Expires=1839701496&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Z-IZ8EV85mYrwGYVsNcb9eyCYl0vWYZcMtbIbXJmLcsIX5rrUa8PJr9KdftHtZl96XupuziiaKmevtfIvTcIgb4Q3hGxm7JbAjjgL~k07dirXar-MQXxNGcEPmtZvyM9MmWBu9r0lINuHrC3cjO4r-7BBTQlGJY6MoMNZ-UsCb~W1oD508lvG4lVB-3WXMZ5zy~srwkXijJ31pnE4MpRUbZt3m-vtTlvG3aS3eSdNnXPTv6mIc6l1Xf4gTCkOJaP~5psCae7IIxQu79qv~Zq3RterI8AlABxGrVK~tGereOVszRosgxbb4keI0~C5f-nfVo-0rUKt7SN0wYYKDP8zA__" },
+  { title: "Castle", image: "https://media-hosting.imagekit.io/a93675642d504b1a/ChatGPT%20Image%20Apr%2019,%202025,%2006_40_39%20PM.png?Expires=1839698250&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=VLUQTm3Jiu4sIduNFLX-LyKuh7khH3Zs06eTrP1963xV6US0crdJRVvbGzG5vqr3mfsehs-CGNjm~est0~LoWSDeANhJ8pwg~weUOj0V0uy~Z3SgI5DQd6OPVww-DJhFBc~11QE0IKZmsJdWmaWv9xxhEwJ6OwcnIJJjvjpbCO7j5td1RoktyPHdm5bDcYo9gEbhT8Y3j0e541i0rA2r4xi~A44PKG1qTE3dCgohdfGDWMVi-JkOYyEZ74Vg2igX0pkn5CKHyVrlKGcD2bjuR1zYPlVMsxY7WN~a-cpL6-HmdBE7hUaGexRWOyhCcHyP-Sw5J5og6ahCNZ9pMQGlAQ__" },
+  { title: "Cave", image: "https://media-hosting.imagekit.io/368846d147104169/ChatGPT%20Image%20Apr%2019,%202025,%2006_41_09%20PM.png?Expires=1839698575&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=X9KOoztNip~J2mX7Cwe7OXgTGVj24USGendsPzwchXjisKGTbew0hHkF4-9jC2EUt~0LGbzsMlTsLO9rBJgdcJJ8WxI6FG2ZmCUcIxiKNJhG6dLaqzYQ67Vd9K5NqtaDNfOspr-kX58iwhN5BGozpKn8lcFYAgnja0pGAqXwEfQ6JFoEOyaJbsVz9Lm7mx7GQIudAuyRoyuRL1MnPhYFmFFZakLqK58ClvijZhsZ9dIfKhKb6Z2RocZWsL8NHsNnir73HjfSM~vFehifl4tRzJBzgUTneOHEFalfHzfaZ2KwA4Us59d5IoF~6cgNaoXluAE-EBnA~5n3cfc16BSdpQ__" },
+  { title: "Container", image: "https://media-hosting.imagekit.io/9e0f4f3894234486/ChatGPT%20Image%20Apr%2019,%202025,%2006_23_11%20PM.png?Expires=1839704425&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=zhBUXOMkkA5ujDwvxtDp0lH8I7k3J1klXvXhBUIbKYL235Bk8H5ZGfYbyxtLmWkiBV7zts9KK2wqEtwCU1ivo7g2ajXrAbwJDzbW2LCLKP~AmOBijLycObFGjXHROf5G9RvFMX1zv543GDUGqn4mEhpT33e3wVnEMGcFKH79ZYrLAO81DKYureffYsgM703oFf9KDomZSPtA06-hiiHu79RzUivj6mO5WDd6JoUEUj1Y40ZSMHAvzhJqxjIh31D0QjMtxr805ZNsc0QN9Yu0shuIcvtLr3HT9fcAuajBgLaBm-dEaKzQ-KGiOrAVbTzcTdBAEyDa91ur1w2pf4r7lg__" },
+  { title: "Dammuso", image: "https://media-hosting.imagekit.io/2a9ddb4b674849f9/ChatGPT%20Image%20Apr%2019,%202025,%2006_51_39%20PM.png?Expires=1839698933&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=NIKG3FkfkWdQ6ezwhERPABu7MskxNe0V8f9py-GUsjSpRbRpKns3W2Dhtf8rP~4qFh8sIBbGzuqnPDSVU0klHeGwzGA30UeG4pU5ZpbZNtqhFaTn1JggqY36FfrC53z~caUr3RSi4OVzYZBXzFrctw2GtSheJpywMnyuvNSAATp~DYKYdr3tpZGN1ePSbrEdl4-lRrAyH7GgIxRrpoMTrw60f5sz7gX9IiovP01LFR0jmbciTRKAsIAzVeYtke7VU4Y7g4-A6AfwHqnDWRgxOwZ3xakbsjVNsjeP7JQfek0IW8mAoB~zHT4LKSVU71e3opZDBp1Q6N1oCIhK7-2vmg__" },
+  { title: "Cycladic&nbsp;Home", image: "https://media-hosting.imagekit.io/1baba9a9e3224dda/ChatGPT%20Image%20Apr%2019,%202025,%2006_48_24%20PM.png?Expires=1839698956&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=V3sp-8nu8bOQMOhZXfwBNpQSwVjmazeqjhqYoBzENKC2mFb0XTT5CrZJjgIoIbGlUfrjHrJ1Le2WvUcAmfQSW25uNcOWESvR5~1WDas6kB6eIW1qOJMfvySYy0nLm-d1oYNZbTQgT7XTDqn~xy9FEMoU14dSQkBdfFnxFXSGuq4MwucJ9yvC2WWXx89aX6UMSCoGmJRHaFto1t8vOJhEZUEwWbLk~DQEJ-aXTJR1iv-oNF9~6FG0rBCxjQHNECQKQ1M9ZhMGrO4bjU1-6KDmJ8h4kojlL2~NE5t--rwbZWiSUid4EmsAgbhJFW0aQCjP5FpPvcdfjQKsihk4FJz3QQ__" },
+  { title: "Dome", image: "https://media-hosting.imagekit.io/ac1f97a6dcc54fdc/ChatGPT%20Image%20Apr%2019,%202025,%2006_54_00%20PM.png?Expires=1839699083&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=eWC8btlnrrzcSh7-G15MXco8aR6xlgivHcWhXpKyOA6ZnaE8wIQsgK4hijb9gd2hBF65xaW~Y38--~JjsUg6amnXM2VSs9VOENSQIG0kUf7A2chIw1pHdMp8MaAdpEPfecRATIzQQtWrV23~X742zPT8Zje8-~UVJcCMuF~dTdeR~N-WUc6kTKY~NlXsKtEPckt8hP4RoF07lJ6L3p9PVlWZzSSKI0TWr9WoVw3WvYNE6CzMBJvLsBibJ1UMX7zQI-kfYuyzIkMcYCoSg-DbYVvW8Dah-arwpBmVeZuYUlEgTh9ljapvjQ2uuH20E5jtxaPJJnFUPm4pBSfRry0K3A__" },
+  { title: "Earth&nbsp;Hone", image: "https://media-hosting.imagekit.io/6182660ffad745d1/ChatGPT%20Image%20Apr%2019,%202025,%2006_56_21%20PM.png?Expires=1839699208&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=JVE61nOj8hjEOkqzo1pn4y-M76JAs-3iEOkAiToMWM9jlOsHjIQIhayjQnZA77pQkTY3yszZXvK0YLC904JraYkbDTnhN8KC~QX-13~49JifoR-v8lKIJgnWirNpC33wYRQ~GgRxuM5kw-qdvEF9-qGiItZOot-~Acfv3hUekLwkm9E5MPyjBcnAWbZSA8ilcvSqNAvowCIGsVjTeOvFktk3wqYGpW8KQOnOr8wqKwBOwOgPnfz-VKrXSk8Lov9qN64hhBfNc743h5nI124wRR0BAlXvNRH60ZKLP7UCkbomoDUL1rbwF6slPvWxOc4aPAvHpZv9iij~aKjTorIWgg__" },
+  { title: "Farm", image: "https://media-hosting.imagekit.io/1ac265f0e9be4b69/ChatGPT%20Image%20Apr%2019,%202025,%2006_15_00%20PM.png?Expires=1839700328&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=3Py4QPLOdoTjadiHEYxHHhzi2DSKTCBPELOSR8yyAsFJvxqxc5OsQfTD9RnoNxzIEM227wgDCKMReskJpk9DdfOW5P4TU0RtO516GTi-cbQ~~7NfxdN3UEINe6nPq8D62YiwOFDMXdFkjhSJBCHyJmSrTN3o8Poky-EGI72nkfb1xZfsbOgnpJRY5q4gf76JsDb-uY6SScIR-jfXQGd9qVbbDNGYSDHLqD9kVQv9-afIJ8ljwqajc1Kwv0Gn2e0aaJ2tGiWRV0iKb6rCzUNbhBNQoyAQauivi3zUla5Kd6qrxWIWdMWW4Uuje6ydj22mtaUhVSfcDXCvg2Ho497qIQ__" }
+] ,  roomType : ["aRoom","aShardRoom"],
+     occupancy : [
+        { title: "Me", image: "https://media-hosting.imagekit.io/61d9291eb4914505/WhatsApp%20Image%202025-04-22%20at%2012.19.02_17cb0048.jpg?Expires=1839929184&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=tGZb7g7ITmIggxA~AKCBGa4-Y0kc9PoE9ftCQZbbpxY~y9cebOBhWS7qHG~XDGCCrdwFg2~LmzG5MkYWsrHmgPDaOV90cuXM13Orgq7Dpv7Q6RAtcxxwf5y~2RxTYmi52hlLw3Jh20jnH-gVO-Vhumq6z5ZYrRefbrvl0Nc60Ws5adQCUsePJ9hWQ4~spw5bR7qgkZaZ8nRdr2h8cvMrdYlvrOC7RqHJILi5AzG30TOkOVRTI54e9TR0x2QGcPTvb2ul8i-zqnnCX5IBDDKgsqZjep7lsbGW~-WjI6ZCZ5SSy0b6xQNsGPrDaj4TQjT76ht7gwExbqPGTDfBz0lFlQ__" },
+        { title: "My&nbsp;family", image: "https://media-hosting.imagekit.io/90dccbf835664f11/WhatsApp%20Image%202025-04-22%20at%2012.53.54_93eb5a7c.jpg?Expires=1839934522&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Q0L391LlWn~9cvSl6tCNT5vfu1VpElWfuNXfFO-mT6jtv9Cj~pzEUVYmnGQ8Z1NgybDpfeeVb1kgXnw0KT83WGP3mXDiQEmcN0NPja8bu07bOw1UktSLQx4q8m7TJm64VTOLdUA7HIUhIb7bnl75y761yj2mW7NGu~ZJDdTjtbcGs5BoXW7SR5~LiGKLmAsYt3YF6wXEKeRwwVOYoldDOPORDMOouMUZcAxZTLLnNXBNnW6Ik5JY2Kum8yEuw-YWfd7yQFbMpSDd9MlTOrQYD-cov4XA9eWSoQHePZsx9-QxpOSq7HHx6nAzjbNO92EIwSVMHN5ftls6m8xildUcgA__" },
+        { title: "Other&nbsp;guests", image: "https://media-hosting.imagekit.io/100c1f3ab90b455e/WhatsApp%20Image%202025-04-22%20at%2012.19.03_a88491bd.jpg?Expires=1839929213&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=wd-3oaCTH0j3j~5Se0LAb~jTnvCv8fenjRgFG5AiJIJbiOq7Fk3a~D5I3L8-WgMarMR7MFMO1y1WTVr~ACVdG5Z6qdIedb-UNR320cQL5GWM3PSH2lKoZd0gS~QWwZoCye3-sGHlaTzOA55FnsGMdJC4XPZ~RNtZ4P-zXigZ7B6GC9IKcjKRBzvRy9qRaHVWVFtC7hnnyAi6kWTgvHDe693D~aLez2UbyGVtxua3SKYWyx9Ay2mt~SmIJbGa-j8kl8J-xFp1jC6roR7oZEX7glv-PHSyFDqTE2iXZuqg~Q28SeMyDkvLC5f~vZPXoN09sV6R68GsENkIo9JUR2Jhow__" },
+        { title: "Flatmates/housema", image: "https://media-hosting.imagekit.io/91acaa1213f74c19/WhatsApp%20Image%202025-04-22%20at%2012.43.26_3d78826b.jpg?Expires=1839934026&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=BgGFAJgpY7iUVr6lkX8hR8fX5kbvcbvgsFmnaOJhJ9FDU~SQ7OyJQqFGDvZizZolKRq4yv5E9pxLIW6iawtJXEWigGmsQxNWudkyKJn-xtPgeB1L0MHwcbqsGBA~r7hBWmUQJXfBYVR2EkaOHrstYoPzI7iYXtvdGI0n5yZ-WOQGYiOjchE~0ySQvJQ2gFfcBZGWDbImGNRZ0y4ijtV~pAaU66rk8R8iclou47WfEC73u2rLQ2iA5a9icZ17KuNkWjTTv19mJ4wqYMcIQbH1zRtEhp-SxPEekBLt-mIHDEMivSCz25x53jOSB6Uc~rj6hvPcPhaq98Bm9tXYDgl3Fg__" },
+        
+], amenities : [[
+    { title: "Wi-fi", image: "https://media-hosting.imagekit.io/b5572221990441e5/ChatGPT_Image_Apr_22__2025__11_58_33_AM-removebg-preview.png?Expires=1840015915&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=GYMKPtZHnzwcVCwFzEakWZahqnFvgBZBLRY37TsAZQVXblshAajjDGYHGJyYD5LdahR4igKC3RxCa0lRjTqk6kWbGYtigu1BcnS-e1ARlSIi7BUpLAwpinWezyHnGIWia6DymyLIoipUoq~de2rk95i~171~eIx9wD28SwkL1IWFHPPS-opNHvawy5geRTP5eqcaFOXew5CyVTehlUpyypUU57j0hXMQi7O5muJNwsSYgUwo5JUte1Lf42G1CumaxMoYTUBxA6cErdRTTlvuv8XytQ3mQ3MYvvFwIIyZ1R5aULVhh7hIsXykVRk5A7VT3e~ec8HLDHEnIbCgP06z9A__" },
+    { title: "TV", image: "https://media-hosting.imagekit.io/e2bd44be8c294762/WhatsApp_Image_2025-04-23_at_14.43.16_1789bcb5-removebg-preview.png?Expires=1840016459&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=FYW~2Sy9cIuQZfm0aKuF0dP5kleVbAJQwZpgmNCeNzrVeQUjyN2BJk3fIwxhzi7mB5D-cL46prmjRPVJTv-ccK2wxJdCmvmgEAijZ1VoV3cbH93uv6vPz57tFbgVnPUdmUhJ6VKAq9yqZFYdbhMr4NeLUlcg0Y7oklZSmAxgbPzNhtSZVXEcxNrKa2~i6ueGZTbiAv4oM2PKwbGX~3Pg1XgywPPrLIA~KeSemja1n1t5SCtzrJiTX8ExUkTrAz1u-1yont7sqqJhCx~jdOSGTSIqzgRo9WvDqhKoijG2cUaoaVHUzhn2PBorUL59R9B1EvFuZOLy4c1h1JihRm5aYg__" },
+    { title: "Kitchen", image: "https://media-hosting.imagekit.io/b9c15ecb107141e4/WhatsApp_Image_2025-04-23_at_14.43.20_d2fdb609-removebg-preview.png?Expires=1840016552&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=H9~60O5l~ObbFj8wo4ouPGaIdKcICAEOoa1w30qkonipOYuKvWthOhaV8bf1WlG-k8zOnCQin8J6KYVvsZ7t~01cW-mH0sFSrhXNXpc~OMJcgbNwubkXvMpLTYK9t~xKR3sraiXyqptMWTRe30HOeOwqDlaKOonTTAO0THcQ3dG6z2fYX2UTcJ3rRuWIcF24hQLzg~3w7oKBzfi9-kQqNUHBCTF-RRwP3r726SkFcig97d9J0fbccveyVRo0QrBRef0Ppij-dXYJT7vtpN~1lFWg7LsjciBEz1AOEAxItdmYyUn1Py5H8juZgbKcX9koYWNrcddl9kkSLPcHpqWkRg__" },
+    { title: "Washing&nbsp;machine", image: "https://media-hosting.imagekit.io/366edc827680426d/WhatsApp_Image_2025-04-23_at_14.57.18_4ade668c-removebg-preview.png?Expires=1840016933&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dGY1A~ytxCJGRslC~GQrDD6HbncT6yeawpzDc55339kZS7eHVTcF4HIBtotAD9CHgQxWnmamZlL69J-rQbyFeaF7QfMLhC2noFRkisAeR0YBkWkJRfIoicK~M7WW060L4GeDTrzqQmas-C9byUFWm3AJb0u7FDPWbUeMFbq-MDEBF0XFMmQxaDGfVLxt3QNvGUp4FXfBB6uQvanumrGvIxUMWuzuGhNk8RkNQOyD~JRMNCQC1xmv~S4-kt2s3dFHx1P0exX8nwHYzbEIFd1juol3ZlBKOdKHRBBtgSRLCNkHN2LuJQNpZGkkUZIbUwVrhIJdxEhG4Z3niqj5yBQEng__" },
+    { title: "Free&nbsp;parking&nbsp;on<br/>premises", image: "https://media-hosting.imagekit.io/6b5862d22aba465c/WhatsApp_Image_2025-04-23_at_15.06.16_b2946999-removebg-preview.png?Expires=1840017359&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=UFFsE4LBneVdZDypoUX8ZLnKwmHaMIKy2PwU9-9Bydon2SpOsTl4NeFU5GMnLoX9aMBsVjpzNGPIRaBEDDJKScV3IEYD8kubNpdkz9oWqZy3kuInfpSklRAVljJmB-lnYAEJzsniahpv8BQLLI55B09YKXqNwyeidlcNP3~HBM4FK-kqcZBx80i4U~UfNYrWD1NcA~UrsYCFFpaS7kcMIzDxenuONE~O-5qvlNB9Hw37~6OMHJF7XL8gT8OgHAQjEDt96kCPEkdTmBQkoXYh~Q29zhx933teGErFD5z37nhO6hYwmLU0-mbPsGkASYitpjHtL-HMg5hETcDnXeLxig__" },
+    { title: "Paid&nbsp;parking&nbsp;on<br/>premises", image: "https://media-hosting.imagekit.io/85b75e437b204e1a/WhatsApp_Image_2025-04-23_at_15.08.04_bd55ef98-removebg-preview.png?Expires=1840018707&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=nQs4Jqqy401rakY5mwMMEfs8nNl84bJ37GhJ6kvyiR7zKavX5H8UvVBhTMPhrGvjHJu-f54~IUEW~DB1jRfQoFd18IQPApFK--K1SjgIgBlqr82VPpdCIRALik34OlDCfE0Hm90qc1PjzSvEVQBN9rgH-8PT~8st0VNT2kxbJohd9BeQ08q0YWy54y1io~hrqrZE7aTvmGcrWOwZM5B~qgAgynIJCftYZaTaREWnOw0fhydb46MPQHObqQ5aNDGIlPUu7QjRFhzsl~I7-VVWkfdW6hCy2oSSHmubq8jxWwusqk3wbAiTJLClCUeSvVxVH5vF2S1DJxt0qlPRxDNZhw__" },
+    { title: "Air&nbsp;conditioning", image: "https://media-hosting.imagekit.io/39b3fa74decf4e26/WhatsApp_Image_2025-04-23_at_15.29.32_f5fe04b0-removebg-preview.png?Expires=1840018895&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=gQ4Mczqn72bFw5-YXZ04CDJY6okX4yUt40oMt-5D1nwq7td0c0SJW6~Vu4Lmv2fL3A17DDOQynJPCqxXOXU69~ZpVusv-Qt37PApRcdIDKcSC55w7GGtX1Rpos2hXK14j7aeDu8d16FBYxuuakAn1zBa2WItXTU3IKuCW7X5Ush8T5OvnT9qPyLQf7RwX6XnBCf~VCOzcWHJfzj4QgT0Ws4xtGgrEfUpbgLBwA7voP-uO7Wxp5tloGUGadmoNT4QTCe6n9k9bRc6mZTZSXTQf8eEYTy~3seY1Av4xBGAJ1ZWwmRaAQoXLyzD3zXGOB8dKrbWqrRcN8Py7n1oTS64wg__" },
+    { title: "Dedicated<br/>workspace", image: "https://media-hosting.imagekit.io/b562fe416aca4613/WhatsApp_Image_2025-04-23_at_15.29.36_cc478f00-removebg-preview.png?Expires=1840019042&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=FZfxhECjYs3KzsDshpgwGpiwlLWHXmyCwiwiqn7GKFaacRAoTr9CIXG9SJ-5XWE1NFd4aPuQgj1M-7jiVv1pc3-wYrvwujG7Mhwcw2eQNqS4h~0~CAxtzeUMomG2dVM19v2yiPDonfPifWXcPIQgJtfTDJ5Sc63j20Gi0LOfDX1HZ4jXI6Fvh7g7m1mIFimUpT45U7GzS1CNjcy6mtuOfCfOPBh9vDkJGBvZHi1fHR5N18p~cMUUpo7twrrTC9LM02a6zb4KynIW6JcI9hJfqdssvV7jRTMwNQoSaSgiDriWG3YwayMcyxAkdXk2mCwEjjHAnXgv64Md~ruw68n~Qg__" },
   
+  ], [
+    { title: "Pool", image: "https://media-hosting.imagekit.io/16b8640de68a4e37/WhatsApp_Image_2025-04-23_at_19.11.19_00b0563a-removebg-preview.png?Expires=1840033055&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=tnu3~tQ-wHTSRmyxWYk1a-O9Sbw7~la~ODHJsvmjEQjWIgIwIFwDSeT7WbHGfZ84R4vMUbIsSp~PW1NNL5ZxWyjfdW-7OeTetfYuhHPWlpAr5aWtd0hfQ3YBVg~6zSuLpHvSfjrsRJmlOB9TWjJMw99518ix4~o9ihoygZqxNeyAsGYZHwGoKKQIwlkYXuQXQtZGQ4kWo6p8HHyQO~1WQO0AFkBGFj3t3AlXGl10uZabq7Mj7PYcJKKnMho5MYGJQw0C9VePpO~WTsR8mEyHHWdaZ4D-lHxStVNBT8Z5OMnrpBUr6hmbpKg8-TTFkrVcYrnZRvf2AKmIHpdzc4EiNg__" },
+    { title: "Hot&nbsp;tub", image: "https://media-hosting.imagekit.io/50b4da2b2bed44b7/WhatsApp_Image_2025-04-23_at_19.17.00_6255e28b-removebg-preview.png?Expires=1840033538&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=gKbB5foUKbpY2e1W8nNAtcNxoLxt2D8ry0smXoMripnjI0zM3CcpmtZA4p2-aN2d9LWq2wAw7ZXvvdRwbLJp7IeIacGSKepto3OLxlH-4Bi2vqLtHYdTI4TWDvx13YgljUrxHAd36DVNA5Jvx9k5TU6GFa1rXHC5XUQgbmYpsgxsbH-tiIV7CHYmbvlOhUSD5q5i9njBO1AkNT1SMB7Ih9ocriakvVhYP04lBfmx5JPAcKVXQwET1VfyKYRWwYxVO1uk8sB-AR7fctJZDavAWjcjR18As0sUdMpa10jDfQfim2366ZySVDr6DSsGm~8hACONafXrEfpGCUkjYr1GAQ__" },
+    { title: "Patio", image: "https://media-hosting.imagekit.io/1307c9245f764137/ChatGPT_Image_Apr_23__2025__07_20_37_PM-removebg-preview.png?Expires=1840033755&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=UYGx-oqFGGbLOnhFo5rLvknK-B1ugO2XUkKvjxDjoM-1Tks0~rc1lFBZLNkXYCV0cfDvI4DarmWlgLqVXDa2z-zJhD0fnTVhGMGqFsCpCW9kJShLsiK07abmdB1vfrBfvG7d2xyqAUe~vRJnp0FiTju0MRV5p~MEyO4ipK-~1Ut61n-zbhXlRvaHDDXumz7WWNZuWyDhY9SnSG0Z475gUYa2WtuZ1dTm~4njs4CZytrYTz9fKkX0SswoJVkBPpJqfF4E-vsx7sYQrdAYXyeK3WLf~fXK7cWAtf6khShD2rTTbizPUzQaM2bJHSDwaU0U4eP2LDjjT7Udia9LGUXp4Q__" },
+    { title: "BBQ&nbsp;grill", image: "https://media-hosting.imagekit.io/91caba5cd1b24df2/ChatGPT_Image_Apr_23__2025__06_27_18_PM-removebg-preview.png?Expires=1840034093&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=cZUpRbVwskfzrebQpIIcQ0abUhvC9EWgQkgwyhx5JlGj3HJIs6pSKWSW7vBbbKqxgklxl9u348RxGkmx3N77NT1A6HmzfisiaWH8r6saEQlUbABZVENx0m6Ov4Rc7f6Jl10do9o5cX1L3UaFSzqJBIEYGFOMIi2SveUIXQZ~6s9YZs032yK-Pb7NVQBn~QKg1-7AaE2r5ye5rCBfl5nNdw06xNrifC~f2E7lg4xxVQJemp5HQCtegeQUKSLHZKxg-663SyOXcwxBPJ5m2a6mPYGDXAG3sMWWuBONC8vDA1LM7jLh14O4~84K8erGhu7YRw7Th7KNKMFk-982QoJ3Qw__" },
+    { title: "Outdoor&nbsp;dining&nbsp;area", image: "https://media-hosting.imagekit.io/5f9bd647f3f24dc9/ChatGPT_Image_Apr_23__2025__06_39_19_PM-removebg-preview.png?Expires=1840034927&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=E7aVxYbsrJTgej0N6xtyE8Yhl-DDAs4JqNfyIJ3jNdxFqeOcc1nU8aC8aawLVEQFS0An-YEZiWUeqTWX~QOn4yR7egodop2KOHs5KHzGb17-bf6a8K6q9pTgWLFVW1Nn1z~CwvUcMlhk3T-7v9US3ZgcdmbKZUPpYIWHDgU3OC-MdKFbxfxhU66lg-fkIsQORcMkTPVgfwjz90AMqgedIuEqoR7dBWvSKKlRsm7~hbVUWPV-XTLskZkXE5FsecV55afPI7AzNLAK41lpNCKp5gQwAPzcy56zZ5LEZNtILimP~s0XgP48TFRY1BDm6uZDfupZWerZtomSRy28CwFo7g__" },
+    { title: "Other&nbsp;guests", image: "https://media-hosting.imagekit.io/100c1f3ab90b455e/WhatsApp%20Image%202025-04-22%20at%2012.19.03_a88491bd.jpg?Expires=1839929213&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=wd-3oaCTH0j3j~5Se0LAb~jTnvCv8fenjRgFG5AiJIJbiOq7Fk3a~D5I3L8-WgMarMR7MFMO1y1WTVr~ACVdG5Z6qdIedb-UNR320cQL5GWM3PSH2lKoZd0gS~QWwZoCye3-sGHlaTzOA55FnsGMdJC4XPZ~RNtZ4P-zXigZ7B6GC9IKcjKRBzvRy9qRaHVWVFtC7hnnyAi6kWTgvHDe693D~aLez2UbyGVtxua3SKYWyx9Ay2mt~SmIJbGa-j8kl8J-xFp1jC6roR7oZEX7glv-PHSyFDqTE2iXZuqg~Q28SeMyDkvLC5f~vZPXoN09sV6R68GsENkIo9JUR2Jhow__" },
+    { title: "Flatmates/housema", image: "https://media-hosting.imagekit.io/91acaa1213f74c19/WhatsApp%20Image%202025-04-22%20at%2012.43.26_3d78826b.jpg?Expires=1839934026&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=BgGFAJgpY7iUVr6lkX8hR8fX5kbvcbvgsFmnaOJhJ9FDU~SQ7OyJQqFGDvZizZolKRq4yv5E9pxLIW6iawtJXEWigGmsQxNWudkyKJn-xtPgeB1L0MHwcbqsGBA~r7hBWmUQJXfBYVR2EkaOHrstYoPzI7iYXtvdGI0n5yZ-WOQGYiOjchE~0ySQvJQ2gFfcBZGWDbImGNRZ0y4ijtV~pAaU66rk8R8iclou47WfEC73u2rLQ2iA5a9icZ17KuNkWjTTv19mJ4wqYMcIQbH1zRtEhp-SxPEekBLt-mIHDEMivSCz25x53jOSB6Uc~rj6hvPcPhaq98Bm9tXYDgl3Fg__" }, { title: "Wi-fi", image: "https://media-hosting.imagekit.io/b5572221990441e5/ChatGPT_Image_Apr_22__2025__11_58_33_AM-removebg-preview.png?Expires=1840015915&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=GYMKPtZHnzwcVCwFzEakWZahqnFvgBZBLRY37TsAZQVXblshAajjDGYHGJyYD5LdahR4igKC3RxCa0lRjTqk6kWbGYtigu1BcnS-e1ARlSIi7BUpLAwpinWezyHnGIWia6DymyLIoipUoq~de2rk95i~171~eIx9wD28SwkL1IWFHPPS-opNHvawy5geRTP5eqcaFOXew5CyVTehlUpyypUU57j0hXMQi7O5muJNwsSYgUwo5JUte1Lf42G1CumaxMoYTUBxA6cErdRTTlvuv8XytQ3mQ3MYvvFwIIyZ1R5aULVhh7hIsXykVRk5A7VT3e~ec8HLDHEnIbCgP06z9A__" },
+    { title: "TV", image: "https://media-hosting.imagekit.io/e2bd44be8c294762/WhatsApp_Image_2025-04-23_at_14.43.16_1789bcb5-removebg-preview.png?Expires=1840016459&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=FYW~2Sy9cIuQZfm0aKuF0dP5kleVbAJQwZpgmNCeNzrVeQUjyN2BJk3fIwxhzi7mB5D-cL46prmjRPVJTv-ccK2wxJdCmvmgEAijZ1VoV3cbH93uv6vPz57tFbgVnPUdmUhJ6VKAq9yqZFYdbhMr4NeLUlcg0Y7oklZSmAxgbPzNhtSZVXEcxNrKa2~i6ueGZTbiAv4oM2PKwbGX~3Pg1XgywPPrLIA~KeSemja1n1t5SCtzrJiTX8ExUkTrAz1u-1yont7sqqJhCx~jdOSGTSIqzgRo9WvDqhKoijG2cUaoaVHUzhn2PBorUL59R9B1EvFuZOLy4c1h1JihRm5aYg__" },
+    { title: "Kitchen", image: "https://media-hosting.imagekit.io/b9c15ecb107141e4/WhatsApp_Image_2025-04-23_at_14.43.20_d2fdb609-removebg-preview.png?Expires=1840016552&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=H9~60O5l~ObbFj8wo4ouPGaIdKcICAEOoa1w30qkonipOYuKvWthOhaV8bf1WlG-k8zOnCQin8J6KYVvsZ7t~01cW-mH0sFSrhXNXpc~OMJcgbNwubkXvMpLTYK9t~xKR3sraiXyqptMWTRe30HOeOwqDlaKOonTTAO0THcQ3dG6z2fYX2UTcJ3rRuWIcF24hQLzg~3w7oKBzfi9-kQqNUHBCTF-RRwP3r726SkFcig97d9J0fbccveyVRo0QrBRef0Ppij-dXYJT7vtpN~1lFWg7LsjciBEz1AOEAxItdmYyUn1Py5H8juZgbKcX9koYWNrcddl9kkSLPcHpqWkRg__" },
+    { title: "Washing&nbsp;machine", image: "https://media-hosting.imagekit.io/366edc827680426d/WhatsApp_Image_2025-04-23_at_14.57.18_4ade668c-removebg-preview.png?Expires=1840016933&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dGY1A~ytxCJGRslC~GQrDD6HbncT6yeawpzDc55339kZS7eHVTcF4HIBtotAD9CHgQxWnmamZlL69J-rQbyFeaF7QfMLhC2noFRkisAeR0YBkWkJRfIoicK~M7WW060L4GeDTrzqQmas-C9byUFWm3AJb0u7FDPWbUeMFbq-MDEBF0XFMmQxaDGfVLxt3QNvGUp4FXfBB6uQvanumrGvIxUMWuzuGhNk8RkNQOyD~JRMNCQC1xmv~S4-kt2s3dFHx1P0exX8nwHYzbEIFd1juol3ZlBKOdKHRBBtgSRLCNkHN2LuJQNpZGkkUZIbUwVrhIJdxEhG4Z3niqj5yBQEng__" },
+    { title: "Free&nbsp;parking&nbsp;on<br/>premises", image: "https://media-hosting.imagekit.io/6b5862d22aba465c/WhatsApp_Image_2025-04-23_at_15.06.16_b2946999-removebg-preview.png?Expires=1840017359&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=UFFsE4LBneVdZDypoUX8ZLnKwmHaMIKy2PwU9-9Bydon2SpOsTl4NeFU5GMnLoX9aMBsVjpzNGPIRaBEDDJKScV3IEYD8kubNpdkz9oWqZy3kuInfpSklRAVljJmB-lnYAEJzsniahpv8BQLLI55B09YKXqNwyeidlcNP3~HBM4FK-kqcZBx80i4U~UfNYrWD1NcA~UrsYCFFpaS7kcMIzDxenuONE~O-5qvlNB9Hw37~6OMHJF7XL8gT8OgHAQjEDt96kCPEkdTmBQkoXYh~Q29zhx933teGErFD5z37nhO6hYwmLU0-mbPsGkASYitpjHtL-HMg5hETcDnXeLxig__" },
+    { title: "Paid&nbsp;parking&nbsp;on<br/>premises", image: "https://media-hosting.imagekit.io/85b75e437b204e1a/WhatsApp_Image_2025-04-23_at_15.08.04_bd55ef98-removebg-preview.png?Expires=1840018707&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=nQs4Jqqy401rakY5mwMMEfs8nNl84bJ37GhJ6kvyiR7zKavX5H8UvVBhTMPhrGvjHJu-f54~IUEW~DB1jRfQoFd18IQPApFK--K1SjgIgBlqr82VPpdCIRALik34OlDCfE0Hm90qc1PjzSvEVQBN9rgH-8PT~8st0VNT2kxbJohd9BeQ08q0YWy54y1io~hrqrZE7aTvmGcrWOwZM5B~qgAgynIJCftYZaTaREWnOw0fhydb46MPQHObqQ5aNDGIlPUu7QjRFhzsl~I7-VVWkfdW6hCy2oSSHmubq8jxWwusqk3wbAiTJLClCUeSvVxVH5vF2S1DJxt0qlPRxDNZhw__" },
+    { title: "Air&nbsp;conditioning", image: "https://media-hosting.imagekit.io/39b3fa74decf4e26/WhatsApp_Image_2025-04-23_at_15.29.32_f5fe04b0-removebg-preview.png?Expires=1840018895&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=gQ4Mczqn72bFw5-YXZ04CDJY6okX4yUt40oMt-5D1nwq7td0c0SJW6~Vu4Lmv2fL3A17DDOQynJPCqxXOXU69~ZpVusv-Qt37PApRcdIDKcSC55w7GGtX1Rpos2hXK14j7aeDu8d16FBYxuuakAn1zBa2WItXTU3IKuCW7X5Ush8T5OvnT9qPyLQf7RwX6XnBCf~VCOzcWHJfzj4QgT0Ws4xtGgrEfUpbgLBwA7voP-uO7Wxp5tloGUGadmoNT4QTCe6n9k9bRc6mZTZSXTQf8eEYTy~3seY1Av4xBGAJ1ZWwmRaAQoXLyzD3zXGOB8dKrbWqrRcN8Py7n1oTS64wg__" },
+  
+  
+  
+]],
+describe : [
+    {
+      title: "Charming",
+      image: "https://media-hosting.imagekit.io/3d8ec426e7b94597/WhatsApp_Image_2025-04-24_at_14.21.07_3febff9e-removebg-preview.png?Expires=1840118122&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=w~Jgcew133hMH4wn322~u9DbB-GGp37nY-p~tfdoCj~XmE8AnyXE~AoHGR8qyanhlMUS7uxR7ooqFM2TDnJNBC3onVV4MiB23RleBf~KkKV0yateYl6zrEg5~9H~7yeSSYmpUTfUwkxLLAfS1rj-uhDnNHPQ0C97nYrRwVUMsfGMR3BvgQoq8bRDuPkQzuYaVve2K7Xtap4SrK~KbyTVG7nh3EUOUv5qcsA6sEya~JAfn~InVfW3LksOmZQyiqaCndvzdHrEE1IT5MHUw68-cWkA3nwMRAeJgcPf1nFLa~OXjUWV88vamaYwALQJHp3lcfK6LIhMIaxDN2ONb6SK0w__"
+    },
+    {
+      title: "Hip",
+      image: "https://media-hosting.imagekit.io/dc1591f6f8db4c79/WhatsApp_Image_2025-04-24_at_14.21.37_9d6c43d5-removebg-preview.png?Expires=1840118429&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=GtsEdw3gm9trTH-sD1Yer7xkg7VRXZp-coxE~Sn1MWIdJax2-VONRBJr2qcJ844eAiuJJ9HXL5B9geJv1VFPrv~FOVdZ2oaCm9H4gUhMHzutJb64WAN20n8FVnkUrL2c1VAXkZMlGia2oxyPBl5rnBl86BExNAOlqd0HEmCV4GA52y8R46RZXiwlKVxqwnw9~vswR8I5NUPFXCeWpNtn7VzLPiuQZpNY7UssvZY7L4wGUhaiZHZA-Pql7T0wI8EnShKqNeLYa84W-aA3vW5O4i5UlmrN1PyyiSlfUpGkpR-foVC-AYEYYrdXHwa6qCAsjVh9Zfev37oDkULc-J4fag__"
+    },
+    {
+      title: "Stylish",
+      image: "https://media-hosting.imagekit.io/cd2eb3a6fde5478f/WhatsApp_Image_2025-04-24_at_14.22.15_95e36ba0-removebg-preview.png?Expires=1840118764&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Y27i~YtV82ndaENEkzkovA1ctx24HseEHSiY1OAPmuTBWFMfmi160zzO40d7eSnuzoTfjBNXPaepQOUjCqSBjdHVI6~9PQf9G4WjhKmKJFD-VLHmxmQx~u9ny5ee~qC3v3~WO7P67W~9CfzG0aS7sYu4i3Wc2KGWAvjOGBXcWYFR7hhQeRKPmHKsl4p3KOvp~6EcoaZZn3OWl1nBdgGjzkKsIHK3YUgnDZ7hRH524U~iDyRpxRJ5lh0fj18K8jRwDyKb9yUl5XNGY9QatQ06z6Pf8YLHjHJLk0bsmAhIZxpc9p-sJX3GpcDL~4sX1xZNGbcuNSYp1Ha93PrmcamzXg__"
+    },
+    {
+      title: "Upscale",
+      image: "https://media-hosting.imagekit.io/09f5486e402e4e00/WhatsApp_Image_2025-04-24_at_14.22.40_4412787b-removebg-preview.png?Expires=1840118962&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=atFR4Evi~Z8SW7~GvqhW~fddh3oUF8~YVwJc6dPryM9zA4zFuv5iGHbsVT9jj8mpcA4Dnt~O1axyShZi6fSQAZSagtzh5D-a63rha8tTsgzTnPJLy1oVedXkty7w8Gsos8Z1-xSeAneXBs8Kx2VJziTAImRclr8HjsrUwwp2TYVK0dDiv6VKY9gYrMAX-qJXXrexUXRnVFP2YdUrkezwghSn0RNKlWPoI7qveRsfjO00y~IAPFDqYD5LKMUyh7MVO8Q4sQd5XoXVmzZ0tOVydS38GpCWwvfcvc7S0DYmSlXD5oqZjy5fdXkldhRwJUxkL4pddM01K0t4tJbPetHkfA__"
+    },
+    {
+      title: "Central",
+      image: "https://media-hosting.imagekit.io/85bf33c0a6184e76/WhatsApp_Image_2025-04-24_at_14.22.54_daf3419c-removebg-preview.png?Expires=1840120420&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=DGs-Sx9l~Y391HCyOhcVSbTHsvthysbVS5mDSTt8ssnepG6UbUrqf370paQaLYGWz4sgD8-bm7TbYM1exIi3YoMvzF5oBUcGQyAUcUSvQMAQNfh2hf~TmDFEkB-fuvax-qT9JnIpF8L5Co1EiNAa8ybkjjvyFkoXZveETmf1X0~XEsBkjfuPOD-MKy1uuhv0f9sVqaXVYi2mXagjkunSJXjK7obvJiO4RwCU1kymHzil~OQ7r6llFHvREKY8asvqp257YpWDtPJxJVilZ3-9iZ8ei6jU0aoAPusucOv1d78Am82XC8W4aXrU~CFERGiTwW4qz2dEva-UM9IuQEdiyg__"
+    },
+    {
+      title: "unique",
+      image: "https://media-hosting.imagekit.io/9052b6e767ef42ef/WhatsApp_Image_2025-04-24_at_14.38.13_737550a5-removebg-preview.png?Expires=1840120598&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=BqjlGQ5vvFdC3jS6YSsNh2XveBwD4Q9H3VZqBG08fyeokk-e2aWdeg~RSvUZREA3Y7UwpDUwNB8v2kHMzcj7nbnq2kb5h8KZv8HdB54vMTSjJRGULyM~UNiat15DknQPoWcHEFTFVmAVZcP1DbXjZ9gaoju-vMlnRH3vKzs36Y950n8U-ZIZhpE2T80eXCKbDOV-Lz2QMDvcMFMdWtJVHmy2pY9nAbKn4i3K~MIPYvuSq7I5uzzmo0CN3oF95CA1SHRrTqqVHuYhzsQZA6P1uRChtOlkgEqq75d851DG6lTbPsByLYgJ3QB-G90GaWD28b2oLWi3sDgGwdubJXEm2Q__"
+    }
+  ]
+  ,
+
+instantBook : ["Approver","not-Approver"]
+
+
+
+}
+        
+)
+
+data11.save().then(()=>{
+    console.log('hotel data save');
+    
+}).catch(()=>{
+    console.log("----Error----");
+    
+})

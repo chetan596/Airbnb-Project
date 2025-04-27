@@ -16,11 +16,6 @@ function name(params) {
   document.querySelector(".s-line-7").classList.add("opop")
 
 
-  const arr = [
-    { title: "House", image: "https://media-hosting.imagekit.io/5db01f53fd6a4336/WhatsApp%20Image%202025-04-19%20at%2018.42.25_55362321.jpg?Expires=1839691225&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=BM8S4MUuvph6BCDvTFg5DhZwQgIbgSgw-OGslQW6rYfTEc3CoZsSh3duglJ95OJUdoZoJ4bN1Q0ztTr3jJhNLv7BITrwS27iGpefWmvC6FIceNTYpkGK-g1lOUNDQC9HnhapsgVEcbqOAYOgfuVGCqcLdEkGGff2uOqp~oE6~dfliHBi2uNCDZyEIcs-C3e8xQCcNM71HFX5dBb~kZxpojzfz3MqnB-W0GM9E9~X1~USZ~xN8mLgDqzdO3PQ~BmGBdb3yWHcdGD-BmSCaBV1rmwCWWD9cQTEaxHdJDWD0LBJPmLLT6hL9V4mtTrhYHwo~EhUNyCQOfveuDKNZpMCvw__" },
-    { title: "Flat/Apartment", image: "https://media-hosting.imagekit.io/c205ac9172e3449d/WhatsApp%20Image%202025-04-19%20at%2019.42.57_9bde11be.jpg?Expires=1839694828&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=WBwZpFGZSztPmVbg7d9NNFU3sqLBmchkzc8fNDbr6QVEHtq~71KnRjMWo4SjaTHnTpacNXYnhx7r0UhnCSBfRF-vc1HOTT4ZMhtOaNqTZxsPfE1eWVYWX40kXZjHllHFp2I352sp-wxFgtMaRYvjMyH1yovszml96Ad6es6Py5tKWhqb0DBrMREQLYYS0tjItq~pn-PJJS~-WnpD07tKNkrFLeUnrbXXX6q08HwB1QYAaVjGpoCJRXbEaRbPfwAkwEpNAQUN5LGgVVPFkli1bue42meEqg07i4YFlugqLxfPHweBTY0E9oBDIKcht9ecf4D-7PLVB01jVJK5XUAQUA__" },
-    { title: "Barn", image: "https://media-hosting.imagekit.io/3de6e228ab954a90/Minimalist%20Barn%20Icon.png?Expires=1839697512&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=THwd6dOV5ipMaOM~Zpo-EG7Pbo3w0ej-KaGylFc0TFebYtO984kAAfNZ1WiBHHSlzdv3k25cMfbN3nlLMEvfm4G4be0hwwrgEyDkfqz8D-9GMMupHpPDAvxUwYXDX14j9DmGP4l2Mf6958iLAChwVRAVqfdYfS0~qwRyZyWg0ft7l-ONqrX~0fc6nxwdndfvLavJtZrRIlrhrFy6ymlkREZt7uFhGWS2ewptMUSnWMijvG43mxPB9c2KMp1ozOpq5JwkxBnKNA2Id66RGAlAkXG2k4OVDbntElF8RkjV23Cyma4-yaVu~ll8UsFPX6GJSgyrEPuyqPywR0MtAZAREg__" },
-];
 
 
 

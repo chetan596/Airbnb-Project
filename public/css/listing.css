@@ -3,6 +3,7 @@ main{
     width: 100%;
     padding: 0px 2.2rem;
     margin-top: 13%;
+
     
 }
 .listing{
@@ -10,11 +11,13 @@ main{
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-rows: 24rem 24rem 24rem 24rem 24rem 24rem 24rem ;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(30,24rem) ;
+    grid-template-columns: repeat(4,1fr);
   column-gap: 1.3rem;
   row-gap: 1.6rem;
   margin-top: 2rem;
+
+
 }
 .listing a{
     text-decoration: none;
@@ -24,6 +27,7 @@ main{
     height: 284px;
     /* width: 299px; */
     border-radius: 20px;
+    /* background-color: aqua; */
 }
 .listing-box img{
     height: 284px;

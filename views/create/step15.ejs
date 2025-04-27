@@ -1,0 +1,40 @@
+<%- include('../header/header.ejs') %>
+<body>
+    <%- include('createNav.ejs') %>
+<main class="m-nono">
+    <div class="s3-main">
+        <div class="s3-w-b">
+            <h1 class="iet90">Choose who to welcome for your first reservation</h1>
+            <p class="sewr67">After your first guest anyone can book your place. Learn more</p>
+          <form action="/visibility" method="post">
+            <div class="ser a-room frtyu" data="no">
+                <div class="s3-img injip">
+                    <input type="radio" name="welcomeReservation" value="yes" id="yes">
+                </div>
+                <div class="s3-titel bhgty" >
+                   <label for="yes" class="label234"> <h3>Any Airbnb guest</h3>
+                    <p>Get reservations faster when you welcome anyone from the Airbnb community.</p></label>
+                </div>
+                
+            </div>
+            <div class="ser romm2  frtyu" data="yes" >
+                <div class="s3-img injip">
+                    <input type="radio" name="welcomeReservation" value="no" id="no">
+                </div>
+                <div class="s3-titel bhgty">
+                   <label for="no">
+                    <h3>An experienced guest</h3>
+                    <p>For your first guest, welcome someone with a good track record on Airbnb who can offer tips for how to be a great Host.</p>
+                   </label>
+                </div>
+               
+            </div>
+          </form>
+        </div>
+    </div>
+</main>
+<%- include('stepFooter.ejs') %>
+<script src="/step15Animetion.js"></script>
+</body>
+
+

@@ -1,6 +1,6 @@
 
 function name(params) {
-  document.querySelector(".s-line3-1").style.width = "100%"
+  document.querySelector(".s-line3-2").style.width = "100%"
 
 }
 name()
@@ -9,6 +9,7 @@ document.querySelector(".s-line2-2").classList.add("opop")
 document.querySelector(".s-line2-3").classList.add("opop")
 document.querySelector(".s-line2-4").classList.add("opop")
 document.querySelector(".s-line2-5").classList.add("opop")
+document.querySelector(".s-line3-1").classList.add("opop")
 
 document.querySelector(".s-line-1").classList.add("opop")
 document.querySelector(".s-line-2").classList.add("opop")
@@ -19,7 +20,7 @@ document.querySelector(".s-line-6").classList.add("opop")
 document.querySelector(".s-line-7").classList.add("opop")
 
 
-
+let form =document.querySelector("form")
 let nextBnt = document.querySelector(".s2-bnt-next");
 desebal(nextBnt)
 function desebal(egg){
@@ -39,26 +40,19 @@ selBxs.forEach((card)=>{
     if(!selectedValue){
       console.log("ddddf")
     }else{
-      nextBnt.setAttribute("href" , "/visibility")
+      // nextBnt.setAttribute("href" , "/fgrt")
       nextBnt.classList.remove("desebal");
   console.log("reove");
   
     }
   })
 })
-nextBnt.addEventListener("click",()=>{
+nextBnt.addEventListener("click",(e)=>{
+    e.preventDefault()
   submitData();
   
 })
 function submitData() {
-  if(!selectedValue) return alert("hjkk") ;
-  fetch("/instant-book",{
-    method : "POST",
-    headers : {"Content-Type" : "application/json"},
-    body : JSON.stringify({instantBook: selectedValue})
-  }).then(res => res.json())
-    .then((data) =>{}).catch((err)=>{
-      console.log("-----Error-----");
-      
-    })
+    alert("sumdit")
+ form.submit()
 }

@@ -39,7 +39,7 @@ function submitData() {
   fetch("/room-type",{
     method : "POST",
     headers : {"Content-Type" : "application/json"},
-    body : JSON.stringify({value: selectedValue})
+    body : JSON.stringify({roomType: selectedValue})
   }).then(res => res.json())
     .then((data) =>{}).catch((err)=>{
       console.log("-----Error-----");

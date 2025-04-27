@@ -95,7 +95,7 @@ form{
 
 }
 
-label{
+.label{
     font-family: "Roboto", sans-serif;
     position: absolute;
     font-size: 0.7rem;

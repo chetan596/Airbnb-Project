@@ -12,27 +12,53 @@ async function main() {
 }
 
 const listingSchema = new Schema({
-    title: {
-        type: String,
-        required: true
+    hotelType: { type: String, required: true },
+    roomType: { type: String, required: true },
+    location: {
+        country: { type: String,  },
+        flatHouse: { type: String,  },
+        neaebyLandmark: { type: String },  // nearby galti se neaeby likha tha
+        streetAddress: { type: String, },
+        StateUnionTerritory: { type: String,  },
+        DistrictLocality: { type: String,  },
+        CityTown: { type: String,  },
+        pinCode: { type: Number,  },
     },
-    description: {
-        type: String,
+    floorPlan: {
+        Guests: { type: String, required: true },
+        Bedrooms: { type: String, required: true },
+        Bed: { type: String, required: true },
+        Does: { type: String },  // yes/no optional lag raha mujhe
     },
+    bathrooms: {
+        PrivateAndAttached: { type: String, required: true },
+        Dedicated: { type: String, required: true },
+        Shared: { type: String },
+    },
+    occupancy: [{ type: String }], // array of strings
+    amenitiess: {
+        amenities: [{ type: String }],
+        standoutAmenities: [{ type: String }]
+    },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    describe: [{ type: String }],
+    instantBook: { type: String }, // Approver/Non-Approver etc
+    welcomeReservation: { type: String }, // yes/no
+    price: { type: String, required: true },
+
     image: {
         type: String,
-        default : "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg",
-        set : (v) => v === "" ? "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg" : v ,
-    },
-    price: {
-        type: Number
-    },
-    location: {
-        type: String
-    },
-    country: {
-        type: String
+        default: "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg",
+        set: (v) => v === "" ? "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg" : v,
     }
-});
+})
 
 module.exports = mongoose.model("listing", listingSchema);
+
+
+
+
+
+
+

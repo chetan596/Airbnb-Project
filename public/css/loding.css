@@ -22,6 +22,7 @@
     background-size: 300%;
     background-position: 100% 0;
     border-radius: inherit;
+    border-radius: 20px;
     animation: shimmer 1.5s infinite;
 }
 
