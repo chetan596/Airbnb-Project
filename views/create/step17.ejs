@@ -3,8 +3,100 @@
 <body>
     <%- include('createNav.ejs') %>
     <main class="s17-main">
-        
+        <div class="s17main-box">
+            <div class="mianContan">
+                <div class="hadin-s17 ">
+                    <h2 class="">Review your listing</h2>
+                </div>
+                <div class="para-s17">
+                    <p class="">Here's what we'll show to guest.Make suer everything looks good.</p>
+                </div>
+
+                <div class="s17-listing-box">
+                    <div class="s17-listing-box1">
+                        <div class="bocdjfa">
+                           <div class="hidfafdjah">
+                            <div class="listing-s17-image-box ">
+                                <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                            </div>
+                           </div>
+                           <div class="titelBox-s17">
+                            <div class="tkdjjaf">
+                                <span ><p class=""><%= listingDataArr.title %></p></span>
+                                <span><p class=""><i class="ri-star-fill"></i>New</p></span>
+
+                            </div>
+                            <div class="prindd">
+                                <p class=""><i class="fa-solid fa-indian-rupee-sign"></i><%= listingDataArr.price %></p>
+                            </div>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="s17-listing-box2">
+                        <h4 class="hueir">What is next?</h4>
+                        <ul>
+                            <li>
+                                <div class="what-next1">
+                               <span class="dfja-image">
+                                <img src="https://media-hosting.imagekit.io/4b955de5a8534acd/ChatGPT_Image_Apr_27__2025__03_02_51_PM-removebg-preview.png?Expires=1840434858&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=zmxEklb8Qe-ZleKR7x~6fiYH26NHpY7IJ5~VtiuSSnPID-MuJbOhtXVqH8swGFEmBlq3zfnNZ3i~6H7Etfev5SOiWv0B0QRIlO7N3LsZKoYlKARJ6S88gh7QCNPulTXbnQ1uciefi~LHl49XGHxts0-9CyfsmIYFXB9vGuFg-YCaCcjcFdNByrWMyP8QepUtUnFjNeay7ieZ3fqZ5elt5Cz3WMLMt7l7IdFgrm8KxB0eD-pXrnENUsIlY0LETcHily3CbInWLVJqx-Xdh-QoclSTHvESn0RegnzBVE5GmXt5CBluv1hE0TW-1YoYs-NvVZgFjpEbjcvdDN86oFnaNA__" alt="">
+                               </span>
+                               <span><p class="dkjfiauudf">Confirm a few details and publish</p>
+                                <p class="udfjadfa">we'll let you know if you need verify your identiy or register with the local govermment</p>
+                            </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="what-next1">
+                                    <span class="dfja-image">
+                                        <img src="https://media-hosting.imagekit.io/572d6f1b121b4af9/WhatsApp_Image_2025-04-27_at_15.04.55_5fb1e095-removebg-preview.png?Expires=1840434868&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=CrhW8hrWEccChLzHsNQ86jEQY0UDLuLe5VzfxcX~HNxP2-RHxvK4Vq9nvA4mvFQckpuioW9cfVkZdxfJDXi6ofSMTGTsea8~F0Z3W2WOlKMMXHonVjM-VyJD~rWxD5UAFm4hjqx7z3Jm4DBYpTPOg6UEwGkJrkbD0M3DP1UC2taNaRW9zFtkVpm4DuMPyg4vnwDROW-zL~ZYjtf-BXpnZD0yAaKxxFjRvMRGShfuA-cPrFB2Tdow35fsOuv4bYU7Bm4kXrXKgHUN6G5M5SSKBSDFELILqEp~ogv1n6AGUkDOcOZqgdW~xS49ZbbJ9qXHRZnqK3v7aOpG5Jw5DhBjOA__" alt="">
+                                    </span>
+                                    <span><p class="dkjfiauudf">Set up your calendar</p>
+                                     <p class="udfjadfa">Choose which dates your listing is available. It will be visible 24 hours after you publish.</p>
+                                 </span>
+                                     </div>
+                            </li>
+                            <li>
+                                <div class="what-next1">
+                                    <span class="dfja-image">
+                                        <img src="https://media-hosting.imagekit.io/8ece72d7763b497a/WhatsApp_Image_2025-04-27_at_15.02.28_3f238f7f-removebg-preview.png?Expires=1840434793&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=r~0ortuyTktx7SUCy3b4k5Zgiy1gsKYJZS9sR87xIG0pJBiC2r3y7a~hfLNebhHGq7QAE8dyYS4rmIvWIasb8zAaDq6bZ-VHpCzJadn~m0HyDeP~yLxO0Z1bCMrmu~1Qj1RgJNTSd6h6XjZ38FnqTl3AE2rJfK22z6WUMRn6KhWjjDGFe8vbqi2jYdBiHAzh0Pvm9ipN3zXRLvXXi6HfOJVpsm3X8m9t1S5S~Zw9YKXPMBBM2Gj9NiOMw~Hc7Fk-YSUSWHD1LYGgioQkuxJfFYQQ-EN1xUwycrlol~2C6j5GtsoHbr-eeRr98UskOXF2Sk-8sGsVbbbj6tr2uCzofw__" alt="">
+                                    </span>
+                                    <span><p class="dkjfiauudf">Adjust your settingS</p>
+                                     <p class="udfjadfa">Set house rules, select  a cancellation policy.Choose how guests book and more.</p>
+                                 </span>
+                                     </div>
+                            </li>
+                        </ul>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pop-up-s17">
+            <div class="popup-s17">
+                <div class="s17-popophadi">
+                    <h3>Verifying Information...</h3>
+                </div>
+                <div class="container">
+                    
+                    <div class="card" id="card1">
+                      <h3>Step 1: Success Fields</h3>
+                      <div class="pill-list" id="successList"></div>
+                    </div>
+                    <div class="card" id="card2">
+                      <h3>Step 2: Error Fields</h3>
+                      <div class="pill-list" id="errorList"></div>
+                    </div>
+                    <div class="card" id="card3">
+                      <h3>Step 3: Actions</h3>
+                      <div class="buttons" id="actionButtons"></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
     </main>
     <%- include('stepFooter.ejs') %>
-    <script src="/step16Aimetion.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="/step17Aimetion.js"></script>
 </body>

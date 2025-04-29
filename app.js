@@ -220,47 +220,84 @@ let roomTypes ;
 let occupancys ;
 let describes ;
 let instantBooks ;
-app.get("/listing-review", async(req,res)=>{
-//    let result =await  hotelData.find({})
-//      hotelTitles = result[0].hotelType.map(item => item.title);
-//       roomTypes = result[0].roomType;
-//       occupancys= result[0].occupancy.map(item => item.title)
-//       occupancys= result[0].occupancy.map(item => item.title)
-//       amenities1 = result[0].amenities[0].map(item => item.title)
-//       amenities2 = result[0].amenities[1].map(item => item.title)
-//       describes = result[0].describe.map(item => item.title)
-//       instantBooks = result[0].instantBook;
+
+app.get("/listing-review",(req,res)=>{
+    res.render("create/step17.ejs",{listingDataArr})
+})
+app.post("/listing-reviewData",warpAsync(async(req,res)=>{
+   let result =await  hotelData.find({})
+     hotelTitles = result[0].hotelType.map(item => item.title);
+      roomTypes = result[0].roomType;
+      occupancys= result[0].occupancy.map(item => item.title)
+      occupancys= result[0].occupancy.map(item => item.title)
+      amenities1 = result[0].amenities[0].map(item => item.title)
+      amenities2 = result[0].amenities[1].map(item => item.title)
+      describes = result[0].describe.map(item => item.title)
+      instantBooks = result[0].instantBook;
 
 
-//     const HotelDataValid = joi.object({
-//             hotelType : joi.string().valid(...hotelTitles).required(),
-//             roomType : joi.string().valid(...roomTypes).required(),
-//             location : joi.object().required(),
-//             floorPlan : joi.object().required(),
-//             bathrooms : joi.object().required(),
-//             occupancy : joi.array().items(joi.string().valid(...occupancys)).required(),
-//             amenitiess : joi.object().required(),
-//             title : joi.string().required(),
-//             description : joi.string().required(),
-//             describe : joi.array().items(joi.string().valid(...occupancys)).required(),
-//             instantBook : joi.string().valid(...instantBooks).required(),
-//             welcomeReservation : joi.string().valid("yes","no").required(),
-//             price : joi.number().required().min(0)
+    const HotelDataValid = joi.object({
+            hotelType : joi.string().valid(...hotelTitles).required().messages({
+                "string.empty" : "ghghghjgj",
+                "any.required" : "this is required"
+            }),
+            roomType : joi.string().valid(...roomTypes).required(),
+            location : joi.object().required(),
+            floorPlan : joi.object().required(),
+            bathrooms : joi.object().required(),
+            occupancy : joi.array().items(joi.string().valid(...occupancys)).required(),
+            amenitiess : joi.object().required(),
+            title : joi.string().required(),
+            description : joi.string().required(),
+            describe : joi.array().items(joi.string().valid(...describes)).required(),
+            instantBook : joi.string().valid(...instantBooks).required(),
+            welcomeReservation : joi.string().valid("yes","no").required(),
+            price : joi.number().required().min(0)
     
        
-//     })
-//     let rul = HotelDataValid.validate(listingDataArr);
-//     console.log(rul)
-//         if(rul.error){
-//             console.log("err")
-           
-//         }else{
-           
-//             console.log("not error")
-//         }
-        res.render("create/step17.ejs")
-});
+    })
+    // let rul = HotelDataValid.validate();
+    const { error, value } = HotelDataValid.validate(listingDataArr, { abortEarly: false });
+    
+    const errorFields = [];
+    const successFields = [];
+
+    if (error) {
+        const errorFieldNames = error.details.map(err => err.path[0]);
+        const uniqueErrorFields = [...new Set(errorFieldNames)];
+        
+        HotelDataValid._ids._byKey.forEach((field, key) => {
+            if (uniqueErrorFields.includes(key)) {
+                errorFields.push(key);
+            } else {
+                successFields.push(key);
+            }
+        });
+    } else {
+        // All fields are valid
+        HotelDataValid._ids._byKey.forEach((field, key) => {
+            successFields.push(key);
+        });
+    }
+    if(!error){
+       const dataSave1 =await  new listing(listingDataArr);
+       dataSave1.save()
+
+    }else{
+        console.log("---Error---", error)
+    }
+    return res.json({
+        successFields,
+        errorFields
+    });
+   
+}));
 // Show route
+
+
+app.post('/validateHotel', (req, res) => {
+    
+});
 
 app.get("/:id",WarpAsync(async  (req,res,next )=>{
 

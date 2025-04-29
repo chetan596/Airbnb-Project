@@ -2,7 +2,7 @@
 .tt{
     background-color: black;
 }
-.card{
+.card11{
     margin-top: 22%;
     width: 250px;
     height: 200px;
@@ -22,7 +22,8 @@
     background-size: 300%;
     background-position: 100% 0;
     border-radius: inherit;
-    border-radius: 20px;
+    z-index: 10;
+
     animation: shimmer 1.5s infinite;
 }
 
