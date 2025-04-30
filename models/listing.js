@@ -45,13 +45,19 @@ const listingSchema = new Schema({
     describe: [{ type: String }],
     instantBook: { type: String }, // Approver/Non-Approver etc
     welcomeReservation: { type: String }, // yes/no
-    price: { type: String, required: true },
+    price: { type: Number, required: true },
 
     image: {
         type: String,
         default: "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg",
         set: (v) => v === "" ? "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg" : v,
-    }
+    },
+    reviews : [
+        {
+            type : Schema.Types.ObjectId,
+            ref : "Review"
+        }
+    ]
 })
 
 module.exports = mongoose.model("listing", listingSchema);

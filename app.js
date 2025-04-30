@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const listing = require("./models/listing")
+const Listing = require("./models/listing")
+const Review = require("./models/Review")
 const hotelData= require("./models/hotelcreateData.js")
 const path = require("path");
 const ExpressError = require("./util/exressError.js")
@@ -8,6 +9,7 @@ const WarpAsync = require("./util/warpAsync.js");
 const warpAsync = require("./util/warpAsync.js");
 const { log } = require("console");
 const joi = require("joi");
+// const listing = require("./models/listing");
 
 
 
@@ -27,7 +29,7 @@ let listingDataArr = {};
 // Routes
 // Index route
 app.get("/",warpAsync(async(req , res)=>{
-    let listingData = await listing.find({})
+    let listingData = await Listing.find({})
    res.render("listing/listing.ejs",{listingData})
 }))
 
@@ -280,7 +282,7 @@ app.post("/listing-reviewData",warpAsync(async(req,res)=>{
         });
     }
     if(!error){
-       const dataSave1 =await  new listing(listingDataArr);
+       const dataSave1 =await  new Listing(listingDataArr);
        dataSave1.save()
 
     }else{
@@ -295,20 +297,28 @@ app.post("/listing-reviewData",warpAsync(async(req,res)=>{
 // Show route
 
 
-app.post('/validateHotel', (req, res) => {
-    
-});
+
 
 app.get("/:id",WarpAsync(async  (req,res,next )=>{
 
     let { id } = req.params;
-    let hotelView = await listing.findById(id);
+    let hotelView = await Listing.findById(id);
   //   console.log(id , hotelView)
     res.render("show/show.ejs" ,{hotelView})
 
 }))
 
-
+app.get('/:id/review', (req, res) => {
+    res.render("show/review.ejs")
+});
+app.post('/:id/review',async (req, res) => {
+    let listingNew = await Listing.findById(req.params.id);
+    let newReview =  new Review(req.body.review);
+    listingNew.reviews.push(newReview)
+    await listingNew.save();
+    await newReview.save();
+    res.redirect("/")
+});
 
 app.use((req, res, next) => {
     next(new ExpressError("Page not found", 404));

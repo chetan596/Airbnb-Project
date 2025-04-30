@@ -17,7 +17,8 @@
 .hotel-hading h2{
     font-size: 1.7rem;
     font-weight: 500;
-    line-height: 2px;
+    display: flex;
+    align-items: center;
 }
 .shar-box{
     display: flex;
@@ -61,14 +62,17 @@
     width: 100%;
     margin-top: 0.4rem;
     display: flex;
+    justify-content: space-between;
 }
 .mainImage{
     height: 100%;
-    width: 51%;
+    width: 52.4%;
+    border-top-left-radius: 20px ;
+    border-bottom-left-radius: 20px ;
 }
 .mainImage img{
     height: 100%;
-    width: 103%;
+    width: 100%;
     object-fit: cover;
     border-top-left-radius: 20px ;
     border-bottom-left-radius: 20px ;
@@ -76,8 +80,16 @@
 .mainImage2{
     height: 100%;
     width: 47%;
-    margin-left: 1.5rem;
+    /* margin-left: 1.5rem; */
     /* background-color: blue; */
+}
+.herae{
+    height: 100%;
+    width: 40%;
+    background-color: #cc5f5f9d;
+    display: flex;
+    align-items: center;
+    border-radius: 0.3rem;
 }
 .imagebox1{
     height: 173px;

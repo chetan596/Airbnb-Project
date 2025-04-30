@@ -46,7 +46,7 @@ const listingSchema = new Schema({
   describe: [{ type: String }],
   instantBook: { type: String }, // Approver/Non-Approver etc
   welcomeReservation: { type: String }, // yes/no
-  price: { type: String, required: true },
+  price: { type: Number, required: true },
 
   image: {
       type: String,
