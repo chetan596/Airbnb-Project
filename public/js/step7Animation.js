@@ -11,7 +11,7 @@ document.querySelector(".s-line-5").classList.add("opop")
 
 
 
-fetch("/occupancyData")
+fetch("/listingData/occupancyData")
   .then((response) => {
     return response.json(); // return this Promise
   })
@@ -71,7 +71,7 @@ fetch("/occupancyData")
           console.log(selectedValue, "2vlar--");
           
           if(selectedValue.length != 0 ){
-           nextBnt.setAttribute("href", "/stand-out")
+           nextBnt.setAttribute("href", "/listing/stand-out")
            nextBnt.classList.remove("desebal");
            
            console.log(selectedValue.length,  'rtyh');
@@ -92,7 +92,7 @@ fetch("/occupancyData")
       if(selectedValue.length === 0) {
         return alert("hjkk") 
       }else{
-   fetch("/occupancy",{
+   fetch("/listingData/occupancy",{
         method : "POST",
         headers : {"Content-Type" : "application/json"},
         body : JSON.stringify({occupancy: selectedValue})

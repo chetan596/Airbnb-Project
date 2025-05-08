@@ -10,7 +10,7 @@ function name(params) {
   document.querySelector(".s-line-5").classList.add("opop")
   document.querySelector(".s-line-6").classList.add("opop")
   let nextBnt = document.querySelector(".s2-bnt-next");
- nextBnt.setAttribute("href" ,"/amenities")
+ nextBnt.setAttribute("href" ,"/listing/amenities")
   nextBnt.addEventListener("click",(e)=>{
 
 

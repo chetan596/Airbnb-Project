@@ -84,7 +84,7 @@ selBxs.forEach((card)=>{
       console.log(selectedValue, "2vlar--");
       
       if(selectedValue.length != 0 ){
-       nextBnt.setAttribute("href", "/finish-setup")
+       nextBnt.setAttribute("href", "/listing/finish-setup")
        nextBnt.classList.remove("desebal");
        
        console.log(selectedValue.length,  'rtyh');
@@ -112,7 +112,7 @@ function submitData() {
   if(selectedValue.length === 0) {
     return alert("hjkk") 
   }else{
-fetch("/describe",{
+fetch("/listingData/describe",{
     method : "POST",
     headers : {"Content-Type" : "application/json"},
     body : JSON.stringify({describe: selectedValue})

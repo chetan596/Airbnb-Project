@@ -23,7 +23,7 @@ selBxs.forEach((card)=>{
     if(!selectedValue){
       console.log("ddddf")
     }else{
-      nextBnt.setAttribute("href" , "/location")
+      nextBnt.setAttribute("href" , "/listing/location")
       nextBnt.classList.remove("desebal");
   console.log("reove");
   
@@ -36,7 +36,7 @@ nextBnt.addEventListener("click",()=>{
 })
 function submitData() {
   if(!selectedValue) return alert("hjkk") ;
-  fetch("/room-type",{
+  fetch("/listingData/room-type",{
     method : "POST",
     headers : {"Content-Type" : "application/json"},
     body : JSON.stringify({roomType: selectedValue})

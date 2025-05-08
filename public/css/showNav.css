@@ -1,4 +1,12 @@
+
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+.showmainddf{
+    margin: 0px;
+    width: 100%;
+    padding: 0rem;
+    font-family: "Poppins", sans-serif;
+}
 .listingBox{
     height: 40%;
     width: 100%;
@@ -6,7 +14,7 @@
     margin-top: 7.8%;
 }
 .hotel-hading{
-    font-family: "Roboto", sans-serif;
+  
     height: 3rem;
     width: 100%;
     display: flex;
@@ -86,7 +94,7 @@
 .herae{
     height: 100%;
     width: 40%;
-    background-color: #cc5f5f9d;
+    /* background-color: #cc5f5f9d; */
     display: flex;
     align-items: center;
     border-radius: 0.3rem;
@@ -100,7 +108,7 @@
 .image-boxs1{
 
     height: 168px;
-    width: 261px;
+    width: 262px;
 }
 .image-boxs1 img{
     height: 100%;
@@ -117,33 +125,326 @@
 /* info-price */
 
 .info-price{
-    height: 10rem;
+    height: 8.4rem;
     width: 58%;
-    padding: 32px 0px;
+    padding: 20px 0px;
     font-family: "Poppins", sans-serif;
     border-bottom: 1px solid #2222223d;
 }
-.info-price h3{
-    
-    font-size: 1.4rem;
+
+.ehrh{
+    /* background-color: aqua; */
+    height: 1.6rem;
+    width: 75%;
+    border-radius: 5px;
+    font-size: 1.3rem;
     font-weight: 500;
     color: #222222;
 
 }
-.info-price > p {
-    font-size: 0.9rem;
-    font-weight: 500;
-    line-height: 20px;
+.uieri{
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 0.4rem;
+    height: 1.2rem;
+    width: 65%;
+    /* background-color: aqua; */
+    border-radius: 5px;
     color: #222222;
 }
 .reting-box{
     display: flex;
     align-items: center;
-    margin-top: 0.3rem;
+    margin-top: 0.9rem;
+    height: 1.1rem;
+    border-radius: 5px;
+    /* background-color: aqua; */
+    width: 45%;
+}
+
+.none{
+    display: none;
+    
+}
+.erere{
+    font-size: 1.1rem;
+}
+.uyer{
+    color: #222222;
+    /* text-decoration: underline; */
+    font-weight: 600;
+    margin-left: 0.3rem;
 }
 .reting-box a {
     color: #222222;
     text-decoration: underline;
     font-weight: 600;
     margin-left: 0.3rem;
+}
+
+
+.hostingBy{
+    height: 4rem;
+    width: 58%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: aqua; */
+    padding: 2.8rem 0rem;
+    border-bottom: 1px solid #2222223d;
+}
+
+.hostsImage{
+    height: 2.8rem;
+    width: 2.8rem;
+    border-radius: 50%;
+    /* background-color: brown; */
+}
+.hostsImage img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.hostnsamefff{
+    height: 4rem;
+    width: 90%;
+    /* background-color: bisque; */
+    align-items: center;
+    padding: 0.8rem 0rem;
+}
+
+.hostNmare{
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 22px;
+    color: #222222;
+}
+
+.yearofhosthing{
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #6A6A6A;
+}
+
+.whatofferaplace{
+    height: 16rem;
+    width: 58%;
+    /* padding: 2.7rem 0rem; */
+    border-bottom: 1px solid #2222223d;
+    /* background-color: aqua; */
+}
+
+.whfhdjf1{
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: burlywood; */
+}
+
+.imageBoxddd{
+    height: 4rem;
+    width: 4rem;
+    /* background-color: aquamarine; */
+}
+.imageBoxddd img{
+    height: 100%;
+    width: 100%;
+}
+.hadifhdf{
+    height: 5rem;
+    width: 90%;
+    align-content: center;
+    /* background-color: blueviolet; */
+}
+
+.yeufhjhdas{
+    height: 13rem;
+    width: 58%;
+    /* background-color: aqua; */
+    border-bottom: 1px solid #2222223d;
+}
+
+.aboutthelace{
+    margin-top: 2rem;
+    height: 9rem;
+    width: 100%;
+    /* background-color: burlywood; */
+    overflow: hidden;
+}
+.aboutthelace p{
+      font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: #222222;
+
+}
+.showfffafa{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    width: 8rem;
+}
+.sghowmore{
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: underline;
+    
+}
+
+.showIcon111 i{
+    font-size: 1.5rem;
+    font-weight: 400;
+
+}
+
+.mainplaceoffbox{
+    height: 30rem;
+    width: 58%;
+    padding-top: 3.2rem;
+    border-bottom: 1px solid #2222223d;
+}
+
+.whatisplaceoffeee{
+    height: 65%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    /* background-color: aqua; */
+}
+.showHading-34{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #222222;
+    padding-bottom: 1rem;
+}
+.offerBox1{
+    height: 100%;
+    width: 50%;
+    
+    /* background-color: burlywood; */
+}
+.offerBox2{
+    height: 100%;
+    width: 50%;
+    /* background-color: rgba(159, 190, 19, 0.747); */
+}
+
+.itemBoxplace1{
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* background-color: darkslategray; */
+}
+
+.inmgBoxincd{
+    height: 3rem;
+    width: 3rem;
+    /* background-color: darkgreen; */
+}
+
+.ararttt{
+    height: 100%;
+    width: 90%;
+    align-content: center;
+    /* background-color: darkmagenta; */
+}
+
+.inmgBoxincd img{
+    height: 100%;
+    width: 100%;
+}
+
+.ShowAllAfff{
+    height: 3.2rem;
+    width: 13rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    /* background-color: aqua; */
+}
+
+.ShowAllAfff p{
+    font-size: 1rem;
+    font-weight: 500;
+    color: #222222;
+
+}
+
+.imagesBoxListing{
+    height: 25rem;
+    width: 58%;
+    border-bottom: 1px solid #2222223d;
+    /* background-color: aqua; */
+}
+
+.imagesListingHading{
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    /* background-color: cadetblue; */
+}
+
+.imagesListingHading h3{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #222222;
+}
+
+.listingInageBoxss{
+    height: 75%;
+    width: 100%;
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: blue; */
+}
+
+.listingBoxs1{
+    height: 100%;
+    width: 49%;
+    /* background-color: chartreuse; */
+}
+
+.imagesssslistin{
+    height: 79%;
+    width: 100%;
+    /* background-color: darkolivegreen; */
+    border-radius: 0.5rem;
+}
+.imagesssslistin img{
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+}
+.imageName1{
+    height: 4rem;
+    width: 100%;
+    align-content: center;
+    /* background-color: darkred; */
+}
+
+.tehf-1{
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #222222;
+
+}
+.tehf-2{
+    font-size: 0.8rem;
+    font-weight: 500;
+    color:#6A6A6A;
+
 }

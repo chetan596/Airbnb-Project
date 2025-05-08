@@ -13,7 +13,7 @@ let buttom = document.querySelector("button")
 validateData()
 
 function validateData() {
-    axios.post('/listing-reviewData', {
+    axios.post('/listingData/listing-reviewData', {
         // Dummy Data send kar raha hun
         hotelType: "hotel",
         roomType: "",
@@ -63,7 +63,7 @@ setTimeout(() => {
   if (errorFields.length === 0) {
     const btn = document.createElement('a'); btn.className='btn btn-primary'; btn.textContent='Finish';btn.href ="/" ;buttons.appendChild(btn);
   } else {
-     let eradf = document.createElement("a"); eradf.className='btn btn-secondary' ; eradf.textContent='Re-enter data'; eradf.href = "/become-a-host"
+     let eradf = document.createElement("a"); eradf.className='btn btn-secondary' ; eradf.textContent='Re-enter data'; eradf.href = "/listing/become-a-host"
     // const retry = document.createElement('button'); retry.; retry.;
     buttons.append( eradf);
   }

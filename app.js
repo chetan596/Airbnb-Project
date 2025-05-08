@@ -2,318 +2,86 @@ const express = require("express");
 const app = express();
 const Listing = require("./models/listing")
 const Review = require("./models/Review")
-const hotelData= require("./models/hotelcreateData.js")
-const path = require("path");
+const flash = require("connect-flash")
 const ExpressError = require("./util/exressError.js")
-const WarpAsync = require("./util/warpAsync.js");
 const warpAsync = require("./util/warpAsync.js");
-const { log } = require("console");
-const joi = require("joi");
-// const listing = require("./models/listing");
+const listingRouter = require("./routes/listing.js");
+const createListingRouter = require("./routes/createListing.js");
+const createListingDataRouter = require("./routes/createlListingData.js");
+const userRouter = require("./routes/user.js");
+const loginRouter = require("./routes/login.js");
+const path = require("path");
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js");
 
 
 
 
 // midelwever
-app.use(express.urlencoded({extended : true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public/css")))
 app.use(express.static(path.join(__dirname, "public/js")))
+app.use(session({
+    secret: "sexwhitshikha",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+    }
+}))
 // set value
 app.set("view engine", "ejs");
-app.set("views" ,path.join(__dirname, "views") )
+app.set("views", path.join(__dirname, "views"))
 
 
 
-let listingDataArr = {};
-// Routes
-// Index route
-app.get("/",warpAsync(async(req , res)=>{
-    let listingData = await Listing.find({})
-   res.render("listing/listing.ejs",{listingData})
-}))
-
-// create route
-app.get("/host/home",async (req, res)=>{
-    res.render("create/create.ejs")
-
-})
-
-app.get("/become-a-host",(req,res)=>{
-    res.render("create/becomeAHost.ejs")
-})
-app.get("/about-your-plays",(req,res)=>{
-    res.render("create/step1.ejs")
-})
-app.get("/structure",(req,res)=>{
-   
-    res.render("create/step2.ejs")
-})
-app.get("/structureData",async (req,res)=>{
-        let opo =await  hotelData.find({});
-        res.json(opo)
-})
-app.post("/hotel-type-data",(req,res)=>{
-    let{hotelType}= req.body;
-    listingDataArr.hotelType = hotelType;
-}) 
-app.post("/room-type",(req,res)=>{
-    let{roomType} = req.body
-    listingDataArr.roomType = roomType;
-})
-app.get("/privacy-type",async (req,res)=>{
-    let uiuiu = await hotelData.find({});
-    let rrr = uiuiu[0].roomType;
-    res.render("create/step3.ejs", {rrr})
-})
-app.get("/location",(req,res)=>{
-    res.render("create/step4.ejs")
-})
 
 
-app.post("/location",(req,res)=>{
-    let { country,flatHouse,neaebyLandmark,streetAddress,StateUnionTerritory,DistrictLocality,CityTown,pinCode} = req.body;
-    listingDataArr.location = {};
-    listingDataArr.location.country = country;
-    listingDataArr.location.flatHouse = flatHouse;
-    listingDataArr.location.neaebyLandmark = neaebyLandmark;
-    listingDataArr.location.streetAddress = streetAddress;
-    listingDataArr.location.StateUnionTerritory = StateUnionTerritory;
-    listingDataArr.location.DistrictLocality = DistrictLocality;
-    listingDataArr.location.DistrictLocality = DistrictLocality;
-    listingDataArr.location.CityTown = CityTown;
-    listingDataArr.location.pinCode = pinCode;
-    res.redirect("/floor-plan");
-    
-
-    
-})
-app.get("/floor-plan",(req,res)=>{
-    res.render("create/step5.ejs")
-})
-app.post("/floor-planrt",(req,res)=>{
-    let{ Guests,Bedrooms,Bed,Does} = req.body;
-    listingDataArr.floorPlan = {};
-    listingDataArr.floorPlan.Guests = Guests;
-    listingDataArr.floorPlan.Bedrooms = Bedrooms;
-    listingDataArr.floorPlan.Bed = Bed;
-    listingDataArr.floorPlan.Does = Does;
-
-    res.redirect("/bathrooms")
-})
-app.get("/bathrooms",(req,res)=>{
-    res.render("create/step6.ejs")
-})
-app.post("/bathrooms",(req,res)=>{
-    let {PrivateAndAttached,Dedicated,Shared} = req.body;
-    listingDataArr.bathrooms = {};
-    listingDataArr.bathrooms.PrivateAndAttached = PrivateAndAttached;
-    listingDataArr.bathrooms.Dedicated = Dedicated;
-    listingDataArr.bathrooms.Shared = Shared;
-
-    
+app.use("/", listingRouter);
+app.use("/", userRouter)
+app.use("/listing", createListingRouter)
+app.use("/listingData", createListingDataRouter)
+app.use("/login", loginRouter)
 
 
-    res.redirect("/occupancy")
-})
-app.get("/occupancy",(req ,res)=>{
-    res.render("create/step7.ejs")
-})
-app.get("/occupancyData",async(req ,res)=>{
-    let uiuiu = await hotelData.find({})
-    res.json( uiuiu[0].occupancy)
-})
-app.post("/occupancy",(req ,res)=>{
-    let{occupancy} = req.body;
-    listingDataArr.occupancy = occupancy;
 
-    // res.redirect("/fgrt")
-})
-app.get("/stand-out",(req,res)=>{
-    res.render("create/step8.ejs")
-})
-app.get("/amenities",(req,res)=>{
-    res.render("create/step9.ejs")
-})
-app.get("/amenitiesData",async(req,res)=>{
-    let uiuiu = await hotelData.find({})
-    res.json( uiuiu[0].amenities)
-  })
-app.post("/occupancy2",(req ,res)=>{
-    let {amenities,standoutAmenities} = req.body;
-    listingDataArr.amenitiess = {};
-    listingDataArr.amenitiess.amenities = amenities;
-    listingDataArr.amenitiess.standoutAmenities = standoutAmenities;
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
 
-    // res.redirect("/fgrt")
-})
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
-app.get("/title",(req,res)=>{
-    res.render("create/step10.ejs")
-})
-app.post("/title",(req,res)=>{
-    let{title}= req.body;
-    listingDataArr.title = title;
-
-    res.redirect("/description")
-})
-app.get("/description",(req,res)=>{
-    res.render("create/step11.ejs")
-})
-app.post("/description",(req,res)=>{
-    let{description}= req.body;
-    listingDataArr.description = description;
-
-    res.redirect("/describe")
-})
-app.get("/describe",async(req,res)=>{
-    let uiuiu = await hotelData.find({})
-    let oda =  uiuiu[0].describe;
-    res.render("create/step12.ejs",{oda})
-})
-app.post("/describe",(req,res)=>{
-    let{describe}= req.body;
-    listingDataArr.describe = describe;
-
-    res.redirect("/finish-setup")
-})
-app.get("/finish-setup",(req,res)=>{
-    res.render("create/step13.ejs")
-})
-app.get("/instant-book",(req,res)=>{
-    
-    res.render("create/step14.ejs")
-})
-app.get("/visibility",(req,res)=>{
-    res.render("create/step15.ejs")
-})
-
-app.post("/instant-book",(req,res)=>{
-    let{instantBook}= req.body;
-    listingDataArr.instantBook = instantBook;
-
-    
-})
-app.post("/visibility",(req,res)=>{
-    let{welcomeReservation}= req.body;
-    listingDataArr.welcomeReservation = welcomeReservation;
-
-    res.redirect("/price")
-})
-app.get("/price",(req,res)=>{
-    
-    res.render("create/step16.ejs")
-})
-app.post("/price",(req,res)=>{
-    let{price}= req.body;
-    
-    listingDataArr.price = Number(price.replace(/[^0-9]/g,''));
-
-    res.redirect("/listing-review")
-})
-app.get("/test",async(req,res)=>{
-  let uiuiu = await hotelData.find({})
-  let oda = uiuiu[0].describe;
-  res.json( )
-})
-let hotelTitles ;
-let roomTypes ; 
-let occupancys ;
-let describes ;
-let instantBooks ;
-
-app.get("/listing-review",(req,res)=>{
-    res.render("create/step17.ejs",{listingDataArr})
-})
-app.post("/listing-reviewData",warpAsync(async(req,res)=>{
-   let result =await  hotelData.find({})
-     hotelTitles = result[0].hotelType.map(item => item.title);
-      roomTypes = result[0].roomType;
-      occupancys= result[0].occupancy.map(item => item.title)
-      occupancys= result[0].occupancy.map(item => item.title)
-      amenities1 = result[0].amenities[0].map(item => item.title)
-      amenities2 = result[0].amenities[1].map(item => item.title)
-      describes = result[0].describe.map(item => item.title)
-      instantBooks = result[0].instantBook;
-
-
-    const HotelDataValid = joi.object({
-            hotelType : joi.string().valid(...hotelTitles).required().messages({
-                "string.empty" : "ghghghjgj",
-                "any.required" : "this is required"
-            }),
-            roomType : joi.string().valid(...roomTypes).required(),
-            location : joi.object().required(),
-            floorPlan : joi.object().required(),
-            bathrooms : joi.object().required(),
-            occupancy : joi.array().items(joi.string().valid(...occupancys)).required(),
-            amenitiess : joi.object().required(),
-            title : joi.string().required(),
-            description : joi.string().required(),
-            describe : joi.array().items(joi.string().valid(...describes)).required(),
-            instantBook : joi.string().valid(...instantBooks).required(),
-            welcomeReservation : joi.string().valid("yes","no").required(),
-            price : joi.number().required().min(0)
-    
-       
-    })
-    // let rul = HotelDataValid.validate();
-    const { error, value } = HotelDataValid.validate(listingDataArr, { abortEarly: false });
-    
-    const errorFields = [];
-    const successFields = [];
-
-    if (error) {
-        const errorFieldNames = error.details.map(err => err.path[0]);
-        const uniqueErrorFields = [...new Set(errorFieldNames)];
-        
-        HotelDataValid._ids._byKey.forEach((field, key) => {
-            if (uniqueErrorFields.includes(key)) {
-                errorFields.push(key);
-            } else {
-                successFields.push(key);
-            }
-        });
-    } else {
-        // All fields are valid
-        HotelDataValid._ids._byKey.forEach((field, key) => {
-            successFields.push(key);
-        });
-    }
-    if(!error){
-       const dataSave1 =await  new Listing(listingDataArr);
-       dataSave1.save()
-
-    }else{
-        console.log("---Error---", error)
-    }
-    return res.json({
-        successFields,
-        errorFields
-    });
-   
-}));
 // Show route
 
+app.get("/api/listing/:id", async (req, res) => {
+    let { id } = req.params;
+    let hotelView = await Listing.findById(id);
+    res.json(hotelView)
+})
 
 
-
-app.get("/:id",WarpAsync(async  (req,res,next )=>{
+app.get("/:id", warpAsync(async (req, res, next) => {
 
     let { id } = req.params;
     let hotelView = await Listing.findById(id);
-  //   console.log(id , hotelView)
-    res.render("show/show.ejs" ,{hotelView})
+    //   console.log(id , hotelView)
+    res.render("show/show.ejs")
 
 }))
 
 app.get('/:id/review', (req, res) => {
     res.render("show/review.ejs")
 });
-app.post('/:id/review',async (req, res) => {
+app.post('/:id/review', async (req, res) => {
     let listingNew = await Listing.findById(req.params.id);
-    let newReview =  new Review(req.body.review);
+    let newReview = new Review(req.body.review);
     listingNew.reviews.push(newReview)
     await listingNew.save();
     await newReview.save();
@@ -329,7 +97,7 @@ app.use((err, req, res, next) => {
     const { status = 500, message = "Something went wrong" } = err;
     res.status(status).send(message);
 });
-app.listen(3000,()=>{
+app.listen(3000, () => {
     console.log("The server hav been started.");
-    
+
 })

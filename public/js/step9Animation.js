@@ -12,7 +12,7 @@ document.querySelector(".s-line-5").classList.add("opop")
 document.querySelector(".s-line-6").classList.add("opop")
 document.querySelector(".s-line-7").classList.add("opop")
 
-fetch("/amenitiesData")
+fetch("/listingData/amenitiesData")
   .then((response) => {
     return response.json(); // return this Promise
   })
@@ -75,7 +75,7 @@ fetch("/amenitiesData")
         } else {
           
               if(selectedValue.length != 0 || selectedValue2 != 0){
-          nextBnt2.setAttribute("href", "/title")
+          nextBnt2.setAttribute("href", "/listing/title")
           nextBnt2.classList.remove("desebal");
           
           console.log(selectedValue.length,  selectedValue2.length ,  'rtyh');
@@ -170,7 +170,7 @@ fetch("/amenitiesData")
           console.log(selectedValue2 , "2vlar--");
           
          if(selectedValue.length != 0 || selectedValue2 != 0){
-          nextBnt2.setAttribute("href", "/title")
+          nextBnt2.setAttribute("href", "/listing/title")
           nextBnt2.classList.remove("desebal");
           
           console.log(selectedValue.length,  selectedValue2.length ,  'rtyh');
@@ -196,7 +196,7 @@ fetch("/amenitiesData")
     })
     function submitData2() {
     
-      fetch("/occupancy2", {
+      fetch("/listingData/occupancy2", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amenities: selectedValue2 , standoutAmenities: selectedValue})

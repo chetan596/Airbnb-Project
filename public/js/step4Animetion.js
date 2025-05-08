@@ -21,7 +21,7 @@ let labal =group.querySelector(".lable1");
         
     })
     input.addEventListener("blur",()=>{
-        console.log(input);
+
         
         if (input.value.trim() ==="") {
             labal.classList.remove("lable1-active")
@@ -61,7 +61,7 @@ nextBnt.addEventListener("click",(e)=>{
         
         if(!value){
             missingFields.push(field.label);
-            box.classList.add("erro-border")
+           c
             span.classList.add("span-unhide")
             
         }

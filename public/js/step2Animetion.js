@@ -5,7 +5,7 @@ function name(params) {
 }
 name();
 
-fetch("/structureData")
+fetch("/listingData/structureData")
   .then((response) => {
     return response.json(); // return this Promise
   })
@@ -57,7 +57,7 @@ selBxs.forEach((card)=>{
     if(!selectedValue){
       console.log("ddddf")
     }else{
-      nextBnt.setAttribute("href" , "/privacy-type")
+      nextBnt.setAttribute("href" , "/listing/privacy-type")
       nextBnt.classList.remove("desebal");
   console.log("reove");
   
@@ -70,7 +70,7 @@ nextBnt.addEventListener("click",()=>{
 })
 function submitData() {
   if(!selectedValue) return alert("hjkk") ;
-  fetch("/hotel-type-data",{
+  fetch("/listingData/hotel-type-data",{
     method : "POST",
     headers : {"Content-Type" : "application/json"},
     body : JSON.stringify({hotelType: selectedValue})

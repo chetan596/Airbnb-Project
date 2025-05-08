@@ -145,7 +145,16 @@ nav{
     padding-left: 0.9rem;
     padding-right: 0.5rem;
     border-radius: 4rem;
+   transition: box-shadow 0.3s ease;
+   cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0.116);
+}
+.nav-loginBox:hover{
+    box-shadow: 0px 4px 5px #22222236;
+    
+}
+.boxShodo{
+    box-shadow: 0px 4px 5px #22222236;  
 }
 .nav-loginBox i{
     font-size: 1.2rem;
@@ -306,4 +315,106 @@ a{
   }
   .ffff{
     background-color: rgb(255, 0, 0);
+}
+
+.loginBox-nav{
+    height: 16rem;
+    width: 16rem;
+    background-color: #ffffff;
+    position: fixed;
+    top: 12%;
+    right: 2rem;
+    border-radius: 0.8rem;
+    z-index: 9999;
+    display: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.singinBoxs1{
+    height: 6.5rem;
+    width: 100%;
+    padding: 0.5rem 0rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.144);
+}
+.loing-ul{
+    height: 100%;
+    width: 100%;
+    margin: 0rem;
+}
+.log-in-box{
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.log-in-box a{
+    padding: 0.5rem 0rem;
+    padding-left: 0.8rem;
+    padding-right: 12.3rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #000000;
+}
+
+.grtte2 a{
+    padding: 0.8rem 0rem !important;
+    padding-left: 0.8rem  !important;
+    padding-right: 11.8rem !important;
+    font-size: 0.9rem !important;
+    font-weight: 400 !important;
+    color: #222222 !important;
+}
+
+.log-in-box a:hover{
+    background-color: #F7F7F7;
+}
+
+.singinBoxs2{
+    height: 9.4rem;
+    width: 100%;
+    padding: 0.5rem 0rem;
+
+}
+.vgh{
+    height: 3rem;
+    align-content: center;
+}
+.log-in-box3 a{
+    height: 3rem;
+    padding: 0.5rem 0rem;
+    padding-left: 0.8rem;
+    padding-right: 7.1rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #222222;
+}
+.log-in-box4 a{
+    height: 3rem;
+    padding: 0.5rem 0rem;
+    padding-left: 0.8rem;
+    padding-right: 6.5rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #222222;
+}
+.log-in-box5 a{
+    height: 3rem;
+    padding: 0.5rem 0rem;
+    padding-left: 0.8rem;
+    padding-right: 10rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #222222;
+}
+
+.vgh:hover{
+    background-color: #F7F7F7;
+}
+
+
+.lopop{
+    height: 100%;
+    width: 100%;
+    background-color: aqua;
 }

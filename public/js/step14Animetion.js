@@ -39,7 +39,7 @@ selBxs.forEach((card)=>{
     if(!selectedValue){
       console.log("ddddf")
     }else{
-      nextBnt.setAttribute("href" , "/visibility")
+      nextBnt.setAttribute("href" , "/listing/visibility")
       nextBnt.classList.remove("desebal");
   console.log("reove");
   
@@ -52,7 +52,7 @@ nextBnt.addEventListener("click",()=>{
 })
 function submitData() {
   if(!selectedValue) return alert("hjkk") ;
-  fetch("/instant-book",{
+  fetch("/listingData/instant-book",{
     method : "POST",
     headers : {"Content-Type" : "application/json"},
     body : JSON.stringify({instantBook: selectedValue})
