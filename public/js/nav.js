@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (input.value.trim() === "") {
                         labal.classList.remove("label2lg")
                         bnt.style.backgroundColor = "crimson";
-                       
+
                     }
 
                 })
@@ -80,19 +80,19 @@ document.addEventListener("DOMContentLoaded", () => {
                         labal.style.color = "black"
                         input.classList.remove("erro-border")
                         errorMsg.style.visibility = "hidden"
-                        btnClick()
-                        SubmitCall()
+                        let bnt22 = document.querySelector(".LongBnt1")
+                        bnt22.addEventListener("click", () => {
+                            document.querySelector(".yuerhye1").classList.remove("disNone11")
+                            bnt.style.backgroundColor = "#d3d3d3d6";
+                            console.log("ntb was click")
+                            ApiCall2()
+                        })
+
                     };
                 })
 
 
-                function SubmitCall(){
-                   let bnt = document.querySelector(".LongBnt1")
-                   bnt.addEventListener("click",()=>{
-                    console.log("---Bnt was click----")
-                    from.submit();
-                   })
-                }
+
 
                 singInBigBox11.addEventListener("click", (e) => {
                     e.stopPropagation()
@@ -110,14 +110,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 })
 
-               function btnClick(){
-                bnt.addEventListener("click", ()=>{
-                    document.querySelector(".yuerhye1").classList.remove("disNone11")
-                    bnt.style.backgroundColor = "#d3d3d3d6";
-                    console.log("ntb was click")
-                    
-                })
-               }
+
+                function ApiCall2() {
+                    console.log("----err-r--r")
+                    fetch("/errer", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ email: input.value })
+                    }).then(res => res.text())
+                    .then(html =>{
+                        console.log(html)
+                         logineContant.innerHTML = html
+                         let boxss = document.querySelectorAll(".fornBox22s")
+                         
+                        
+                        boxss.forEach((box)=>{
+                            let input = box.querySelector(".inputBoxUser");
+                             let labal = box.querySelector(".labelUser");
+                             let inputBoxs = box.querySelector(".TextBox1");
+                             let eroorP = box.querySelector(".ErrorMsg233")
+                             console.log(eroorP)
+                              input.addEventListener("focus",()=>{
+                                console.log(input.type)
+                                 inputBoxs.style.borderColor = "black"
+                               labal.classList.add("labalTop")
+                                inputBoxs.style.backgroundColor = "white"
+                                if(eroorP){
+                                     eroorP.style.display = "none"
+                                }
+                              if(input.type === "url"){
+                                input.type = "date"
+                              }
+                                console.log("---Focus---")
+                                input.addEventListener("blur",()=>{
+                                    if (input.value.trim() ==="") {
+                                        labal.classList.remove("labalTop")
+                                        eroorP.style.display = "block"
+                                        inputBoxs.style.borderColor = "red";
+                                        inputBoxs.style.backgroundColor = "#ff00000d"
+                                        console.log(eroorP);
+                                        if(input.type == "date"){
+                                        input.type = "url"
+                              }
+                                        }else{
+                                           
+                                        }
+        
+                                    })
+                            })
+                        })
+                    })
+                }
 
             })
     }
@@ -131,13 +174,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 })
-
-
-
-
-
-
-
-
 
 

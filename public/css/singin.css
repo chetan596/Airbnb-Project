@@ -13,12 +13,29 @@
 }
 
 .loginPopupBox{
+    /* overflow: overlay; */
     height: 84%;
     width: 45%;
     background-color: white;
     border-radius: 2rem;
     box-shadow: 0 0 10px rgba(0.0.0.3);
 }
+/* .loginPopupBox::-webkit-scrollbar{
+    height: 5rem;
+    border-radius: 0.5rem;
+   
+}
+.loginPopupBox::-webkit-scrollbar-track{
+    background-color: #222222;
+        border-radius: 0.5rem;
+  
+   
+}
+.loginPopupBox::-webkit-scrollbar-thumb{
+    background-color: #cac8c8;
+         border-radius: 0.5rem; 
+   
+} */
 
 .loginhHading{
     height: 4rem;
@@ -264,3 +281,198 @@
 .disNone11{
     display: none !important;
 }
+
+
+/* UserCreate  */
+
+.userNameInfoBox{
+    /* height: 42%; */
+    width: 100%;
+     padding: 0rem 1.3rem;
+    /* background-color: aqua; */
+}
+
+.fronLableser{
+    margin-top: 0.5rem;
+    height: 3rem;
+    width: 100%;
+    padding: 0.5rem 0rem;
+    /* background-color: burlywood; */
+}
+.fronLableser h3{
+    font-size: 1rem;
+    font-weight: 500;
+    color: #222222;
+}
+
+.UserBox1{
+    height: 60%;
+    width: 100%;
+    /* background-color: rgba(128, 255, 0, 0.616); */
+}
+
+.nameBox22{
+    height: 92%;
+    width: 100%;
+   
+    /* background-color: darkgoldenrod; */
+}
+.br1User{
+    border:  1px solid #222222;
+     border-top-left-radius: 0.5rem;
+     border-top-right-radius: 0.5rem;
+}
+.bttdf{
+   
+     border-bottom-left-radius: 0.5rem;
+     border-bottom-right-radius: 0.5rem;
+    border:  1px solid #222222;
+     border-top: none;
+}
+
+.TextBox1 input{
+    width: 97%;
+    height: 1.8rem;
+    border: none;
+    outline: none;
+    margin-top: 1rem;
+    color: #222222;
+    font-size: 1.2rem;
+    border-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
+    padding-left: 0.5rem;
+    background-color: transparent;
+}
+.labalBox233{
+    height: 0.5rem;
+}
+.labalBox233 label{
+    position: relative;
+    top: 0.9rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    padding-left: 0.5rem;
+    color: #434343e8;
+    transition: all 0.3s ease;
+}
+
+.labalTop{
+    top: 0.2rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 400 !important;
+}
+
+.ErrorMsg233{
+    font-size: 0.7rem;
+    color: red;
+   padding-top: 0.3rem;
+    display: none;
+}
+
+.InfoMsg1{
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #666666;
+    margin-top: 0.5rem;
+}
+.hadngBox12ee33{
+    margin-top: 1rem;
+}
+
+.BOX2233{
+    border: 1px solid #222222;
+     border-radius: 0.5rem;
+}
+
+.scrollBar1{
+    height: 82%;
+    overflow: overlay;
+}
+
+.aboutFrom{
+    /* height: 6rem; */
+    width: 100%;
+    /* background-color: aqua; */
+}
+
+.aboutFromPara{
+    margin-top: 1.8rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.aboutFromPara span{
+    font-weight: 600;
+    color: #000000;
+}
+
+.aboutFromPara a{
+    color: blue;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.bntUserFr{
+    font-size: 1.2rem;
+    background: linear-gradient(90deg, #e91e63, #dc143c);
+    color: white;
+    border: none;
+    outline: none;
+    height: 3.2rem;
+    border-radius: 0.5rem;
+    margin: 1.5rem 0rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    width: 100%;
+    cursor: pointer;
+}
+.airbnbnInfo{
+    padding-top: 0.8rem;
+    border-top: 1px solid #00000026;
+}
+.airbnbnInfo p{
+    font-size: 0.755rem;
+    font-weight: 400;
+    line-height: 1rem;
+}
+
+.BoxCheck11{
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      border: 1px solid #959393;
+      background-color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    .checkbox-container input[type="checkbox"]:checked {
+      background-color: #000;
+      border-color: #000;
+    }
+
+    .checkbox-container input[type="checkbox"]:checked::after {
+      content: '✓';
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+    }

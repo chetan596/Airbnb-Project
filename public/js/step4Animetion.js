@@ -61,7 +61,7 @@ nextBnt.addEventListener("click",(e)=>{
         
         if(!value){
             missingFields.push(field.label);
-           c
+        //    c
             span.classList.add("span-unhide")
             
         }

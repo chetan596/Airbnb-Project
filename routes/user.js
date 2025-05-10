@@ -18,6 +18,11 @@ router.post("/loginIn",async(req,res)=>{
     }
     // res.send("fjdjfjkaj")
 })
+
+router.post("/errer",(req,res)=>{
+     res.render("singup/createUser.ejs")
+    console.log(req.body)
+})
 router.post("/singup",async(req,res)=>{
     // let {username, password , email} = req.body;
     let newUser = new User({
