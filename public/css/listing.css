@@ -95,13 +95,13 @@ main {
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background-color: #2b2b2b;
+  background-color: #000000;
   /* Dark charcoal */
   animation: pulse 0.6s infinite ease-in-out;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); */
 }
 
 .dot:nth-child(2) {
@@ -125,7 +125,7 @@ main {
   }
 
   50% {
-    background-color: #999999;
+    background-color: #999999de;
     /* dim silver */
   }
 }

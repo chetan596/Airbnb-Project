@@ -1,174 +1,550 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let loginBox = document.querySelector(".nav-loginBox");
-    let singInBox = document.querySelector(".loginBox-nav");
-    let loginBtn = document.querySelector(".Longi-122")
-    let loginBtn1 = document.querySelector(".login-popopu")
-    let loder1 = document.querySelector(".yuerhye1")
-    let logineContant = document.querySelector(".loginPopupBox")
-    loginBox.addEventListener("click", (e) => {
-        e.stopPropagation()
-        loginBox.classList.add("boxShodo")
-        singInBox.style.display = "block"
+  let loginBox = document.querySelector(".nav-loginBox");
+  let singInBox = document.querySelector(".loginBox-nav");
+  let loginBtn = document.querySelector(".Longi-122")
+  let loginBtn1 = document.querySelector(".login-popopu")
+  let loder1 = document.querySelector(".yuerhye1")
+  let logineContant = document.querySelector(".loginPopupBox")
+  loginBox.addEventListener("click", (e) => {
+    e.stopPropagation()
+    loginBox.classList.add("boxShodo")
+    singInBox.style.display = "block"
 
-    });
-
-
-
-    document.addEventListener("click", () => {
-        loginBox.classList.remove("boxShodo")
-        singInBox.style.display = "none"
-        // singInBigBox.style.display = "none"
-        console.log("hey! -----EERfzdfdd")
-
-    })
+  });
 
 
 
-    loginBtn.addEventListener("click", (e) => {
-        e.preventDefault()
-        loginBtn1.style.display = "flex";
-        loginFrom()
-        // console.log("bnt was click")
-    })
+  document.addEventListener("click", () => {
+    loginBox.classList.remove("boxShodo")
+    singInBox.style.display = "none"
 
 
-    function loginFrom() {
-        // console.log("API was call..")
-        fetch("/singup")
-            .then(res => res.text())
+  })
+
+
+
+  loginBtn.addEventListener("click", (e) => {
+    e.preventDefault()
+    loginBtn1.style.display = "flex";
+    loginFrom()
+
+  })
+
+
+  function loginFrom() {
+    fetch("/singup")
+      .then(res => res.text())
+      .then(html => {
+        loder1.style.display = "none";
+        logineContant.innerHTML = html
+        let input = document.querySelector("#email");
+        let from = document.querySelector("form")
+        let labal = document.querySelector("#label");
+        let bnt = document.querySelector(".LongBnt1")
+        let errorMsg = document.querySelector(".ErrorParaLogin")
+        let singInBigBox = document.querySelector(".login-popopu");
+        let singInBigBox11 = document.querySelector(".loginPopupBox");
+        let singInCloceBnt = document.querySelector(".loginhHading button");
+
+        input.addEventListener("focus", () => {
+
+          labal.classList.add("label2lg")
+
+        })
+
+        input.addEventListener("blur", () => {
+
+
+          if (input.value.trim() === "") {
+            labal.classList.remove("label2lg")
+            bnt.style.backgroundColor = "crimson";
+
+          }
+
+        })
+
+        from.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const value = input.value.trim();
+          bnt.classList.remove("button-click-effect"); // Reset
+          void bnt.offsetWidth; // Reflow
+          bnt.classList.add("button-click-effect"); // Add animation
+
+          if (!value) {
+            labal.style.color = "red"
+            input.classList.add("erro-border")
+            errorMsg.style.visibility = "visible"
+            errorMsg.innerHTML = `<i class="ri-error-warning-line"></i> Email is required `
+            bnt.style.backgroundColor = "crimson";
+          }
+          else {
+            labal.style.color = "black"
+            input.classList.remove("erro-border")
+            errorMsg.style.visibility = "hidden"
+            console.log("----Bnt---%%&&")
+            let bnt22 = document.querySelector(".LongBnt1")
+
+            document.querySelector(".yuerhye1").classList.remove("disNone11")
+            bnt.style.background = "#d3d3d3d6";
+            bnt.style.cursor = "not-allowed";
+
+
+            ApiCall2()
+
+
+          };
+        })
+
+
+
+
+        singInBigBox11.addEventListener("click", (e) => {
+          e.stopPropagation()
+        })
+
+
+        singInBigBox.addEventListener("click", () => {
+          singInBigBox.style.display = "none"
+
+
+        })
+        singInCloceBnt.addEventListener("click", () => {
+          singInBigBox.style.display = "none";
+
+        })
+
+
+        function ApiCall2() {
+
+          fetch("/loginIn", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: input.value })
+          }).then(res => res.text())
             .then(html => {
-                loder1.style.display = "none";
-                logineContant.innerHTML = html
-                let input = document.querySelector("#email");
-                let from = document.querySelector("form")
-                let labal = document.querySelector("#label");
-                let bnt = document.querySelector(".LongBnt1")
-                let errorMsg = document.querySelector(".ErrorParaLogin")
-                let singInBigBox = document.querySelector(".login-popopu");
-                let singInBigBox11 = document.querySelector(".loginPopupBox");
-                let singInCloceBnt = document.querySelector(".loginhHading button");
-                console.log(input)
+
+              logineContant.innerHTML = html
+              let boxss = document.querySelectorAll(".fornBox22s")
+              let form = document.querySelector("form")
+              let bnt = document.querySelector(".bntUserFr")
+              let otpBox = document.querySelector(".otpPop1")
+              let otpBox22 = document.querySelector(".otpBoxss")
+              let Loding = document.querySelector(".yuerhye1")
+              let BackBtn = document.querySelector(".bntyuopg button")
+              let opopop = document.querySelector(".yuierr")
+              let singInBigBox11 = document.querySelector(".loginPopupBox");
+              let pass2 = document.querySelector(".pass2")
+              let labelUser = document.querySelector(".labelUser")
+              let from2st = document.querySelector(".from2st") 
+              let Show = document.querySelector("#Show") 
+              let inbox12 = document.querySelector(".BOX2233")
+              let ErrMsgOP = document.querySelector(".ErrMsgOP")
+             
+              if(opopop){
+               singInBigBox11.classList.add("smallHg")
+               pass2.addEventListener("focus",()=>{
+                inbox12.style.border = "2px solid black"
+                labelUser.classList.add("labalTop")
+                 ErrMsgOP.style.display = "none"
+               })
+               pass2.addEventListener("blur",()=>{
+                if(pass2.value.length == 0){
+labelUser.classList.remove("labalTop")
+
+                }
+                inbox12.style.border = "1px solid black"
+                
+               })
+               
+                Show.addEventListener("click", () => {
+                  
+                pass2.type = pass2.type === "password" ? "text" : "password";
+                Show.innerText = Show.innerText === "Show" ? "Hide" : "Show";
+                console.log("----Show Box Click----",)
+              })
+               from2st.addEventListener("submit",(e)=>{
+                
+
+                if(pass2.value.length == "8"){
+                    ErrMsgOP.style.display = "none"
+                }else{
+                  ErrMsgOP.style.display = "block"
+                 
+                }
+                e.preventDefault()
+                  console.log(pass2.value.length)
+               })
+              
+               console.log(singInBigBox11);
+               
+              }else{ singInBigBox11.classList.remove("smallHg")
+                 console.log("no!")
+              }
+              BackBtn.addEventListener("click", () => {
+                cloceBack()
+              })
+
+
+              boxss.forEach((box) => {
+                let input = box.querySelector(".inputBoxUser");
+                let labal = box.querySelector(".labelUser");
+                let inputBoxs = box.querySelector(".TextBox1");
+                let eroorP = box.querySelector(".ErrorMsg233");
+
                 input.addEventListener("focus", () => {
-                    console.log("add");
-                    labal.classList.add("label2lg")
 
-                })
+                  inputBoxs.classList.add("inputBoxUser2")
+                  labal.classList.add("labalTop")
+                  inputBoxs.style.backgroundColor = "white"
+                  labal.style.color = "#434343e8"
+                  if (eroorP) {
+                    eroorP.style.display = "none"
+                  }
+                  if (input.type === "url") {
+                    input.type = "date"
+                  }
 
-                input.addEventListener("blur", () => {
-
-
+                  input.addEventListener("blur", () => {
+                    inputBoxs.classList.remove("inputBoxUser2")
                     if (input.value.trim() === "") {
-                        labal.classList.remove("label2lg")
-                        bnt.style.backgroundColor = "crimson";
+                      labal.classList.remove("labalTop")
 
+                      if (eroorP) {
+
+                        eroorP.style.display = "block"
+                      }
+
+                      inputBoxs.style.borderColor = "red";
+                      inputBoxs.style.backgroundColor = "#ff00000d"
+                      labal.style.color = "red";
+
+                      if (input.type == "date") {
+                        input.type = "url"
+                      }
+                    } else {
+                      inputBoxs.style.borderColor = "#222222";
+                      console.log("----RRR----")
                     }
 
-                })
-
-                from.addEventListener("submit", (e) => {
-                    e.preventDefault();
-                    const value = input.value.trim();
-
-                    if (!value) {
-                        labal.style.color = "red"
-                        input.classList.add("erro-border")
-                        errorMsg.style.visibility = "visible"
-                        errorMsg.innerHTML = `<i class="ri-error-warning-line"></i> Email is required `
-                        bnt.style.backgroundColor = "crimson";
-                    }
-                    else {
-                        labal.style.color = "black"
-                        input.classList.remove("erro-border")
-                        errorMsg.style.visibility = "hidden"
-                        let bnt22 = document.querySelector(".LongBnt1")
-                        bnt22.addEventListener("click", () => {
-                            document.querySelector(".yuerhye1").classList.remove("disNone11")
-                            bnt.style.backgroundColor = "#d3d3d3d6";
-                            console.log("ntb was click")
-                            ApiCall2()
-                        })
-
-                    };
-                })
-
-
-
-
-                singInBigBox11.addEventListener("click", (e) => {
-                    e.stopPropagation()
-                })
-
-
-                singInBigBox.addEventListener("click", () => {
-                    singInBigBox.style.display = "none"
-                    // console.log(singInBigBox)
-
-                })
-                singInCloceBnt.addEventListener("click", () => {
-                    singInBigBox.style.display = "none"
-                    console.log(singInBigBox, "lkjjhhjggf")
+                  })
 
                 })
 
 
-                function ApiCall2() {
-                    console.log("----err-r--r")
-                    fetch("/errer", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ email: input.value })
-                    }).then(res => res.text())
-                    .then(html =>{
-                        console.log(html)
-                         logineContant.innerHTML = html
-                         let boxss = document.querySelectorAll(".fornBox22s")
-                         
-                        
-                        boxss.forEach((box)=>{
-                            let input = box.querySelector(".inputBoxUser");
-                             let labal = box.querySelector(".labelUser");
-                             let inputBoxs = box.querySelector(".TextBox1");
-                             let eroorP = box.querySelector(".ErrorMsg233")
-                             console.log(eroorP)
-                              input.addEventListener("focus",()=>{
-                                console.log(input.type)
-                                 inputBoxs.style.borderColor = "black"
-                               labal.classList.add("labalTop")
-                                inputBoxs.style.backgroundColor = "white"
-                                if(eroorP){
-                                     eroorP.style.display = "none"
-                                }
-                              if(input.type === "url"){
-                                input.type = "date"
-                              }
-                                console.log("---Focus---")
-                                input.addEventListener("blur",()=>{
-                                    if (input.value.trim() ==="") {
-                                        labal.classList.remove("labalTop")
-                                        eroorP.style.display = "block"
-                                        inputBoxs.style.borderColor = "red";
-                                        inputBoxs.style.backgroundColor = "#ff00000d"
-                                        console.log(eroorP);
-                                        if(input.type == "date"){
-                                        input.type = "url"
-                              }
-                                        }else{
-                                           
-                                        }
-        
-                                    })
-                            })
-                        })
-                    })
+              })
+
+              form.addEventListener("submit", (e) => {
+
+                bnt.classList.remove("button-click-effect"); // Reset
+                void bnt.offsetWidth; // Reflow
+                bnt.classList.add("button-click-effect"); // Add animation
+                e.preventDefault();
+                let allClass = document.querySelectorAll(".labalTop")
+                let emailInput = document.querySelector("#em")
+                let username = document.querySelector('#user');
+                let userLast1 = document.querySelector('#last');
+                if (allClass.length >= 5) {
+                  document.querySelector(".yuerhye1").classList.remove("disNone11");
+                  Loding.style.display = "f"
+                  console.log("UIOgvftcdres")
+                  bnt.style.background = "#d3d3d3d6";
+                  bnt.disabled = true;
+                  bnt.style.cursor = "not-allowed";
+
+                  otpsand(emailInput.value, otpBox, username.value, userLast1.value, emailInput.value, otpBox22, Loding, form, bnt)
+
+
+                } else {
+
+
+                  let allClass = document.querySelectorAll("input");
+                  for (input of allClass) {
+                    input.focus()
+                  }
                 }
 
+              })
+              const password = document.getElementById("password");
+              const strengthText = document.getElementById("strengthText");
+              const reqList = document.getElementById("reqList");
+              const passShow = document.getElementById("Show")
+              const dobInput = document.getElementById('date');
+              const errorDiv = document.getElementById('dobError');
+              const passStrMsg = document.querySelector(".passStrMsg")
+              console.log(passStrMsg)
+              console.log(dobInput, errorDiv, "---Date---")
+              dobInput.addEventListener('change', () => {
+                const today = new Date();
+                const selectedDate = new Date(dobInput.value);
+
+                const birthYear = selectedDate.getFullYear();
+                const currentYear = today.getFullYear();
+
+                // Calculate age
+                let age = currentYear - birthYear;
+
+                // Check if birthday hasn't occurred yet this year
+                const hasBirthdayPassed =
+                  today.getMonth() > selectedDate.getMonth() ||
+                  (today.getMonth() === selectedDate.getMonth() && today.getDate() >= selectedDate.getDate());
+
+                if (!hasBirthdayPassed) {
+                  age--; // birthday hasn't come yet this year
+                }
+
+                // Validation
+                if (birthYear > currentYear) {
+                  errorDiv.style.display = "block"
+
+                  errorDiv.innerHTML = `<i class="ri-error-warning-fill"></i>  Future year invalid hai.`;
+                } else if (age < 18) {
+                  errorDiv.style.display = "block"
+
+                  errorDiv.innerHTML = `<i class="ri-error-warning-fill"></i>  18 saal se kam hai. 18 saal se zyada chahiye.`;
+                } else {
+                  errorDiv.style.display = "none"
+
+                  errorDiv.innerHTML = ""; // No error
+                }
+              });
+
+              const rules = {
+                charLen: { el: document.getElementById("charLen"), test: val => val.length >= 8 },
+                upper: { el: document.getElementById("upper"), test: val => /[A-Z]/.test(val) },
+                lower: { el: document.getElementById("lower"), test: val => /[a-z]/.test(val) },
+                digitOrSymbol: {
+                  el: document.getElementById("digitOrSymbol"),
+                  test: val => /[0-9]/.test(val) || /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(val)
+                }
+              };
+
+              password.addEventListener("focus", showReq);
+              password.addEventListener("input", updateRules);
+
+              function showReq() {
+                passStrMsg.style.display = "block";
+                reqList.style.display = "block";
+              }
+
+              function updateRules() {
+                passStrMsg.style.color = "red"
+                for (let key in rules) {
+                  const li = rules[key].el;
+                  li.classList.add("redColorErr")
+                }
+                const val = password.value;
+                let validCount = 0;
+
+                for (let key in rules) {
+                  const passed = rules[key].test(val);
+                  const li = rules[key].el;
+                  const icon = li.querySelector(".icon");
+                  if (passed) {
+                    li.classList.add("valid");
+                    icon.innerHTML = `<i class="ri-checkbox-circle-fill"></i>`;
+                    validCount++;
+                  } else {
+                    li.classList.remove("valid");
+                    icon.innerHTML = `<i class="ri-close-circle-fill"></i>`;
+                  }
+                }
+
+                if (val.length === 0) {
+                  strengthText.textContent = "";
+                  password.classList.remove("input-error");
+                  return;
+                }
+
+                if (validCount === 4) {
+                  strengthText.textContent = "strong";
+                  passStrMsg.style.color = "green"
+                  strengthText.className = "strength strong";
+                  password.classList.remove("input-error");
+                  reqList.style.display = "none";
+                } else if (validCount >= 2) {
+                  strengthText.textContent = "good";
+                  strengthText.className = "strength good";
+                  password.classList.remove("input-error");
+                  reqList.style.display = "block";
+                } else {
+                  strengthText.textContent = "weak";
+                  strengthText.className = "strength weak";
+                  password.classList.add("input-error");
+                  reqList.style.display = "block";
+                }
+              }
+              passShow.addEventListener("click", () => {
+
+                password.type = password.type === "password" ? "text" : "password";
+                passShow.innerText = passShow.innerText === "Show" ? "Hide" : "Show";
+                console.log("----Show Box Click----",)
+              })
+
+              // function togglePassword() {
+              //   console.log("Show")
+              //  ;
+              // }
+
+              function checkBlur() {
+                if (password.value.length === 0) {
+                  reqList.style.display = "none";
+                  strengthText.textContent = "";
+                }
+              }
+
+
             })
-    }
+        }
+
+        function otpsand(input, otpBox, username, userLast, email, otpBox22, Loding, form, bnt) {
+
+
+
+          fetch("/email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: input, userName: username, userLast: userLast })
+          }).then(res => res.text())
+            .then(html => {
+
+              otpBox.style.display = "flex"
+              otpBox22.innerHTML = html
+
+              const inputs = document.querySelectorAll('.otp-input');
+              let loding = document.querySelector(".kiope")
+              let errMsg = document.querySelector(".otpErrormsg");
+              let cloerea = document.querySelector("#CloceRE");
+              cloerea.addEventListener("click", () => {
+                otpBox.style.display = "none"
+                Loding.style.display = "none"
+                bnt.style.background = `linear-gradient(90deg, #e91e63, #dc143c)`
+                bnt.disabled = false;
+                bnt.style.cursor = "pointer";
+              })
+              otpBox.addEventListener("click", (e) => {
+
+                otpBox.style.display = "none"
+                Loding.style.display = "none"
+                bnt.style.cursor = "pointer";
+                bnt.disabled = false;
+                bnt.style.background = `linear-gradient(90deg, #e91e63, #dc143c)`
+                console.log("Document----")
+
+              });
+              otpBox22.addEventListener("click", (e) => {
+                e.stopPropagation()
+
+                console.log("pfhahfdgafdahsgre945874qt")
+              })
+
+              function resetBorders() {
+                inputs.forEach(input => {
+                  input.classList.remove('error', 'success');
+                  input.style.border = '1px solid black';
+                  errMsg.style.display = "none"
+                });
+              }
+
+              function checkOTP() {
+                const enteredOTP = Array.from(inputs).map(input => input.value).join('');
+                if (enteredOTP.length === inputs.length) {
+                  inputs.forEach(input => {
+                    input.classList.add("ljhy");
+
+                  });
+                  loding.style.display = "flex"
+                  fetch("/otp-verify", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ otp: enteredOTP, email: email })
+                  }).then(res => res.json())
+                    .then(data => {
+                      console.log(data)
+                      inputs.forEach(input => {
+                        input.classList.remove("ljhy");
+
+                      });
+                      loding.style.display = "none"
+                      if (data.success) {
+
+                        inputs.forEach(input => {
+                          input.classList.remove('error');
+                          input.classList.add('success');
+                          console.log("--From sudmit--", form);
+                          form.submit();
+                        });
+
+                      } else {
+                        inputs.forEach(input => {
+                          input.classList.remove('success');
+                          input.classList.add('error');
+                          errMsg.style.display = "block"
+                        });
+                      }
+                    }).catch(error => console.log(error, "----Error----"))
+
+                }
+              }
+
+              inputs.forEach((input, index) => {
+                input.addEventListener('keydown', (e) => {
+                  const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab'];
+                  const isDigit = /^[0-9]$/.test(e.key);
+
+                  if (!isDigit && !allowedKeys.includes(e.key)) {
+                    e.preventDefault(); // Block dot, slash, letters, etc.
+                  }
+
+                  if (e.key === 'Backspace') {
+                    if (input.value === '' && index > 0) {
+                      inputs[index - 1].focus();
+                      inputs[index - 1].value = '';
+                      e.preventDefault();
+                    }
+                  }
+                });
+
+                input.addEventListener('input', (e) => {
+                  const value = e.target.value.replace(/\D/g, ''); // Allow only digits
+                  if (value) {
+                    resetBorders(); // Reset border when new input comes
+                    input.value = value[0];
+                    if (index < inputs.length - 1) {
+                      inputs[index + 1].focus();
+                    }
+                  }
+                  setTimeout(checkOTP, 10);
+                });
+
+                input.addEventListener('paste', (e) => {
+                  e.preventDefault();
+                  resetBorders();
+                  const pasteData = (e.clipboardData || window.clipboardData).getData('text');
+                  const digits = pasteData.replace(/\D/g, '').split('');
+                  inputs.forEach((inp, i) => {
+                    inp.value = digits[i] || '';
+                  });
+                 
+                });
+              });
+
+            })
+        }
+
+      })
+  }
 
 
 
 
 
+
+
+  function cloceBack() {
+    let singInBigBox11 = document.querySelector(".loginPopupBox");
+    singInBigBox11.classList.remove("smallHg")
+    loginFrom()
+  }
 
 
 

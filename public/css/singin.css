@@ -1,4 +1,4 @@
-.login-popopu{
+.login-popopu {
     position: fixed;
     top: 0;
     left: 0;
@@ -12,7 +12,7 @@
     display: none;
 }
 
-.loginPopupBox{
+.loginPopupBox {
     /* overflow: overlay; */
     height: 84%;
     width: 45%;
@@ -20,6 +20,7 @@
     border-radius: 2rem;
     box-shadow: 0 0 10px rgba(0.0.0.3);
 }
+
 /* .loginPopupBox::-webkit-scrollbar{
     height: 5rem;
     border-radius: 0.5rem;
@@ -37,25 +38,36 @@
    
 } */
 
-.loginhHading{
+.loginhHading {
     height: 4rem;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     border-bottom: 1px solid #00000029;
 
 }
-
-.loginhHading h3{
-    font-size: 1rem;
-    font-weight: 600;
-    color: black;
+.iueraf{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.loginhHading button{
-    position: absolute;
-    left: 24.5rem;
+.loginhHading h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    
+    color: black;
+}
+.bntyuopg{
+position: relative;
+/* background-color: aqua; */
+width: 0rem;
+    left: 1rem;
+}
+.loginhHading button {
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,43 +78,65 @@
     border: none;
     outline: none;
     padding: 0.5rem 0.5rem;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
 }
-.loginhHading button i{
+#CloceRE{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.8rem;
+    width: 1.8rem;
+    font-size: 1.4rem;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    padding: 0.5rem 0.5rem;
+    background-color: rgb(255, 255, 255);
+}
+
+
+.loginhHading button i {
     z-index: 10;
 }
-.loginhHading button:hover{
+
+.loginhHading button:hover {
     background-color: #a7a7a7be;
     cursor: pointer;
 }
-
-.mainBoxLogin{
+#CloceRE:hover{
+      background-color: #a7a7a7be;
+    cursor: pointer;
+}
+.mainBoxLogin {
     height: 45%;
     width: 100%;
     font-family: "Poppins", sans-serif;
     /* background-color: rgba(0, 0, 0, 0.308); */
 }
 
-.lg-s1 h2{
+.lg-s1 h2 {
     font-size: 1.5rem;
     font-weight: 500;
     color: #222222;
-    padding: 1.4rem   ;
+    padding: 1.4rem;
     padding-top: 1.7rem;
 }
 
-.liginForm{
+.liginForm {
     height: 100%;
     width: 100%;
-  
+
 }
-.input-login-box{
+
+.input-login-box {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.liginForm label{
+
+.liginForm label {
     position: absolute;
     left: 26rem;
     font-family: "Poppins", sans-serif;
@@ -112,16 +146,16 @@
     transition: all 0.1s ease;
 }
 
-.label2lg{
+.label2lg {
     position: absolute !important;
     left: 26rem !important;
-    top: 12.8rem ;
+    top: 12.8rem;
     font-size: 0.9rem !important;
     font-weight: 400 !important;
     color: #222222;
 }
 
-#email{
+#email {
     height: 3.3rem;
     padding: 1.7rem 0.8rem;
     padding-bottom: 0.3rem !important;
@@ -135,8 +169,12 @@
     color: #222222;
     border: 1px solid rgba(0, 0, 0, 0.315);
 }
+#email:focus{
 
-.button-login{
+    border: 2px solid rgb(0, 0, 0) !important;
+}
+
+.button-login {
     height: 4rem;
     width: 100%;
     display: flex;
@@ -145,7 +183,8 @@
     padding-top: 0.8rem;
     font-family: "Poppins", sans-serif;
 }
-.button-login button{
+
+.button-login button {
     height: 95%;
     width: 90%;
     border-radius: 0.5rem;
@@ -154,13 +193,15 @@
     font-size: 1.1rem;
     color: white;
     font-weight: 500;
-    background-color: crimson;
+        background: linear-gradient(90deg, #e91e63, #dc143c);
     cursor: pointer;
     font-family: "Poppins", sans-serif;
+          transition: all 0.2s ease;
+
 }
 
 
-.moreOotion{
+.moreOotion {
     height: 1rem;
     width: 100%;
     display: flex;
@@ -170,7 +211,7 @@
     /* background-color: aqua; */
 }
 
-.moreline1{
+.moreline1 {
     height: 0.1rem;
     width: 44%;
     background-color: #2222224a;
@@ -185,26 +226,28 @@
     font-family: "Poppins", sans-serif;
 }
 
-.moreOpstionbox{
+.moreOpstionbox {
     height: 40%;
     width: 100%;
-    padding:1rem  2rem;
+    padding: 1rem 2rem;
     font-family: "Poppins", sans-serif;
     /* background-color: rgba(0, 255, 255, 0.555); */
 }
-.dfheera{
+
+.dfheera {
     height: 100% !important;
     width: 100% !important;
     margin: 0rem;
 
 }
-.googleLonginBox{
+
+.googleLonginBox {
     height: 3.1rem;
     width: 100%;
     /* background-color: cadetblue; */
 }
 
-.googleLonginBox button{
+.googleLonginBox button {
     height: 100%;
     width: 100%;
     display: flex;
@@ -216,7 +259,7 @@
     background-color: rgb(255, 255, 255);
 }
 
-.imgaBoxLogine{
+.imgaBoxLogine {
     height: 2rem;
     width: 2rem;
     display: flex;
@@ -225,11 +268,13 @@
     margin-left: 1rem;
     /* background-color: chartreuse; */
 }
-.imgaBoxLogine img{
+
+.imgaBoxLogine img {
     height: 100%;
     width: 100%;
 }
-.loginName-1{
+
+.loginName-1 {
     height: 100%;
     width: 91%;
     display: flex;
@@ -239,7 +284,7 @@
     /* background-color: darkblue; */
 }
 
-.loginName-1 p{
+.loginName-1 p {
     font-size: 0.9rem;
     font-weight: 600;
     color: #000000bb;
@@ -247,7 +292,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-.ErrorParaLogin{
+.ErrorParaLogin {
     padding: 0rem 2rem;
     visibility: hidden;
     font-size: 0.9rem;
@@ -255,7 +300,7 @@
     /* visibility: visible; */
 }
 
-.dot1{
+.dot1 {
     width: 7px;
     height: 7px;
     border-radius: 50%;
@@ -268,69 +313,88 @@
 
 .dot1:nth-child(2) {
     animation-delay: 0.4s;
-  }
-  
-  .dot1:nth-child(3) {
-    animation-delay: 0.8s;
-  }
-  
-  .dot1:nth-child(4) {
-    animation-delay: 0.12s;
-  }
+}
 
-.disNone11{
+.dot1:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+.dot1:nth-child(4) {
+    animation-delay: 0.12s;
+}
+
+.disNone11 {
     display: none !important;
 }
+ /* Animation class */
+    .button-click-effect {
+      animation: clickPress 0.2s ease;
+    }
+
+    @keyframes clickPress {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
 
 
 /* UserCreate  */
 
-.userNameInfoBox{
+.userNameInfoBox {
     /* height: 42%; */
     width: 100%;
-     padding: 0rem 1.3rem;
+    padding: 0rem 1.3rem;
     /* background-color: aqua; */
 }
 
-.fronLableser{
+.fronLableser {
     margin-top: 0.5rem;
     height: 3rem;
     width: 100%;
     padding: 0.5rem 0rem;
     /* background-color: burlywood; */
 }
-.fronLableser h3{
+
+.fronLableser h3 {
     font-size: 1rem;
     font-weight: 500;
     color: #222222;
 }
 
-.UserBox1{
+.UserBox1 {
     height: 60%;
     width: 100%;
     /* background-color: rgba(128, 255, 0, 0.616); */
 }
 
-.nameBox22{
+.nameBox22 {
     height: 92%;
     width: 100%;
-   
+
     /* background-color: darkgoldenrod; */
 }
-.br1User{
-    border:  1px solid #222222;
-     border-top-left-radius: 0.5rem;
-     border-top-right-radius: 0.5rem;
-}
-.bttdf{
-   
-     border-bottom-left-radius: 0.5rem;
-     border-bottom-right-radius: 0.5rem;
-    border:  1px solid #222222;
-     border-top: none;
+
+.br1User {
+    border: 1px solid #222222;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
 }
 
-.TextBox1 input{
+.bttdf {
+
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border: 1px solid #222222;
+    border-top: none;
+}
+
+.TextBox1 input {
     width: 97%;
     height: 1.8rem;
     border: none;
@@ -343,10 +407,12 @@
     padding-left: 0.5rem;
     background-color: transparent;
 }
-.labalBox233{
+
+.labalBox233 {
     height: 0.5rem;
 }
-.labalBox233 label{
+
+.labalBox233 label {
     position: relative;
     top: 0.9rem;
     font-size: 1.1rem;
@@ -356,63 +422,64 @@
     transition: all 0.3s ease;
 }
 
-.labalTop{
+.labalTop {
     top: 0.2rem !important;
     font-size: 0.8rem !important;
     font-weight: 400 !important;
 }
 
-.ErrorMsg233{
+.ErrorMsg233 {
     font-size: 0.7rem;
     color: red;
-   padding-top: 0.3rem;
+    padding-top: 0.3rem;
     display: none;
 }
 
-.InfoMsg1{
+.InfoMsg1 {
     font-size: 0.7rem;
     font-weight: 400;
     color: #666666;
     margin-top: 0.5rem;
 }
-.hadngBox12ee33{
+
+.hadngBox12ee33 {
     margin-top: 1rem;
 }
 
-.BOX2233{
+.BOX2233 {
     border: 1px solid #222222;
-     border-radius: 0.5rem;
+    border-radius: 0.5rem;
 }
 
-.scrollBar1{
+.scrollBar1 {
     height: 82%;
     overflow: overlay;
 }
 
-.aboutFrom{
+.aboutFrom {
     /* height: 6rem; */
     width: 100%;
     /* background-color: aqua; */
 }
 
-.aboutFromPara{
+.aboutFromPara {
     margin-top: 1.8rem;
     font-size: 0.8rem;
     font-weight: 400;
 }
 
-.aboutFromPara span{
+.aboutFromPara span {
     font-weight: 600;
     color: #000000;
 }
 
-.aboutFromPara a{
+.aboutFromPara a {
     color: blue;
     text-decoration: underline;
     font-weight: 500;
 }
 
-.bntUserFr{
+.bntUserFr {
     font-size: 1.2rem;
     background: linear-gradient(90deg, #e91e63, #dc143c);
     color: white;
@@ -426,17 +493,19 @@
     width: 100%;
     cursor: pointer;
 }
-.airbnbnInfo{
+
+.airbnbnInfo {
     padding-top: 0.8rem;
     border-top: 1px solid #00000026;
 }
-.airbnbnInfo p{
+
+.airbnbnInfo p {
     font-size: 0.755rem;
     font-weight: 400;
     line-height: 1rem;
 }
 
-.BoxCheck11{
+.BoxCheck11 {
     height: 4rem;
     width: 100%;
     display: flex;
@@ -444,35 +513,260 @@
 }
 
 .checkbox-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-    }
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
 
-    .checkbox-container input[type="checkbox"] {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 28px;
-      height: 28px;
-      border-radius: 4px;
-      border: 1px solid #959393;
-      background-color: #fff;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.2s, border-color 0.2s;
-    }
+.checkbox-container input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    border: 1px solid #959393;
+    background-color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, border-color 0.2s;
+}
 
-    .checkbox-container input[type="checkbox"]:checked {
-      background-color: #000;
-      border-color: #000;
-    }
+.checkbox-container input[type="checkbox"]:checked {
+    background-color: #000;
+    border-color: #000;
+}
 
-    .checkbox-container input[type="checkbox"]:checked::after {
-      content: '✓';
-      color: #fff;
-      font-size: 14px;
-      font-weight: bold;
+.checkbox-container input[type="checkbox"]:checked::after {
+    content: '✓';
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.otpPop1 {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.otpBoxss {
+    font-family: "Poppins", sans-serif;
+    height: 48%;
+    width: 42%;
+    background-color: white;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.colceBnt {
+    left: 25.8rem !important;
+}
+
+.Emailhading {
+
+    height: 6rem;
+    width: 100%;
+    /* background-color: aqua; */
+    padding: 1rem;
+}
+
+.Emailhading h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #222222;
+}
+
+.Emailhading p {
+    font-size: 1rem;
+    padding: 0.2rem 0rem;
+    font-weight: 400;
+    color: #222222;
+}
+
+.otp-container {
+    display: flex;
+    width: 100%;
+    /* background-color: aqua; */
+    gap: 10px;
+    align-items: center;
+    padding: 0rem 1rem;
+}
+
+.otp-input {
+    width: 5vw;
+    height: 5vw;
+    font-size: 24px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 0.6rem;
+    transition: border 0.2s;
+}
+
+.otp-input:focus {
+    border: 2px solid #000000;
+    outline: none;
+}
+
+.otp-input.error {
+    border: 2px solid red !important;
+}
+
+.otp-input.success {
+    border: 2px solid green !important;
+}
+
+.otpErrormsg {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    color: red;
+    display: none;
+
+}
+
+.aboutErree{
+     padding: 0.9rem 1rem;
+    font-size: 0.9rem;
+    color: #222222;
+}
+.aboutErree a{
+
+    font-size: 0.9rem;
+    text-decoration: underline;
+    font-weight: 600;
+    color: #222222;
+}
+
+
+.inputBoxUser2{
+    border-radius: 0.5rem !important;
+    border: 2px solid black !important;
+}
+
+
+.passInput{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.passStrMsg{
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+    display: none;
+}
+.passInput span{
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #222222;
+    text-decoration: underline;
+    margin-right: 0.8rem;
+    cursor: pointer;
+}
+
+
+ .requirements {
+      margin-top: 10px;
+      display: none;
+      padding: 0;
+      list-style: none;
     }
+    .requirements li {
+         color: #6a6a6a;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    
+    }
+    .requirements li.valid {
+      color: green !important;
+    }
+    .requirements li .icon {
+      font-weight: 100;
+      width: 18px;
+    }
+    .strength {
+      font-weight: 500;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+    .strength.weak { color: red; }
+    .strength.good { color: orange; }
+    .strength.strong { color: green; }
+    .input-error {
+      border-color: red !important;
+    }
+        
+.redColorErr{
+    color: red !important;
+}
+
+.OtpLoding22ww{
+    height: 0.1rem;
+    width: 100%;
+    position: relative;
+
+}
+
+.kiope{
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.ljhy{
+    color: #2222224f !important;
+    border-color: #2222224f !important;
+}
+
+
+.smallHg{
+    height: 55% !important;
+    width: 42% !important;
+}
+
+.from2st{
+    padding: 2rem 1.6rem;
+    padding-bottom: 0px ;
+}
+
+.rtyed{
+    height: 3.9rem ;
+    /* background-color: aqua; */
+}
+
+.forget{
+    /* background-color: aqua;   */
+    line-height: 2.5rem;
+}
+
+.forget a{
+    text-decoration: underline;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #222222da;
+}
+.forget a:hover{
+    color: #000000;
+}
+
+.ErrMsgOP{
+    color: red;
+    font-size: 0.8rem;
+    font-weight: 400;
+    display: none;
+}

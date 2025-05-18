@@ -1,9 +1,15 @@
-<div class="loginhHading">
-    <button><i class="ri-arrow-left-line"></i></button>
-    <h3>Finish signing up</h3>
+
+<div class="loginhHading" >
+   <div class="bntyuopg">
+      <button><i class="ri-arrow-left-line"></i></button>
+   </div>
+    <div class="iueraf">
+            <h3>Finish signing up</h3>
+    </div>
 </div>
-<form action="" class="scrollBar1">
- <div class="userNameInfoBox">
+
+<form action="/singup" method="post" class="scrollBar1">
+ <div class="userNameInfoBox"  page="UsercreateFrom">
       <div class="fronLableser">
         <h3>Legal name</h3>
       </div>
@@ -14,7 +20,7 @@
           <div class="labalBox233">
            <label class="labelUser" for="user">First name on ID</label>
          </div>
-         <input class="inputBoxUser" id="user" type="text" >
+         <input class="inputBoxUser" id="user" type="text" name="username" >
          </div>
          
            <div class="fornBox22s">
@@ -22,10 +28,10 @@
           <div class="labalBox233">
            <label class="labelUser" for="last">Last name on ID</label>
          </div>
-         <input class="inputBoxUser" id="last" type="text" >
+         <input class="inputBoxUser" id="last" type="text" name="userLastName" >
          </div>
            </div>
-         <p class="ErrorMsg233">Fist name is requierd</p>
+         <p class="ErrorMsg233"><i class="ri-error-warning-fill"></i>  Fist name is requierd</p>
          
         </div>
           
@@ -47,10 +53,10 @@
           <div class="labalBox233">
            <label class="labelUser" for="date">Date of birth</label>
          </div>
-         <input class="inputBoxUser" id="date" type="url" data="date">
+         <input class="inputBoxUser" id="date"  type="url" data="date" name="birthDate">
          
         </div>
-        <p class="ErrorMsg233">Fist name is requierd</p>
+        <p class="ErrorMsg233" id="dobError">Date of birth is requierd</p>
          </div>
         
        <div class=""> <p class="InfoMsg1">To sign up, you need to be at least 18. Your birthday won’t be shared with other people who use Airbnb.</p></div>
@@ -66,12 +72,12 @@
         <div class="fornBox22s">
              <div class="TextBox1 BOX2233">
           <div class="labalBox233">
-           <label class="labelUser" for="em">Email</label>
+           <label class="labelUser labalTop" for="em">Email</label>
          </div>
-         <input class="inputBoxUser" id="em" type="email" >
+         <input class="inputBoxUser" id="em" type="email" value="<%= email %>" name="email" >
          
         </div>
-         <p class="ErrorMsg233">Fist name is requierd</p>
+         <p class="ErrorMsg233"><i class="ri-error-warning-fill"></i> Fist name is requierd</p>
         </div>
        
        <div class=""> <p class="InfoMsg1">We'll email you trip confirmations and receipts</p></div>
@@ -89,10 +95,22 @@
           <div class="labalBox233">
            <label class="labelUser" for="pass">Password</label>
          </div>
-         <input class="inputBoxUser" id="pass" type="password" >
+        <div class="passInput">
+           <input id="password"  class="inputBoxUser" id="pass" type="password" name="password">
+           <span id="Show">Show</span>
+        </div>
+
          
         </div>
-        <p class="ErrorMsg233">Fist name is requierd</p>
+        <div class="ErrorMsg23">
+          <div class="passStrMsg">Password strength: <span id="strengthText" class="strength">weak</span></div>
+          <ul id="reqList" class="requirements">
+      <li id="charLen"><span class="icon"><i class="ri-error-warning-fill"></i></span>Minimum 8 characters</li>
+      <li id="upper"><span class="icon"><i class="ri-error-warning-fill"></i></span>At least one uppercase (A-Z)</li>
+      <li id="lower"><span class="icon"><i class="ri-error-warning-fill"></i></span>At least one lowercase (a-z)</li>
+      <li id="digitOrSymbol"><span class="icon"><i class="ri-error-warning-fill"></i></span>At least one number or symbol</li>
+    </ul>
+</div>
        </div>
         
        
@@ -103,7 +121,17 @@
         <a href="">Payments Terms of Service,</a>and <a href="">Nondiscrimination Policy. </a> and acknowledge the <a href="">Privacy Policy</a></p>
       </div>
 
-      <button class="bntUserFr">Agree and continue</button>
+      <button class="bntUserFr">
+        <div class="yuerhye1 disNone11">
+                    <div class="dot-loader ">
+                     <div class="dot1"></div>
+                     <div class="dot1"></div>
+                     <div class="dot1"></div>
+                     <div class="dot1"></div>
+                   </div>
+                 
+                 </div>
+                 Agree and continue</button>
       <div class="airbnbnInfo">
         <p>Airbnb will send you members-only deals, inspiration, marketing emails, and push notifications. You can opt out of receiving these at any time in your account settings or directly from the marketing notification.</p>
       </div>
@@ -114,3 +142,18 @@
   </label>
       </div>
 </form>
+
+     <div class="otpPop1">
+              <div class="otpBoxss">
+                 <div class="yuerhye1">
+               <div class="dot-loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+            
+            </div>
+              </div>
+     </div>
+
