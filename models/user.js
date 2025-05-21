@@ -1,25 +1,29 @@
-const { required } = require("joi");
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 const passportLocalMongoose = require("passport-local-mongoose");
 
-const userSchema = new Schema({
-    email : {
-        type : String,
-        required : true
+const userSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        required: true,
+        unique: true
     },
-    userLastName : {
-        type : String,
-        required : true
+    username : {
+         type: String,
+        required: true
     },
-    birthDate : {
-        type : Date,
-        required : true
+    userLastName: {
+        type: String,
+        required: true
     },
+    birthDate: {
+        type: Date,
+        required: true
+    }
+});
 
-})
-
-userSchema.plugin(passportLocalMongoose);
-
+// Tell passport to use "email" instead of default "username"
+userSchema.plugin(passportLocalMongoose, {
+    usernameField: "email"
+});
 
 module.exports = mongoose.model("User", userSchema);

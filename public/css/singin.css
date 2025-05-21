@@ -770,3 +770,47 @@ width: 0rem;
     font-weight: 400;
     display: none;
 }
+ 
+.errDiv{
+    height: 5rem;
+    width: 100%;
+    /* background-color: aqua; */
+    margin-bottom: 0.8rem;
+    border: 1px solid #22222252;
+    border-radius: 0.6rem;
+    display: none;
+}
+
+.errrImagBox{
+    height: 5rem;
+    width: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.errrImagBox img{
+    height: 80%;
+}
+.passErrMsgBox{
+    height: 100%;
+    width: 90%;
+    /* background-color: #e91e63; */
+    align-content: center;
+}
+
+#errorqw1{
+    font-size: 1rem;
+    font-weight: 500;
+    color:#000000;
+}
+#errorqw2{
+    font-size: 0.9rem;
+    font-weight: 400;
+    color:#6a6a6a;
+}
+
+.errdivhegit{
+    height: 74% !important;
+   
+
+}

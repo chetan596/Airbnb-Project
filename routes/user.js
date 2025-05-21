@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/user.js");
 const passport = require("passport");
 const nodemailer = require('nodemailer');
+const bcrypt = require('bcrypt');
 
 // Generate OTP
 function generateOTP() {
@@ -124,5 +125,21 @@ router.post("/singup", async (req, res) => {
         res.send("Signup failed.");
     }
 });
+
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) return res.status(500).json({ success: false, message: "Auth error" });
+    if (!user) return res.status(400).json({ success: false, message: "Invalid credentials" });
+
+    req.login(user, (err) => {
+      if (err) return res.status(500).json({ success: false, message: "Login failed" });
+
+      // Instead of res.redirect here:
+      return res.json({ success: true, redirectTo: "/" });
+    });
+  })(req, res, next);
+});
+
+
 
 module.exports = router;

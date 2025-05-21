@@ -22,9 +22,8 @@
     background-size: 300%;
     background-position: 100% 0;
     border-radius: inherit;
-    z-index: 10;
-
     animation: shimmer 1.5s infinite;
+    
 }
 
 @keyframes shimmer {

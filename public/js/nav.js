@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", () => {
     loginBox.classList.remove("boxShodo")
     singInBox.style.display = "none"
-
+    let singInBigBox11 = document.querySelector(".loginPopupBox");
+    singInBigBox11.classList.remove("smallHg")
 
   })
 
@@ -81,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             labal.style.color = "black"
             input.classList.remove("erro-border")
             errorMsg.style.visibility = "hidden"
-            console.log("----Bnt---%%&&")
+
             let bnt22 = document.querySelector(".LongBnt1")
 
             document.querySelector(".yuerhye1").classList.remove("disNone11")
@@ -135,50 +136,95 @@ document.addEventListener("DOMContentLoaded", () => {
               let singInBigBox11 = document.querySelector(".loginPopupBox");
               let pass2 = document.querySelector(".pass2")
               let labelUser = document.querySelector(".labelUser")
-              let from2st = document.querySelector(".from2st") 
-              let Show = document.querySelector("#Show") 
+              let from2st = document.querySelector(".from2st")
+              let Show = document.querySelector("#Show")
               let inbox12 = document.querySelector(".BOX2233")
               let ErrMsgOP = document.querySelector(".ErrMsgOP")
-             
-              if(opopop){
-               singInBigBox11.classList.add("smallHg")
-               pass2.addEventListener("focus",()=>{
-                inbox12.style.border = "2px solid black"
-                labelUser.classList.add("labalTop")
-                 ErrMsgOP.style.display = "none"
-               })
-               pass2.addEventListener("blur",()=>{
-                if(pass2.value.length == 0){
-labelUser.classList.remove("labalTop")
+              let ErrMsdiv2 = document.querySelector(".errDiv")
+              let loginBtn122 = document.querySelector(".bntfr23")
 
-                }
-                inbox12.style.border = "1px solid black"
-                
-               })
-               
+              if (opopop) {
+                singInBigBox11.classList.add("smallHg")
+                pass2.addEventListener("focus", () => {
+                  inbox12.style.border = "2px solid black"
+                  labelUser.classList.add("labalTop")
+                  ErrMsgOP.style.display = "none"
+                  singInBigBox11.classList.remove("errdivhegit")
+                  ErrMsdiv2.style.display = "none"
+                })
+                pass2.addEventListener("blur", () => {
+                  if (pass2.value.length == 0) {
+                    labelUser.classList.remove("labalTop")
+
+                  }
+                  inbox12.style.border = "1px solid black"
+
+                })
+
                 Show.addEventListener("click", () => {
-                  
-                pass2.type = pass2.type === "password" ? "text" : "password";
-                Show.innerText = Show.innerText === "Show" ? "Hide" : "Show";
-                console.log("----Show Box Click----",)
-              })
-               from2st.addEventListener("submit",(e)=>{
-                
 
-                if(pass2.value.length == "8"){
+                  pass2.type = pass2.type === "password" ? "text" : "password";
+                  Show.innerText = Show.innerText === "Show" ? "Hide" : "Show";
+
+                })
+                from2st.addEventListener("submit", (e) => {
+
+loginBtn122.classList.remove("button-click-effect"); // Reset
+                void loginBtn122.offsetWidth; // Reflow
+                loginBtn122.classList.add("button-click-effect"); // Add animation
+                  if (pass2.value.length >= 8) {
+                    loginBtn122.classList.remove("button-click-effect"); // Reset
+                void loginBtn122.offsetWidth; // Reflow
+                loginBtn122.classList.add("button-click-effect"); // Add animation
+                   
+                       loginBtn122.style.background = "#d3d3d3d6";
+                  loginBtn122.disabled = true;
+                  loginBtn122.style.cursor = "not-allowed";
+                   document.querySelector(".yuerhye1").classList.remove("disNone11");
+                    
+
+                    fetch("/login", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ password: pass2.value, email: input.value })
+                    })
+                      .then(res => res.json())
+                      .then(data => {
+
+                        if (data.success) {
+                          // ✅ Manually redirect the browser
+                          window.location.href = data.redirectTo;
+                        } else {
+                          singInBigBox11.classList.add("errdivhegit")
+                          loginBtn122.style.background = `linear-gradient(90deg, #e91e63, #dc143c)`;
+                  loginBtn122.disabled = false;
+                  loginBtn122.style.cursor = "pointer";
+                   document.querySelector(".yuerhye1").classList.add("disNone11");
+
+                          ErrMsdiv2.style.display = "flex"
+                          console.error(data.message);
+                        }
+                      });
                     ErrMsgOP.style.display = "none"
-                }else{
-                  ErrMsgOP.style.display = "block"
-                 
-                }
-                e.preventDefault()
-                  console.log(pass2.value.length)
-               })
-              
-               console.log(singInBigBox11);
-               
-              }else{ singInBigBox11.classList.remove("smallHg")
-                 console.log("no!")
+                  } else {
+
+
+                    
+                    ErrMsgOP.style.display = "block"
+
+                  }
+                  e.preventDefault()
+
+
+
+                })
+
+
+
+
+              } else {
+                singInBigBox11.classList.remove("smallHg")
+
               }
               BackBtn.addEventListener("click", () => {
                 cloceBack()
@@ -223,7 +269,7 @@ labelUser.classList.remove("labalTop")
                       }
                     } else {
                       inputBoxs.style.borderColor = "#222222";
-                      console.log("----RRR----")
+
                     }
 
                   })
@@ -246,7 +292,7 @@ labelUser.classList.remove("labalTop")
                 if (allClass.length >= 5) {
                   document.querySelector(".yuerhye1").classList.remove("disNone11");
                   Loding.style.display = "f"
-                  console.log("UIOgvftcdres")
+
                   bnt.style.background = "#d3d3d3d6";
                   bnt.disabled = true;
                   bnt.style.cursor = "not-allowed";
@@ -271,8 +317,7 @@ labelUser.classList.remove("labalTop")
               const dobInput = document.getElementById('date');
               const errorDiv = document.getElementById('dobError');
               const passStrMsg = document.querySelector(".passStrMsg")
-              console.log(passStrMsg)
-              console.log(dobInput, errorDiv, "---Date---")
+
               dobInput.addEventListener('change', () => {
                 const today = new Date();
                 const selectedDate = new Date(dobInput.value);
@@ -377,13 +422,10 @@ labelUser.classList.remove("labalTop")
 
                 password.type = password.type === "password" ? "text" : "password";
                 passShow.innerText = passShow.innerText === "Show" ? "Hide" : "Show";
-                console.log("----Show Box Click----",)
+
               })
 
-              // function togglePassword() {
-              //   console.log("Show")
-              //  ;
-              // }
+
 
               function checkBlur() {
                 if (password.value.length === 0) {
@@ -428,13 +470,12 @@ labelUser.classList.remove("labalTop")
                 bnt.style.cursor = "pointer";
                 bnt.disabled = false;
                 bnt.style.background = `linear-gradient(90deg, #e91e63, #dc143c)`
-                console.log("Document----")
+
 
               });
               otpBox22.addEventListener("click", (e) => {
                 e.stopPropagation()
 
-                console.log("pfhahfdgafdahsgre945874qt")
               })
 
               function resetBorders() {
@@ -459,7 +500,7 @@ labelUser.classList.remove("labalTop")
                     body: JSON.stringify({ otp: enteredOTP, email: email })
                   }).then(res => res.json())
                     .then(data => {
-                      console.log(data)
+
                       inputs.forEach(input => {
                         input.classList.remove("ljhy");
 
@@ -470,7 +511,7 @@ labelUser.classList.remove("labalTop")
                         inputs.forEach(input => {
                           input.classList.remove('error');
                           input.classList.add('success');
-                          console.log("--From sudmit--", form);
+
                           form.submit();
                         });
 
@@ -524,7 +565,7 @@ labelUser.classList.remove("labalTop")
                   inputs.forEach((inp, i) => {
                     inp.value = digits[i] || '';
                   });
-                 
+
                 });
               });
 
