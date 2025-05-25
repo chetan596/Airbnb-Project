@@ -1,3 +1,6 @@
+const pathSegments = window.location.pathname.split('/');
+const listingId = pathSegments[2]; 
+
 function name(params) {
   document.querySelector(".s-line-2").style.width = "100%"
 
@@ -23,7 +26,7 @@ selBxs.forEach((card)=>{
     if(!selectedValue){
       console.log("ddddf")
     }else{
-      nextBnt.setAttribute("href" , "/listing/location")
+      nextBnt.setAttribute("href" ,`/listing/${listingId}/location`)
       nextBnt.classList.remove("desebal");
   console.log("reove");
   

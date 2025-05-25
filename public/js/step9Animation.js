@@ -1,3 +1,6 @@
+const pathSegments = window.location.pathname.split('/');
+const listingId = pathSegments[2]; 
+ 
 function name(params) {
   document.querySelector(".s-line2-1").style.width = "100%";
 
@@ -12,7 +15,7 @@ document.querySelector(".s-line-5").classList.add("opop")
 document.querySelector(".s-line-6").classList.add("opop")
 document.querySelector(".s-line-7").classList.add("opop")
 
-fetch("/listingData/amenitiesData")
+fetch(`/listingData/amenitiesData`)
   .then((response) => {
     return response.json(); // return this Promise
   })
@@ -75,7 +78,7 @@ fetch("/listingData/amenitiesData")
         } else {
           
               if(selectedValue.length != 0 || selectedValue2 != 0){
-          nextBnt2.setAttribute("href", "/listing/title")
+          nextBnt2.setAttribute("href", `/listing/${listingId}/title`)
           nextBnt2.classList.remove("desebal");
           
           console.log(selectedValue.length,  selectedValue2.length ,  'rtyh');
@@ -170,7 +173,7 @@ fetch("/listingData/amenitiesData")
           console.log(selectedValue2 , "2vlar--");
           
          if(selectedValue.length != 0 || selectedValue2 != 0){
-          nextBnt2.setAttribute("href", "/listing/title")
+          nextBnt2.setAttribute("href",  `/listing/${listingId}/title`)
           nextBnt2.classList.remove("desebal");
           
           console.log(selectedValue.length,  selectedValue2.length ,  'rtyh');

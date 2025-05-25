@@ -1,3 +1,5 @@
+const pathSegments = window.location.pathname.split('/');
+const listingId = pathSegments[2]; 
 function name(params) {
   document.querySelector(".s-line-6").style.width = "100%"
 
@@ -71,7 +73,7 @@ fetch("/listingData/occupancyData")
           console.log(selectedValue, "2vlar--");
           
           if(selectedValue.length != 0 ){
-           nextBnt.setAttribute("href", "/listing/stand-out")
+           nextBnt.setAttribute("href", `/listing/${listingId}/stand-out`)
            nextBnt.classList.remove("desebal");
            
            console.log(selectedValue.length,  'rtyh');

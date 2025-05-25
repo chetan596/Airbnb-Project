@@ -27,13 +27,21 @@ app.use(express.static(path.join(__dirname, "public/js")))
 app.use(session({
     secret: "sexwhitshikha",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true,
     }
 }))
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Use email instead of username
+passport.use(new LocalStrategy({ usernameField: "email" }, User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 // set value
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"))
@@ -51,14 +59,7 @@ app.use("/login", loginRouter)
 
 
 
-app.use(passport.initialize());
-app.use(passport.session());
 
-// Use email instead of username
-passport.use(new LocalStrategy({ usernameField: "email" }, User.authenticate()));
-
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 // Show route
 

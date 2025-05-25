@@ -8,7 +8,13 @@ router.get("/",warpAsync(async(req , res)=>{
     let listingData = await Listing.find({})
    res.render("./listing/listing.ejs",{listingData})
 }))
-
+router.get("/navBox",(req,res)=>{
+    if(req.user){
+        res.json({user : true})
+    }else{
+         res.json({user : false})
+    }
+})
 
 
 

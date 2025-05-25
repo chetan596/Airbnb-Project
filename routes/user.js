@@ -82,7 +82,7 @@ Team Airbnb`
             console.log('Error sending email:', error);
             return res.send("Failed to send email.");
         }
-        console.log('OTP sent to:', email);
+        
         res.render("singup/otp.ejs", { email });
     });
 });
@@ -91,8 +91,6 @@ Team Airbnb`
 router.post("/otp-verify", (req, res) => {
     let { otp, email } = req.body;
     email = email.toLowerCase();
-    console.log(req.body)
-    console.log(email , otp , "Set--")
     // res.json("---verify otp---")
 
     if (UserOtp[email] && UserOtp[email] === otp) {
@@ -106,7 +104,6 @@ router.post("/otp-verify", (req, res) => {
 
 // Final Signup (only if email verified)
 router.post("/singup", async (req, res) => {
-    console.log(req.body)
     let {username,userLastName,birthDate,email,password} = req.body;
     email = email.toLowerCase();
 
@@ -118,8 +115,12 @@ router.post("/singup", async (req, res) => {
         let newUser = new User({ username,userLastName, birthDate,email });
         let savedUser = await User.register(newUser, password);
         delete VerifiedEmails[email]; // Clean-up
-        console.log("User registered:", savedUser);
-        res.redirect("/");
+        req.login(savedUser, (err)=>{
+            if(err){
+                return next(err)
+            }
+            res.redirect("/");
+        })
     } catch (err) {
         console.log("Signup error:", err);
         res.send("Signup failed.");
@@ -140,6 +141,13 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-
+router.get("/logout",(req,res)=>{
+     req.logout((err)=>{
+            if(err){
+                return next(err)
+            }
+            res.redirect("/");
+        })
+})
 
 module.exports = router;

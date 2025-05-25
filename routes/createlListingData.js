@@ -3,27 +3,28 @@ const router = express.Router();
 const hotelData= require("../models/hotelcreateData.js")
 const Listing = require("../models/listing");
 const warpAsync = require("../util/warpAsync.js");
+const {isLoggedIn} = require("../loginMiddle.js")
 const joi = require("joi");
 
 let listingDataArr = {};
 
-router.get("/structureData",async (req,res)=>{
+router.get("/structureData",isLoggedIn,async (req,res)=>{
     let opo =await  hotelData.find({});
     res.json(opo)
 })
 
-router.post("/hotel-type-data",(req,res)=>{
+router.post("/hotel-type-data",isLoggedIn,(req,res)=>{
     let{hotelType}= req.body;
     listingDataArr.hotelType = hotelType;
 }) 
 
 
-router.post("/room-type",(req,res)=>{
+router.post("/room-type",isLoggedIn,(req,res)=>{
     let{roomType} = req.body
     listingDataArr.roomType = roomType;
 })
 
-router.post("/location",(req,res)=>{
+router.post("/location",isLoggedIn,(req,res)=>{
     let { country,flatHouse,neaebyLandmark,streetAddress,StateUnionTerritory,DistrictLocality,CityTown,pinCode} = req.body;
     listingDataArr.location = {};
     listingDataArr.location.country = country;
@@ -35,14 +36,15 @@ router.post("/location",(req,res)=>{
     listingDataArr.location.DistrictLocality = DistrictLocality;
     listingDataArr.location.CityTown = CityTown;
     listingDataArr.location.pinCode = pinCode;
-    res.redirect("/listing/floor-plan");
+
+    res.redirect(`/listing/${req.user._id}/floor-plan`);
     
 
     
 })
 
 
-router.post("/floor-planrt",(req,res)=>{
+router.post("/floor-planrt",isLoggedIn,(req,res)=>{
     let{ Guests,Bedrooms,Bed,Does} = req.body;
     listingDataArr.floorPlan = {};
     listingDataArr.floorPlan.Guests = Guests;
@@ -50,12 +52,12 @@ router.post("/floor-planrt",(req,res)=>{
     listingDataArr.floorPlan.Bed = Bed;
     listingDataArr.floorPlan.Does = Does;
 
-    res.redirect("/listing/bathrooms")
+    res.redirect(`/listing/${req.user._id}/bathrooms`)
 })
 
 
 
-router.post("/bathrooms",(req,res)=>{
+router.post("/bathrooms",isLoggedIn,(req,res)=>{
     let {PrivateAndAttached,Dedicated,Shared} = req.body;
     listingDataArr.bathrooms = {};
     listingDataArr.bathrooms.PrivateAndAttached = PrivateAndAttached;
@@ -65,16 +67,16 @@ router.post("/bathrooms",(req,res)=>{
     
 
 
-    res.redirect("/listing/occupancy")
+    res.redirect(`/listing/${req.user._id}/occupancy`)
 })
 
-router.get("/occupancyData",async(req ,res)=>{
+router.get("/occupancyData",isLoggedIn,async(req ,res)=>{
     let uiuiu = await hotelData.find({})
     res.json( uiuiu[0].occupancy)
 })
 
 
-router.post("/occupancy",(req ,res)=>{
+router.post("/occupancy",isLoggedIn,(req ,res)=>{
     let{occupancy} = req.body;
     listingDataArr.occupancy = occupancy;
 
@@ -82,12 +84,12 @@ router.post("/occupancy",(req ,res)=>{
 })
 
 
-router.get("/amenitiesData",async(req,res)=>{
+router.get("/amenitiesData",isLoggedIn,async(req,res)=>{
     let uiuiu = await hotelData.find({})
     res.json( uiuiu[0].amenities)
 })
 
-router.post("/occupancy2",(req ,res)=>{
+router.post("/occupancy2",isLoggedIn,(req ,res)=>{
     let {amenities,standoutAmenities} = req.body;
     listingDataArr.amenitiess = {};
     listingDataArr.amenitiess.amenities = amenities;
@@ -97,21 +99,21 @@ router.post("/occupancy2",(req ,res)=>{
 })
 
 
-router.post("/title",(req,res)=>{
+router.post("/title",isLoggedIn,(req,res)=>{
     let{title}= req.body;
     listingDataArr.title = title;
 
-    res.redirect("/listing/description")
+    res.redirect(`/listing/${req.user._id}/description`)
 })
 
-router.post("/description",(req,res)=>{
+router.post("/description",isLoggedIn,(req,res)=>{
     let{description}= req.body;
     listingDataArr.description = description;
 
-    res.redirect("/listing/describe")
+    res.redirect(`/listing/${req.user._id}/describe`)
 })
 
-router.post("/describe",(req,res)=>{
+router.post("/describe",isLoggedIn,(req,res)=>{
     let{describe}= req.body;
     listingDataArr.describe = describe;
 
@@ -120,7 +122,7 @@ router.post("/describe",(req,res)=>{
 
 
 
-router.post("/instant-book",(req,res)=>{
+router.post("/instant-book",isLoggedIn,(req,res)=>{
     let{instantBook}= req.body;
     listingDataArr.instantBook = instantBook;
 
@@ -128,22 +130,26 @@ router.post("/instant-book",(req,res)=>{
 })
 
 
-router.post("/visibility",(req,res)=>{
+router.post("/visibility",isLoggedIn,(req,res)=>{
     let{welcomeReservation}= req.body;
     listingDataArr.welcomeReservation = welcomeReservation;
 
-    res.redirect("/listing/price")
+    res.redirect(`/listing/${req.user._id}/price`)
 })
 
-router.post("/price",(req,res)=>{
+router.post("/price",isLoggedIn,(req,res)=>{
     let{price}= req.body;
     
     listingDataArr.price = Number(price.replace(/[^0-9]/g,''));
 
-    res.redirect("/listingData/listing-review")
+    res.redirect(`/listingData/${req.user._id}/listing-review`)
 })
 
-
+router.get("/:id/listing-review",isLoggedIn,(req,res)=>{
+    let {id} = req.params;
+    console.log(id)
+    res.render("create/step17.ejs",{listingDataArr,id})
+})
 let hotelTitles ;
 let roomTypes ; 
 let occupancys ;
@@ -151,11 +157,9 @@ let describes ;
 let instantBooks ;
 
 
-router.get("/listing-review",(req,res)=>{
-    res.render("create/step17.ejs",{listingDataArr})
-})
 
-router.post("/listing-reviewData",warpAsync(async(req,res)=>{
+
+router.post("/listing-reviewData",isLoggedIn,warpAsync(async(req,res)=>{
     let result =await  hotelData.find({})
       hotelTitles = result[0].hotelType.map(item => item.title);
        roomTypes = result[0].roomType;

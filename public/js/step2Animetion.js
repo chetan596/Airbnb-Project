@@ -1,3 +1,5 @@
+const pathSegments = window.location.pathname.split('/');
+const listingId = pathSegments[2]; // index 2 corresponds to the ID
 
 function name(params) {
   document.querySelector(".s-line-1").style.width = "100%";
@@ -57,7 +59,7 @@ selBxs.forEach((card)=>{
     if(!selectedValue){
       console.log("ddddf")
     }else{
-      nextBnt.setAttribute("href" , "/listing/privacy-type")
+      nextBnt.setAttribute("href" , `/listing/${listingId}/privacy-type`)
       nextBnt.classList.remove("desebal");
   console.log("reove");
   

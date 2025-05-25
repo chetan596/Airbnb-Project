@@ -1,4 +1,32 @@
+
 document.addEventListener("DOMContentLoaded", () => {
+ let userIs = document.querySelector(".navMainBox2")
+ let userNot = document.querySelector(".navMainBox23w")
+ let notificationIcon = document.querySelector(".notificationIcon")
+ 
+ 
+ fetch("/navBox")
+      .then(res => res.json())
+      .then(html => {
+        if(html.user){
+           userIs.style.display = "block"
+           notificationIcon.style.display = "block"
+          userNot.style.display = "none"
+           console.log(html.user)
+        }else{
+          userIs.style.display = "none"
+          userNot.style.display = "block"
+          console.log(html.user)
+        }
+       
+      })
+
+
+
+
+
+
+
   let loginBox = document.querySelector(".nav-loginBox");
   let singInBox = document.querySelector(".loginBox-nav");
   let loginBtn = document.querySelector(".Longi-122")
@@ -9,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.stopPropagation()
     loginBox.classList.add("boxShodo")
     singInBox.style.display = "block"
+    
 
   });
 

@@ -52,12 +52,11 @@ const listingSchema = new Schema({
         default: "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg",
         set: (v) => v === "" ? "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg" : v,
     },
-    reviews : [
-        {
-            type : Schema.Types.ObjectId,
-            ref : "Review"
+  
+    owner: {
+          type : Schema.Types.ObjectId,
+          ref : "user"
         }
-    ]
 })
 
 module.exports = mongoose.model("listing", listingSchema);

@@ -3,87 +3,126 @@ const router = express.Router();
 const hotelData= require("../models/hotelcreateData.js")
 const Listing = require("../models/listing");
 const warpAsync = require("../util/warpAsync.js");
+const {isLoggedIn} = require("../loginMiddle.js")
 
 
 router.get("/host/home",(req, res)=>{
-    res.render("create/create.ejs")
-
-})
-
-
-router.get("/become-a-host",(req,res)=>{
-    res.render("create/becomeAHost.ejs")
-})
-
-router.get("/about-your-plays",(req,res)=>{
-    res.render("create/step1.ejs")
-})
-
-router.get("/structure",(req,res)=>{
+    let userId ;
+    if(req.user){
+         
+         res.render("create/create.ejs",{userId :  req.user._id})
+    }else{
+      res.render("create/create.ejs",{userId : "55481584151"})
+    }
    
-    res.render("create/step2.ejs")
+
 })
 
-router.get("/privacy-type",async (req,res)=>{
+
+router.get("/:id/become-a-host",isLoggedIn,(req,res)=>{
+   let {id} = req.params;
+    
+    res.render("create/becomeAHost.ejs",{id})
+})
+
+router.get("/:id/about-your-plays",isLoggedIn,(req,res)=>{
+    let {id} = req.params;
+    console.log(id)
+    res.render("create/step1.ejs",{id} )
+})
+
+router.get("/:id/structure",isLoggedIn,(req,res)=>{
+    let {id} = req.params;
+    console.log(id)
+    res.render("create/step2.ejs",{id})
+})
+
+router.get("/:id/privacy-type",isLoggedIn,async (req,res)=>{
     let uiuiu = await hotelData.find({});
     let rrr = uiuiu[0].roomType;
-    res.render("create/step3.ejs", {rrr})
+     let {id} = req.params;
+    console.log(id)
+    res.render("create/step3.ejs", {rrr,id})
 })
 
-router.get("/location",(req,res)=>{
-    res.render("create/step4.ejs")
+router.get("/:id/location",isLoggedIn,(req,res)=>{
+     let {id} = req.params;
+    console.log(id)
+    res.render("create/step4.ejs",{id})
 })
 
-router.get("/floor-plan",(req,res)=>{
-    res.render("create/step5.ejs")
+router.get("/:id/floor-plan",isLoggedIn,(req,res)=>{
+      let {id} = req.params;
+    console.log(id)
+    res.render("create/step5.ejs",{id})
 })
 
-router.get("/bathrooms",(req,res)=>{
-    res.render("create/step6.ejs")
+router.get("/:id/bathrooms",isLoggedIn,(req,res)=>{
+    let {id} = req.params;
+    console.log(id)
+    res.render("create/step6.ejs",{id})
 })
 
-router.get("/occupancy",(req ,res)=>{
-    res.render("create/step7.ejs")
+router.get("/:id/occupancy",isLoggedIn,(req ,res)=>{
+    let {id} = req.params;
+    console.log(id)
+    res.render("create/step7.ejs",{id})
 })
 
-router.get("/stand-out",(req,res)=>{
-    res.render("create/step8.ejs")
+router.get("/:id/stand-out",isLoggedIn,(req,res)=>{
+    let {id} = req.params;
+    console.log(id)
+    res.render("create/step8.ejs",{id})
 })
 
-router.get("/amenities",(req,res)=>{
-    res.render("create/step9.ejs")
+router.get("/:id/amenities",isLoggedIn,(req,res)=>{
+     let {id} = req.params;
+    console.log(id)
+    res.render("create/step9.ejs",{id})
 })
 
-router.get("/title",(req,res)=>{
-    res.render("create/step10.ejs")
+router.get("/:id/title",isLoggedIn,(req,res)=>{
+     let {id} = req.params;
+    console.log(id)
+    res.render("create/step10.ejs",{id})
 })
 
-router.get("/description",(req,res)=>{
-    res.render("create/step11.ejs")
+router.get("/:id/description",isLoggedIn,(req,res)=>{
+     let {id} = req.params;
+    console.log(id)
+    res.render("create/step11.ejs",{id})
 })
 
-router.get("/describe",async(req,res)=>{
+router.get("/:id/describe",isLoggedIn,async(req,res)=>{
+     let {id} = req.params;
+    console.log(id)
     let uiuiu = await hotelData.find({})
     let oda =  uiuiu[0].describe;
-    res.render("create/step12.ejs",{oda})
+    res.render("create/step12.ejs",{oda,id})
 })
 
-router.get("/finish-setup",(req,res)=>{
-    res.render("create/step13.ejs")
+router.get("/:id/finish-setup",isLoggedIn,(req,res)=>{
+     let {id} = req.params;
+    console.log(id)
+    res.render("create/step13.ejs",{id})
 })
 
-router.get("/instant-book",(req,res)=>{
-    
-    res.render("create/step14.ejs")
+router.get("/:id/instant-book",isLoggedIn,(req,res)=>{
+     let {id} = req.params;
+    console.log(id)
+    res.render("create/step14.ejs",{id})
 })
 
-router.get("/visibility",(req,res)=>{
-    res.render("create/step15.ejs")
+router.get("/:id/visibility",isLoggedIn,(req,res)=>{
+     let {id} = req.params;
+    console.log(id)
+    res.render("create/step15.ejs",{id})
 })
 
-router.get("/price",(req,res)=>{
-    
-    res.render("create/step16.ejs")
+router.get("/:id/price",isLoggedIn,(req,res)=>{
+     let {id} = req.params;
+    console.log(id)
+    res.render("create/step16.ejs",{id})
 })
 
 

@@ -169,6 +169,29 @@ nav{
     width: 2.1rem;
     border-radius: 50%;
 }
+
+
+.notificationIcon{
+    display: none;
+height: 0rem;
+    width: 0rem;
+    position: relative;
+    top: -1.2rem;
+    right: 1rem;
+}
+.notiIcon{
+     font-family: "Rubik", sans-serif;
+    height: 1rem;
+    width: 1rem;
+    background-color: #FF385C;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: white;
+}
 /* filter */
 .main-1{
     position: fixed;
@@ -318,7 +341,7 @@ a{
 }
 
 .loginBox-nav{
-    height: 16rem;
+    /* height: 16rem; */
     width: 16rem;
     background-color: #ffffff;
     position: fixed;
@@ -349,72 +372,114 @@ a{
 }
 
 .log-in-box a{
+     font-family: "Poppins", sans-serif;
     padding: 0.8rem 0rem;
     padding-left: 0.8rem;
-    padding-right: 12.3rem;
+    width: 100%;
+    /* padding-right: 12.3rem; */
     font-size: 1rem;
     font-weight: 400;
     color: #000000;
+    /* background-color: cyan; */
 }
 
-.grtte2 a{
-    padding: 0.8rem 0rem !important;
-    padding-left: 0.8rem  !important;
-    padding-right: 11.8rem !important;
-    font-size: 0.9rem !important;
-    font-weight: 400 !important;
-    color: #222222 !important;
-}
-
-.log-in-box a:hover{
+.log-in-box:hover{
     background-color: #F7F7F7;
 }
 
 .singinBoxs2{
-    height: 9.4rem;
+    /* height: 9.4rem; */
     width: 100%;
     padding: 0.5rem 0rem;
-
+  border-bottom: 1px solid rgba(0, 0, 0, 0.144);
 }
 .vgh{
     height: 3rem;
     align-content: center;
 }
-.log-in-box3 a{
-    height: 3rem;
-    padding: 0.5rem 0rem;
-    padding-left: 0.8rem;
-    padding-right: 7.1rem;
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: #222222;
-}
-.log-in-box4 a{
-    height: 3rem;
-    padding: 0.5rem 0rem;
-    padding-left: 0.8rem;
-    padding-right: 6.5rem;
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: #222222;
-}
-.log-in-box5 a{
-    height: 3rem;
-    padding: 0.5rem 0rem;
-    padding-left: 0.8rem;
-    padding-right: 10rem;
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: #222222;
-}
 
-.vgh:hover{
-    background-color: #F7F7F7;
+.grtte2 a{
+    font-size: 0.9rem !important;
 }
+/* .vgh:hover{
+    background-color: #F7F7F7;
+} */
 
 
 .lopop{
     height: 100%;
     width: 100%;
-    background-color: aqua;
+    /* background-color: aqua; */
+}
+
+.navMainBox23w{
+    display: none;
+}
+.navMainBox2{
+    display: none;
+}
+
+.singinBoxsAfterLongi{
+     height: 11.5rem;
+    width: 100%;
+    padding: 0.5rem 0rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.144);
+}
+
+.moreDitle{
+     height: 2.5rem;
+    width: 100%;
+    display: flex;
+    
+    align-items: center;
+}
+.moreDitle a{
+     font-family: "Poppins", sans-serif;
+    height: 100%;
+    width: 100%;
+     display: flex;
+    /* justify-content: center; */
+    align-items: center;
+     font-size: 0.9rem;
+    font-weight: 500 !important;
+    color: #222222;
+    /* background-color: #FF385C; */
+}
+.notiffIcon{
+    padding-left: 30%;
+}
+.moreDitleIcon{
+    height: 100%;
+    width: 2rem;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aqua; */
+}
+
+.moreDitleIcon i{
+    font-size: 1.2rem;
+    font-weight: 100 !important;
+}
+
+.moreDitle a:hover{
+    color: #000000;
+      background-color: #F7F7F7;
+}
+
+.color6A a{
+    color: #222222;
+font-weight: 400 !important;
+}
+
+.color6t a{
+    padding-left: 0.8rem;
+}
+.color6ee{
+    height: 2.6rem !important;
+}
+
+.color6ee a{
+   padding-left: 1.5rem;
 }

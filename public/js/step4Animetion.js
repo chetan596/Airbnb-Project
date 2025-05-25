@@ -1,3 +1,6 @@
+const pathSegments = window.location.pathname.split('/');
+const listingId = pathSegments[2]; 
+
 function name(params) {
     document.querySelector(".s-line-3").style.width = "100%"
   
