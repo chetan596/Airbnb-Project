@@ -161,7 +161,17 @@
     /* background-color: aqua; */
     width: 45%;
 }
-
+.noReborrr{
+    font-size: 1rem;
+    font-weight: 400;
+    color: #222222;
+}
+.noReborrr i{
+     font-size: 0.6rem;
+    font-weight: 400;
+    color: #222222;
+    margin-right: 0.3rem;
+}
 .none{
     display: none;
     
@@ -261,7 +271,7 @@
 }
 
 .yeufhjhdas{
-    height: 13rem;
+    max-height: 30rem;
     width: 58%;
     /* background-color: aqua; */
     border-bottom: 1px solid #2222223d;
@@ -269,17 +279,27 @@
 
 .aboutthelace{
     margin-top: 2rem;
-    height: 9rem;
+    max-height: 20rem;
     width: 100%;
     /* background-color: burlywood; */
     overflow: hidden;
+}
+.aboutthelace h3{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #222222;
+    margin-bottom: 1.5rem;
 }
 .aboutthelace p{
       font-family: "Roboto", sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5rem;
+    max-height: 20rem;
+    overflow: hidden;
+    /* background-color: aqua; */
     color: #222222;
+    margin-bottom: 1rem;
 
 }
 .showfffafa{
@@ -287,6 +307,7 @@
     align-items: center;
     /* justify-content: space-between; */
     width: 8rem;
+     margin-bottom: 1rem;
 }
 .sghowmore{
     font-size: 1rem;
@@ -318,6 +339,7 @@
     /* background-color: aqua; */
 }
 .showHading-34{
+    
     font-size: 1.5rem;
     font-weight: 500;
     color: #222222;
@@ -447,4 +469,281 @@
     font-weight: 500;
     color:#6A6A6A;
 
+}
+
+.reviewBox{
+     font-family: "Poppins", sans-serif;
+    min-height: 5rem;
+    width: 100%;
+      border-bottom: 1px solid #DDDDDD;
+    /* background-color: aqua; */
+}
+
+
+
+.reviewHading{
+    margin: 3.5rem 0rem;
+    margin-bottom: 1.6rem !important;
+}
+
+.reviewHading h3{
+      font-family: "Roboto", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #222222;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.overallretingBox{
+    height: 10rem;
+    width: 100%;
+    /* padding-bottom: 1.6rem; */
+     border-bottom: 1px solid #DDDDDD;
+    /* background-color: rgb(39, 141, 26); */
+}
+.overallretingFlex{
+    height: 74%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+.retingSmallBox{
+    height: 100%;
+
+    width: 15%;
+    border-right: 1px solid #DDDDDD;
+    /* background-color: cadetblue; */
+}
+.retingSmallBox h5{
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #222222;
+    margin-bottom: 0.6rem;
+}
+.retingSmallBox ol{
+    height: 75%;
+     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: brown; */
+    list-style: none;
+}
+.retingSmallBox li{
+    height: 1rem;
+    width: 100%;
+   
+    font-family: "Rubik", sans-serif;
+
+    /* background-color: rgb(255, 145, 0); */
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    color: #222222;
+}
+.retingLine{
+    height: 0.23rem;
+    width: 74%;
+    margin-left: 0.3rem;
+    background-color: #DDDDDD;
+    border-radius: 0.1rem;
+}
+
+.retingBlack{
+    height: 100%;
+    /* width: 70%; */
+    background-color: #222222;
+    border-radius: 0.1rem;
+}
+.laetnum{
+    margin-left: 0.44rem;
+}
+.Revbox2{
+    padding: 0rem 1.8rem;
+    width: 16% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.retingSmallBox h4{
+     font-size: 1.2rem;
+    font-weight: 500;
+    color: #222222;
+    margin-bottom: 0.6rem;
+}
+
+.reviewHading33{
+      margin-bottom: 0.1rem !important;
+}
+
+
+.reviewImage{
+    height: 2.5rem;
+    width: 100%;
+    /* background-color: aqua; */
+}
+
+.reviewImage img{
+    height: 100%;
+}
+
+.Refff33{
+    border: none  !important;
+}
+
+
+
+.reviewsList{
+    /* height: 20rem; */
+    width: 100%;
+    margin-top: 2.5rem;
+    /* background-color: aqua; */
+}
+
+
+.reviewsListBox{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2 , 1fr);
+    grid-template-rows: auto;
+    column-gap: 2rem;
+}
+
+.userReviewBox{
+    height: 100%;
+    width: 100%;
+    margin-bottom: 2.7rem;
+    /* background-color: rgb(47, 47, 75); */
+}
+
+
+.userPoflie{
+    height: 3.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* background-color: burlywood; */
+}
+
+.userreviewImg{
+    height: 100%;
+    width: 3.5rem;
+    border-radius: 50%;
+
+    /* background-color: aqua; */
+}
+.userreviewImg img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+     border-radius: 50%;
+}
+.revuwUserName{
+    height: 100%;
+    width: 50%;
+    align-content: center;
+    /* background-color: chocolate; */
+}
+
+
+.revuwUserName h6{
+    font-size: 1rem;
+    font-weight: 500;
+    color: #222222;
+    
+}
+.revuwUserName p{
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #222222;
+
+}
+
+.userReting{
+    height: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: end;
+    margin-bottom: 0.5rem;
+    /* background-color: rgba(118, 139, 0, 0.651); */
+}
+
+.retingStar i{
+    font-size: 0.8rem;
+    
+}
+
+.userReting p{
+     font-size: 1rem;
+    font-weight: 500;
+    color: #222222;
+    padding-left: 0.5rem;
+}
+
+.userreviewMsg{
+  max-height: 5rem;
+  overflow: hidden;
+    width: 100%;
+    margin-bottom: 0.7rem;
+    /* background-color: rgba(46, 155, 155, 0.774); */
+}
+
+.userreviewMsg p{
+         font-family: "Rubik", sans-serif;
+     max-height: 5rem;
+   font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: #222222;
+    overflow: hidden;
+}
+
+.seeMoreTage a{
+    text-decoration: underline;
+     font-size: 1.1rem;
+    font-weight: 500;
+
+    color: #222222;
+}
+
+.seeMoreTage a:hover{
+     color: #000000;
+}
+
+
+.moreShowIn{
+  padding: 0.9rem 1.8rem;
+    /* display: inline-block; */
+    background-color: #F2F2F2;
+    border-radius: 0.9rem;
+    font-size: 1rem;
+    color: #222222;
+    display: none;
+    font-weight: 600;
+    transition: padding 0.3s ease;
+}
+
+.moreShowIn:hover{
+    cursor: pointer;
+      background-color: #EBEBEB;
+}
+
+.noreviewPara{
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #222222;
+    /* display: none; */
+}
+
+
+.mapMainBoxs{
+    height: 20rem;
+    width: 100%;
+    /* background-color: rgba(0, 255, 255, 0.507); */
 }

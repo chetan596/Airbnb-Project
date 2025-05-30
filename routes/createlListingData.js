@@ -1,232 +1,56 @@
 const express = require("express");
 const router = express.Router();
-const hotelData= require("../models/hotelcreateData.js")
-const Listing = require("../models/listing");
 const warpAsync = require("../util/warpAsync.js");
-const {isLoggedIn} = require("../loginMiddle.js")
-const joi = require("joi");
+const { isLoggedIn } = require("../loginMiddle.js");
+const createDatacontroller = require("../controllers/createListingData.js")
+// const listingDataStore = {}; // Stores data per user
 
-let listingDataArr = {};
+// function getUserData(userId) {
+//     if (!listingDataStore[userId]) {
+//         listingDataStore[userId] = {};
+//     }
+//     return listingDataStore[userId];
+// }
 
-router.get("/structureData",isLoggedIn,async (req,res)=>{
-    let opo =await  hotelData.find({});
-    res.json(opo)
-})
+// ========== Structure Data ==========
+router.get("/structureData", isLoggedIn, createDatacontroller.structureData);
 
-router.post("/hotel-type-data",isLoggedIn,(req,res)=>{
-    let{hotelType}= req.body;
-    listingDataArr.hotelType = hotelType;
-}) 
+// ========== Step-by-step Data Entry ==========
+router.post("/hotel-type-data", isLoggedIn, createDatacontroller.hotelTypeData);
 
+router.post("/room-type", isLoggedIn, createDatacontroller.roomType);
 
-router.post("/room-type",isLoggedIn,(req,res)=>{
-    let{roomType} = req.body
-    listingDataArr.roomType = roomType;
-})
+router.post("/location", isLoggedIn, createDatacontroller.location);
 
-router.post("/location",isLoggedIn,(req,res)=>{
-    let { country,flatHouse,neaebyLandmark,streetAddress,StateUnionTerritory,DistrictLocality,CityTown,pinCode} = req.body;
-    listingDataArr.location = {};
-    listingDataArr.location.country = country;
-    listingDataArr.location.flatHouse = flatHouse;
-    listingDataArr.location.neaebyLandmark = neaebyLandmark;
-    listingDataArr.location.streetAddress = streetAddress;
-    listingDataArr.location.StateUnionTerritory = StateUnionTerritory;
-    listingDataArr.location.DistrictLocality = DistrictLocality;
-    listingDataArr.location.DistrictLocality = DistrictLocality;
-    listingDataArr.location.CityTown = CityTown;
-    listingDataArr.location.pinCode = pinCode;
+router.post("/floor-planrt", isLoggedIn, createDatacontroller.floorPlanrt);
 
-    res.redirect(`/listing/${req.user._id}/floor-plan`);
-    
+router.post("/bathrooms", isLoggedIn, createDatacontroller.bathrooms);
 
-    
-})
+// ========== Occupancy & Amenities ==========
+router.get("/occupancyData", isLoggedIn, createDatacontroller.occupancyData);
 
+router.post("/occupancy", isLoggedIn, createDatacontroller.occupancy);
 
-router.post("/floor-planrt",isLoggedIn,(req,res)=>{
-    let{ Guests,Bedrooms,Bed,Does} = req.body;
-    listingDataArr.floorPlan = {};
-    listingDataArr.floorPlan.Guests = Guests;
-    listingDataArr.floorPlan.Bedrooms = Bedrooms;
-    listingDataArr.floorPlan.Bed = Bed;
-    listingDataArr.floorPlan.Does = Does;
+router.get("/amenitiesData", isLoggedIn, createDatacontroller.amenitiesData);
 
-    res.redirect(`/listing/${req.user._id}/bathrooms`)
-})
+router.post("/occupancy2", isLoggedIn, createDatacontroller.occupancy2);
 
+// ========== Final Details ==========
+router.post("/title", isLoggedIn, createDatacontroller.title);
 
+router.post("/description", isLoggedIn, createDatacontroller.description);
 
-router.post("/bathrooms",isLoggedIn,(req,res)=>{
-    let {PrivateAndAttached,Dedicated,Shared} = req.body;
-    listingDataArr.bathrooms = {};
-    listingDataArr.bathrooms.PrivateAndAttached = PrivateAndAttached;
-    listingDataArr.bathrooms.Dedicated = Dedicated;
-    listingDataArr.bathrooms.Shared = Shared;
+router.post("/describe", isLoggedIn, createDatacontroller.describe);
 
-    
+router.post("/instant-book", isLoggedIn, createDatacontroller.instantBook);
 
+router.post("/visibility", isLoggedIn, createDatacontroller.visibility);
 
-    res.redirect(`/listing/${req.user._id}/occupancy`)
-})
+router.post("/price", isLoggedIn, createDatacontroller.price);
 
-router.get("/occupancyData",isLoggedIn,async(req ,res)=>{
-    let uiuiu = await hotelData.find({})
-    res.json( uiuiu[0].occupancy)
-})
+router.get("/:id/listing-review", isLoggedIn, createDatacontroller.listingReview);
 
-
-router.post("/occupancy",isLoggedIn,(req ,res)=>{
-    let{occupancy} = req.body;
-    listingDataArr.occupancy = occupancy;
-
-    // res.redirect("/fgrt")
-})
-
-
-router.get("/amenitiesData",isLoggedIn,async(req,res)=>{
-    let uiuiu = await hotelData.find({})
-    res.json( uiuiu[0].amenities)
-})
-
-router.post("/occupancy2",isLoggedIn,(req ,res)=>{
-    let {amenities,standoutAmenities} = req.body;
-    listingDataArr.amenitiess = {};
-    listingDataArr.amenitiess.amenities = amenities;
-    listingDataArr.amenitiess.standoutAmenities = standoutAmenities;
-
-    // res.redirect("/fgrt")
-})
-
-
-router.post("/title",isLoggedIn,(req,res)=>{
-    let{title}= req.body;
-    listingDataArr.title = title;
-
-    res.redirect(`/listing/${req.user._id}/description`)
-})
-
-router.post("/description",isLoggedIn,(req,res)=>{
-    let{description}= req.body;
-    listingDataArr.description = description;
-
-    res.redirect(`/listing/${req.user._id}/describe`)
-})
-
-router.post("/describe",isLoggedIn,(req,res)=>{
-    let{describe}= req.body;
-    listingDataArr.describe = describe;
-
-    res.redirect("/finish-setup")
-})
-
-
-
-router.post("/instant-book",isLoggedIn,(req,res)=>{
-    let{instantBook}= req.body;
-    listingDataArr.instantBook = instantBook;
-
-    
-})
-
-
-router.post("/visibility",isLoggedIn,(req,res)=>{
-    let{welcomeReservation}= req.body;
-    listingDataArr.welcomeReservation = welcomeReservation;
-
-    res.redirect(`/listing/${req.user._id}/price`)
-})
-
-router.post("/price",isLoggedIn,(req,res)=>{
-    let{price}= req.body;
-    
-    listingDataArr.price = Number(price.replace(/[^0-9]/g,''));
-
-    res.redirect(`/listingData/${req.user._id}/listing-review`)
-})
-
-router.get("/:id/listing-review",isLoggedIn,(req,res)=>{
-    let {id} = req.params;
-    console.log(id)
-    res.render("create/step17.ejs",{listingDataArr,id})
-})
-let hotelTitles ;
-let roomTypes ; 
-let occupancys ;
-let describes ;
-let instantBooks ;
-
-
-
-
-router.post("/listing-reviewData",isLoggedIn,warpAsync(async(req,res)=>{
-    let result =await  hotelData.find({})
-      hotelTitles = result[0].hotelType.map(item => item.title);
-       roomTypes = result[0].roomType;
-       occupancys= result[0].occupancy.map(item => item.title)
-       occupancys= result[0].occupancy.map(item => item.title)
-       amenities1 = result[0].amenities[0].map(item => item.title)
-       amenities2 = result[0].amenities[1].map(item => item.title)
-       describes = result[0].describe.map(item => item.title)
-       instantBooks = result[0].instantBook;
- 
- 
-     const HotelDataValid = joi.object({
-             hotelType : joi.string().valid(...hotelTitles).required().messages({
-                 "string.empty" : "ghghghjgj",
-                 "any.required" : "this is required"
-             }),
-             roomType : joi.string().valid(...roomTypes).required(),
-             location : joi.object().required(),
-             floorPlan : joi.object().required(),
-             bathrooms : joi.object().required(),
-             occupancy : joi.array().items(joi.string().valid(...occupancys)).required(),
-             amenitiess : joi.object().required(),
-             title : joi.string().required(),
-             description : joi.string().required(),
-             describe : joi.array().items(joi.string().valid(...describes)).required(),
-             instantBook : joi.string().valid(...instantBooks).required(),
-             welcomeReservation : joi.string().valid("yes","no").required(),
-             price : joi.number().required().min(0)
-     
-        
-     })
-     // let rul = HotelDataValid.validate();
-     const { error, value } = HotelDataValid.validate(listingDataArr, { abortEarly: false });
-     
-     const errorFields = [];
-     const successFields = [];
- 
-     if (error) {
-         const errorFieldNames = error.details.map(err => err.path[0]);
-         const uniqueErrorFields = [...new Set(errorFieldNames)];
-         
-         HotelDataValid._ids._byKey.forEach((field, key) => {
-             if (uniqueErrorFields.includes(key)) {
-                 errorFields.push(key);
-             } else {
-                 successFields.push(key);
-             }
-         });
-     } else {
-         // All fields are valid
-         HotelDataValid._ids._byKey.forEach((field, key) => {
-             successFields.push(key);
-         });
-     }
-     if(!error){
-        const dataSave1 =await  new Listing(listingDataArr);
-        dataSave1.save()
- 
-     }else{
-         console.log("---Error---", error)
-     }
-     return res.json({
-         successFields,
-         errorFields
-     });
-    
- }));
-
+// ========== Final Submission and Validation ==========
+router.post("/listing-reviewData", isLoggedIn, warpAsync(createDatacontroller.listingReviewData));
 
 module.exports = router;

@@ -1,7 +1,22 @@
 <%- include('../header/header.ejs') %>
 <body>
-    <form action="/6812403228e8d58a3b68d0c5/review" method="post">
+    <form action="/68398d256119be0fa1bf9e7d/review" method="post">
         <input type="range" min="1" max="5" name="review[rating]">
+
+        <label for="">Cleanliness</label>
+         <input type="range" min="1" max="5" name="review[cleanliness]">
+        <label for="">Check-in</label>
+         <input type="range" min="1" max="5" name="review[checkIn]">
+        <label for="">Accuracy</label>
+         <input type="range" min="1" max="5" name="review[accuracy]">
+        <label for="">Communication</label>
+         <input type="range" min="1" max="5" name="review[communication]">
+
+
+        <label for="">location</label>
+         <input type="range" min="1" max="5" name="review[location]">
+        <label for="">Value</label>
+         <input type="range" min="1" max="5" name="review[value]">
         <textarea name="review[comment]" id="" rows="4" cols="7"></textarea>
         <button>Addd</button>
     </form>

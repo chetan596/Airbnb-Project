@@ -612,9 +612,9 @@ width: 0rem;
     transition: border 0.2s;
 }
 
-.otp-input:focus {
+.otp-input:focus{
     border: 2px solid #000000;
-    outline: none;
+    /* outline: none; */
 }
 
 .otp-input.error {

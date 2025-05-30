@@ -15,14 +15,14 @@ const listingSchema = new Schema({
     hotelType: { type: String, required: true },
     roomType: { type: String, required: true },
     location: {
-        country: { type: String,  },
-        flatHouse: { type: String,  },
+        country: { type: String, },
+        flatHouse: { type: String, },
         neaebyLandmark: { type: String },  // nearby galti se neaeby likha tha
         streetAddress: { type: String, },
-        StateUnionTerritory: { type: String,  },
-        DistrictLocality: { type: String,  },
-        CityTown: { type: String,  },
-        pinCode: { type: Number,  },
+        StateUnionTerritory: { type: String, },
+        DistrictLocality: { type: String, },
+        CityTown: { type: String, },
+        pinCode: { type: Number, },
     },
     floorPlan: {
         Guests: { type: String, required: true },
@@ -52,11 +52,23 @@ const listingSchema = new Schema({
         default: "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg",
         set: (v) => v === "" ? "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg" : v,
     },
-  
+
     owner: {
-          type : Schema.Types.ObjectId,
-          ref : "user"
-        }
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    },
+
+    reviews : [
+         {
+             type: Schema.Types.ObjectId,
+        ref: "Review"
+         }
+        
+    ]
+
+
+
+
 })
 
 module.exports = mongoose.model("listing", listingSchema);

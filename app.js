@@ -10,6 +10,7 @@ const createListingRouter = require("./routes/createListing.js");
 const createListingDataRouter = require("./routes/createlListingData.js");
 const userRouter = require("./routes/user.js");
 const loginRouter = require("./routes/login.js");
+const reviewRouter = require("./routes/review.js");
 const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
@@ -52,6 +53,7 @@ app.set("views", path.join(__dirname, "views"))
 
 app.use("/", listingRouter);
 app.use("/", userRouter)
+app.use("/", reviewRouter)
 app.use("/listing", createListingRouter)
 app.use("/listingData", createListingDataRouter)
 app.use("/login", loginRouter)
@@ -63,11 +65,7 @@ app.use("/login", loginRouter)
 
 // Show route
 
-app.get("/api/listing/:id", async (req, res) => {
-    let { id } = req.params;
-    let hotelView = await Listing.findById(id);
-    res.json(hotelView)
-})
+
 
 
 app.get("/:id", warpAsync(async (req, res, next) => {
@@ -79,17 +77,7 @@ app.get("/:id", warpAsync(async (req, res, next) => {
 
 }))
 
-app.get('/:id/review', (req, res) => {
-    res.render("show/review.ejs")
-});
-app.post('/:id/review', async (req, res) => {
-    let listingNew = await Listing.findById(req.params.id);
-    let newReview = new Review(req.body.review);
-    listingNew.reviews.push(newReview)
-    await listingNew.save();
-    await newReview.save();
-    res.redirect("/")
-});
+
 
 app.use((req, res, next) => {
     next(new ExpressError("Page not found", 404));

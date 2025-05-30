@@ -1,20 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const Listing = require("../models/listing");
+const listingcontroller = require("../controllers/listing.js")
 const warpAsync = require("../util/warpAsync.js");
 
 
-router.get("/",warpAsync(async(req , res)=>{
-    let listingData = await Listing.find({})
-   res.render("./listing/listing.ejs",{listingData})
-}))
-router.get("/navBox",(req,res)=>{
-    if(req.user){
-        res.json({user : true})
-    }else{
-         res.json({user : false})
-    }
-})
+router.get("/", warpAsync(listingcontroller.index));
+router.get("/navBox", listingcontroller.isUser);
+router.get("/api/listing/:id", listingcontroller.listingData)
 
 
 
