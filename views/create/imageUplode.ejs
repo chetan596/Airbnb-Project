@@ -3,15 +3,17 @@
      <%- include('createNav.ejs') %>
     <main class="photoMain">
 
-        <div class="photoDivBox">
+        <div class="photoDivBox ">
+
+          
             <div class="hadingBoxph">
                 <h1>Add some photos of your place</h1>
                 <p>You'll need 5 photo to grt started. You can add more or make changes later.</p>
             </div>
-            <div class="mainphotoDiv">
+            <div class="mainphotoDiv ">
                 <div class="photoImage">
                     <div class="image22">
-                    <img src="https://i.ibb.co/tMRYH4td/Whats-App-Image-2025-05-30-at-16-57-40-d6d40071-removebg-preview.png" alt="Whats-App-Image-2025-05-30-at-16-57-40-d6d40071-removebg-preview" >
+                    <img src="https://res.cloudinary.com/dmenkblkq/image/upload/v1748689230/WhatsApp_Image_2025-05-30_at_16.57.40_d6d40071-removebg-preview_wv9fh1.png" >
                     </div>
                    
                 </div>
@@ -21,7 +23,10 @@
                  <p>Choose at least 5 photo</p>
                     </div>
 
-                 <h5>Upload from your device</h5>
+                 <h5 id="photoUplode">Upload from your device</h5>
+                <form action="" method="post" style="display: none;" enctype="multipart/form-data">
+                     <input type="file" style="display: none;" id="fileInpute" name="Image" multiple>
+                </form>
                 </div>
                
             </div>
@@ -30,3 +35,4 @@
     </main>
   
 </body>
+<script src="/imageUplode.js"></script>

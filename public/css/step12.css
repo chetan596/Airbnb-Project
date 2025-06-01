@@ -82,6 +82,8 @@
 .gir-boxs121 p{
     font-size: 0.9rem;
     font-weight: 500;
+    color: #000000;
+    
 }
 
 .boximgs12 img{
@@ -110,5 +112,5 @@
 }
 
 .lopiuy{
-    border: 1.5px solid black;
+    border: 2px solid black;
 }

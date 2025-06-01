@@ -3,14 +3,11 @@ const router = express.Router();
 const warpAsync = require("../util/warpAsync.js");
 const { isLoggedIn } = require("../loginMiddle.js");
 const createDatacontroller = require("../controllers/createListingData.js")
-// const listingDataStore = {}; // Stores data per user
 
-// function getUserData(userId) {
-//     if (!listingDataStore[userId]) {
-//         listingDataStore[userId] = {};
-//     }
-//     return listingDataStore[userId];
-// }
+const multer  = require('multer')
+const {storage} = require("../cloudConfig.js")
+const upload = multer({storage})
+
 
 // ========== Structure Data ==========
 router.get("/structureData", isLoggedIn, createDatacontroller.structureData);
@@ -34,6 +31,12 @@ router.post("/occupancy", isLoggedIn, createDatacontroller.occupancy);
 router.get("/amenitiesData", isLoggedIn, createDatacontroller.amenitiesData);
 
 router.post("/occupancy2", isLoggedIn, createDatacontroller.occupancy2);
+
+router.post("/photo", upload.array('Image', 12), (req, res) => {
+    console.log(req.body, req.files);
+    res.json({ message: "Files uploaded successfully", files: req.files });
+});
+
 
 // ========== Final Details ==========
 router.post("/title", isLoggedIn, createDatacontroller.title);

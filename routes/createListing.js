@@ -28,6 +28,7 @@ router.get("/:id/occupancy", isLoggedIn, createcontroller.occupancy)
 router.get("/:id/stand-out", isLoggedIn, createcontroller.standOut)
 
 router.get("/:id/amenities", isLoggedIn, createcontroller.amenities)
+
 router.get("/photo",(req,res)=>{
     res.render("create/imageUplode")
 })
