@@ -68,8 +68,30 @@ module.exports.title =  (req, res) => {
 }
 module.exports.description =  (req, res) => {
     getUserData(req.user._id).description = req.body.description;
-    res.redirect(`/listing/${req.user._id}/describe`);
+    res.redirect(`/listing/${req.user._id}/photo`);
 }
+module.exports.photo =  (req, res) => {
+
+        console.log(req.files)
+
+    res.json({files: req.files });
+}
+module.exports.setphoto44 =  (req,res)=>{
+   
+  res.json(req.files)
+}
+module.exports.savePhotos =  (req,res)=>{
+    getUserData(req.user._id).image = req.body
+  console.log(req.body)
+}
+
+
+
+
+
+
+
+
 module.exports.describe =  (req, res) => {
     getUserData(req.user._id).describe = req.body.describe;
     res.redirect("/finish-setup");
@@ -111,6 +133,7 @@ module.exports.listingReviewData = async (req, res) => {
         occupancy: joi.array().items(joi.string().valid(...occupancys)).required(),
         amenitiess: joi.object().required(),
         title: joi.string().required(),
+        image : joi.array().required(),
         description: joi.string().required(),
         describe: joi.array().items(joi.string().valid(...describes)).required(),
         instantBook: joi.string().valid(...instantBooks).required(),
@@ -119,6 +142,8 @@ module.exports.listingReviewData = async (req, res) => {
     });
 
     const userData = getUserData(req.user._id);
+
+    console.log(userData)
     
     const { error } = schema.validate(userData, { abortEarly: false });
 

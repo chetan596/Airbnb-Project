@@ -3,9 +3,15 @@ const urlParams = window.location.pathname.split('/');
 const listingId = urlParams[urlParams.length - 1];
 
 // DOM Elements
+const nav = document.querySelector("nav");
+nav.style.position = "relative"
 const hedingBox = document.querySelector(".herae");
 const heding = document.querySelector("#h2");
 const image1Box = document.querySelector(".mainImage");
+const image1Box2 = document.querySelector(".mainImage11");
+const image1Box3 = document.querySelector(".mainImage22");
+const image1Box4 = document.querySelector(".mainImage33");
+const image1Box5 = document.querySelector(".mainImage44");
 const image1 = document.querySelector(".mainImage img");
 const para1 = document.querySelector(".ehrh");
 const para2 = document.querySelector(".uieri");
@@ -331,7 +337,7 @@ function addShowMoreEventListeners() {
 
 // Remove loading classes
 function removeLoadingClasses() {
-    const loadingElements = [para1, para2, ratingBox, hedingBox, image1Box];
+    const loadingElements = [ hedingBox, image1Box, image1Box2,image1Box3 ,image1Box4 ,image1Box5 , para1, para2, ratingBox,];
     loadingElements.forEach(element => {
         if (element) element.classList.remove("loding");
     });
@@ -362,7 +368,94 @@ fetch(`/api/listing/${listingId}`)
     })
     .then(data => {
         console.log('Received data:', data);
-        
+const keywords = [
+  "cover",
+  "front view",
+  "entrance",
+  "reception",
+  "lobby",
+  "bedroom",
+  "bathroom",
+  "kitchen",
+  "balcony",
+  "dining area",
+  "living room",
+  "outside view",
+  "parking area",
+  "lift area",
+  "corridor",
+  "gym",
+  "swimming pool",
+  "conference room",
+  "play area",
+  "terrace",
+  "staircase",
+  "garden",
+  "room window view",
+  "workspace",
+  "study table",
+  "tv unit",
+  "wardrobe",
+  "washbasin",
+  "shower area",
+  "hall",
+  "laundry area"
+];
+
+const defaultImage = "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg";
+
+// Result object banate hain
+const result = {};
+
+// Har keyword ke liye filter karke paths nikaalte hain
+keywords.forEach(keyword => {
+  result[keyword] = data.image
+    .filter(img => img.originalname.toLowerCase().includes(keyword))
+    .map(img => img.path);
+});
+
+// Helper: match, warna koi image, warna default
+function getImageSmart(primaryPathArray, usedPaths) {
+  if (primaryPathArray && primaryPathArray.length > 0) {
+    // Jo match kare vo do aur track karo
+    const path = primaryPathArray[0];
+    usedPaths.add(path);
+    return path;
+  }
+
+  // Koi bhi unused image do
+  const unused = data.image.find(img => !usedPaths.has(img.path));
+  if (unused) {
+    usedPaths.add(unused.path);
+    return unused.path;
+  }
+
+  // Agar sab use ho gaye ya image hi nahi hai
+  return defaultImage;
+}
+
+// Keep track of used paths
+const usedPaths = new Set();
+
+// Apply images
+if (data.image && data.image.length > 0) {
+  image1.src = getImageSmart(result["cover"], usedPaths);
+  document.querySelector('.mainImage11 img').src = getImageSmart(result["bedroom"], usedPaths);
+  document.querySelector('.mainImage22 img').src = getImageSmart(result["bathroom"], usedPaths);
+  document.querySelector('.mainImage33 img').src = getImageSmart(result["living room"], usedPaths);
+  document.querySelector('.mainImage44 img').src = getImageSmart(result["hall"], usedPaths);
+} else {
+  // Images hi nahi hain, sab default lagao
+  image1.src = defaultImage;
+  document.querySelector('.mainImage11 img').src = defaultImage;
+  document.querySelector('.mainImage22 img').src = defaultImage;
+  document.querySelector('.mainImage33 img').src = defaultImage;
+  document.querySelector('.mainImage44 img').src = defaultImage;
+}
+
+
+
+
         // Safety checks for data
         if (!data) {
             throw new Error('No data received');
@@ -370,7 +463,7 @@ fetch(`/api/listing/${listingId}`)
         
         // Update basic info
         if (data.title) heding.innerText = data.title;
-        if (data.image) image1.src = data.image;
+       
         
         // Location info with safety checks
         if (data.location) {

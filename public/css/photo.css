@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0rem;
     /* background: aqua; */
 }
 
@@ -32,6 +33,10 @@
         opacity: 0;
     animation: riseFade 0.7s ease-in-out forwards;
     animation-delay: 0.4s;
+}
+
+.parcollo{
+    color: #D97706 !important;
 }
 
 .mainphotoDiv{

@@ -79,6 +79,21 @@ module.exports.amenities = (req,res)=>{
     res.render("create/step9.ejs",{id})
 }
 
+module.exports.photo = (req,res)=>{
+ let {id} = req.params;
+    console.log(id)
+    res.render("create/imageUplode",{id})
+}
+module.exports.setphoto = (req,res)=>{
+       
+  res.render("create/setphoto")
+}
+module.exports.setphoto22 = (req,res)=>{
+    let {id} = req.params;
+    console.log(id)
+   res.render("create/setphoto",{id})
+}
+
 module.exports.title = (req,res)=>{
      let {id} = req.params;
     console.log(id)

@@ -53,7 +53,7 @@ router.post("/email", (req, res) => {
         service: 'gmail',
         auth: {
             user: 'chetan.workpor@gmail.com',
-            pass: 'udus prfp hkhp fuiu'
+            pass: 'jtau duel jsgl loti'
         }
     });
 

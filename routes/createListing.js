@@ -29,9 +29,14 @@ router.get("/:id/stand-out", isLoggedIn, createcontroller.standOut)
 
 router.get("/:id/amenities", isLoggedIn, createcontroller.amenities)
 
-router.get("/photo",(req,res)=>{
-    res.render("create/imageUplode")
-})
+router.get("/:id/photo",isLoggedIn,createcontroller.photo)
+
+router.get("/showphoto",isLoggedIn,createcontroller.setphoto)
+
+router.get("/:id/setphoto",isLoggedIn,createcontroller.setphoto22)
+
+
+
 
 router.get("/:id/title", isLoggedIn, createcontroller.title)
 

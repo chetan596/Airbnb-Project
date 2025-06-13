@@ -32,10 +32,7 @@ router.get("/amenitiesData", isLoggedIn, createDatacontroller.amenitiesData);
 
 router.post("/occupancy2", isLoggedIn, createDatacontroller.occupancy2);
 
-router.post("/photo", upload.array('Image', 12), (req, res) => {
-    console.log(req.body, req.files);
-    res.json({ message: "Files uploaded successfully", files: req.files });
-});
+
 
 
 // ========== Final Details ==========
@@ -43,8 +40,12 @@ router.post("/title", isLoggedIn, createDatacontroller.title);
 
 router.post("/description", isLoggedIn, createDatacontroller.description);
 
-router.post("/describe", isLoggedIn, createDatacontroller.describe);
+router.post("/photo", upload.array('Image', 12),isLoggedIn,createDatacontroller.photo );
 
+router.get("/setphoto22",isLoggedIn,createDatacontroller.setphoto44)
+
+router.post("/describe", isLoggedIn, createDatacontroller.describe);
+router.post("/savePhotos",isLoggedIn, createDatacontroller.savePhotos)
 router.post("/instant-book", isLoggedIn, createDatacontroller.instantBook);
 
 router.post("/visibility", isLoggedIn, createDatacontroller.visibility);

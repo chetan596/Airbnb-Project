@@ -1,6 +1,6 @@
 
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap'); */
 .showmainddf{
     margin: 0px;
     width: 100%;
@@ -11,7 +11,7 @@
     height: 40%;
     width: 100%;
     padding: 0rem 7rem;
-    margin-top: 7.8%;
+    margin-top: 1.5%;
 }
 .hotel-hading{
   
@@ -75,15 +75,31 @@
 .mainImage{
     height: 100%;
     width: 52.4%;
-    border-top-left-radius: 20px ;
+    border-top-left-radius: 20px;
     border-bottom-left-radius: 20px ;
+    position: relative;
 }
 .mainImage img{
+    display: block;
     height: 100%;
     width: 100%;
     object-fit: cover;
     border-top-left-radius: 20px ;
     border-bottom-left-radius: 20px ;
+}
+
+.hoverColr{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+      border-radius: inherit;
+    background-color: rgba(0, 0, 0, 0.322);
+    opacity: 0;
+}
+.hoverColr:hover{
+    opacity: 1;
 }
 .mainImage2{
     height: 100%;
@@ -106,7 +122,7 @@
     justify-content: space-between;
 }
 .image-boxs1{
-
+    position: relative;
     height: 168px;
     width: 262px;
 }
@@ -126,7 +142,7 @@
 
 .info-price{
     height: 8.4rem;
-    width: 58%;
+    width: 100%;
     padding: 20px 0px;
     font-family: "Poppins", sans-serif;
     border-bottom: 1px solid #2222223d;
@@ -195,7 +211,7 @@
 
 .hostingBy{
     height: 4rem;
-    width: 58%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -239,7 +255,7 @@
 
 .whatofferaplace{
     height: 16rem;
-    width: 58%;
+    width: 100%;
     /* padding: 2.7rem 0rem; */
     border-bottom: 1px solid #2222223d;
     /* background-color: aqua; */
@@ -257,11 +273,14 @@
 .imageBoxddd{
     height: 4rem;
     width: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* background-color: aquamarine; */
 }
 .imageBoxddd img{
-    height: 100%;
-    width: 100%;
+    height: 68%;
+    width: 68%;
 }
 .hadifhdf{
     height: 5rem;
@@ -270,9 +289,16 @@
     /* background-color: blueviolet; */
 }
 
+.spet2minaShow{
+    display: flex;
+    justify-content: space-between;
+}
+.ferreei12333{
+    width: 58%;
+}
 .yeufhjhdas{
     max-height: 30rem;
-    width: 58%;
+    width: 100%;
     /* background-color: aqua; */
     border-bottom: 1px solid #2222223d;
 }
@@ -324,7 +350,7 @@
 
 .mainplaceoffbox{
     height: 30rem;
-    width: 58%;
+    width: 100%;
     padding-top: 3.2rem;
     border-bottom: 1px solid #2222223d;
 }
@@ -404,7 +430,7 @@
 
 .imagesBoxListing{
     height: 25rem;
-    width: 58%;
+    width: 100%;
     border-bottom: 1px solid #2222223d;
     /* background-color: aqua; */
 }
@@ -746,4 +772,56 @@
     height: 20rem;
     width: 100%;
     /* background-color: rgba(0, 255, 255, 0.507); */
+}
+
+.step2box23ee{
+
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+
+.mainPriceBox{
+       height: 19.3rem;
+    width: 23.3rem;
+    margin-top: 2rem;
+    border-radius: 0.7rem;
+    background-color: rgba(0, 0, 0, 0.288);
+    position: sticky;
+    top: 6rem;
+    padding: 1.5rem;
+}
+
+.smallPriceBox{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+}
+
+.priceHadingBox{
+    /* height: 4rem; */
+    width: 100%;
+    background-color: aqua;
+}
+
+.mianPariceHadingee3{
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #222222;
+    text-decoration: underline;
+}
+
+.mianPariceHadingee3 i{
+     font-weight: 600;
+     font-size: 1.3rem;
+     text-decoration: underline;
+}
+
+.htBookDate{
+    height: 6rem;
+     width: 100%;
+     background-color: red;
 }
