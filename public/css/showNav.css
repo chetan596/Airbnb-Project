@@ -783,14 +783,15 @@
 
 
 .mainPriceBox{
-       height: 19.3rem;
+       height: 20rem;
     width: 23.3rem;
     margin-top: 2rem;
     border-radius: 0.7rem;
-    background-color: rgba(0, 0, 0, 0.288);
+
     position: sticky;
-    top: 6rem;
+    top: 9rem;
     padding: 1.5rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.322);
 }
 
 .smallPriceBox{
@@ -804,7 +805,7 @@
 .priceHadingBox{
     /* height: 4rem; */
     width: 100%;
-    background-color: aqua;
+    margin-bottom: 0.8rem;
 }
 
 .mianPariceHadingee3{
@@ -821,7 +822,114 @@
 }
 
 .htBookDate{
-    height: 6rem;
+    height: 7.2rem;
      width: 100%;
-     background-color: red;
+    border: 1px solid #22222285;
+    border-radius: 0.5rem;
+}
+
+.daleFlex{
+    height: 3.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkIn{
+       padding: 0.5rem 0.8rem;
+    height: 100%;
+    line-height: 1.05rem;
+    width: 50%;
+}
+.checkIn label{
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #222222;
+}
+.checkOut{
+       padding: 0.5rem 0.8rem;
+    height: 100%;
+    line-height: 1.05rem;
+    width: 50%;
+    border-left: 1px solid  #22222285;
+}
+.checkOut label{
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #222222;
+}
+
+.checkOut input{
+    outline: none;
+    border: none;
+}
+
+.checkIn input::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+.checkIn input{
+    outline: none;
+    border: none;
+}
+.checkOut input::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+
+
+.flexBoxgt{
+        width: 100%;
+}
+.addGust{
+    border-top: 1px solid #22222285;
+    padding: 0.8rem 0.8rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.gt11{
+     font-size: 0.7rem;
+    font-weight: 600;
+    color: #222222;
+}
+
+.gt22{
+     font-size: 0.8rem;
+    font-size: 400;
+    color: #222222;
+}
+
+.gustAddotOp{
+    height: 10rem;
+    width: 100%;
+    background-color: lightseagreen;
+}
+.rejfasjk i{
+    font-size: 1.5rem;
+}
+.pcicebtn{
+     font-family: "Rubik", sans-serif;
+    height: 3rem;
+    width: 100%;
+    margin: 1rem 0rem;
+    outline: none;
+    border: none;
+    border-radius: 0.5rem;
+    background: linear-gradient(90deg, #e91e63, #dc143c);
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+}
+.dfefdcvd{
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #222222;
+    text-align: center;
 }
