@@ -1,288 +1,311 @@
-// Get listing ID from URL
-const urlParams = window.location.pathname.split('/');
-const listingId = urlParams[urlParams.length - 1];
 
-// DOM Elements
-const nav = document.querySelector("nav");
-nav.style.position = "relative"
-const hedingBox = document.querySelector(".herae");
-const heding = document.querySelector("#h2");
-const image1Box = document.querySelector(".mainImage");
-const image1Box2 = document.querySelector(".mainImage11");
-const image1Box3 = document.querySelector(".mainImage22");
-const image1Box4 = document.querySelector(".mainImage33");
-const image1Box5 = document.querySelector(".mainImage44");
-const image1 = document.querySelector(".mainImage img");
-const para1 = document.querySelector(".ehrh");
-const para2 = document.querySelector(".uieri");
-const ratingBox = document.querySelector(".reting-box");
-const ratingBoxIcon = document.querySelector(".reting-box i");
-const ratingBoxPara = document.querySelector(".reting-box p");
-const ratingBoxText = document.querySelector(".reting-box a");
-const hosrName = document.querySelector(".hostNmare");
-const Descrption = document.querySelector(".aboutthelace p");
-const reviewsListBox = document.querySelector('.reviewsListBox');
-const totalReview = document.querySelector(".Totalrev");
-const totalReviewBox = document.querySelector(".moreShowIn");
-
-// Function to calculate average rating from reviews
-function calculateAverageRating(reviews) {
-    if (!reviews || !Array.isArray(reviews) || reviews.length === 0) {
-        console.log('No reviews available for rating calculation');
-        return 0;
+class ListingPage {
+    constructor() {
+        this.listingId = this.getListingIdFromUrl();
+        this.usedImagePaths = new Set();
+        this.categoryAverages = {};
+        this.initializeElements();
+        this.setupEventListeners();
+        this.loadListingData();
     }
-    
-    let totalRating = 0;
-    let validReviews = 0;
-    
-    // Rating distribution counters
-    let ratingCounts = {
-        1: 0,
-        2: 0,
-        3: 0,
-        4: 0,
-        5: 0
-    };
-    
-    // Category rating accumulators
-    let categoryRatings = {
-        cleanliness: { total: 0, count: 0 },
-        checkIn: { total: 0, count: 0 },
-        accuracy: { total: 0, count: 0 },
-        communication: { total: 0, count: 0 },
-        location: { total: 0, count: 0 },
-        value: { total: 0, count: 0 }
-    };
-    
-    reviews.forEach((review, index) => {
-        if (review && review.rating && !isNaN(review.rating)) {
-            const rating = parseFloat(review.rating);
-            totalRating += rating;
-            validReviews++;
-            
-            // Count each rating (round to nearest integer for distribution)
-            const roundedRating = Math.round(rating);
-            if (roundedRating >= 1 && roundedRating <= 5) {
-                ratingCounts[roundedRating]++;
-            }
-            
-            console.log(`Review ${index + 1}: Rating = ${review.rating}`);
-        } else {
-            console.log(`Review ${index + 1}: Invalid or missing rating`);
+
+    // Extract listing ID from URL
+    getListingIdFromUrl() {
+        const urlParams = window.location.pathname.split('/');
+        return urlParams[urlParams.length - 1];
+    }
+
+    // Initialize DOM elements
+    initializeElements() {
+        this.elements = {
+            nav: document.querySelector("nav"),
+            headingBox: document.querySelector(".herae"),
+            heading: document.querySelector("#h2"),
+            images: {
+                main: document.querySelector(".mainImage img"),
+                box1: document.querySelector(".mainImage11 img"),
+                box2: document.querySelector(".mainImage22 img"),
+                box3: document.querySelector(".mainImage33 img"),
+                box4: document.querySelector(".mainImage44 img")
+            },
+            para1: document.querySelector(".ehrh"),
+            para2: document.querySelector(".uieri"),
+            rating: {
+                box: document.querySelector(".reting-box"),
+                icon: document.querySelector(".reting-box i"),
+                para: document.querySelector(".reting-box p"),
+                text: document.querySelector(".reting-box a")
+            },
+            hostName: document.querySelector(".hostNmare"),
+            description: document.querySelector(".aboutthelace p"),
+            reviewsList: document.querySelector('.reviewsListBox'),
+            totalReview: document.querySelector(".Totalrev"),
+            totalReviewBox: document.querySelector(".moreShowIn"),
+            amenities: {
+                box1: document.querySelector(".offerBox1"),
+                box2: document.querySelector(".offerBox2")
+            },
+            topNavChange: document.querySelector(".info-price"),
+            price: document.querySelector(".mianPariceHadingee3"),
+            avgRating: document.querySelector(".secodAvgreciv")
+        };
+
+        // Set nav position
+        if (this.elements.nav) {
+            this.elements.nav.style.position = "relative";
         }
+    }
+
+    // Setup event listeners
+    setupEventListeners() {
+        this.setupScrollListener();
+        this.setupNavigation();
+    }
+
+    // Setup scroll listener for sticky navigation
+    setupScrollListener() {
+        const navPart2 = document.querySelector(".navPart2");
+        if (!this.elements.topNavChange || !navPart2) return;
+
+        window.addEventListener("scroll", () => {
+            const rect = this.elements.topNavChange.getBoundingClientRect();
+            navPart2.style.top = rect.top <= 0 ? "0rem" : "-6rem";
+        });
+    }
+
+    // Setup smooth scroll navigation
+    setupNavigation() {
+        const navItems = [
+            { trigger: ".navLocation", target: ".mapMainBoxs", offset: 100 },
+            { trigger: ".navPhoto", target: ".hotel-image", offset: 100 },
+            { trigger: ".navAmenities", target: ".mainplaceoffbox", offset: 83 },
+            { trigger: ".navReviews", target: ".reviewBox", offset: 140 }
+        ];
+
+        navItems.forEach(({ trigger, target, offset }) => {
+            const triggerEl = document.querySelector(trigger);
+            const targetEl = document.querySelector(target);
+            
+            if (triggerEl && targetEl) {
+                triggerEl.addEventListener("click", () => {
+                    this.smoothScrollTo(targetEl, offset);
+                });
+            }
+        });
+    }
+
+    // Smooth scroll utility
+    smoothScrollTo(element, offset = 0) {
+        const locationY = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetY = locationY - offset;
         
-        // Calculate category ratings if available
-        if (review && typeof review === 'object') {
+        window.scrollTo({
+            top: offsetY,
+            behavior: "smooth"
+        });
+    }
+
+    // Calculate average rating from reviews
+    calculateAverageRating(reviews) {
+        if (!Array.isArray(reviews) || reviews.length === 0) {
+            console.log('No reviews available for rating calculation');
+            return { average: 0, distribution: {} };
+        }
+
+        let totalRating = 0;
+        let validReviews = 0;
+        const ratingCounts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+        const categoryRatings = {
+            cleanliness: { total: 0, count: 0 },
+            checkIn: { total: 0, count: 0 },
+            accuracy: { total: 0, count: 0 },
+            communication: { total: 0, count: 0 },
+            location: { total: 0, count: 0 },
+            value: { total: 0, count: 0 }
+        };
+
+        // Process each review
+        reviews.forEach(review => {
+            if (review?.rating && !isNaN(review.rating)) {
+                const rating = parseFloat(review.rating);
+                totalRating += rating;
+                validReviews++;
+
+                const roundedRating = Math.round(rating);
+                if (roundedRating >= 1 && roundedRating <= 5) {
+                    ratingCounts[roundedRating]++;
+                }
+            }
+
+            // Process category ratings
             Object.keys(categoryRatings).forEach(category => {
-                if (review[category] && !isNaN(review[category])) {
+                if (review?.[category] && !isNaN(review[category])) {
                     const categoryRating = parseFloat(review[category]);
                     categoryRatings[category].total += categoryRating;
                     categoryRatings[category].count++;
                 }
             });
-        }
-    });
-    
-    if (validReviews === 0) {
-        console.log('No valid ratings found in reviews');
-        return 0;
-    }
-    
-    const averageRating = totalRating / validReviews;
-    
-    // Calculate and log category averages
-    console.log('\n=== CATEGORY RATINGS ANALYSIS ===');
-    const categoryAverages = {};
-    Object.keys(categoryRatings).forEach(category => {
-        const data = categoryRatings[category];
-        if (data.count > 0) {
-            const average = (data.total / data.count).toFixed(2);
-            categoryAverages[category] = parseFloat(average);
-            
-            // Update DOM elements for each category
-            const elementMap = {
-                cleanliness: '.reviewCleanliness',
-                accuracy: '.reviewAccuracy', 
-                checkIn: '.reviewCheckIn',
-                communication: '.reviewCommunication',
-                location: '.reviewLocation',
-                value: '.reviewValue'
-            };
-            
-            const element = document.querySelector(elementMap[category]);
-            if (element) {
-                element.innerText = average;
-            }
-            
-            console.log(`${category.charAt(0).toUpperCase() + category.slice(1)}: ${average} (${data.count} reviews)`);
-        } else {
-            categoryAverages[category] = 0;
-            console.log(`${category.charAt(0).toUpperCase() + category.slice(1)}: No data available`);
-        }
-    });
-    
-    // Calculate overall category average
-    const validCategoryAverages = Object.values(categoryAverages).filter(avg => avg > 0);
-    const overallCategoryAverage = validCategoryAverages.length > 0 
-        ? (validCategoryAverages.reduce((sum, avg) => sum + avg, 0) / validCategoryAverages.length).toFixed(2)
-        : 0;
-    
-    console.log(`\nOverall Category Average: ${overallCategoryAverage}`);
-    console.log(`Total Category Reviews: ${Math.max(...Object.values(categoryRatings).map(cat => cat.count))}`);
-    
-    // Store category averages globally for potential use elsewhere
-    window.categoryAverages = categoryAverages;
-    
-    // Calculate and log rating distribution percentages
-    console.log('\n=== RATING DISTRIBUTION ANALYSIS ===');
-    console.log(`Total Reviews: ${validReviews}`);
-    console.log(`Average Rating: ${averageRating.toFixed(2)}`);
-    console.log('\nRating Distribution:');
-    
-    for (let star = 5; star >= 1; star--) {
-        const count = ratingCounts[star];
-        const percentage = ((count / validReviews) * 100).toFixed(1);
-        
-    }
-    document.querySelector(".overallLine5").style.width = ` ${((ratingCounts[5] / validReviews) * 100).toFixed(1)}%`
-    document.querySelector(".overallLine4").style.width = ` ${((ratingCounts[4] / validReviews) * 100).toFixed(1)}%`
-    document.querySelector(".overallLine3").style.width = ` ${((ratingCounts[3] / validReviews) * 100).toFixed(1)}%`
-    document.querySelector(".overallLine2").style.width = ` ${((ratingCounts[2] / validReviews) * 100).toFixed(1)}%`
-    document.querySelector(".overallLine1").style.width = ` ${((ratingCounts[1] / validReviews) * 100).toFixed(1)}%`
-   
-    // Additional insights
-    const positiveReviews = ratingCounts[4] + ratingCounts[5];
-    const negativeReviews = ratingCounts[1] + ratingCounts[2];
-    const neutralReviews = ratingCounts[3];
-    
-  
-    
-    return averageRating;
-}
+        });
 
-// Time ago function
-function getTimeAgo(dateString) {
-    try {
-        const now = new Date();
-        const reviewDate = new Date(dateString);
+        if (validReviews === 0) {
+            return { average: 0, distribution: {} };
+        }
+
+        const averageRating = totalRating / validReviews;
+
+        // Update category ratings in DOM
+        this.updateCategoryRatings(categoryRatings);
         
-        // Check if date is valid
-        if (isNaN(reviewDate.getTime())) {
+        // Update rating distribution bars
+        this.updateRatingDistribution(ratingCounts, validReviews);
+
+        return { 
+            average: averageRating, 
+            distribution: ratingCounts,
+            totalReviews: validReviews 
+        };
+    }
+
+    // Update category ratings in DOM
+    updateCategoryRatings(categoryRatings) {
+        const elementMap = {
+            cleanliness: '.reviewCleanliness',
+            accuracy: '.reviewAccuracy',
+            checkIn: '.reviewCheckIn',
+            communication: '.reviewCommunication',
+            location: '.reviewLocation',
+            value: '.reviewValue'
+        };
+
+        const categoryAverages = {};
+        
+        Object.keys(categoryRatings).forEach(category => {
+            const data = categoryRatings[category];
+            if (data.count > 0) {
+                const average = (data.total / data.count).toFixed(2);
+                categoryAverages[category] = parseFloat(average);
+
+                const element = document.querySelector(elementMap[category]);
+                if (element) {
+                    element.innerText = average;
+                }
+            }
+        });
+
+        this.categoryAverages = categoryAverages;
+    }
+
+    // Update rating distribution bars
+    updateRatingDistribution(ratingCounts, totalReviews) {
+        for (let i = 1; i <= 5; i++) {
+            const percentage = ((ratingCounts[i] / totalReviews) * 100).toFixed(1);
+            const element = document.querySelector(`.overallLine${i}`);
+            if (element) {
+                element.style.width = `${percentage}%`;
+            }
+        }
+    }
+
+    // Format time ago
+    getTimeAgo(dateString) {
+        try {
+            const now = new Date();
+            const reviewDate = new Date(dateString);
+
+            if (isNaN(reviewDate.getTime())) {
+                return "Unknown date";
+            }
+
+            const diffInSeconds = Math.floor((now - reviewDate) / 1000);
+
+            if (diffInSeconds < 30) return "just now";
+            
+            const diffInMinutes = Math.floor(diffInSeconds / 60);
+            if (diffInMinutes < 60) {
+                return `${diffInMinutes} minute${diffInMinutes !== 1 ? 's' : ''} ago`;
+            }
+
+            const diffInHours = Math.floor(diffInMinutes / 60);
+            if (diffInHours < 24) {
+                return `${diffInHours} hour${diffInHours !== 1 ? 's' : ''} ago`;
+            }
+
+            const diffInDays = Math.floor(diffInHours / 24);
+            if (diffInDays < 30) {
+                return `${diffInDays} day${diffInDays !== 1 ? 's' : ''} ago`;
+            }
+
+            const diffInMonths = Math.floor(diffInDays / 30);
+            if (diffInMonths < 12) {
+                return `${diffInMonths} month${diffInMonths !== 1 ? 's' : ''} ago`;
+            }
+
+            const diffInYears = Math.floor(diffInMonths / 12);
+            return `${diffInYears} year${diffInYears !== 1 ? 's' : ''} ago`;
+
+        } catch (error) {
+            console.error('Error in getTimeAgo:', error);
             return "Unknown date";
         }
-        
-        // Calculate difference in milliseconds first
-        const diffInMs = now - reviewDate;
-        const diffInSeconds = Math.floor(diffInMs / 1000);
-        
-        console.log('Time calculation:', {
-            now: now.toISOString(),
-            reviewDate: reviewDate.toISOString(),
-            diffInMs,
-            diffInSeconds
-        });
-        
-        // Less than 30 seconds
-        if (diffInSeconds < 30) {
-            return "just now";
-        }
-        
-        // Minutes
-        const diffInMinutes = Math.floor(diffInSeconds / 60);
-        if (diffInMinutes < 60) {
-            return `${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''} ago`;
-        }
-        
-        // Hours
-        const diffInHours = Math.floor(diffInMinutes / 60);
-        if (diffInHours < 24) {
-            return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
-        }
-        
-        // Days
-        const diffInDays = Math.floor(diffInHours / 24);
-        if (diffInDays < 30) {
-            return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
-        }
-        
-        // Months
-        const diffInMonths = Math.floor(diffInDays / 30);
-        if (diffInMonths < 12) {
-            return `${diffInMonths} month${diffInMonths > 1 ? 's' : ''} ago`;
-        }
-        
-        // Years
-        const diffInYears = Math.floor(diffInMonths / 12);
-        if (diffInYears >= 1) {
-            return `${diffInYears} year${diffInYears > 1 ? 's' : ''} ago`;
-        }
-        
-        // Fallback to date format
-        return reviewDate.toLocaleDateString('en-US', { 
-            year: 'numeric', 
-            month: 'short' 
-        });
-    } catch (error) {
-        console.error('Error in getTimeAgo:', error);
-        return "Unknown date";
     }
-}
 
-// Capitalize first letter function
-function capitalizeFirstLetter(str) {
-    if (!str || typeof str !== 'string') return '';
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-// Generate star rating HTML
-function generateStars(rating) {
-    let starsHTML = '';
-    const numRating = parseInt(rating) || 0; // Convert to number and handle invalid values
-    
-    for (let i = 1; i <= 5; i++) {
-        if (i <= numRating) {
-            starsHTML += '<i class="ri-star-fill"></i>';
-        } else {
-            starsHTML += '<i class="ri-star-line"></i>';
-        }
+    // Capitalize first letter
+    capitalizeFirstLetter(str) {
+        if (!str || typeof str !== 'string') return '';
+        return str.charAt(0).toUpperCase() + str.slice(1);
     }
-    return starsHTML;
-}
 
-// Render reviews function
-function renderReviews(reviews) {
-    if (!reviews || !Array.isArray(reviews) || reviews.length === 0) {
-        console.log('No reviews to render');
-        return;
-    }
-    
-    const maxReviews = Math.min(reviews.length, 6);
-    
-    for (let i = 0; i < maxReviews; i++) {
-        const review = reviews[i];
+    // Generate star rating HTML
+    generateStars(rating) {
+        const numRating = parseInt(rating) || 0;
+        let starsHTML = '';
         
-        // Safety checks
-        if (!review || !review.author || !review.author.username) {
-            console.log(`Skipping review ${i} - missing data`);
-            continue;
+        for (let i = 1; i <= 5; i++) {
+            const starClass = i <= numRating ? 'ri-star-fill' : 'ri-star-line';
+            starsHTML += `<i class="${starClass}"></i>`;
         }
         
-        const timeAgo = getTimeAgo(review.createAt);
-        const authorName = capitalizeFirstLetter(review.author.username);
-        const starsHTML = generateStars(review.rating);
+        return starsHTML;
+    }
+
+    // Render reviews
+    renderReviews(reviews) {
+        if (!Array.isArray(reviews) || reviews.length === 0) {
+            this.showNoReviews();
+            return;
+        }
+
+        const maxReviews = Math.min(reviews.length, 6);
+        
+        for (let i = 0; i < maxReviews; i++) {
+            const review = reviews[i];
+            
+            if (!review?.author?.username) {
+                console.log(`Skipping review ${i} - missing data`);
+                continue;
+            }
+
+            const reviewHTML = this.createReviewHTML(review);
+            this.elements.reviewsList.insertAdjacentHTML('beforeend', reviewHTML);
+        }
+
+        this.setupShowMoreListeners();
+    }
+
+    // Create review HTML
+    createReviewHTML(review) {
+        const timeAgo = this.getTimeAgo(review.createAt);
+        const authorName = this.capitalizeFirstLetter(review.author.username);
+        const starsHTML = this.generateStars(review.rating);
         const comment = review.comment || 'No comment provided';
         
-        // Handle comment length - slice if longer than 207 characters
         const maxCommentLength = 207;
         const isLongComment = comment.length > maxCommentLength;
         const displayComment = isLongComment 
             ? comment.slice(0, maxCommentLength) + "..." 
             : comment;
-        
-        // Determine show more button display style
-        const showMoreDisplay = isLongComment ? 'block' : 'none';
-        
-        const reviewHTML = `
+
+        return `
             <div class="userReviewBox">
                 <div class="userPoflie">
                     <div class="userreviewImg">
@@ -302,236 +325,301 @@ function renderReviews(reviews) {
                 <div class="userreviewMsg">
                     <p>${displayComment}</p>
                 </div>
-                <div class="seeMoreTage" style="display: ${showMoreDisplay};">
-                    <a href="javascript:void(0);">Show More</a>
-                </div>
+                ${isLongComment ? `
+                    <div class="seeMoreTage">
+                        <a href="javascript:void(0);">Show More</a>
+                    </div>
+                ` : ''}
             </div>
         `;
-        
-        reviewsListBox.insertAdjacentHTML('beforeend', reviewHTML);
     }
-    
-    // Add click event listeners for "Show More" buttons
-    addShowMoreEventListeners();
-}
 
-// Function to add event listeners for "Show More" buttons
-function addShowMoreEventListeners() {
-    const showMoreButtons = document.querySelectorAll('.seeMoreTage a');
-    
-    showMoreButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log('Show More div was clicked');
-            
-            // You can add additional functionality here
-            // For example, expand the review text or open a modal
-            const reviewBox = this.closest('.userReviewBox');
-            const reviewMsg = reviewBox.querySelector('.userreviewMsg p');
-            
-            // Example: Alert the user (you can replace this with your desired functionality)
-            alert('Show More clicked for review: ' + reviewMsg.textContent.substring(0, 50) + '...');
+    // Show no reviews state
+    showNoReviews() {
+        if (this.elements.totalReviewBox) {
+            this.elements.totalReviewBox.style.display = "none";
+        }
+        
+        const fullBox = document.querySelector(".fullbox33");
+        if (fullBox) fullBox.style.display = "none";
+        
+        if (this.elements.rating.box) {
+            this.elements.rating.box.innerHTML = `
+                <p class="noReborrr">
+                    <i class="ri-star-fill"></i>No reviews yet
+                </p>
+            `;
+        }
+        
+        if (this.elements.reviewsList) {
+            this.elements.reviewsList.innerHTML = `
+                <p class="noreviewPara">No reviews (yet)</p>
+            `;
+        }
+    }
+
+    // Setup show more listeners
+    setupShowMoreListeners() {
+        const showMoreButtons = document.querySelectorAll('.seeMoreTage a');
+        
+        showMoreButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const reviewBox = button.closest('.userReviewBox');
+                const reviewMsg = reviewBox.querySelector('.userreviewMsg p');
+                
+                // Expand functionality can be implemented here
+                alert('Show More clicked for review: ' + reviewMsg.textContent.substring(0, 50) + '...');
+            });
         });
-    });
-}
+    }
 
-// Remove loading classes
-function removeLoadingClasses() {
-    const loadingElements = [ hedingBox, image1Box, image1Box2,image1Box3 ,image1Box4 ,image1Box5 , para1, para2, ratingBox,];
-    loadingElements.forEach(element => {
-        if (element) element.classList.remove("loding");
-    });
-}
+    // Handle description text
+    handleDescription(description) {
+        if (!description || !this.elements.description) return;
+        
+        const maxLength = 500;
+        const showMoreBtn = document.querySelector(".showfffafa");
+        
+        if (description.length >= maxLength) {
+            this.elements.description.innerText = description.slice(0, maxLength) + "...";
+        } else {
+            if (showMoreBtn) showMoreBtn.style.display = "none";
+            this.elements.description.innerText = description;
+        }
+    }
 
-// Handle description text
-function handleDescription(description) {
-    if (!description) return;
-    
-    const maxLength = 500;
-    const showMoreBtn = document.querySelector(".showfffafa");
-    
-    if (description.length >= maxLength) {
-        Descrption.innerText = description.slice(0, maxLength) + "...";
-    } else {
-        if (showMoreBtn) showMoreBtn.style.display = "none";
-        Descrption.innerText = description;
+    // Get smart image selection
+    getSmartImage(pathArray, defaultImage) {
+        if (pathArray && pathArray.length > 0) {
+            const path = pathArray[0];
+            this.usedImagePaths.add(path);
+            return path;
+        }
+
+        // Find unused image
+        const unused = this.currentImages?.find(img => !this.usedImagePaths.has(img.path));
+        if (unused) {
+            this.usedImagePaths.add(unused.path);
+            return unused.path;
+        }
+
+        return defaultImage;
+    }
+
+    // Update images
+    updateImages(images) {
+        const keywords = [
+            "cover", "front view", "entrance", "reception", "lobby",
+            "bedroom", "bathroom", "kitchen", "balcony", "dining area",
+            "living room", "outside view", "parking area", "lift area",
+            "corridor", "gym", "swimming pool", "conference room",
+            "play area", "terrace", "staircase", "garden",
+            "room window view", "workspace", "study table", "tv unit",
+            "wardrobe", "washbasin", "shower area", "hall", "laundry area"
+        ];
+
+        const defaultImage = "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg";
+        const imageMap = {};
+
+        // Create image map by keywords
+        keywords.forEach(keyword => {
+            imageMap[keyword] = images
+                .filter(img => img.originalname.toLowerCase().includes(keyword))
+                .map(img => img.path);
+        });
+
+        this.currentImages = images;
+
+        // Apply images
+        if (images && images.length > 0) {
+            this.elements.images.main.src = this.getSmartImage(imageMap["cover"], defaultImage);
+            this.elements.images.box1.src = this.getSmartImage(imageMap["bedroom"], defaultImage);
+            this.elements.images.box2.src = this.getSmartImage(imageMap["bathroom"], defaultImage);
+            this.elements.images.box3.src = this.getSmartImage(imageMap["living room"], defaultImage);
+            this.elements.images.box4.src = this.getSmartImage(imageMap["hall"], defaultImage);
+        } else {
+            // Set all to default
+            Object.values(this.elements.images).forEach(img => {
+                if (img) img.src = defaultImage;
+            });
+        }
+    }
+
+    // Load amenities
+    async loadAmenities(amenitiesData) {
+        try {
+            const response = await fetch("/listingData/structureData");
+            const structureData = await response.json();
+            
+            this.renderAmenities(amenitiesData.amenities, structureData[0].amenities[1], this.elements.amenities.box1);
+            this.renderAmenities(amenitiesData.standoutAmenities.slice(0, 5), structureData[0].amenities[0], this.elements.amenities.box2);
+        } catch (error) {
+            console.error('Error loading amenities:', error);
+        }
+    }
+
+    // Render amenities
+    renderAmenities(amenitiesList, amenitiesStructure, container) {
+        if (!container) return;
+
+        amenitiesList.forEach(amenityTitle => {
+            const amenity = amenitiesStructure.find(item => item.title === amenityTitle);
+            if (!amenity) return;
+
+            const div = document.createElement("div");
+            div.className = "itemBoxplace1";
+            div.innerHTML = `
+                <div class="inmgBoxincd">
+                    <img src="${amenity.image}" alt="${amenityTitle}">
+                </div>
+                <div class="ararttt">
+                    <p>${amenityTitle.replace(/<br\s*\/?>/gi, ' ').replace(/&nbsp;/gi, ' ').trim()}</p>
+                </div>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    // Remove loading classes
+    removeLoadingClasses() {
+        const loadingElements = [
+            this.elements.headingBox,
+            document.querySelector(".mainImage"),
+            document.querySelector(".mainImage11"),
+            document.querySelector(".mainImage22"),
+            document.querySelector(".mainImage33"),
+            document.querySelector(".mainImage44"),
+            this.elements.para1,
+            this.elements.para2,
+            this.elements.rating.box
+        ];
+
+        loadingElements.forEach(element => {
+            if (element) element.classList.remove("loding");
+        });
+    }
+
+    // Update listing data in DOM
+    updateListingData(data) {
+        // Basic info
+        if (data.title && this.elements.heading) {
+            this.elements.heading.innerText = this.capitalizeFirstLetter(data.title);
+        }
+
+        // Location info
+        if (data.location && this.elements.para1) {
+            const { CityTown = 'Unknown City', StateUnionTerritory = 'Unknown State', country = 'Unknown Country' } = data.location;
+            this.elements.para1.innerText = `${CityTown} in ${StateUnionTerritory}, ${country}`;
+        }
+
+        // Floor plan info
+        if (data.floorPlan && this.elements.para2) {
+            const { Guests = '0', Bedrooms = '0', Bed = '0' } = data.floorPlan;
+            this.elements.para2.innerText = `${Guests} guests • ${Bedrooms} bedrooms • ${Bed} beds`;
+        }
+
+        // Price
+        if (data.price && this.elements.price) {
+            this.elements.price.innerHTML = `<i class="fa-solid fa-indian-rupee-sign"></i>${data.price.toLocaleString("en-IN")}`;
+        }
+
+        // Rating and reviews
+        const reviewCount = data.reviews ? data.reviews.length : 0;
+        let averageRating = 0;
+
+        if (data.reviews && data.reviews.length > 0) {
+            const ratingData = this.calculateAverageRating(data.reviews);
+            averageRating = ratingData.average;
+        }
+
+        // Update rating display
+        if (averageRating > 0) {
+            if (this.elements.rating.para) {
+                this.elements.rating.para.innerText = `${averageRating.toFixed(2)} •`;
+            }
+            if (this.elements.avgRating) {
+                this.elements.avgRating.innerText = averageRating.toFixed(2);
+            }
+        } else {
+            if (this.elements.rating.para) {
+                this.elements.rating.para.innerText = "No rating •";
+            }
+        }
+
+        if (this.elements.rating.text) {
+            this.elements.rating.text.innerText = `${reviewCount} review${reviewCount !== 1 ? 's' : ''}`;
+        }
+
+        if (this.elements.rating.icon) {
+            this.elements.rating.icon.classList.remove("none");
+        }
+
+        // Host name
+        if (data.owner?.username && this.elements.hostName) {
+            this.elements.hostName.innerText = `Hosted by ${this.capitalizeFirstLetter(data.owner.username)}`;
+        }
+
+        // Description
+        if (data.description) {
+            this.handleDescription(data.description);
+        }
+
+        // Reviews
+        this.renderReviews(data.reviews);
+
+        // Total review count
+        if (data.reviews && this.elements.totalReview) {
+            this.elements.totalReview.innerText = `. ${data.reviews.length}`;
+        }
+
+        // Images
+        if (data.image) {
+            this.updateImages(data.image);
+        }
+
+        // Amenities
+        if (data.amenitiess) {
+            this.loadAmenities(data.amenitiess);
+        }
+    }
+
+    // Main method to load listing data
+    async loadListingData() {
+        try {
+            const response = await fetch(`/api/listing/${this.listingId}`);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('Received data:', data);
+
+            if (!data) {
+                throw new Error('No data received');
+            }
+
+            this.updateListingData(data);
+            this.removeLoadingClasses();
+
+        } catch (error) {
+            console.error('Error fetching listing data:', error);
+            this.handleError();
+        }
+    }
+
+    // Handle errors
+    handleError() {
+        this.removeLoadingClasses();
+        
+        if (this.elements.heading) {
+            this.elements.heading.innerText = 'Error loading listing';
+        }
     }
 }
 
-// API call with the ID in URL
-fetch(`/api/listing/${listingId}`)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Received data:', data);
-const keywords = [
-  "cover",
-  "front view",
-  "entrance",
-  "reception",
-  "lobby",
-  "bedroom",
-  "bathroom",
-  "kitchen",
-  "balcony",
-  "dining area",
-  "living room",
-  "outside view",
-  "parking area",
-  "lift area",
-  "corridor",
-  "gym",
-  "swimming pool",
-  "conference room",
-  "play area",
-  "terrace",
-  "staircase",
-  "garden",
-  "room window view",
-  "workspace",
-  "study table",
-  "tv unit",
-  "wardrobe",
-  "washbasin",
-  "shower area",
-  "hall",
-  "laundry area"
-];
-
-const defaultImage = "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg";
-
-// Result object banate hain
-const result = {};
-
-// Har keyword ke liye filter karke paths nikaalte hain
-keywords.forEach(keyword => {
-  result[keyword] = data.image
-    .filter(img => img.originalname.toLowerCase().includes(keyword))
-    .map(img => img.path);
+// Initialize the listing page when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    new ListingPage();
 });
-
-// Helper: match, warna koi image, warna default
-function getImageSmart(primaryPathArray, usedPaths) {
-  if (primaryPathArray && primaryPathArray.length > 0) {
-    // Jo match kare vo do aur track karo
-    const path = primaryPathArray[0];
-    usedPaths.add(path);
-    return path;
-  }
-
-  // Koi bhi unused image do
-  const unused = data.image.find(img => !usedPaths.has(img.path));
-  if (unused) {
-    usedPaths.add(unused.path);
-    return unused.path;
-  }
-
-  // Agar sab use ho gaye ya image hi nahi hai
-  return defaultImage;
-}
-
-// Keep track of used paths
-const usedPaths = new Set();
-
-// Apply images
-if (data.image && data.image.length > 0) {
-  image1.src = getImageSmart(result["cover"], usedPaths);
-  document.querySelector('.mainImage11 img').src = getImageSmart(result["bedroom"], usedPaths);
-  document.querySelector('.mainImage22 img').src = getImageSmart(result["bathroom"], usedPaths);
-  document.querySelector('.mainImage33 img').src = getImageSmart(result["living room"], usedPaths);
-  document.querySelector('.mainImage44 img').src = getImageSmart(result["hall"], usedPaths);
-} else {
-  // Images hi nahi hain, sab default lagao
-  image1.src = defaultImage;
-  document.querySelector('.mainImage11 img').src = defaultImage;
-  document.querySelector('.mainImage22 img').src = defaultImage;
-  document.querySelector('.mainImage33 img').src = defaultImage;
-  document.querySelector('.mainImage44 img').src = defaultImage;
-}
-
-
-
-
-        // Safety checks for data
-        if (!data) {
-            throw new Error('No data received');
-        }
-        
-        // Update basic info
-        if (data.title) heding.innerText = data.title;
-       
-        
-        // Location info with safety checks
-        if (data.location) {
-            para1.innerText = `${data.location.CityTown || 'Unknown City'} in ${data.location.StateUnionTerritory || 'Unknown State'}, ${data.location.country || 'Unknown Country'}`;
-        }
-        
-        // Floor plan info with safety checks
-        if (data.floorPlan) {
-            para2.innerText = `${data.floorPlan.Guests || '0'} guests • ${data.floorPlan.Bedrooms || '0'} bedrooms • ${data.floorPlan.Bed || '0'} beds`;
-        }
-        
-        // Calculate average rating from reviews
-        let averageRating = 0;
-        const reviewCount = data.reviews ? data.reviews.length : 0;
-        
-        if (data.reviews && data.reviews.length > 0) {
-            averageRating = calculateAverageRating(data.reviews);
-        }
-        
-        // Update rating info with calculated average
-        if (averageRating > 0) {
-            ratingBoxPara.innerText = `${averageRating.toFixed(2)} •`;
-            document.querySelector(".secodAvgreciv").innerText = `${averageRating.toFixed(2)}`;
-        } else {
-            ratingBoxPara.innerText = "No rating •";
-        }
-        
-        ratingBoxText.innerText = `${reviewCount} review${reviewCount !== 1 ? 's' : ''}`;
-        ratingBoxIcon.classList.remove("none");
-        
-        // Update host name with safety check
-        if (data.owner && data.owner.username) {
-            hosrName.innerText = `Hosted by ${capitalizeFirstLetter(data.owner.username)}`;
-        }
-        
-        // Handle description
-        if (data.description) {
-            handleDescription(data.description);
-        }
-        
-        // Render reviews with detailed logging
-        console.log('Reviews data:', data.reviews);
-        if (data.reviews && data.reviews.length > 0) {
-            console.log(`Rendering ${data.reviews.length} reviews`);
-            renderReviews(data.reviews);
-        } else {
-            totalReviewBox.style.display = "none"
-            document.querySelector(".fullbox33").style.display = "none"
-            document.querySelector(".reting-box").innerHTML =`<p class="noReborrr"><i class="ri-star-fill " ></i>No reviews yet</p>`
-            reviewsListBox.innerHTML = ` <p class="noreviewPara">
-            No reviews (yet)
-           </p>`
-            console.log('No reviews found');
-        }
-        
-        if (data.reviews) {
-            totalReview.innerText = `. ${data.reviews.length}`;
-        }
-        
-        // Remove loading classes
-        removeLoadingClasses();
-    })
-    .catch(err => {
-        console.error('Error fetching listing data:', err);
-        
-        // Remove loading classes even on error
-        removeLoadingClasses();
-        
-        // Show error message to user
-        if (heding) heding.innerText = 'Error loading listing';
-    });

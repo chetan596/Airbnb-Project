@@ -13,7 +13,7 @@ const listingRouter = require("./routes/listing.js");
 const createListingRouter = require("./routes/createListing.js");
 const createListingDataRouter = require("./routes/createlListingData.js");
 const userRouter = require("./routes/user.js");
-const loginRouter = require("./routes/login.js");
+// const loginRouter = require("./routes/login.js");
 const reviewRouter = require("./routes/review.js");
 const path = require("path");
 const session = require("express-session"); 
@@ -61,7 +61,7 @@ app.use("/", userRouter)
 app.use("/", reviewRouter)
 app.use("/listing", createListingRouter)
 app.use("/listingData", createListingDataRouter)
-app.use("/login", loginRouter)
+// app.use("/login", loginRouter)
 
 
 

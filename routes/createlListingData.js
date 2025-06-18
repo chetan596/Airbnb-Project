@@ -10,7 +10,7 @@ const upload = multer({storage})
 
 
 // ========== Structure Data ==========
-router.get("/structureData", isLoggedIn, createDatacontroller.structureData);
+router.get("/structureData", createDatacontroller.structureData);
 
 // ========== Step-by-step Data Entry ==========
 router.post("/hotel-type-data", isLoggedIn, createDatacontroller.hotelTypeData);

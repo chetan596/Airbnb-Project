@@ -7,6 +7,7 @@
     padding: 0rem;
     font-family: "Poppins", sans-serif;
 }
+
 .listingBox{
     height: 40%;
     width: 100%;
@@ -145,7 +146,10 @@
     width: 100%;
     padding: 20px 0px;
     font-family: "Poppins", sans-serif;
-    border-bottom: 1px solid #2222223d;
+    border-bottom: 1px solid #2222223d; 
+   
+  
+    
 }
 
 .ehrh{
@@ -769,8 +773,10 @@
 
 
 .mapMainBoxs{
-    height: 20rem;
+    height: 25rem;
     width: 100%;
+    border-radius: 0.5rem;
+    margin: 3rem 0rem;
     /* background-color: rgba(0, 255, 255, 0.507); */
 }
 
@@ -932,4 +938,84 @@
     font-weight: 400;
     color: #222222;
     text-align: center;
+}
+
+
+ #map {
+    border-radius: inherit;
+        height: 100%; /* Full viewport height */
+        width: 100%;   /* Full width */
+      }
+
+      .mapMainBoxse{
+        height: 33rem;
+        width: 100%;
+
+      }
+
+.navPart2{
+      font-family: "Poppins", sans-serif;
+    height: 5.3rem;
+    width: 100%;
+    position: fixed;
+    top: -6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #6a6a6a26;
+    background-color: white;
+    transition: top 0.5s ease;
+}
+/* .navPart2{
+    top: 0;
+} */
+.listingAllNav{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.allBox4rr{
+    height: 100%;
+     width: 50%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 7rem;
+    justify-content: space-between;
+}
+
+.allBox4rr h3{
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #222222;
+    
+}
+.navPhoto{
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+.lopee{
+    height: 0.23rem;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    background-color: black;
+    transition: all 0.1s ease;
+}
+
+.navPhoto:hover  .lopee{
+    opacity: 1;
+}
+
+.prcieNav{
+    height: 100%;
+    width: 50%;
+  
 }
