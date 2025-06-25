@@ -164,6 +164,31 @@ nav{
     width: 2.1rem;
     border-radius: 50%;
 }
+
+    .userAvtar {
+      display: flex  !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-transform: uppercase !important;
+      aspect-ratio: 1/1 !important;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .userAvtar p {
+      margin: 0 !important;
+      color: #ffffff !important;
+      font-weight: 500 !important;
+      line-height: 1 !important;
+      height: 100% !important;
+      width: 100% !important;
+      text-align: center !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif;
+    }
+
 .login-img img{
     height: 2.1rem;
     width: 2.1rem;

@@ -1,25 +1,53 @@
 
 document.addEventListener("DOMContentLoaded", () => {
- let userIs = document.querySelector(".navMainBox2")
- let userNot = document.querySelector(".navMainBox23w")
- let notificationIcon = document.querySelector(".notificationIcon")
- 
- 
- fetch("/navBox")
-      .then(res => res.json())
-      .then(html => {
-        if(html.user){
-           userIs.style.display = "block"
-           notificationIcon.style.display = "block"
-          userNot.style.display = "none"
-           console.log(html.user)
-        }else{
-          userIs.style.display = "none"
-          userNot.style.display = "block"
-          console.log(html.user)
-        }
-       
-      })
+  let userIs = document.querySelector(".navMainBox2")
+  let userNot = document.querySelector(".navMainBox23w")
+  let notificationIcon = document.querySelector(".notificationIcon")
+
+
+  fetch("/navBox")
+    .then(res => res.json())
+    .then(data => {
+
+      if (data.user) {
+        userIs.style.display = "block"
+        notificationIcon.style.display = "block"
+        userNot.style.display = "none"
+
+      function renderAvatar(selector, avatar) {
+  const container = document.querySelector(selector);
+  if (!container || !avatar) return;
+
+  if (avatar.image) {
+    container.innerHTML = `<img src="${avatar.image}" alt="user avatar">`;
+    container.style.backgroundColor = "transparent";
+  } else {
+    container.innerHTML = `<p>${avatar.initial}</p>`;
+    container.style.backgroundColor = avatar.color;
+
+    const style = getComputedStyle(container);
+    const height = parseFloat(style.height);
+    if (!isNaN(height)) {
+      const p = container.querySelector("p");
+      if (p) p.style.fontSize = `${height * 0.5}px`;
+    }
+  }
+}
+
+// ✅ Usage
+renderAvatar(".login-img", data.avatar);
+
+
+
+        console.log(data)
+
+
+      } else {
+        userIs.style.display = "none"
+        userNot.style.display = "block"
+      }
+
+    })
 
 
 
@@ -37,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.stopPropagation()
     loginBox.classList.add("boxShodo")
     singInBox.style.display = "block"
-    
+
 
   });
 
@@ -198,19 +226,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 from2st.addEventListener("submit", (e) => {
 
-loginBtn122.classList.remove("button-click-effect"); // Reset
-                void loginBtn122.offsetWidth; // Reflow
-                loginBtn122.classList.add("button-click-effect"); // Add animation
+                  loginBtn122.classList.remove("button-click-effect"); // Reset
+                  void loginBtn122.offsetWidth; // Reflow
+                  loginBtn122.classList.add("button-click-effect"); // Add animation
                   if (pass2.value.length >= 8) {
                     loginBtn122.classList.remove("button-click-effect"); // Reset
-                void loginBtn122.offsetWidth; // Reflow
-                loginBtn122.classList.add("button-click-effect"); // Add animation
-                   
-                       loginBtn122.style.background = "#d3d3d3d6";
-                  loginBtn122.disabled = true;
-                  loginBtn122.style.cursor = "not-allowed";
-                   document.querySelector(".yuerhye1").classList.remove("disNone11");
-                    
+                    void loginBtn122.offsetWidth; // Reflow
+                    loginBtn122.classList.add("button-click-effect"); // Add animation
+
+                    loginBtn122.style.background = "#d3d3d3d6";
+                    loginBtn122.disabled = true;
+                    loginBtn122.style.cursor = "not-allowed";
+                    document.querySelector(".yuerhye1").classList.remove("disNone11");
+
 
                     fetch("/login", {
                       method: "POST",
@@ -226,9 +254,9 @@ loginBtn122.classList.remove("button-click-effect"); // Reset
                         } else {
                           singInBigBox11.classList.add("errdivhegit")
                           loginBtn122.style.background = `linear-gradient(90deg, #e91e63, #dc143c)`;
-                  loginBtn122.disabled = false;
-                  loginBtn122.style.cursor = "pointer";
-                   document.querySelector(".yuerhye1").classList.add("disNone11");
+                          loginBtn122.disabled = false;
+                          loginBtn122.style.cursor = "pointer";
+                          document.querySelector(".yuerhye1").classList.add("disNone11");
 
                           ErrMsdiv2.style.display = "flex"
                           console.error(data.message);
@@ -238,7 +266,7 @@ loginBtn122.classList.remove("button-click-effect"); // Reset
                   } else {
 
 
-                    
+
                     ErrMsgOP.style.display = "block"
 
                   }

@@ -64,10 +64,13 @@ const listingSchema = new Schema({
         ref: "Review"
          }
         
-    ]
+    ],
 
 
-
+    createdAt :{
+        type : Date,
+        default : new Date()
+    }
 
 })
 

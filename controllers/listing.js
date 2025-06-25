@@ -28,10 +28,14 @@ module.exports.listingData =  async (req, res) => {
 }
 
 
-module.exports.isUser = (req,res)=>{
-    if(req.user){
-        res.json({user : true})
-    }else{
-         res.json({user : false})
-    }
-}
+module.exports.isUser = (req, res) => {
+  if (req.user) {
+    console.log(req.user);
+    res.json({
+      user: true,
+      avatar: req.user.avatar // ✅ only avatar object sent
+    });
+  } else {
+    res.json({ user: false });
+  }
+};

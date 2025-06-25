@@ -18,7 +18,32 @@ const userSchema = new mongoose.Schema({
     birthDate: {
         type: Date,
         required: true
+    },
+     createdAt :{
+        type : Date,
+        default : new Date()
+    },
+    avatar: {
+    image: {
+      type: String, // image URL
+      default: null // means no image uploaded
+    },
+    initial: {
+      type: String,
+      required: true
+    },
+    color: {
+      type: String,
+      required: true
     }
+  },
+
+  isVerified : {
+    type : Boolean,
+     default : false
+
+  }
+
 });
 
 // Tell passport to use "email" instead of default "username"

@@ -1,24 +1,69 @@
+document.querySelector("nav").style.position = "relative"
 
 class ListingPage {
     constructor() {
-        this.listingId = this.getListingIdFromUrl();
+        this.listingId = this.extractListingId();
         this.usedImagePaths = new Set();
         this.categoryAverages = {};
+        this.currentImages = [];
         this.initializeElements();
         this.setupEventListeners();
         this.loadListingData();
     }
 
-    // Extract listing ID from URL
-    getListingIdFromUrl() {
-        const urlParams = window.location.pathname.split('/');
-        return urlParams[urlParams.length - 1];
+    extractListingId() {
+        const urlSegments = window.location.pathname.split('/');
+        return urlSegments[urlSegments.length - 1];
     }
 
-    // Initialize DOM elements
+     lodingAOtherContan() {
+  const elements = [
+    { selector: ".hostingBy", display: "flex" },
+    { selector: ".whatofferaplace", display: "block" },
+    { selector: ".yeufhjhdas", display: "block" },
+    { selector: ".imagesBoxListing", display: "block" },
+    { selector: ".mainplaceoffbox", display: "block" },
+    { selector: ".clanderMain", display: "block" },
+    { selector: ".reviewBox", display: "block" },
+    { selector: ".mapMainBoxs", display: "block" },
+    { selector: ".mapMainBoxse", display: "block" },
+    { selector: ".jfha", display: "block" },
+    { selector: ".erefaf22", display: "block" }
+  ];
+
+  elements.forEach((item, index) => {
+    setTimeout(() => {
+      const el = document.querySelector(item.selector);
+      if (el) {
+        el.style.display = item.display;
+      }
+    }, index * 200); // 200ms delay between each item
+  });
+}
+
+     renderAvatar(selector, avatar) {
+  const container = document.querySelector(selector);
+  console.log(container)
+  if (!container || !avatar) return;
+
+  if (avatar.image) {
+  container.insertAdjacentHTML("beforeend", `<img src="${avatar.image}" alt="user avatar">`);
+  container.style.backgroundColor = "transparent";
+} else {
+  container.insertAdjacentHTML("beforeend", `<p>${avatar.initial}</p>`);
+  container.style.backgroundColor = avatar.color;
+
+  const style = getComputedStyle(container);
+  const height = parseFloat(style.height);
+  if (!isNaN(height)) {
+    container.querySelector("p").style.fontSize = `${height * 0.5}px`;
+  }
+}
+
+}
     initializeElements() {
         this.elements = {
-            nav: document.querySelector("nav"),
+            
             headingBox: document.querySelector(".herae"),
             heading: document.querySelector("#h2"),
             images: {
@@ -28,8 +73,8 @@ class ListingPage {
                 box3: document.querySelector(".mainImage33 img"),
                 box4: document.querySelector(".mainImage44 img")
             },
-            para1: document.querySelector(".ehrh"),
-            para2: document.querySelector(".uieri"),
+            locationText: document.querySelector(".ehrh"),
+            floorPlanText: document.querySelector(".uieri"),
             rating: {
                 box: document.querySelector(".reting-box"),
                 icon: document.querySelector(".reting-box i"),
@@ -50,19 +95,16 @@ class ListingPage {
             avgRating: document.querySelector(".secodAvgreciv")
         };
 
-        // Set nav position
-        if (this.elements.nav) {
-            this.elements.nav.style.position = "relative";
-        }
+        // if (this.elements.nav) {
+        //     this.elements.;
+        // }
     }
 
-    // Setup event listeners
     setupEventListeners() {
         this.setupScrollListener();
         this.setupNavigation();
     }
 
-    // Setup scroll listener for sticky navigation
     setupScrollListener() {
         const navPart2 = document.querySelector(".navPart2");
         if (!this.elements.topNavChange || !navPart2) return;
@@ -73,7 +115,6 @@ class ListingPage {
         });
     }
 
-    // Setup smooth scroll navigation
     setupNavigation() {
         const navItems = [
             { trigger: ".navLocation", target: ".mapMainBoxs", offset: 100 },
@@ -94,22 +135,14 @@ class ListingPage {
         });
     }
 
-    // Smooth scroll utility
     smoothScrollTo(element, offset = 0) {
-        const locationY = element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetY = locationY - offset;
-        
-        window.scrollTo({
-            top: offsetY,
-            behavior: "smooth"
-        });
+        const targetY = element.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: targetY, behavior: "smooth" });
     }
 
-    // Calculate average rating from reviews
     calculateAverageRating(reviews) {
         if (!Array.isArray(reviews) || reviews.length === 0) {
-            console.log('No reviews available for rating calculation');
-            return { average: 0, distribution: {} };
+            return { average: 0, distribution: {}, totalReviews: 0 };
         }
 
         let totalRating = 0;
@@ -124,7 +157,6 @@ class ListingPage {
             value: { total: 0, count: 0 }
         };
 
-        // Process each review
         reviews.forEach(review => {
             if (review?.rating && !isNaN(review.rating)) {
                 const rating = parseFloat(review.rating);
@@ -137,7 +169,6 @@ class ListingPage {
                 }
             }
 
-            // Process category ratings
             Object.keys(categoryRatings).forEach(category => {
                 if (review?.[category] && !isNaN(review[category])) {
                     const categoryRating = parseFloat(review[category]);
@@ -148,15 +179,11 @@ class ListingPage {
         });
 
         if (validReviews === 0) {
-            return { average: 0, distribution: {} };
+            return { average: 0, distribution: {}, totalReviews: 0 };
         }
 
         const averageRating = totalRating / validReviews;
-
-        // Update category ratings in DOM
         this.updateCategoryRatings(categoryRatings);
-        
-        // Update rating distribution bars
         this.updateRatingDistribution(ratingCounts, validReviews);
 
         return { 
@@ -166,7 +193,6 @@ class ListingPage {
         };
     }
 
-    // Update category ratings in DOM
     updateCategoryRatings(categoryRatings) {
         const elementMap = {
             cleanliness: '.reviewCleanliness',
@@ -195,7 +221,6 @@ class ListingPage {
         this.categoryAverages = categoryAverages;
     }
 
-    // Update rating distribution bars
     updateRatingDistribution(ratingCounts, totalReviews) {
         for (let i = 1; i <= 5; i++) {
             const percentage = ((ratingCounts[i] / totalReviews) * 100).toFixed(1);
@@ -206,7 +231,6 @@ class ListingPage {
         }
     }
 
-    // Format time ago
     getTimeAgo(dateString) {
         try {
             const now = new Date();
@@ -217,7 +241,6 @@ class ListingPage {
             }
 
             const diffInSeconds = Math.floor((now - reviewDate) / 1000);
-
             if (diffInSeconds < 30) return "just now";
             
             const diffInMinutes = Math.floor(diffInSeconds / 60);
@@ -249,13 +272,11 @@ class ListingPage {
         }
     }
 
-    // Capitalize first letter
     capitalizeFirstLetter(str) {
         if (!str || typeof str !== 'string') return '';
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
-    // Generate star rating HTML
     generateStars(rating) {
         const numRating = parseInt(rating) || 0;
         let starsHTML = '';
@@ -268,8 +289,9 @@ class ListingPage {
         return starsHTML;
     }
 
-    // Render reviews
     renderReviews(reviews) {
+        
+
         if (!Array.isArray(reviews) || reviews.length === 0) {
             this.showNoReviews();
             return;
@@ -287,33 +309,37 @@ class ListingPage {
 
             const reviewHTML = this.createReviewHTML(review);
             this.elements.reviewsList.insertAdjacentHTML('beforeend', reviewHTML);
+
+                     if (review.author?.avatar) {
+                this.renderAvatar(`.userReviewBox:nth-child(${i + 1}) .userreviewImg`, review.author.avatar);
+            }
         }
 
         this.setupShowMoreListeners();
     }
 
-    // Create review HTML
     createReviewHTML(review) {
         const timeAgo = this.getTimeAgo(review.createAt);
         const authorName = this.capitalizeFirstLetter(review.author.username);
         const starsHTML = this.generateStars(review.rating);
         const comment = review.comment || 'No comment provided';
-        
+        const UsrOld = this.getTimeAgo(review.author.createdAt);
+        const UserImg =  review.author.avatar;
         const maxCommentLength = 207;
         const isLongComment = comment.length > maxCommentLength;
         const displayComment = isLongComment 
             ? comment.slice(0, maxCommentLength) + "..." 
             : comment;
-
+       
         return `
             <div class="userReviewBox">
                 <div class="userPoflie">
-                    <div class="userreviewImg">
-                        <img src="https://photosweek.org/wp-content/uploads/girl-dp_52.jpg" alt="User Avatar">
+                    <div class="userreviewImg userAvtar">
+                        
                     </div>
                     <div class="revuwUserName">
                         <h6>${authorName}</h6>
-                        <p>7 years on Airbnb</p>
+                        <p>${UsrOld.split(" ")[0]} ${UsrOld.split(" ")[1]} on Airbnb</p>
                     </div>
                 </div>
                 <div class="userReting">
@@ -334,7 +360,6 @@ class ListingPage {
         `;
     }
 
-    // Show no reviews state
     showNoReviews() {
         if (this.elements.totalReviewBox) {
             this.elements.totalReviewBox.style.display = "none";
@@ -344,6 +369,7 @@ class ListingPage {
         if (fullBox) fullBox.style.display = "none";
         
         if (this.elements.rating.box) {
+            document.querySelector(".hostHrev").style.display = 'none';
             this.elements.rating.box.innerHTML = `
                 <p class="noReborrr">
                     <i class="ri-star-fill"></i>No reviews yet
@@ -351,14 +377,14 @@ class ListingPage {
             `;
         }
         
-        if (this.elements.reviewsList) {
+        if (this.elements.reviewsList) { 
+           document.querySelector(".hostHrev").style.display = 'none';
             this.elements.reviewsList.innerHTML = `
                 <p class="noreviewPara">No reviews (yet)</p>
             `;
         }
     }
 
-    // Setup show more listeners
     setupShowMoreListeners() {
         const showMoreButtons = document.querySelectorAll('.seeMoreTage a');
         
@@ -367,14 +393,11 @@ class ListingPage {
                 e.preventDefault();
                 const reviewBox = button.closest('.userReviewBox');
                 const reviewMsg = reviewBox.querySelector('.userreviewMsg p');
-                
-                // Expand functionality can be implemented here
                 alert('Show More clicked for review: ' + reviewMsg.textContent.substring(0, 50) + '...');
             });
         });
     }
 
-    // Handle description text
     handleDescription(description) {
         if (!description || !this.elements.description) return;
         
@@ -389,7 +412,6 @@ class ListingPage {
         }
     }
 
-    // Get smart image selection
     getSmartImage(pathArray, defaultImage) {
         if (pathArray && pathArray.length > 0) {
             const path = pathArray[0];
@@ -397,7 +419,6 @@ class ListingPage {
             return path;
         }
 
-        // Find unused image
         const unused = this.currentImages?.find(img => !this.usedImagePaths.has(img.path));
         if (unused) {
             this.usedImagePaths.add(unused.path);
@@ -407,7 +428,6 @@ class ListingPage {
         return defaultImage;
     }
 
-    // Update images
     updateImages(images) {
         const keywords = [
             "cover", "front view", "entrance", "reception", "lobby",
@@ -422,7 +442,6 @@ class ListingPage {
         const defaultImage = "https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg";
         const imageMap = {};
 
-        // Create image map by keywords
         keywords.forEach(keyword => {
             imageMap[keyword] = images
                 .filter(img => img.originalname.toLowerCase().includes(keyword))
@@ -431,7 +450,6 @@ class ListingPage {
 
         this.currentImages = images;
 
-        // Apply images
         if (images && images.length > 0) {
             this.elements.images.main.src = this.getSmartImage(imageMap["cover"], defaultImage);
             this.elements.images.box1.src = this.getSmartImage(imageMap["bedroom"], defaultImage);
@@ -439,14 +457,12 @@ class ListingPage {
             this.elements.images.box3.src = this.getSmartImage(imageMap["living room"], defaultImage);
             this.elements.images.box4.src = this.getSmartImage(imageMap["hall"], defaultImage);
         } else {
-            // Set all to default
             Object.values(this.elements.images).forEach(img => {
                 if (img) img.src = defaultImage;
             });
         }
     }
 
-    // Load amenities
     async loadAmenities(amenitiesData) {
         try {
             const response = await fetch("/listingData/structureData");
@@ -459,7 +475,6 @@ class ListingPage {
         }
     }
 
-    // Render amenities
     renderAmenities(amenitiesList, amenitiesStructure, container) {
         if (!container) return;
 
@@ -481,7 +496,6 @@ class ListingPage {
         });
     }
 
-    // Remove loading classes
     removeLoadingClasses() {
         const loadingElements = [
             this.elements.headingBox,
@@ -490,41 +504,38 @@ class ListingPage {
             document.querySelector(".mainImage22"),
             document.querySelector(".mainImage33"),
             document.querySelector(".mainImage44"),
-            this.elements.para1,
-            this.elements.para2,
+            document.querySelector(".sharBoxCover"),
+            document.querySelector(".sharBoxCover2"),
+            document.querySelector(".priceHadingBox "),
+            this.elements.locationText,
+            this.elements.floorPlanText,
             this.elements.rating.box
         ];
-
+        document.querySelector(".mainPriceBox").classList.remove("mainPriceBoxNone")
         loadingElements.forEach(element => {
             if (element) element.classList.remove("loding");
         });
     }
 
-    // Update listing data in DOM
     updateListingData(data) {
-        // Basic info
         if (data.title && this.elements.heading) {
             this.elements.heading.innerText = this.capitalizeFirstLetter(data.title);
         }
 
-        // Location info
-        if (data.location && this.elements.para1) {
+        if (data.location && this.elements.locationText) {
             const { CityTown = 'Unknown City', StateUnionTerritory = 'Unknown State', country = 'Unknown Country' } = data.location;
-            this.elements.para1.innerText = `${CityTown} in ${StateUnionTerritory}, ${country}`;
+            this.elements.locationText.innerText = `${CityTown} in ${StateUnionTerritory}, ${country}`;
         }
 
-        // Floor plan info
-        if (data.floorPlan && this.elements.para2) {
+        if (data.floorPlan && this.elements.floorPlanText) {
             const { Guests = '0', Bedrooms = '0', Bed = '0' } = data.floorPlan;
-            this.elements.para2.innerText = `${Guests} guests • ${Bedrooms} bedrooms • ${Bed} beds`;
+            this.elements.floorPlanText.innerText = `${Guests} guests • ${Bedrooms} bedrooms • ${Bed} beds`;
         }
 
-        // Price
         if (data.price && this.elements.price) {
             this.elements.price.innerHTML = `<i class="fa-solid fa-indian-rupee-sign"></i>${data.price.toLocaleString("en-IN")}`;
         }
 
-        // Rating and reviews
         const reviewCount = data.reviews ? data.reviews.length : 0;
         let averageRating = 0;
 
@@ -533,12 +544,12 @@ class ListingPage {
             averageRating = ratingData.average;
         }
 
-        // Update rating display
         if (averageRating > 0) {
             if (this.elements.rating.para) {
                 this.elements.rating.para.innerText = `${averageRating.toFixed(2)} •`;
             }
             if (this.elements.avgRating) {
+                document.querySelector('.Rdfajhd h6').innerText = averageRating.toFixed(2);
                 this.elements.avgRating.innerText = averageRating.toFixed(2);
             }
         } else {
@@ -555,36 +566,49 @@ class ListingPage {
             this.elements.rating.icon.classList.remove("none");
         }
 
-        // Host name
         if (data.owner?.username && this.elements.hostName) {
             this.elements.hostName.innerText = `Hosted by ${this.capitalizeFirstLetter(data.owner.username)}`;
         }
 
-        // Description
+       
+
+// Usage
+if (data.owner && data.owner.avatar) {
+  this.renderAvatar(".hostsImage", data.owner.avatar);
+  this.renderAvatar(".hImgBox", data.owner.avatar);
+}
+
+if(data.owner && data.owner.isVerified){
+    console.log(data.owner.isVerified)
+document.querySelector(".hImgBox").insertAdjacentHTML("beforeend", `
+  <div class="verifyIcon">
+    <i class="ri-shield-check-fill"></i>
+  </div>
+`);
+}
+
+
+
         if (data.description) {
             this.handleDescription(data.description);
         }
 
-        // Reviews
         this.renderReviews(data.reviews);
 
-        // Total review count
         if (data.reviews && this.elements.totalReview) {
+            document.querySelector(".totRvieHosHost h6").innerText = `${data.reviews.length}`
             this.elements.totalReview.innerText = `. ${data.reviews.length}`;
         }
 
-        // Images
         if (data.image) {
             this.updateImages(data.image);
         }
 
-        // Amenities
         if (data.amenitiess) {
             this.loadAmenities(data.amenitiess);
         }
     }
 
-    // Main method to load listing data
     async loadListingData() {
         try {
             const response = await fetch(`/api/listing/${this.listingId}`);
@@ -599,9 +623,29 @@ class ListingPage {
             if (!data) {
                 throw new Error('No data received');
             }
+           let datelis =  this.getTimeAgo(data.createdAt);
+             if(["hours","minute","just now"].includes(datelis.split(" ")[1])){
+                 document.querySelector(".hsotyer h6").innerText = "New";
+                 document.querySelector(".yearofhosthing").innerText = "New";
+           document.querySelector(".ejfadere").style.display = "none";
 
+                console.log("New")
+            }else{
+                 document.querySelector(".hsotyer h6").innerText =  datelis.split(" ")[0];
+                 document.querySelector(".yearofhosthing").innerText =  `${datelis.split(" ")[0]} ${datelis.split(" ")[1]} hosting`;
+           document.querySelector(".ejfadere").innerText =  `${datelis.split(" ")[1]} of hosting`;
+                console.log(datelis.split(" ")[1])
+            }
+          
+            console.log(Calendar.logSelection)
+           
+            document.querySelector(".dateCity").innerText = `nights in ${this.capitalizeFirstLetter(data.location.CityTown)}`;
+            document.querySelector(".AllCtiyCner").innerText = `${data.location.CityTown},${data.location.StateUnionTerritory},${data.location.country}`
+            document.querySelector(".shar-box1").style.display = "flex";
+            document.querySelector(".feerers22").style.display = "flex";
             this.updateListingData(data);
             this.removeLoadingClasses();
+            this.lodingAOtherContan();
 
         } catch (error) {
             console.error('Error fetching listing data:', error);
@@ -609,7 +653,6 @@ class ListingPage {
         }
     }
 
-    // Handle errors
     handleError() {
         this.removeLoadingClasses();
         
@@ -619,7 +662,185 @@ class ListingPage {
     }
 }
 
-// Initialize the listing page when DOM is ready
+// Calendar functionality
+class Calendar {
+    constructor(calendarElementId) {
+        this.calendarEl = document.getElementById(calendarElementId);
+        this.currentDate = new Date();
+        this.allowedRange = [];
+        this.selectedDates = [];
+    }
+
+    init(range, defaults) {
+        this.allowedRange = range.slice().sort((a, b) => a - b);
+        this.selectedDates = defaults.slice().sort((a, b) => a - b);
+        this.render();
+        this.logSelection();
+    }
+
+    render() {
+        this.calendarEl.innerHTML = '';
+
+        let start, end;
+        if (this.selectedDates.length === 2) {
+            [start, end] = this.selectedDates.slice().sort((a, b) => a - b);
+        }
+
+        for (let m = 0; m < 2; m++) {
+            const monthDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + m, 1);
+            const year = monthDate.getFullYear();
+            const month = monthDate.getMonth();
+
+            const monthEl = document.createElement('div');
+            monthEl.className = 'month';
+
+            const header = document.createElement('div');
+            header.className = 'month-header';
+
+            const leftArrow = document.createElement('span');
+            leftArrow.className = m === 0 ? 'nav-arrow' : 'nav-arrow invisible';
+            leftArrow.innerHTML = '<i class="ri-arrow-left-wide-fill"></i>';
+            if (m === 0) leftArrow.onclick = () => {
+                this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+                this.render();
+            };
+
+            const title = document.createElement('span');
+            title.className = 'month-title';
+            title.textContent = `${monthDate.toLocaleString('default', { month: 'long' })} ${year}`;
+
+            const rightArrow = document.createElement('span');
+            rightArrow.className = m === 1 ? 'nav-arrow' : 'nav-arrow invisible';
+            rightArrow.innerHTML = '<i class="ri-arrow-right-wide-fill"></i>';
+            if (m === 1) rightArrow.onclick = () => {
+                this.currentDate.setMonth(this.currentDate.getMonth() + 1);
+                this.render();
+            };
+
+            header.append(leftArrow, title, rightArrow);
+
+            const weekdays = document.createElement('div');
+            weekdays.className = 'weekdays';
+            ['S', 'M', 'T', 'W', 'T', 'F', 'S'].forEach(d => {
+                weekdays.innerHTML += `<div>${d}</div>`;
+            });
+
+            const days = document.createElement('div');
+            days.className = 'days';
+            const firstDay = new Date(year, month, 1).getDay();
+            const totalDays = new Date(year, month + 1, 0).getDate();
+
+            for (let b = 0; b < firstDay; b++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'empty-day';
+                days.appendChild(emptyDay);
+            }
+
+            for (let d = 1; d <= totalDays; d++) {
+                const thisDate = new Date(year, month, d);
+                const wrap = document.createElement('div');
+                wrap.className = 'dateCove';
+                const dayEl = document.createElement('div');
+                dayEl.textContent = d;
+
+                if (this.selectedDates.some(sd => this.isSameDate(sd, thisDate))) {
+                    dayEl.classList.add('selected-date');
+                }
+
+                if (this.selectedDates.length === 2) {
+                    if (this.isSameDate(thisDate, start)) {
+                        wrap.classList.add('smallClor');
+                    } else if (this.isSameDate(thisDate, end)) {
+                        wrap.classList.add('ChangeClor');
+                    }
+                    
+                    if (thisDate > start && thisDate < end) {
+                        dayEl.classList.add('change');
+                    }
+                }
+
+                if (thisDate < this.allowedRange[0]) {
+                    wrap.classList.add('previData');
+                } else if (thisDate > this.allowedRange[1]) {
+                    wrap.classList.add('nextData');
+                }
+
+                if (thisDate >= this.allowedRange[0] && thisDate <= this.allowedRange[1]) {
+                    dayEl.style.cursor = 'pointer';
+                    dayEl.onclick = () => this.handleDateSelect(new Date(thisDate));
+                } else {
+                    dayEl.style.cursor = 'default';
+                }
+
+                wrap.appendChild(dayEl);
+                days.appendChild(wrap);
+            }
+
+            monthEl.append(header, weekdays, days);
+            this.calendarEl.appendChild(monthEl);
+        }
+    }
+
+    handleDateSelect(date) {
+        if (this.selectedDates.length === 2 && !this.selectedDates.some(d => this.isSameDate(d, date))) {
+            this.selectedDates = [];
+        }
+        
+        if (!this.selectedDates.some(d => this.isSameDate(d, date))) {
+            this.selectedDates.push(date);
+            this.selectedDates.sort((a, b) => a - b);
+        }
+        
+        this.render();
+        this.logSelection();
+    }
+
+    logSelection() {
+        if (this.selectedDates.length !== 2) return;
+        
+        const [start, end] = this.selectedDates;
+        const dayGap = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+        
+        const totalDataEl = document.querySelector(".TotalData");
+        const headerEl = document.querySelector(".clnHd2");
+        const checkinEl = document.querySelector("#checkinlabel");
+        const checkoutEl = document.querySelector("#checkoutlabel");
+        
+        if (totalDataEl) totalDataEl.textContent = dayGap;
+        if (headerEl) headerEl.textContent = `${this.formatShort(start)} - ${this.formatShort(end)}`;
+        if (checkinEl) checkinEl.value = this.formatDate(start);
+        if (checkoutEl) checkoutEl.value = this.formatDate(end);
+
+        console.log("Check-in:", this.formatDate(start));
+        console.log("Check-out:", this.formatDate(end));
+        console.log("Duration:", dayGap, "days");
+    }
+
+    isSameDate(a, b) {
+        return a.getFullYear() === b.getFullYear() &&
+               a.getMonth() === b.getMonth() &&
+               a.getDate() === b.getDate();
+    }
+
+    formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
+    formatShort(date) {
+        return `${date.getDate()} ${date.toLocaleString('default', { month: 'short' })} ${date.getFullYear()}`;
+    }
+}
+
+// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     new ListingPage();
+    
+    const calendar = new Calendar('calendar');
+    calendar.init(
+        [new Date(2025, 5, 30), new Date(2025, 7, 10)],
+        [new Date(2025, 5, 30), new Date(2025, 6, 5)]
+    );
 });

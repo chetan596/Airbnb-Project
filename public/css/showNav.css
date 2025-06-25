@@ -1,21 +1,20 @@
-
-
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap'); */
-.showmainddf{
+.showmainddf {
     margin: 0px;
     width: 100%;
     padding: 0rem;
     font-family: "Poppins", sans-serif;
 }
 
-.listingBox{
-    height: 40%;
+.listingBox {
+    /* height: 40%; */
     width: 100%;
     padding: 0rem 7rem;
     margin-top: 1.5%;
 }
-.hotel-hading{
-  
+
+.hotel-hading {
+
     height: 3rem;
     width: 100%;
     display: flex;
@@ -23,21 +22,33 @@
     align-items: center;
     padding-left: 0.8rem;
 }
-.hotel-hading h2{
+
+.hotel-hading h2 {
     font-size: 1.7rem;
     font-weight: 500;
     display: flex;
     align-items: center;
 }
-.shar-box{
+
+.shar-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
     /* background-color: blue; */
-    width: 13%;
+    width: 14%;
 }
-.shar-box1{
-    display: flex;
+.sharBoxCover{
+       height: 1.8rem;
+    width: 5rem;
+     border-radius: 6px;
+}
+.sharBoxCover2{
+       height: 1.8rem;
+    width: 4.53rem;
+     border-radius: 6px;
+}
+.shar-box1 {
+    display: none;
     justify-content: space-between;
     align-items: center;
     font-size: 1rem;
@@ -46,113 +57,127 @@
     border-radius: 6px;
     transition: all 0.5s ease;
 }
-.shar-box1:hover{
+
+.shar-box1:hover {
     background-color: #E0E0E0;
 }
-.shar-box1 i{
+
+.shar-box1 i {
     margin-right: 0.3rem;
     font-size: 1.2rem;
     font-weight: 500;
 }
-.shar-box1 p{
+
+.shar-box1 p {
     font-size: 0.9rem;
     font-weight: 500;
     text-decoration: underline;
 }
-.shar-box2{
+
+.shar-box2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 /* image box */
-.hotel-image{
+.hotel-image {
     height: 21.3rem;
     width: 100%;
     margin-top: 0.4rem;
     display: flex;
     justify-content: space-between;
 }
-.mainImage{
+
+.mainImage {
     height: 100%;
     width: 52.4%;
     border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px ;
+    border-bottom-left-radius: 20px;
     position: relative;
 }
-.mainImage img{
+
+.mainImage img {
     display: block;
     height: 100%;
     width: 100%;
     object-fit: cover;
-    border-top-left-radius: 20px ;
-    border-bottom-left-radius: 20px ;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
-.hoverColr{
+.hoverColr {
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     position: absolute;
-      border-radius: inherit;
+    border-radius: inherit;
     background-color: rgba(0, 0, 0, 0.322);
     opacity: 0;
 }
-.hoverColr:hover{
+
+.hoverColr:hover {
     opacity: 1;
 }
-.mainImage2{
+
+.mainImage2 {
     height: 100%;
     width: 47%;
     /* margin-left: 1.5rem; */
     /* background-color: blue; */
 }
-.herae{
-    height: 100%;
+
+.herae {
+    height: 60%;
     width: 40%;
     /* background-color: #cc5f5f9d; */
     display: flex;
     align-items: center;
     border-radius: 0.3rem;
 }
-.imagebox1{
+
+.imagebox1 {
     height: 173px;
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
-.image-boxs1{
+
+.image-boxs1 {
     position: relative;
     height: 168px;
     width: 262px;
 }
-.image-boxs1 img{
+
+.image-boxs1 img {
     height: 100%;
     width: 100%;
     object-fit: cover;
 }
-.cc{
-    border-top-right-radius: 20px ;
+
+.cc {
+    border-top-right-radius: 20px;
 }
-.ff{
-    border-bottom-right-radius: 20px ;
+
+.ff {
+    border-bottom-right-radius: 20px;
 }
 
 /* info-price */
 
-.info-price{
+.info-price {
     height: 8.4rem;
     width: 100%;
     padding: 20px 0px;
     font-family: "Poppins", sans-serif;
-    border-bottom: 1px solid #2222223d; 
-   
-  
-    
+    border-bottom: 1px solid #2222223d;
+
+
+
 }
 
-.ehrh{
+.ehrh {
     /* background-color: aqua; */
     height: 1.6rem;
     width: 75%;
@@ -162,7 +187,8 @@
     color: #222222;
 
 }
-.uieri{
+
+.uieri {
     font-size: 1rem;
     font-weight: 400;
     margin-top: 0.4rem;
@@ -172,7 +198,8 @@
     border-radius: 5px;
     color: #222222;
 }
-.reting-box{
+
+.reting-box {
     display: flex;
     align-items: center;
     margin-top: 0.9rem;
@@ -181,30 +208,36 @@
     /* background-color: aqua; */
     width: 45%;
 }
-.noReborrr{
+
+.noReborrr {
     font-size: 1rem;
     font-weight: 400;
     color: #222222;
 }
-.noReborrr i{
-     font-size: 0.6rem;
+
+.noReborrr i {
+    font-size: 0.6rem;
     font-weight: 400;
     color: #222222;
     margin-right: 0.3rem;
 }
-.none{
+
+.none {
     display: none;
-    
+
 }
-.erere{
+
+.erere {
     font-size: 1.1rem;
 }
-.uyer{
+
+.uyer {
     color: #222222;
     /* text-decoration: underline; */
     font-weight: 600;
     margin-left: 0.3rem;
 }
+
 .reting-box a {
     color: #222222;
     text-decoration: underline;
@@ -213,30 +246,33 @@
 }
 
 
-.hostingBy{
+.hostingBy {
     height: 4rem;
     width: 100%;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: space-between;
     /* background-color: aqua; */
     padding: 2.8rem 0rem;
+    display: none;
     border-bottom: 1px solid #2222223d;
 }
 
-.hostsImage{
+.hostsImage {
     height: 2.8rem;
     width: 2.8rem;
     border-radius: 50%;
     /* background-color: brown; */
 }
-.hostsImage img{
+
+.hostsImage img {
     height: 100%;
     width: 100%;
     border-radius: 50%;
     object-fit: cover;
 }
-.hostnsamefff{
+
+.hostnsamefff {
     height: 4rem;
     width: 90%;
     /* background-color: bisque; */
@@ -244,28 +280,28 @@
     padding: 0.8rem 0rem;
 }
 
-.hostNmare{
+.hostNmare {
     font-size: 1rem;
     font-weight: 500;
     line-height: 22px;
     color: #222222;
 }
 
-.yearofhosthing{
+.yearofhosthing {
     font-size: 0.8rem;
     font-weight: 400;
     color: #6A6A6A;
 }
 
-.whatofferaplace{
+.whatofferaplace {
     height: 16rem;
     width: 100%;
-    /* padding: 2.7rem 0rem; */
+    display: none;
     border-bottom: 1px solid #2222223d;
     /* background-color: aqua; */
 }
 
-.whfhdjf1{
+.whfhdjf1 {
     height: 5rem;
     width: 100%;
     display: flex;
@@ -274,7 +310,7 @@
     /* background-color: burlywood; */
 }
 
-.imageBoxddd{
+.imageBoxddd {
     height: 4rem;
     width: 4rem;
     display: flex;
@@ -282,46 +318,54 @@
     justify-content: center;
     /* background-color: aquamarine; */
 }
-.imageBoxddd img{
+
+.imageBoxddd img {
     height: 68%;
     width: 68%;
 }
-.hadifhdf{
+
+.hadifhdf {
     height: 5rem;
     width: 90%;
     align-content: center;
     /* background-color: blueviolet; */
 }
 
-.spet2minaShow{
+.spet2minaShow {
     display: flex;
     justify-content: space-between;
+     border-bottom: 1px solid #2222223d;
+     padding-bottom: 2rem;
 }
-.ferreei12333{
+
+.ferreei12333 {
     width: 58%;
 }
-.yeufhjhdas{
+
+.yeufhjhdas {
     max-height: 30rem;
     width: 100%;
-    /* background-color: aqua; */
+    display: none;
     border-bottom: 1px solid #2222223d;
 }
 
-.aboutthelace{
+.aboutthelace {
     margin-top: 2rem;
     max-height: 20rem;
     width: 100%;
     /* background-color: burlywood; */
     overflow: hidden;
 }
-.aboutthelace h3{
+
+.aboutthelace h3 {
     font-size: 1.4rem;
     font-weight: 500;
     color: #222222;
     margin-bottom: 1.5rem;
 }
-.aboutthelace p{
-      font-family: "Roboto", sans-serif;
+
+.aboutthelace p {
+    font-family: "Roboto", sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5rem;
@@ -332,62 +376,68 @@
     margin-bottom: 1rem;
 
 }
-.showfffafa{
+
+.showfffafa {
     display: flex;
     align-items: center;
     /* justify-content: space-between; */
     width: 8rem;
-     margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
-.sghowmore{
+
+.sghowmore {
     font-size: 1rem;
     font-weight: 500;
     text-decoration: underline;
-    
+
 }
 
-.showIcon111 i{
+.showIcon111 i {
     font-size: 1.5rem;
     font-weight: 400;
 
 }
 
-.mainplaceoffbox{
+.mainplaceoffbox {
     height: 30rem;
     width: 100%;
+    display: none;
     padding-top: 3.2rem;
     border-bottom: 1px solid #2222223d;
 }
 
-.whatisplaceoffeee{
+.whatisplaceoffeee {
     height: 65%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-  
+
     /* background-color: aqua; */
 }
-.showHading-34{
-    
+
+.showHading-34 {
+
     font-size: 1.5rem;
     font-weight: 500;
     color: #222222;
     padding-bottom: 1rem;
 }
-.offerBox1{
+
+.offerBox1 {
     height: 100%;
     width: 50%;
-    
+
     /* background-color: burlywood; */
 }
-.offerBox2{
+
+.offerBox2 {
     height: 100%;
     width: 50%;
     /* background-color: rgba(159, 190, 19, 0.747); */
 }
 
-.itemBoxplace1{
+.itemBoxplace1 {
     height: 3rem;
     width: 100%;
     display: flex;
@@ -395,25 +445,25 @@
     /* background-color: darkslategray; */
 }
 
-.inmgBoxincd{
+.inmgBoxincd {
     height: 3rem;
     width: 3rem;
     /* background-color: darkgreen; */
 }
 
-.ararttt{
+.ararttt {
     height: 100%;
     width: 90%;
     align-content: center;
     /* background-color: darkmagenta; */
 }
 
-.inmgBoxincd img{
+.inmgBoxincd img {
     height: 100%;
     width: 100%;
 }
 
-.ShowAllAfff{
+.ShowAllAfff {
     height: 3.2rem;
     width: 13rem;
     display: flex;
@@ -425,21 +475,22 @@
     /* background-color: aqua; */
 }
 
-.ShowAllAfff p{
+.ShowAllAfff p {
     font-size: 1rem;
     font-weight: 500;
     color: #222222;
 
 }
 
-.imagesBoxListing{
+.imagesBoxListing {
     height: 25rem;
     width: 100%;
+    display: none;
     border-bottom: 1px solid #2222223d;
     /* background-color: aqua; */
 }
 
-.imagesListingHading{
+.imagesListingHading {
     height: 3rem;
     width: 100%;
     display: flex;
@@ -448,13 +499,13 @@
     /* background-color: cadetblue; */
 }
 
-.imagesListingHading h3{
+.imagesListingHading h3 {
     font-size: 1.4rem;
     font-weight: 500;
     color: #222222;
 }
 
-.listingInageBoxss{
+.listingInageBoxss {
     height: 75%;
     width: 100%;
     padding-top: 1rem;
@@ -464,60 +515,63 @@
     /* background-color: blue; */
 }
 
-.listingBoxs1{
-    height: 100%;
+.listingBoxs1 {
+    /* height: 100%; */
     width: 49%;
     /* background-color: chartreuse; */
 }
 
-.imagesssslistin{
+.imagesssslistin {
     height: 79%;
     width: 100%;
     /* background-color: darkolivegreen; */
     border-radius: 0.5rem;
 }
-.imagesssslistin img{
+
+.imagesssslistin img {
     height: 100%;
     width: 100%;
     border-radius: inherit;
 }
-.imageName1{
+
+.imageName1 {
     height: 4rem;
     width: 100%;
     align-content: center;
     /* background-color: darkred; */
 }
 
-.tehf-1{
+.tehf-1 {
     font-size: 1.1rem;
     font-weight: 500;
     color: #222222;
 
 }
-.tehf-2{
+
+.tehf-2 {
     font-size: 0.8rem;
     font-weight: 500;
-    color:#6A6A6A;
+    color: #6A6A6A;
 
 }
 
-.reviewBox{
-     font-family: "Poppins", sans-serif;
+.reviewBox {
+    font-family: "Poppins", sans-serif;
     min-height: 5rem;
     width: 100%;
-      border-bottom: 1px solid #DDDDDD;
-    /* background-color: aqua; */
+    border-bottom: 1px solid #DDDDDD;
+    display: none;
 }
 
 
 
-.reviewHading{
+.reviewHading {
     margin: 3.5rem 0rem;
     margin-bottom: 1.6rem !important;
 }
 
-.reviewHading h3{
-      font-family: "Roboto", sans-serif;
+.reviewHading h3 {
+    font-family: "Roboto", sans-serif;
     font-size: 1.6rem;
     font-weight: 500;
     color: #222222;
@@ -526,45 +580,50 @@
     gap: 0.3rem;
 }
 
-.overallretingBox{
+.overallretingBox {
     height: 10rem;
     width: 100%;
     /* padding-bottom: 1.6rem; */
-     border-bottom: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
     /* background-color: rgb(39, 141, 26); */
 }
-.overallretingFlex{
+
+.overallretingFlex {
     height: 74%;
     width: 100%;
     display: flex;
     align-items: center;
-    
+
 }
-.retingSmallBox{
+
+.retingSmallBox {
     height: 100%;
 
     width: 15%;
     border-right: 1px solid #DDDDDD;
     /* background-color: cadetblue; */
 }
-.retingSmallBox h5{
+
+.retingSmallBox h5 {
     font-size: 0.9rem;
     font-weight: 500;
     color: #222222;
     margin-bottom: 0.6rem;
 }
-.retingSmallBox ol{
+
+.retingSmallBox ol {
     height: 75%;
-     display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     /* background-color: brown; */
     list-style: none;
 }
-.retingSmallBox li{
+
+.retingSmallBox li {
     height: 1rem;
     width: 100%;
-   
+
     font-family: "Rubik", sans-serif;
 
     /* background-color: rgb(255, 145, 0); */
@@ -574,7 +633,8 @@
     font-size: 0.8rem;
     color: #222222;
 }
-.retingLine{
+
+.retingLine {
     height: 0.23rem;
     width: 74%;
     margin-left: 0.3rem;
@@ -582,16 +642,18 @@
     border-radius: 0.1rem;
 }
 
-.retingBlack{
+.retingBlack {
     height: 100%;
     /* width: 70%; */
     background-color: #222222;
     border-radius: 0.1rem;
 }
-.laetnum{
+
+.laetnum {
     margin-left: 0.44rem;
 }
-.Revbox2{
+
+.Revbox2 {
     padding: 0rem 1.8rem;
     width: 16% !important;
     display: flex;
@@ -599,35 +661,35 @@
     justify-content: space-between;
 }
 
-.retingSmallBox h4{
-     font-size: 1.2rem;
+.retingSmallBox h4 {
+    font-size: 1.2rem;
     font-weight: 500;
     color: #222222;
     margin-bottom: 0.6rem;
 }
 
-.reviewHading33{
-      margin-bottom: 0.1rem !important;
+.reviewHading33 {
+    margin-bottom: 0.1rem !important;
 }
 
 
-.reviewImage{
+.reviewImage {
     height: 2.5rem;
     width: 100%;
     /* background-color: aqua; */
 }
 
-.reviewImage img{
+.reviewImage img {
     height: 100%;
 }
 
-.Refff33{
-    border: none  !important;
+.Refff33 {
+    border: none !important;
 }
 
 
 
-.reviewsList{
+.reviewsList {
     /* height: 20rem; */
     width: 100%;
     margin-top: 2.5rem;
@@ -635,16 +697,16 @@
 }
 
 
-.reviewsListBox{
+.reviewsListBox {
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2 , 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     column-gap: 2rem;
 }
 
-.userReviewBox{
+.userReviewBox {
     height: 100%;
     width: 100%;
     margin-bottom: 2.7rem;
@@ -652,7 +714,7 @@
 }
 
 
-.userPoflie{
+.userPoflie {
     height: 3.5rem;
     width: 100%;
     display: flex;
@@ -661,20 +723,22 @@
     /* background-color: burlywood; */
 }
 
-.userreviewImg{
-    height: 100%;
-    width: 3.5rem;
+.userreviewImg {
+    height: 94%;
+    width: 3.29rem;
     border-radius: 50%;
 
     /* background-color: aqua; */
 }
-.userreviewImg img{
+
+.userreviewImg img {
     height: 100%;
     width: 100%;
     object-fit: cover;
-     border-radius: 50%;
+    border-radius: 50%;
 }
-.revuwUserName{
+
+.revuwUserName {
     height: 100%;
     width: 50%;
     align-content: center;
@@ -682,20 +746,21 @@
 }
 
 
-.revuwUserName h6{
+.revuwUserName h6 {
     font-size: 1rem;
     font-weight: 500;
     color: #222222;
-    
+
 }
-.revuwUserName p{
+
+.revuwUserName p {
     font-size: 0.8rem;
     font-weight: 400;
     color: #222222;
 
 }
 
-.userReting{
+.userReting {
     height: 2rem;
     width: 100%;
     display: flex;
@@ -704,51 +769,51 @@
     /* background-color: rgba(118, 139, 0, 0.651); */
 }
 
-.retingStar i{
+.retingStar i {
     font-size: 0.8rem;
-    
+
 }
 
-.userReting p{
-     font-size: 1rem;
+.userReting p {
+    font-size: 1rem;
     font-weight: 500;
     color: #222222;
     padding-left: 0.5rem;
 }
 
-.userreviewMsg{
-  max-height: 5rem;
-  overflow: hidden;
+.userreviewMsg {
+    max-height: 5rem;
+    overflow: hidden;
     width: 100%;
     margin-bottom: 0.7rem;
     /* background-color: rgba(46, 155, 155, 0.774); */
 }
 
-.userreviewMsg p{
-         font-family: "Rubik", sans-serif;
-     max-height: 5rem;
-   font-size: 1rem;
+.userreviewMsg p {
+    font-family: "Rubik", sans-serif;
+    max-height: 5rem;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1.5rem;
     color: #222222;
     overflow: hidden;
 }
 
-.seeMoreTage a{
+.seeMoreTage a {
     text-decoration: underline;
-     font-size: 1.1rem;
+    font-size: 1.1rem;
     font-weight: 500;
 
     color: #222222;
 }
 
-.seeMoreTage a:hover{
-     color: #000000;
+.seeMoreTage a:hover {
+    color: #000000;
 }
 
 
-.moreShowIn{
-  padding: 0.9rem 1.8rem;
+.moreShowIn {
+    padding: 0.9rem 1.8rem;
     /* display: inline-block; */
     background-color: #F2F2F2;
     border-radius: 0.9rem;
@@ -759,12 +824,12 @@
     transition: padding 0.3s ease;
 }
 
-.moreShowIn:hover{
+.moreShowIn:hover {
     cursor: pointer;
-      background-color: #EBEBEB;
+    background-color: #EBEBEB;
 }
 
-.noreviewPara{
+.noreviewPara {
     font-size: 1.3rem;
     font-weight: 500;
     color: #222222;
@@ -772,15 +837,29 @@
 }
 
 
-.mapMainBoxs{
-    height: 25rem;
+.mapMainBoxs {
+    height: 42rem;
     width: 100%;
-    border-radius: 0.5rem;
+    display: none;
     margin: 3rem 0rem;
+    border-bottom: 1px solid #2222223d;
     /* background-color: rgba(0, 255, 255, 0.507); */
 }
 
-.step2box23ee{
+.mapHading{
+  font-family: "Roboto", sans-serif;
+font-size: 1.5rem;
+    color: #222222;
+    height: 3rem;
+    /* background-color: red; */
+    font-weight: 500;
+}
+
+.mapmaiConter{
+    border-radius: 1.2rem;
+    height: 30rem;
+}
+.step2box23ee {
 
     display: flex;
     /* align-items: center; */
@@ -788,8 +867,8 @@
 }
 
 
-.mainPriceBox{
-       height: 20rem;
+.mainPriceBox {
+    height: 20rem;
     width: 23.3rem;
     margin-top: 2rem;
     border-radius: 0.7rem;
@@ -800,41 +879,47 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.322);
 }
 
-.smallPriceBox{
+.mainPriceBoxNone{
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+}
+
+.smallPriceBox {
     height: 100%;
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     background-color: rgb(255, 255, 255);
 }
 
-.priceHadingBox{
-    /* height: 4rem; */
-    width: 100%;
-    margin-bottom: 0.8rem;
+.priceHadingBox {
+    height: 2.3rem;
+    min-width: 51%;
+    display: inline-block;
+    border-radius: 0.2rem;
 }
 
-.mianPariceHadingee3{
+.mianPariceHadingee3 {
     font-size: 1.4rem;
     font-weight: 600;
     color: #222222;
     text-decoration: underline;
 }
 
-.mianPariceHadingee3 i{
-     font-weight: 600;
-     font-size: 1.3rem;
-     text-decoration: underline;
+.mianPariceHadingee3 i {
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-decoration: underline;
 }
 
-.htBookDate{
+.htBookDate {
     height: 7.2rem;
-     width: 100%;
+    width: 100%;
+    margin-top: 1rem;
     border: 1px solid #22222285;
     border-radius: 0.5rem;
 }
 
-.daleFlex{
+.daleFlex {
     height: 3.5rem;
     width: 100%;
     display: flex;
@@ -842,31 +927,34 @@
     justify-content: space-between;
 }
 
-.checkIn{
-       padding: 0.5rem 0.8rem;
+.checkIn {
+    padding: 0.5rem 0.8rem;
     height: 100%;
     line-height: 1.05rem;
     width: 50%;
 }
-.checkIn label{
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: #222222;
-}
-.checkOut{
-       padding: 0.5rem 0.8rem;
-    height: 100%;
-    line-height: 1.05rem;
-    width: 50%;
-    border-left: 1px solid  #22222285;
-}
-.checkOut label{
+
+.checkIn label {
     font-size: 0.7rem;
     font-weight: 600;
     color: #222222;
 }
 
-.checkOut input{
+.checkOut {
+    padding: 0.5rem 0.8rem;
+    height: 100%;
+    line-height: 1.05rem;
+    width: 50%;
+    border-left: 1px solid #22222285;
+}
+
+.checkOut label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #222222;
+}
+
+.checkOut input {
     outline: none;
     border: none;
 }
@@ -875,10 +963,12 @@
     display: none;
     -webkit-appearance: none;
 }
-.checkIn input{
+
+.checkIn input {
     outline: none;
     border: none;
 }
+
 .checkOut input::-webkit-calendar-picker-indicator {
     display: none;
     -webkit-appearance: none;
@@ -886,10 +976,11 @@
 
 
 
-.flexBoxgt{
-        width: 100%;
+.flexBoxgt {
+    width: 100%;
 }
-.addGust{
+
+.addGust {
     border-top: 1px solid #22222285;
     padding: 0.8rem 0.8rem;
     width: 100%;
@@ -899,28 +990,30 @@
     cursor: pointer;
 }
 
-.gt11{
-     font-size: 0.7rem;
+.gt11 {
+    font-size: 0.7rem;
     font-weight: 600;
     color: #222222;
 }
 
-.gt22{
-     font-size: 0.8rem;
+.gt22 {
+    font-size: 0.8rem;
     font-size: 400;
     color: #222222;
 }
 
-.gustAddotOp{
+.gustAddotOp {
     height: 10rem;
     width: 100%;
     background-color: lightseagreen;
 }
-.rejfasjk i{
+
+.rejfasjk i {
     font-size: 1.5rem;
 }
-.pcicebtn{
-     font-family: "Rubik", sans-serif;
+
+.pcicebtn {
+    font-family: "Rubik", sans-serif;
     height: 3rem;
     width: 100%;
     margin: 1rem 0rem;
@@ -933,7 +1026,8 @@
     color: white;
     cursor: pointer;
 }
-.dfefdcvd{
+
+.dfefdcvd {
     font-size: 0.9rem;
     font-weight: 400;
     color: #222222;
@@ -941,20 +1035,25 @@
 }
 
 
- #map {
+#map {
     border-radius: inherit;
-        height: 100%; /* Full viewport height */
-        width: 100%;   /* Full width */
-      }
+    height: 100%;
+    /* Full viewport height */
+    width: 100%;
+    /* Full width */
+}
 
-      .mapMainBoxse{
-        height: 33rem;
-        width: 100%;
+.mapMainBoxse {
+    /* height: 33rem; */
+    width: 100%;
+    padding-bottom: 4rem;
+     border-bottom: 1px solid #6a6a6a46;
+font-family: "Cal Sans", sans-serif;
+display: none;
+}
 
-      }
-
-.navPart2{
-      font-family: "Poppins", sans-serif;
+.navPart2 {
+    font-family: "Poppins", sans-serif;
     height: 5.3rem;
     width: 100%;
     position: fixed;
@@ -964,12 +1063,13 @@
     justify-content: space-between;
     border-bottom: 1px solid #6a6a6a26;
     background-color: white;
-    transition: top 0.5s ease;
+    transition: top 0.2s ease;
 }
+
 /* .navPart2{
     top: 0;
 } */
-.listingAllNav{
+.listingAllNav {
     height: 100%;
     width: 50%;
     display: flex;
@@ -978,9 +1078,9 @@
 
 }
 
-.allBox4rr{
+.allBox4rr {
     height: 100%;
-     width: 50%;
+    width: 50%;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -988,19 +1088,21 @@
     justify-content: space-between;
 }
 
-.allBox4rr h3{
+.allBox4rr h3 {
     font-size: 0.9rem;
     font-weight: 500;
     color: #222222;
-    
+
 }
-.navPhoto{
+
+.navPhoto {
     display: flex;
     align-items: center;
     position: relative;
     height: 100%;
 }
-.lopee{
+
+.lopee {
     height: 0.23rem;
     width: 100%;
     position: absolute;
@@ -1010,12 +1112,601 @@
     transition: all 0.1s ease;
 }
 
-.navPhoto:hover  .lopee{
+.navPhoto:hover .lopee {
     opacity: 1;
 }
 
-.prcieNav{
+.prcieNav {
     height: 100%;
     width: 50%;
+
+}
+
+
+.clanderMain {
+    /* height: 10rem; */
+    width: 100%;
+    display: none;
+    /* background-color: red; */
+}
+
+.clanderHading {
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+    height: 3rem;
+    width: 100%;
+    /* background-color: aqua; */
+}
+
+.clanderHading span {
+    /* display: block; */
+    font-family: "Roboto", sans-serif;
+    line-height: 1.7rem;
+}
+
+.dateAll span {
+    display: block;
+}
+
+.clnHd1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #222222;
+
+}
+
+.clnHd2 {
+    font-size: 0.93rem;
+    font-weight: 400;
+    color: #6A6A6A;
+
+}
+
+
+
+.calendar-container {
+    display: flex;
+    align-items: center;
+    width: 108%;
+    gap: 10px;
+    /* background-color: aqua; */
+}
+
+#calendar {
+    display: flex;
+    width: 100%;
+    /* gap: 40px; */
+    justify-content: space-between;
+}
+
+.month {
+    width: 21.4rem;
+    /* background-color: red; */
+}
+
+
+.month-title {
+    flex: 1;
+    text-align: center;
+}
+
+.nav-arrow {
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 50%;
+    user-select: none;
+    transition: background-color 0.2s;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-arrow:hover {
+    background-color: #f0f0f0;
+}
+
+.nav-arrow.invisible {
+    visibility: hidden;
+}
+
+
+
+.month-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    color: #222222;
+    margin-bottom: 1rem;
+    font-weight: 600
+}
+
+.weekdays {
+    font-size: 0.86rem;
+    color: #6a6a6a;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.days {
+    font-size: 0.86rem;
+    /* color: #6a6a6a; */
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.weekdays,
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+}
+
+
+.dateCove>div {
+    height: 3.058rem;
+
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.dateCove {
+    height: 3rem;
+}
+
+.dateCove:hover+ {
+    border-radius: 50%;
+    background-color: #b46161;
+}
+
+
+
+.dateCove div:hover {
+    color: white;
+    border-radius: 50% !important;
+    background-color: #000000;
+}
+
+.selected-date {
+    color: white;
+    background-color: #000000;
+}
+
+.previData {
+    opacity: 0.5;
+    text-decoration: line-through;
+
+}
+
+.nextData {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+.empty {
+    visibility: hidden;
+    /* or use display: none if you want to remove the space */
+    pointer-events: none;
+}
+
+.empty-day {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+.change {
+    background-color: #F7F7F7;
+    border-radius: 0% !important;
+}
+
+.ChangeClor {
+    background: conic-gradient(#ffffff 0deg 180deg, #F7F7F7 180deg 360deg)
+}
+
+.smallClor {
+    background: conic-gradient(#F7F7F7 0deg 180deg, #ffffff 180deg 360deg)
+}
+
+
+.othrThinhcld{
+    height: 2.5rem;
+    width: 108%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   /* margin-top: 0.8rem; */
+}
+
+.keyborIcon{
+    height: 100%;
+    font-size: 1.33rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.AllCtiyCner{
+  font-family: "Roboto", sans-serif;
+    height: 2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #222222;
+    margin-bottom: 1.3rem;
+}
+
+.meetAHost{
+    
+    color: #222222;
+   
+}
+.meetAHost span{
+      font-family: "Roboto", sans-serif;
+    display: block;
+ font-size: 1.44rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+.meetAhostMainBox{
+    /* height: 30rem; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    /* background-color: rgba(0, 255, 255, 0.158); */
+}
+
+.superHostBio{
+    height: 100%;
+    width: 37%;
+    /* background-color: #b4616150; */
+}
+
+.conHostBio{
+     /* height: 100%; */
+    width: 59%;
+    /* background-color: #94b46185; */
+}
+
+
+.hostCard{
+    height: 17rem;
+    width: 100%;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px #0000002b;
+}
+
+
+.hosrImg{
+    height: 100%;
+    width: 67%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* background-color: rgba(137, 43, 226, 0.336); */
+}
+.hostHrev{
+    height: 100%;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba(226, 43, 156, 0.336); */
+}
+
+.hImgBox{
+    height: 7.3rem;
+    width: 7.3rem;
+    border-radius: 50%;
+    position: relative;
+    /* background-color: aqua; */
+}
+
+.verifyIcon{
+    height: 2rem;
+    width: 2rem;
+    position: absolute;
+    bottom: 8px;
+    right: -2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #DB0C64;
+}
+
+.verifyIcon i{
+    font-size: 1.17rem;
+    color: #ffffff;
+}
+
+.hImgBox img{
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+
+
+}
+
+.hstdelit h4{
+
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+.hstdelit p{
+font-family: "Cal Sans", sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+   color: #6A6A6A;
+}
+.hstdelit p i{
+margin-right: 0.3rem;
+   
+}
+
+
+.rvirBoxhos{
+    height: 72%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.rvirBoxhos div{
+    height: 4rem;
+    width: 100%;
+    margin-right: 1rem;
+    align-content: center;
+    /* background-color: #8b943e; */
+}
+
+.rvirBoxhos div h6{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.rvirBoxhos div p{
+    font-size: 0.6rem;
+    font-weight: 500;
+}
+
+.totRvieHosHost{
+    border-bottom: 1px solid #6a6a6a46;
+}
+.hsotyer{
+    border-top: 1px solid #6a6a6a46;
+}
+
+.HostBio{
+    max-height: 4rem;
+    width: 100%;
+    margin-top: 1.6rem;
+    /* background-color: #b46161; */
+}
+
+.hostBorn{
+   height: 2.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.workIcon{
+    height: 100%;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+
+}
+
+
+.hostAbot{
+ width: 100%;
+    font-size: 0.98rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.someDell{
+        font-family: "Poppins", sans-serif;     
+    height: 7rem;
+    width: 100%;
+    /* background-color: rgba(68, 0, 255, 0.103); */
+}
+
+.setBoxhosNam{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.setBoxhosNam22{
+   font-size: 0.97rem;
+    font-weight: 400;
+    line-height: 1.2rem;
+    margin-top: 1rem;
+}
+
+
+.coHostBox{
+         font-family: "Roboto", sans-serif;
+    height: 6em;
+    width: 100%;
+    margin-bottom: 1.2rem;
+
+}
+.Rdfajhd{
+    display: flex !important;
+    margin: 0 !important;
+    align-items: center !important;
+}
+
+
+#reiooi{
+    font-size: 0.9rem;
+}
+
+.coHostBox h6{
+     font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.coHotImg{
+    margin-top: 0.9rem;
+    height: 2.8rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.coImg{
+    height: 100%;
+    width: 2.8rem;
+    background-color: #DB0C64;
+    border-radius: 50%;
+}
+
+.coHotImg span{
+    font-size: 1rem;
+    font-weight: 400 !important;
+    margin: 0rem 0.5rem;
+}
+
+.coImg img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+.hostdeerjBox{
+     font-family: "Roboto", sans-serif;
+    height: 5rem;
+    width: 100%;
+    margin-bottom: 2rem;
+    /* background-color: #6a6a6a; */
+}
+
+
+.hostdeerjBox h6{
+     font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.hotRepo{
+    margin-top: 0.8rem;
+}
+
+.messHost22{
+    height: 4.6rem;
+ border-bottom: 1px solid #6a6a6a46;
+}
+
+.messHost22 a{
+     font-family: "Poppins", sans-serif;     
+       padding: 0.8rem 1.4rem;
+    background-color: #ebebeb9c;
+    border-radius: 0.66rem;
+         font-size: 1rem;
+    font-weight: 500;
+}
+
+.messHost:hover{
+    background-color: #EBEBEB;
+}
+
+.wARtEX{
+    margin-top: 1.2rem;
+    height: 2rem;
+    width: 100%;
+    /* background-color: #6A6A6A; */
+    display: flex;
+    align-items: center;
+
+}
+
+.wARtEX p{
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+}
+
+
+
+.jfha{
+    display: none;
+    width: 100%;
+    border-bottom: 1px solid #6a6a6a46;
+}
+
+
+.ThiAbot{
+    margin-top: 3.5rem;
+    margin-bottom: 1rem;
+    height: 2rem;
+    width: 1005;
   
+}
+
+.ThiAbot h6{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+
+.thikAbotBoxFlex{
+      display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    width: 100%;
+    height: 17rem;
+    /* background-color: rgba(0, 255, 255, 0.349); */
+}
+
+.thikBox1 ul{
+    height: 56% !important;
+}
+.tkiAdd{
+    font-weight: 600;
+    color: #222222;
+}
+
+.thikBox1{
+    font-size: 0.99rem;
+    font-weight: 400;
+    /* color: #6A6A6A; */
+}
+
+.tijadd {
+    margin-top: 1.5rem;
+  
+}
+.tijadd a{
+    font-weight: 500;
+      align-content: center;
+    text-decoration: underline;
+}
+
+.tijadd span{
+    font-size: 1.2rem;
+    text-decoration: none !important;
+}
+
+.erefaf22{
+    display: none;
+    height: 33rem;
+    width: 100%;
 }

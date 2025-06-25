@@ -4,6 +4,8 @@ const User = require("../models/user.js");
 const passport = require("passport");
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt');
+const getAvatarColor = require('../util/getAvatarColor');
+
 
 // Generate OTP
 function generateOTP() {
@@ -112,7 +114,11 @@ router.post("/singup", async (req, res) => {
     }
    
     try {
-        let newUser = new User({ username,userLastName, birthDate,email });
+        let newUser = new User({ username,userLastName, birthDate,email , avatar: {
+    image: null, // no image uploaded yet
+    initial: username.charAt(0).toUpperCase(),
+    color: getAvatarColor(username)
+  }});
         let savedUser = await User.register(newUser, password);
         delete VerifiedEmails[email]; // Clean-up
         req.login(savedUser, (err)=>{
