@@ -8,9 +8,9 @@ class ListingPage {
         this.currentImages = [];
         this.initializeElements();
         this.setupEventListeners();
-        this.loadListingData();
+        // this.loadListingData();
     }
-
+    
     extractListingId() {
         const urlSegments = window.location.pathname.split('/');
         return urlSegments[urlSegments.length - 1];
@@ -28,7 +28,8 @@ class ListingPage {
     { selector: ".mapMainBoxs", display: "block" },
     { selector: ".mapMainBoxse", display: "block" },
     { selector: ".jfha", display: "block" },
-    { selector: ".erefaf22", display: "block" }
+    { selector: ".erefaf22", display: "block" },
+    // { selector: ".totDayrr", display: "inline-block" }
   ];
 
   elements.forEach((item, index) => {
@@ -91,7 +92,6 @@ class ListingPage {
                 box2: document.querySelector(".offerBox2")
             },
             topNavChange: document.querySelector(".info-price"),
-            price: document.querySelector(".mianPariceHadingee3"),
             avgRating: document.querySelector(".secodAvgreciv")
         };
 
@@ -496,6 +496,31 @@ class ListingPage {
         });
     }
 
+    removeDispalRemoveClass(){
+         const loadingElements = [
+            
+            document.querySelector(".checkIn"),
+            document.querySelector(".checkOut"),
+           
+        ];
+
+         const loadingElements2= [
+            
+            document.querySelector(".flexBoxgt"),
+            document.querySelector(".pcicebtn"),
+            document.querySelector(".dfefdcvd"),
+             document.querySelector(".totDayrr"),
+           
+        ];
+       
+        loadingElements.forEach(element => {
+            if (element) element.classList.remove("ccegfgs");
+        });
+        loadingElements2.forEach(element => {
+            if (element) element.classList.remove("checkInRemove");
+        });
+    }
+
     removeLoadingClasses() {
         const loadingElements = [
             this.elements.headingBox,
@@ -507,11 +532,15 @@ class ListingPage {
             document.querySelector(".sharBoxCover"),
             document.querySelector(".sharBoxCover2"),
             document.querySelector(".priceHadingBox "),
+            document.querySelector(".checkIn"),
+            document.querySelector(".checkOut"),
             this.elements.locationText,
             this.elements.floorPlanText,
             this.elements.rating.box
         ];
-        document.querySelector(".mainPriceBox").classList.remove("mainPriceBoxNone")
+        document.querySelector(".mainPriceBox").classList.remove("mainPriceBoxNone");
+        document.querySelector(".htBookDate").classList.remove("htBookDateRemove");
+        document.querySelector(".checkOut").classList.remove("htBookDateRemove");
         loadingElements.forEach(element => {
             if (element) element.classList.remove("loding");
         });
@@ -532,9 +561,8 @@ class ListingPage {
             this.elements.floorPlanText.innerText = `${Guests} guests • ${Bedrooms} bedrooms • ${Bed} beds`;
         }
 
-        if (data.price && this.elements.price) {
-            this.elements.price.innerHTML = `<i class="fa-solid fa-indian-rupee-sign"></i>${data.price.toLocaleString("en-IN")}`;
-        }
+       
+        
 
         const reviewCount = data.reviews ? data.reviews.length : 0;
         let averageRating = 0;
@@ -567,6 +595,7 @@ class ListingPage {
         }
 
         if (data.owner?.username && this.elements.hostName) {
+            document.querySelector(".hstdelit h4").innerText = `${this.capitalizeFirstLetter(data.owner.username)}`;
             this.elements.hostName.innerText = `Hosted by ${this.capitalizeFirstLetter(data.owner.username)}`;
         }
 
@@ -623,13 +652,16 @@ document.querySelector(".hImgBox").insertAdjacentHTML("beforeend", `
             if (!data) {
                 throw new Error('No data received');
             }
+            if (data.price) {
+                this.price = data.price; // ✅ Only set if present
+            }
            let datelis =  this.getTimeAgo(data.createdAt);
-             if(["hours","minute","just now"].includes(datelis.split(" ")[1])){
+             if(["hours","minute","just"].includes(datelis.split(" ")[1])){
                  document.querySelector(".hsotyer h6").innerText = "New";
                  document.querySelector(".yearofhosthing").innerText = "New";
            document.querySelector(".ejfadere").style.display = "none";
 
-                console.log("New")
+               
             }else{
                  document.querySelector(".hsotyer h6").innerText =  datelis.split(" ")[0];
                  document.querySelector(".yearofhosthing").innerText =  `${datelis.split(" ")[0]} ${datelis.split(" ")[1]} hosting`;
@@ -637,7 +669,7 @@ document.querySelector(".hImgBox").insertAdjacentHTML("beforeend", `
                 console.log(datelis.split(" ")[1])
             }
           
-            console.log(Calendar.logSelection)
+            
            
             document.querySelector(".dateCity").innerText = `nights in ${this.capitalizeFirstLetter(data.location.CityTown)}`;
             document.querySelector(".AllCtiyCner").innerText = `${data.location.CityTown},${data.location.StateUnionTerritory},${data.location.country}`
@@ -645,6 +677,7 @@ document.querySelector(".hImgBox").insertAdjacentHTML("beforeend", `
             document.querySelector(".feerers22").style.display = "flex";
             this.updateListingData(data);
             this.removeLoadingClasses();
+            this.removeDispalRemoveClass()
             this.lodingAOtherContan();
 
         } catch (error) {
@@ -664,11 +697,12 @@ document.querySelector(".hImgBox").insertAdjacentHTML("beforeend", `
 
 // Calendar functionality
 class Calendar {
-    constructor(calendarElementId) {
+    constructor(calendarElementId , listingPageInstance) {
         this.calendarEl = document.getElementById(calendarElementId);
         this.currentDate = new Date();
         this.allowedRange = [];
         this.selectedDates = [];
+        this.listingPage = listingPageInstance;
     }
 
     init(range, defaults) {
@@ -805,12 +839,28 @@ class Calendar {
         const headerEl = document.querySelector(".clnHd2");
         const checkinEl = document.querySelector("#checkinlabel");
         const checkoutEl = document.querySelector("#checkoutlabel");
-        
+        const totlanight = document.querySelector(".totDayrr");
+        const totalPrice = document.querySelector(".mianPariceHadingee3");
+        console.log(totlanight,"hhghffhgff")
         if (totalDataEl) totalDataEl.textContent = dayGap;
+        if (totlanight) totlanight.textContent = `${dayGap} of night`;
         if (headerEl) headerEl.textContent = `${this.formatShort(start)} - ${this.formatShort(end)}`;
         if (checkinEl) checkinEl.value = this.formatDate(start);
         if (checkoutEl) checkoutEl.value = this.formatDate(end);
 
+const pricePerNight = this.listingPage.price;
+
+    if (typeof pricePerNight !== 'number') {
+        console.warn("Price not available yet.");
+        return; // ✅ Stop if price is not ready
+    }
+
+    const totalCost = dayGap * pricePerNight;
+     totalPrice.innerHTML = `<i class="fa-solid fa-indian-rupee-sign"></i>${totalCost.toLocaleString("en-IN")}`;
+    console.log("Total Cost:", totalCost);
+
+
+        console.log(totlanight,"hhghffhgff")
         console.log("Check-in:", this.formatDate(start));
         console.log("Check-out:", this.formatDate(end));
         console.log("Duration:", dayGap, "days");
@@ -836,11 +886,14 @@ class Calendar {
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    new ListingPage();
-    
-    const calendar = new Calendar('calendar');
-    calendar.init(
-        [new Date(2025, 5, 30), new Date(2025, 7, 10)],
-        [new Date(2025, 5, 30), new Date(2025, 6, 5)]
-    );
+    const listingPage = new ListingPage();
+
+    // Wait for data to load
+    listingPage.loadListingData().then(() => {
+        const calendar = new Calendar('calendar', listingPage);
+        calendar.init(
+            [new Date(2025, 5, 30), new Date(2025, 7, 10)],
+            [new Date(2025, 5, 30), new Date(2025, 6, 5)]
+        );
+    });
 });
