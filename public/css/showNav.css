@@ -1199,6 +1199,7 @@ display: none;
 
 .month {
     width: 21.4rem;
+    color: #222222;
     /* background-color: red; */
 }
 
@@ -1727,4 +1728,10 @@ margin-right: 0.3rem;
     display: none;
     height: 33rem;
     width: 100%;
+}
+
+.NavAddgust{
+    height: 100%;
+    width: 100%;
+    padding: 1.3rem 2.3rem ;
 }

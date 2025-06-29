@@ -35,7 +35,7 @@ nav {
 }
 
 .expanded {
-    height: 12.6rem;
+    height: 12.6rem !important;
 }
 
 
@@ -63,10 +63,21 @@ nav {
     width: 2.7rem;
 }
 
-.nav2 {
-    background-color: rgba(255, 255, 255, 0.875);
-    width: 22.5rem;
+.nav2Cover{
+    position: relative;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22.5rem;
+}
+
+.nav2 {
+    position: absolute;
+   transition: all 0.55 ease;
+    transform: translateY(90px);
+}
+.anacClick{
+        display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0px 1.4rem;
@@ -77,7 +88,24 @@ nav {
     cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0.116);
 }
-
+.Nav2small {
+     background-color: rgba(255, 255, 255, 0.875);
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 1.4rem;
+    padding-right: 0.6rem;
+    border-radius: 3rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.116); */
+     transform: translateY(0px) ;
+}
+.Nav2enpand{
+     /* width: 22.5rem !important; */
+     transform: translateY(90px);
+}
 .nav-right {
 
     display: flex;
@@ -126,6 +154,32 @@ nav {
     border-radius: 50%;
     color: #FFFFFF;
     margin-left: 0.6rem;
+}
+
+.dropdown {
+     position: absolute;
+    height: 66vh;
+    background-color: #ffffff;
+    top: 83px;
+      transition: all 0.3s ease;
+      border-radius: 2rem;
+      display: none;
+      color: white;
+      /* pointer-events: none; */
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.08);
+      z-index: 990;
+    }
+
+.overlayNva{
+    position: fixed;
+    top: 202px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000040;
+    display: none;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav3 {
@@ -200,6 +254,55 @@ nav {
     border-radius: 50%;
 }
 
+.expandedNav{
+    transform: translateY(5.63rem);
+}
+
+.navslider{
+  
+    position: absolute;
+    border-radius: 2rem;
+    pointer-events: none;
+    opacity: 0;
+    transform-origin: center;
+    background-color: #ffffff;
+    transform: scale(0.9);
+    z-index: 1;
+     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease, opacity 0.2s ease ;
+}
+
+.grthjhjrfsww{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-radius: 2rem;
+    pointer-events: none;
+    opacity: 1;
+    transform-origin: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: #7c4141; */
+    /* transform: scale(0.9); */
+    z-index: 0;
+     /* box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease, opacity 0.2s ease ; */
+
+    
+     /* background: conic-gradient(#ac2b2b 0deg 180deg, #F7F7F7 180deg 360deg) */
+}
+
+/* .hoverclor4443{
+    height: 100%;
+    width: 20%;
+     background: conic-gradient(#ac2b2b 0deg 180deg, #F7F7F7 180deg 360deg)
+    
+} */
+.navslider.active{
+    opacity: 1;
+     transform: scale(1);
+}
 
 .bigNavBox {
     height: 4.15rem;
@@ -213,8 +316,8 @@ nav {
 }
 
 .navFormBox{
-     height: 100% !important;
-    width: 66% !important;
+    height: 4.35rem;
+    width: 53.3rem;
 }
 
 .bigShcer {
@@ -225,8 +328,9 @@ nav {
     align-items: center;
     justify-content: space-between;
     border-radius: 2rem;
-    border: 1px solid #22222236;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.116);
+    border: 1px solid #2222221c;
+       box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
+       position: relative;
     /* background-color: aqua; */
 }
 
@@ -236,8 +340,36 @@ nav {
     padding: 0.5rem 1.5rem;
     align-content: center;
     line-height: 1.2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    z-index: 1;
     /* background-color: rgba(0, 0, 255, 0.342); */
 }
+
+.navHovercolor:hover{
+    background-color: #EBEBEB;
+}
+
+.secontHoverEff:hover{
+    background-color: #DDDDDD;
+
+   
+}
+
+/* .secontHoverEff:hover{
+    background-color: #DDDDDD;
+
+    background: conic-gradient(#ffffff 0deg 180deg, #F7F7F7 180deg 360deg)
+} */
+
+.navSearch:hover + .gap13r{
+    opacity: 0;
+}
+
+
+
+
+
 .divItemCnetr{
     height: 100%;
     width: 100%;
@@ -257,6 +389,7 @@ nav {
      color: #6A6A6A !important;
      font-weight: 400;
  font-family: "Rubik", sans-serif;
+ background-color: transparent;
 
 }
 .navCheckIN{
@@ -265,23 +398,39 @@ nav {
      padding: 0.5rem 1.5rem;
     align-content: center;
     line-height: 1.2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      z-index: 1;
     /* background-color: rgba(30, 255, 0, 0.212); */
 }
+
+
+
+
+
 .navCheckOut{
     height: 100%;
     width: 8.7rem;
      padding: 0.5rem 1.5rem;
     align-content: center;
     line-height: 1.2rem;
+    cursor: pointer;
+    border-radius: 2rem;
+    z-index: 1;
     /* background-color: rgba(255, 0, 0, 0.212); */
 }
+
 .MainSearch{
      height: 100%;
     width: 17.39rem;
     display: flex;
     justify-content: space-between;
+      cursor: pointer;
+    border-radius: 2rem;
+    z-index: 1;
     /* background-color: rgba(0, 0, 255, 0.342); */
 }
+
 
 .navaddGust{
     height: 100%;
@@ -318,7 +467,7 @@ nav {
 .navLineSpane{
     height: 50%;
     width: 0.05rem;
-    background-color: #6a6a6a62;
+    background-color: #DDDDDD ;
 }
 
 
@@ -693,4 +842,239 @@ a {
 
 .color6ee a {
     padding-left: 1.5rem;
+}
+
+
+
+
+.NavLoationContaner{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.664);
+    border-radius: inherit;
+    position: absolute;
+    
+}
+
+
+.navScrllolocation{
+    height: 100%;
+    width: 100%;
+}
+
+.NavloctionSgget{
+   margin-top: 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #222222;
+    margin-left: 1.5rem;
+    margin-bottom: 0.7rem !important;
+}
+
+.navScrllolocation ul{
+    margin:0rem !important;
+    height: 100%;
+    width: 99.5%;
+    overflow: hidden;
+    /* margin-top: 1.5rem; */
+    overflow-y: scroll;
+    justify-content: unset !important;
+
+}
+.navScrllolocation li{
+    margin-bottom: 0.2rem;
+}
+
+.navScrllolocation ul::-webkit-scrollbar{
+    width: 0.35rem;
+    overflow: hidden;
+    margin-top: 33rem;
+   max-height: 10px !important;
+}
+
+.navScrllolocation ul::-webkit-scrollbar-thumb{
+    background-color: #8E8E8E;
+    /* min-height: 10px; */
+    border-radius: 2rem;
+}
+.navScrllolocation ul::-webkit-scrollbar-track{
+    background-color: transparent;
+    margin-top: 1.8rem;
+    margin-bottom: 1.8rem;
+}
+/* .navScrllolocation ul::-webkit-scrollbar-track{
+    background-color: #ff0000;
+    
+} */
+
+
+
+.locationcox{
+    height: 4.5rem;
+    width: 88%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 1.3rem;
+    /* margin-left: 0.9rem; */
+    padding: 0.5rem 0.8rem;
+    background-color: rgb(255, 255, 255);
+    transition: all 0.2s ease;
+    border-radius: 0.9rem;
+    cursor: pointer;
+}
+
+.locationcox:hover{
+    background-color: #F4F4F4;
+}
+
+.locationImagNav{
+    height: 100%;
+    width: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: brown; */
+}
+.locationImagNav img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.loctaionNameNav{
+    height: 100%;
+    width: 77%;
+    font-family: "Poppins", sans-serif;
+    align-content: center;
+    /* background-color: rgba(255, 0, 0, 0.432); */
+}
+
+.loctaionNameNav h6{
+    color: #222222;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.loctaionNameNav p{
+    color: #6A6A6A;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.navClanderDataEct{
+    width: 100%;
+    /* height: 5.3rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: aqua; */
+    margin-bottom: 1.5rem;
+}
+
+.navComdelMainDiv{
+    height: 100%;
+    width: 99.5%;
+    padding: 2.13rem 2rem;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.navComdelMainDiv::-webkit-scrollbar{
+    width: 0.35rem;
+    overflow: hidden;
+    /* max-height: 10px !important; */
+}
+
+.navComdelMainDiv::-webkit-scrollbar-thumb{
+    background-color: #8E8E8E;
+    border-radius: 2rem;
+}
+.navComdelMainDiv::-webkit-scrollbar-track{
+    background-color: transparent;
+    margin-top: 1.8rem;
+    margin-bottom: 1.8rem;
+}
+
+.navclanedatemothn{
+       height: 2.8rem;
+    width: 38.6%;
+    background-color: #EBEBEB;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #222222;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    
+}
+
+
+.Navdate{
+    /* height: 100%; */
+    width: 6.2rem;
+    border-radius: 2rem;
+    padding: 8px 12px;
+    margin: 4px 2px;
+    display: flex;
+    align-items: center;
+justify-content: center;
+background-color: #ffffff;
+}
+.Navmonth{
+    /* height: 100%; */
+    width: 6rem;
+    border-radius: 2rem;
+    padding: 8px 12px;
+     margin: 4px 2px;
+    display: flex;
+    align-items: center;
+justify-content: center;
+}
+.NavYear{
+    /* height: 100%; */
+    width: 6.2rem;
+    border-radius: 2rem;
+    padding: 8px 12px;
+     margin: 4px 2px;
+    display: flex;
+    align-items: center;
+justify-content: center;
+}
+
+.navclanderMain{
+    display: block !important;
+}
+
+.navcalendar-container{
+    width: 100% !important;
+    /* padding: 0rem 3.4rem !important; */
+}
+
+.NavAddgustBoxDr{
+    height: 100%;
+    width: 100%;
+    padding: 1rem 2rem;
+}
+
+.navAddGustMainboxdr{
+    height: 5.69rem;
+    width: 100%;
+    background-color: aquamarine;
+}
+
+.navAddCliranMainboxdr{
+     height: 5.69rem;
+    width: 100%;
+    background-color: rgb(13, 100, 71);
+}
+.navAddINFanMainboxdr{
+      height: 5.69rem;
+    width: 100%;
+    background-color: rgb(113, 143, 155);
+}
+.navAddPetMainboxdr{
+     height: 5.69rem;
+    width: 100%;
+    background-color: rgb(105, 37, 5);
 }
