@@ -4,7 +4,6 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-
 }
 
 html,
@@ -267,7 +266,7 @@ nav {
     transform-origin: center;
     background-color: #ffffff;
     transform: scale(0.9);
-    z-index: 1;
+    z-index: 10;
      box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.4s ease, opacity 0.2s ease ;
 }
@@ -342,7 +341,8 @@ nav {
     line-height: 1.2rem;
     border-radius: 2rem;
     cursor: pointer;
-    z-index: 1;
+    z-index: 10;
+    transition: z-index 0.2s ease;
     /* background-color: rgba(0, 0, 255, 0.342); */
 }
 
@@ -350,24 +350,23 @@ nav {
     background-color: #EBEBEB;
 }
 
+
+
 .secontHoverEff:hover{
     background-color: #DDDDDD;
 
-   
 }
-
-/* .secontHoverEff:hover{
-    background-color: #DDDDDD;
-
-    background: conic-gradient(#ffffff 0deg 180deg, #F7F7F7 180deg 360deg)
-} */
 
 .navSearch:hover + .gap13r{
     opacity: 0;
 }
 
 
-
+.showChechinDateColor{
+    color: #222222 !important;
+    font-weight: 500 !important;
+    font-family: "Poppins", sans-serif !important;
+}
 
 
 .divItemCnetr{
@@ -392,6 +391,13 @@ nav {
  background-color: transparent;
 
 }
+
+.navSearchInputBox span{
+     font-size: 0.9rem;
+     color: #6A6A6A ;
+     font-weight: 400;
+ font-family: "Rubik", sans-serif;
+}
 .navCheckIN{
     height: 100%;
     width: 8.7rem;
@@ -400,14 +406,82 @@ nav {
     line-height: 1.2rem;
       border-radius: 2rem;
       cursor: pointer;
-      z-index: 1;
+      position: relative;
+      z-index: 99 ;
+      transition: z-index 0.1s ease;
     /* background-color: rgba(30, 255, 0, 0.212); */
 }
 
 
+.navCheckIN::before{
+    content: "";
+    padding: 0rem 6rem;
+    position: absolute;
+    background-color: transparent;
+    height: 100%;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: -1;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
 
 
+.navCheckOut2{
+    height: 100%;
+    position: relative;
+    z-index: 8;
+    border-radius: 2rem;
+    transition: z-index 0.1s ease;
+}
 
+.navCheckOut2::before{
+    content: "";
+    padding: 0rem 6rem;
+    position: absolute;
+    background-color: transparent;
+    height: 100%;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: -1;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+
+.secontHoverEff22:hover::before{
+    background-color: #DDDDDD;
+
+}
+
+.navCheckOut2BRrHover:hover::before{
+    background-color: #DDDDDD;
+
+}
+.secontHoverEff011:hover::after{
+    background-color: #DDDDDD;
+
+}
+
+.navCheckOut2::after{
+    content: "";
+    padding: 0rem 6rem;
+    position: absolute;
+    background-color: transparent;
+    height: 100%;
+    top: 0;
+    pointer-events: none;
+    z-index: -1;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+}
+
+.secontHoverEff2:hover::after{
+    background-color: #DDDDDD;
+
+}
 .navCheckOut{
     height: 100%;
     width: 8.7rem;
@@ -416,9 +490,13 @@ nav {
     line-height: 1.2rem;
     cursor: pointer;
     border-radius: 2rem;
-    z-index: 1;
+    transition: z-index 0.1s ease;
+    /* z-index: 99 !important; */
     /* background-color: rgba(255, 0, 0, 0.212); */
 }
+
+
+
 
 .MainSearch{
      height: 100%;
@@ -427,8 +505,60 @@ nav {
     justify-content: space-between;
       cursor: pointer;
     border-radius: 2rem;
-    z-index: 1;
+    z-index: 99;
+    transition: z-index 0.2s ease;
     /* background-color: rgba(0, 0, 255, 0.342); */
+}
+
+
+ .navSearch::after{
+   content: "";
+    padding: 0rem 10rem;
+    position: absolute;
+    background-color: transparent;
+    height: 100%;
+    top: 0;
+    pointer-events: none;
+    z-index: -1;
+    left: 0;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+} 
+
+ .navCheckIN::after{
+   content: "";
+    padding: 0rem 7rem;
+    position: absolute;
+    background-color: transparent;
+    height: 100%;
+    top: 0;
+    pointer-events: none;
+    z-index: -1;
+    left: 0;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+} 
+ .MainSearch::before{
+   content: "";
+    padding: 0rem 10rem;
+    position: absolute;
+    background-color: transparent;
+    height: 100%;
+    top: 0;
+    pointer-events: none;
+    z-index: -1;
+    right: 0;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+} 
+
+.secontHoverEff1:hover::after{
+    background-color: #DDDDDD;
+
+}
+.secontHoverEff3:hover::before{
+    background-color: #DDDDDD;
+
 }
 
 
@@ -448,30 +578,69 @@ nav {
     align-items: center;
     justify-content: end;
     padding: 0rem 0.5rem;
+     
     /* background-color: pink; */
 }
-
-.scherchIcon{
-       height: 80%;
-    width: 3.32rem;
-    border-radius: 5rem;
+.Scherchcall button{
+       height: 72%;
+    width: 3.17rem;
+    
+     border-radius: 5rem;
+         background-color: #FF385C;
+        transition: width 0.3s ease;
+    border: none;
+    outline: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #FF385C;
+    overflow: hidden;
+    /* background-color: transparent; */
+}
+
+.bigsaerchClass{
+width: 6.19rem !important;
+ background: linear-gradient(to right,#E61E4D 0%,#E31C5F 50%,#D70466 100%) !important;
 }
 .scherchIcon{
-    font-size: 1rem;
-    color: #ffffff;
+       /* height: 100%;
+    width: 100%;
+    */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
+
+.scherchIcon i{
+    font-size: 1.15rem;
+    color: #ffffff;
+    
+}
+
+.secharNamedd{
+     font-family: "Poppins", sans-serif;
+     font-size: 1rem;
+     font-weight: 500;
+     margin-left: 0.3rem;
+      color: #ffffff;
+      display: none;
+      transition: all 0.3s ease;
+}
+
 .navLineSpane{
     height: 50%;
     width: 0.05rem;
     background-color: #DDDDDD ;
 }
 
+.navsearchLoder{
+    gap: 6px !important;
+}
 
-
+.navdot{
+    width: 6px !important;
+    height: 6px !important;
+}
 
 
 .userAvtar {
@@ -863,11 +1032,11 @@ a {
 }
 
 .NavloctionSgget{
-   margin-top: 1.5rem;
+   /* margin-top: 1.5rem; */
     font-size: 0.8rem;
     font-weight: 400;
     color: #222222;
-    margin-left: 1.5rem;
+    margin-left: 0.8rem;
     margin-bottom: 0.7rem !important;
 }
 
@@ -876,11 +1045,22 @@ a {
     height: 100%;
     width: 99.5%;
     overflow: hidden;
-    /* margin-top: 1.5rem; */
+    padding: 1.7rem 1.5rem;
+    padding-bottom: 0;
     overflow-y: scroll;
     justify-content: unset !important;
 
 }
+
+.highlighrLoNa{
+    font-weight: 600;
+    color: #222222 !important;
+}
+
+.Scear400f{
+    font-weight: 400 !important;
+}
+
 .navScrllolocation li{
     margin-bottom: 0.2rem;
 }
@@ -911,11 +1091,11 @@ a {
 
 .locationcox{
     height: 4.5rem;
-    width: 88%;
+    width: 97%;
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-left: 1.3rem;
+    /* margin-left: 1.3rem; */
     /* margin-left: 0.9rem; */
     padding: 0.5rem 0.8rem;
     background-color: rgb(255, 255, 255);
@@ -934,7 +1114,8 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: brown; */
+    border-radius: 0.8rem;
+    background-color: #F4F4F4;
 }
 .locationImagNav img{
     height: 100%;
@@ -996,7 +1177,7 @@ a {
 
 .navclanedatemothn{
        height: 2.8rem;
-    width: 38.6%;
+    /* width: 38.6%; */
     background-color: #EBEBEB;
     border-radius: 2rem;
     display: flex;
@@ -1015,7 +1196,7 @@ a {
     width: 6.2rem;
     border-radius: 2rem;
     padding: 8px 12px;
-    margin: 4px 2px;
+    margin: 4px 6px;
     display: flex;
     align-items: center;
 justify-content: center;
@@ -1026,7 +1207,7 @@ background-color: #ffffff;
     width: 6rem;
     border-radius: 2rem;
     padding: 8px 12px;
-     margin: 4px 2px;
+     margin: 4px 6px;
     display: flex;
     align-items: center;
 justify-content: center;
@@ -1036,7 +1217,7 @@ justify-content: center;
     width: 6.2rem;
     border-radius: 2rem;
     padding: 8px 12px;
-     margin: 4px 2px;
+     margin: 4px 6px;
     display: flex;
     align-items: center;
 justify-content: center;
@@ -1054,27 +1235,121 @@ justify-content: center;
 .NavAddgustBoxDr{
     height: 100%;
     width: 100%;
+    color: #222222;
     padding: 1rem 2rem;
 }
 
 .navAddGustMainboxdr{
     height: 5.69rem;
     width: 100%;
-    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     border-bottom: 1px solid #EBEBEB;
+    padding: 1.4rem 0rem;
+    /* background-color: aquamarine; */
 }
 
 .navAddCliranMainboxdr{
      height: 5.69rem;
     width: 100%;
-    background-color: rgb(13, 100, 71);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     border-bottom: 1px solid #EBEBEB;
+     padding: 1.4rem 0rem;
+
 }
 .navAddINFanMainboxdr{
-      height: 5.69rem;
-    width: 100%;
-    background-color: rgb(113, 143, 155);
-}
-.navAddPetMainboxdr{
      height: 5.69rem;
     width: 100%;
-    background-color: rgb(105, 37, 5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     border-bottom: 1px solid #EBEBEB;
+     padding: 1.4rem 0rem;
+
 }
+.navAddPetMainboxdr{
+    height: 5.69rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.4rem 0rem;
+}
+
+
+.gustBoxbr{
+    height: 100%;
+    width: 50%;
+    align-content: center;
+     line-height: 1.45rem;
+font-family: "Poppins", sans-serif;
+    /* background-color: rgb(97, 131, 77); */
+}
+
+.gustBoxbr h6{
+    font-size: 1.01rem;
+    font-weight: 500;
+
+}
+
+.gustBoxbr p{
+      font-family: "Cal Sans", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #6A6A6A;
+}
+
+
+.gustAddDr{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    padding: 0rem 2.4rem;
+    /* background-color: rgb(131, 77, 113); */
+}
+
+.gustaddBtndt{
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+    border-radius: 50%;
+    cursor: pointer;
+    color: #B0B0B0;
+    border: 1px solid #B0B0B0;
+}
+.gustmainsBtndt{
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #B0B0B0;
+}
+
+.petboott{
+    font-family: "Poppins", sans-serif !important;
+    text-decoration: underline;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+}
+
+.gustmainsBtndt i{
+color: #B0B0B0;
+}
+
+.gustaddBtndt i{
+color: #B0B0B0;
+}
+
