@@ -380,6 +380,11 @@ nav {
     /* line-height: 1; */
 }
 
+.disPalNoneNav{
+    display: none !important;
+    
+}
+
 .navSearchInputBox input{
     outline: none;
     border: none;
@@ -393,7 +398,7 @@ nav {
 }
 
 .navSearchInputBox span{
-     font-size: 0.9rem;
+     font-size: 0.844rem;
      color: #6A6A6A ;
      font-weight: 400;
  font-family: "Rubik", sans-serif;
@@ -496,6 +501,21 @@ nav {
 }
 
 
+.btnCoverGustAdd{
+    cursor: not-allowed !important;
+}
+
+.BtmDistbalNav{
+    pointer-events: none;
+    border-color: #EBEBEB !important;
+    /* opacity: 0.5; */
+    
+}
+
+.BtmDistbalNav i{
+    color: #EBEBEB !important;
+}
+
 
 
 .MainSearch{
@@ -564,8 +584,9 @@ nav {
 
 .navaddGust{
     height: 100%;
-    width: 50%;
+    width: 64%;
     padding: 0.5rem 1.5rem;
+    padding-right: 0;
     align-content: center;
     line-height: 1.2rem;
     /* background-color: red; */
@@ -584,7 +605,7 @@ nav {
 .Scherchcall button{
        height: 72%;
     width: 3.17rem;
-    
+    cursor: pointer;
      border-radius: 5rem;
          background-color: #FF385C;
         transition: width 0.3s ease;
@@ -1310,10 +1331,13 @@ font-family: "Poppins", sans-serif;
     align-items: center;
     justify-content: space-between;
     font-size: 1.2rem;
-    padding: 0rem 2.4rem;
+    padding: 0rem 2.25rem;
     /* background-color: rgb(131, 77, 113); */
 }
-
+.gustNumderdt{
+    font-size: 1.1rem;
+    font-family: "Poppins", sans-serif !important;
+}
 .gustaddBtndt{
     height: 2rem;
     width: 2rem;
@@ -1323,7 +1347,7 @@ font-family: "Poppins", sans-serif;
     /* background-color: red; */
     border-radius: 50%;
     cursor: pointer;
-    color: #B0B0B0;
+    color: #6A6A6A;
     border: 1px solid #B0B0B0;
 }
 .gustmainsBtndt{
@@ -1338,6 +1362,34 @@ font-family: "Poppins", sans-serif;
     border: 1px solid #B0B0B0;
 }
 
+.gustaddBtndt:hover{
+    color: #222222 !important;
+     border: 1px solid #222222;
+}
+.gustaddBtndt i:hover{
+    color: #222222;
+}
+
+.colorAddGusrnav{
+    color: #222222 !important;
+    font-weight: 500 !important;
+    font-family: "Poppins", sans-serif !important;
+}
+
+.InfantsClass{
+        color: #222222 !important;
+    font-weight: 500 !important;
+    font-family: "Poppins", sans-serif !important;
+}
+
+
+.gustmainsBtndt:hover{
+    color: #222222 !important;
+     border: 1px solid #222222;
+}
+.gustmainsBtndt i:hover{
+    color: #222222;
+}
 .petboott{
     font-family: "Poppins", sans-serif !important;
     text-decoration: underline;
@@ -1346,10 +1398,10 @@ font-family: "Poppins", sans-serif;
 }
 
 .gustmainsBtndt i{
-color: #B0B0B0;
+color: #6A6A6A;
 }
 
 .gustaddBtndt i{
-color: #B0B0B0;
+color: #6A6A6A;
 }
 

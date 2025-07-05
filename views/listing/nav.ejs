@@ -8,7 +8,7 @@
             
 
 
-            <form action="" class="navFormBox">
+            <form action="/Search" method="post" class="navFormBox">
             <div class="bigShcer">
                 <div class="navslider">
                     
@@ -17,7 +17,12 @@
             <div class="navSearch navsliderBox navHovercolor" id="box1">
                 <div class="navSearchLabal">Where</div>
                 <div class="navSearchInputBox">
-                    <input type="text" placeholder="Search destinations">
+                    <input type="text" placeholder="Search destinations" name="location">
+                    <input class="disPalNoneNav " id="CheckIn" type="text" name="CheckIn">
+                    <input class="disPalNoneNav" id="CheckOut" type="text" name="CheckOut">
+                    <input class="disPalNoneNav" id="Guests" type="text" name="Adults">
+                    <input class="disPalNoneNav" id="Children" type="text" name="Children">
+                    <input class="disPalNoneNav" id="Infants" type="text" name="Infants">
                 </div>
             </div>
             <div class="navLineSpane gap13r "></div>
@@ -42,7 +47,7 @@
                 <div class="navaddGust">
                     <div class="navSearchLabal">Who</div>
                 <div class="navSearchInputBox">
-                    <span>Add guests</span>
+                    <span class="AddGustCountNav">Add guests</span><span class="InfantsClass"></span>
                 
                 </div>
                 </div>
@@ -58,6 +63,7 @@
 
              </div>
             </div>
+
         </form>
 
        
@@ -89,7 +95,7 @@
         <ul class="loing-ul">
             <li class="log-in-box"><a href="" class="Longi-122">Log in</a></li>
             <li class="log-in-box grtte2"><a href="" >Sing up</a></li>
-            
+
         </ul>
     </div>
     <div class="singinBoxs2">

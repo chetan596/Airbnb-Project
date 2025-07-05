@@ -146,7 +146,7 @@ renderAvatar(".login-img", data.avatar);
             bnt.style.background = "#d3d3d3d6";
             bnt.style.cursor = "not-allowed";
 
-
+            // console.log("ddddddd")
             ApiCall2()
 
 
@@ -175,12 +175,12 @@ renderAvatar(".login-img", data.avatar);
         function ApiCall2() {
 
           fetch("/loginIn", {
-            method: "POST",
+            method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: input.value })
           }).then(res => res.text())
             .then(html => {
-
+              console.log("Chetan comingdata" , html)
               logineContant.innerHTML = html
               let boxss = document.querySelectorAll(".fornBox22s")
               let form = document.querySelector("form")

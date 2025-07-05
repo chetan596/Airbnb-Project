@@ -9,7 +9,13 @@ router.get("/navBox", listingcontroller.isUser);
 router.get("/api/listing/:id", listingcontroller.listingData);
 router.get("/location-autocomplete", warpAsync(listingcontroller.locationAutocomplete))
 
+router.post("/Search",(req,res)=>{
+    res.send(req.body)
+})
 
+// router.post("/loginIneree",(req,res)=>{
+//     res.send("dee")
+// })
 
 
 

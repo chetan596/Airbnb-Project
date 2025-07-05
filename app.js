@@ -55,6 +55,7 @@ app.set("views", path.join(__dirname, "views"))
 
 
 
+app.get('/favicon.ico', (req, res) => res.status(204).end());
 
 app.use("/", listingRouter);
 app.use("/", userRouter)
