@@ -72,9 +72,14 @@ nav {
 
 .nav2 {
     position: absolute;
-   transition: all 0.55 ease;
+   transition: all 0.5s ease;
     transform: translateY(90px);
 }
+
+.ShowNavW3{
+        height: 5.3rem !important;
+}
+
 .anacClick{
         display: flex;
     justify-content: space-between;
@@ -171,7 +176,7 @@ nav {
 
 .overlayNva{
     position: fixed;
-    top: 202px;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
@@ -179,6 +184,7 @@ nav {
     display: none;
     justify-content: center;
     align-items: center;
+    z-index: 99;
 }
 
 .nav3 {
@@ -721,9 +727,10 @@ width: 6.19rem !important;
 /* filter */
 .main-1 {
     position: fixed;
-    top: 13.2%;
+    
+    top: 31.2%;
     background-color: #FFFFFF;
-    height: 4.6rem;
+    height: 4.8rem;
     width: 100%;
     padding: 0px 2rem;
     display: flex;
@@ -731,55 +738,136 @@ width: 6.19rem !important;
     /* gap: 2rem; */
     justify-content: space-between;
     align-items: center;
+    transition: top 0.3s ease;
 }
 
-.filter {
-    height: 5rem;
+.mainFilterSmall{
+    top: 13.2% !important;
+} 
+
+.filter{
+    height: 100%;
     width: 70%;
-    margin-top: 0.9rem;
     display: flex;
-    justify-content: space-between;
-    /* gap: 2rem; */
-    align-items: center;
-
+    gap: 2rem;
+    overflow-x: auto;
+    position: relative;
+    /* background-color: aqua; */
 }
 
-.filter-box {
-    height: 70%;
+.rightddd{
+       position: absolute;
+    left: 15px;
+    z-index: 999;
+}
+
+.filter::-webkit-scrollbar{
+    display: none;
+}
+
+.filterSmallMAinBox{
     display: inline-block;
-    text-align: center;
-
+    height: 100%;
+    /* max-width: 5rem; */
+    justify-items: center;
+    flex-shrink: 0;
+    position: relative;
+    opacity: 0.7;
+    cursor: pointer;
+    /* background-color: rgba(0, 0, 255, 0.726); */
 }
 
-.filter-box img {
-    height: 24px;
+.filter-img{
+    height: 3.2rem;
+    width: 3.2rem;
+    border-radius: 50% !important;
+    /* background-color: rgba(255, 0, 0, 0.473); */
+}
+.filter-img img{
+    height: 100%;
+    width: 100%;
+}
+.filterName{
+    height: 1.2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+    /* background-color: #d70466af; */
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
-
-.filter-box p {
+.filterName p{
+    font-family: "Poppins", sans-serif;
     font-size: 0.7rem;
     font-weight: 500;
-    text-size-adjust: 10x;
+    color: #222222;
 }
 
-.box-filter {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.filterBtommLine{
+    position: absolute;
+    bottom: 0;
+    height: 0.2rem;
+    width: 100%;
+    background-color: #000000;
+    opacity: 0;
 }
+
+.filterSlect{
+    opacity: 1;
+}
+.liceSeclet{
+    opacity: 1;
+}
+
+.filterSmallMAinBox:hover .filterBtommLine{
+    opacity: 1;
+}
+
+
+
+.box-filter{
+        height: 100%;
+    display: flex
+;
+    align-items: center;
+}
+
+
 
 .next-btn {
     height: 100%;
-    width: 2.6rem;
-    background-color: #ffffffad;
+    /* width: 2.6rem; */
+    background-color: #ffffff;
     display: flex;
+    cursor: pointer;
+    scroll-behavior: smooth;
     align-items: center;
 }
+.b-n-t:hover{
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
+}
 
+.lodinnglcassff{
+    height: 2.6rem !important;
+    width: 2.6rem !important;
+    border-radius: 50%;
+    margin: 0.4rem;
+    margin-bottom: 0rem;
+    /* background-color: aqua; */
+}
+
+.lodinnglcassffparadd{
+    height: 6px !important;
+    width: 100% !important;
+    border-radius: 0.1rem !important;
+    margin: 0.5rem;
+    /* background-color: red; */
+    padding: 0 !important;
+}
+img[src=""]{
+    display: none;
+}
 .b-n-t {
     height: 2.1rem;
     width: 2.1rem;
@@ -789,7 +877,7 @@ a {
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    margin-left: 0.4rem;
+    /* margin-left: 0.4rem; */
     /* margin-bottom: 0.8rem; */
 }
 
@@ -1405,3 +1493,19 @@ color: #6A6A6A;
 color: #6A6A6A;
 }
 
+
+
+
+.navShowhight{
+    height: 5.3rem;
+}
+
+
+
+.nav2showBox3{
+    transform: translateY(0px);
+}
+
+.navShowpar90{
+     transform: translateY(90px)!important;
+}

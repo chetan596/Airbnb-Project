@@ -3,8 +3,12 @@ main {
   width: 100%;
   padding: 0px 2.2rem;
   margin-top: 13%;
+  transition: all 0.4s ease;
 
+}
 
+.mainSmalldiv{
+  margin-top: -6% !important;
 }
 
 .listing {
@@ -16,10 +20,14 @@ main {
   grid-template-columns: repeat(4, 1fr);
   column-gap: 1.3rem;
   row-gap: 1.6rem;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
+  margin-top: 19rem;
 
 
 }
+
+
+
 
 .listing a {
   text-decoration: none;
@@ -29,15 +37,30 @@ main {
 .listing-box {
   height: 284px;
   /* width: 299px; */
-  border-radius: 20px;
+  border-radius: 12px !important;
   /* background-color: aqua; */
 }
 
 .listing-box img {
-  height: 284px;
+  height: 100%;
   width: 100%;
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: inherit;
+}
+
+.titellodingdi{
+  height: 0.6rem;
+  width: 65%;
+  border-radius: 0.15rem !important;
+  background-color: aqua;
+}
+
+
+.ratinglodingDiv{
+   height: 0.6rem;
+  width: 15%;
+  border-radius: 0.15rem !important;
+  background-color: aqua;
 }
 
 .listing-cont {

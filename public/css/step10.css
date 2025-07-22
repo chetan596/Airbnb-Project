@@ -94,6 +94,8 @@
 }
 
 a{
+    text-decoration: none;
+    color: #222222;
     cursor: pointer;
 }
 

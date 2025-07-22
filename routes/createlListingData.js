@@ -15,6 +15,9 @@ router.get("/structureData", createDatacontroller.structureData);
 // ========== Step-by-step Data Entry ==========
 router.post("/hotel-type-data", isLoggedIn, createDatacontroller.hotelTypeData);
 
+
+
+
 router.post("/room-type", isLoggedIn, createDatacontroller.roomType);
 
 router.post("/location", isLoggedIn, createDatacontroller.location);
