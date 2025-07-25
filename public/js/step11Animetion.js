@@ -29,7 +29,7 @@ const form = document.querySelector("form")
 const textInput = document.querySelector("textarea");
 const tcfr = document.querySelector(".opi");
 const charCount = document.getElementById("wordCount");
-const maxLength = 500;
+const maxLength = 5000;
 
 textInput.addEventListener("input", () => {
   

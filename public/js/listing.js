@@ -1,3 +1,10 @@
+document.querySelectorAll(".swipar-bnt").forEach((box)=>{
+  box.style.display = "none";
+})
+document.querySelectorAll(".swiper-button-prev").forEach((box)=>{
+  box.style.display = "none";
+})
+
 fetch("/listingFilterData")
 .then(res => res.json())
 .then(datas =>{
@@ -92,3 +99,36 @@ window.addEventListener("resize", updateButtonVisibility);
 // Initial state
 updateButtonVisibility();
 
+
+
+
+ var swiper = new Swiper(".mySwiper", {
+      cssMode: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        dynamicBullets: true,
+        dynamicMainBullets: 4,
+        
+      },
+      mousewheel: true,
+      keyboard: true,
+    });
+
+
+document.querySelectorAll(".swiper").forEach((box)=>{
+  box.addEventListener("mouseenter",()=>{
+  box.querySelector(".swipar-bnt").style.display = "flex"
+  box.querySelector(".swiper-button-prev").style.display = "flex"
+})
+})
+document.querySelectorAll(".swiper").forEach((box)=>{
+  box.addEventListener("mouseleave",()=>{
+    box.querySelector(".swipar-bnt").style.display = "none";
+    box.querySelector(".swiper-button-prev").style.display = "none";
+})
+})
