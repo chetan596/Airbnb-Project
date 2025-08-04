@@ -216,11 +216,62 @@ main {
     background-color: #000000;
     /* dark */
   }
-
+  
   50% {
     background-color: #999999de;
     /* dim silver */
   }
+}
+.dot2 {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #999999de;
+  opacity: 0;
+  animation: pulse2 1.1s infinite ease-in-out;
+}
+
+.dot2:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dot2:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot2:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.dot2:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+@keyframes pulse2 {
+  0%, 100% {
+    opacity: 0;
+    background-color: #999999de;
+  }
+
+  30% {
+    opacity: 0.4;
+    background-color: #bbbbbb;
+  }
+
+  50% {
+    opacity: 1;
+    background-color: #ffffff;
+  }
+
+  70% {
+    opacity: 0.4;
+    background-color: #bbbbbb;
+  }
+
+  100% {
+    opacity: 0;
+    background-color: #999999de;
+ }
 }
 
 
@@ -246,4 +297,245 @@ main {
     stroke-width: 2;
     overflow: visible;
       filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+}
+
+
+.ter-and-condition-container{
+   position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: "Poppins", sans-serif;
+    /* display: none; */
+    z-index: 1000;
+}
+
+
+.welcomeBox{
+  height: 51%;
+  width: 42%;
+  background-color: white;
+  border-radius: 2rem;
+
+}
+
+.welcomeTopHading{
+  width: 100%;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.welcomeTopHading h1{
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.welcomeTopHading button{
+  position: absolute;
+  left: 1rem;
+  background-color: transparent;
+  border: none;
+  padding: 0.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.welcomeTopHading button i{
+  font-size: 1.3rem;
+  color: black;
+}
+
+.welcomeTopHading button:hover{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.welcomeBoxContent{
+  height: 85%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.welcomeLogo{
+  margin: 1.2rem;
+  margin-bottom: 0.5rem;
+  height: 5rem;
+  width: 5rem;
+}
+
+.welcomeLogo img{
+  height: 100%;
+  width: 100%;
+}
+
+.welcomeBoxContent h3{
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-align: center;
+    font-family: "Lato", sans-serif;
+}
+
+.welcomeBoxContent p{
+font-size: 0.9rem;
+    padding: 0rem 4rem;
+padding-top: 0.5rem;
+    font-weight: 400;
+    text-align: center;
+    color: #222222;
+}
+
+
+.welcomeBtn{
+  width: 90%;
+  height: 2.8rem;
+  background-color: #222222;
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 1.9rem;
+  font-family: "Lato", sans-serif;
+  position: relative;
+}
+
+.welcomeBtn:hover{
+  background-color: #000000;
+}
+
+.Dp-uplode-container{
+  height: 86%;
+  width: 41%;
+  background-color: white;
+  border-radius: 2rem;
+}
+
+.dp-container-big{
+   height: 90%;
+  width: 100%;
+}
+.dp-container{
+  height: 100%;
+  width: 99.5%;
+  overflow: hidden;
+  overflow-y: scroll;
+  text-align: center;
+  font-family: "Lato", sans-serif;
+}
+
+.dp-container::-webkit-scrollbar{
+    width: 0.35rem;
+    overflow: hidden;
+}
+
+
+.dp-container::-webkit-scrollbar-thumb{
+    background-color: #8E8E8E;
+    border-radius: 2rem;
+}
+
+.dp-container::-webkit-scrollbar-track{
+    background-color: transparent;
+    margin-top: 1.8rem;
+    margin-bottom: 1.8rem;
+}
+
+.dp-container h3{
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-top: 1.4rem;
+}
+
+.dp-container p{
+  font-size: 1rem;
+  color: #6A6A6A;
+  padding: 2% 10%;
+}
+
+.dp-defult{
+  height: 12rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 1.3rem 0;
+  /* background-color: aqua; */
+}
+
+.dp-defult-img{
+  height: 100%;
+  width: 12rem;
+    border-radius: 50% !important;
+  /* background-color: rgba(102, 51, 153, 0.781); */
+}
+
+.dp-defult-img img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.do-later{
+  display: block;
+  font-size: 1rem;
+  color: #222222 !important;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-weight: 600 !important;
+  text-decoration: underline;
+
+}
+
+.do-later:hover{
+  color: #000000 !important;
+}
+
+.dp-upload-icon{
+  position: absolute;
+  left: 0.5rem;
+}
+
+.dp-upload-icon i{
+  font-weight: 100 !important;
+}
+
+
+.disabledDpUploadButton{
+  background-color: #222222 !important;
+  cursor: not-allowed !important;
+}
+
+.disabledDpUploadButton:hover{
+    background-color: #222222 !important;
+}
+
+
+.changeDpBtn{
+   width: 90%;
+  height: 2.8rem;
+  border: 1px solid #222222 !important;
+  color: #222222;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-family: "Lato", sans-serif;
+  position: relative;
 }

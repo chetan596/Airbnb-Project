@@ -1,37 +1,39 @@
-document.querySelectorAll(".swipar-bnt").forEach((box)=>{
+
+
+document.querySelectorAll(".swipar-bnt").forEach((box) => {
   box.style.display = "none";
 })
-document.querySelectorAll(".swiper-button-prev").forEach((box)=>{
+document.querySelectorAll(".swiper-button-prev").forEach((box) => {
   box.style.display = "none";
 })
 
 fetch("/listingFilterData")
-.then(res => res.json())
-.then(datas =>{
-    
-   
-const allFilterBoxes = document.querySelectorAll(".filterSmallMAinBox");
+  .then(res => res.json())
+  .then(datas => {
 
-datas.reverse().forEach((img, index) => {
-    const box = allFilterBoxes[index];
-    if (box) {
+
+    const allFilterBoxes = document.querySelectorAll(".filterSmallMAinBox");
+
+    datas.reverse().forEach((img, index) => {
+      const box = allFilterBoxes[index];
+      if (box) {
         // Child elements find करें
         const imgDiv = box.querySelector(".filter-img");
         const nameDiv = box.querySelector(".filterName");
         const imgElement = box.querySelector(".filter-img img");
         const nameElement = box.querySelector(".filterName p");
-        
+
         // Classes remove करें
         imgDiv.classList.remove("lodinnglcassff", "loding");
         nameDiv.classList.remove("lodinnglcassffparadd", "loding");
-        
+
         // Content set करें
         imgElement.src = img.image;
         nameElement.innerHTML = img.title;
-    }
-    // console.log(img)
-});
-})
+      }
+      // console.log(img)
+    });
+  })
 
 const filter = document.querySelector(".filter");
 const rightBtn = document.querySelector(".next-btn22");
@@ -102,33 +104,34 @@ updateButtonVisibility();
 
 
 
- var swiper = new Swiper(".mySwiper", {
-      cssMode: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-        dynamicBullets: true,
-        dynamicMainBullets: 4,
-        
-      },
-      mousewheel: true,
-      keyboard: true,
-    });
+var swiper = new Swiper(".mySwiper", {
+  cssMode: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    dynamicBullets: true,
+    dynamicMainBullets: 4,
+
+  },
+  mousewheel: true,
+  keyboard: true,
+});
 
 
-document.querySelectorAll(".swiper").forEach((box)=>{
-  box.addEventListener("mouseenter",()=>{
-  box.querySelector(".swipar-bnt").style.display = "flex"
-  box.querySelector(".swiper-button-prev").style.display = "flex"
+document.querySelectorAll(".swiper").forEach((box) => {
+  box.addEventListener("mouseenter", () => {
+    box.querySelector(".swipar-bnt").style.display = "flex"
+    box.querySelector(".swiper-button-prev").style.display = "flex"
+  })
 })
-})
-document.querySelectorAll(".swiper").forEach((box)=>{
-  box.addEventListener("mouseleave",()=>{
+document.querySelectorAll(".swiper").forEach((box) => {
+  box.addEventListener("mouseleave", () => {
     box.querySelector(".swipar-bnt").style.display = "none";
     box.querySelector(".swiper-button-prev").style.display = "none";
-})
-})
+  })
+});
+

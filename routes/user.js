@@ -3,8 +3,11 @@ const router = express.Router();
 const User = require("../models/user.js");
 const passport = require("passport");
 const nodemailer = require('nodemailer');
-const bcrypt = require('bcrypt');
 const getAvatarColor = require('../util/getAvatarColor');
+const { isLoggedIn } = require("../loginMiddle.js");
+const multer = require("multer");
+const { DPupload } = require("../cloudConfig");
+const upload = multer({ storage : DPupload });
 
 
 // Generate OTP
@@ -15,6 +18,35 @@ function generateOTP() {
 // Temporary store
 let UserOtp = {};
 let VerifiedEmails = {};
+
+// user profile
+router.post("/profile", isLoggedIn, upload.single("profileImage"), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ success: false, message: "No file uploaded" });
+    }
+
+    // Update user's avatar
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+    user.avatar.image = req.file.path; // Cloudinary path or local path
+    await user.save();
+
+    res.status(200).json({
+      success: true,
+      file: req.file.path,
+      message: "Profile photo updated successfully"
+    });
+
+  } catch (error) {
+    console.error("Upload error:", error);
+    res.status(500).json({ success: false, message: "Server error", error: error.message });
+  }
+});
+
 
 // GET signup page
 router.get("/singup", (req, res) => {
@@ -125,6 +157,7 @@ router.post("/singup", async (req, res) => {
             if(err){
                 return next(err)
             }
+            req.session.justLoggedIn = true;
             res.redirect("/");
         })
     } catch (err) {

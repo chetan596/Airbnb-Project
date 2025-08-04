@@ -3,9 +3,10 @@ const LocationData = require("../models/locationData.js")
 const axios = require("axios")
 
 module.exports.index = async(req , res)=>{
-
+  const justLoggedIn = req.session.justLoggedIn || false;
+  delete req.session.justLoggedIn; // Clear the session variable after use
   let listingData = await Listing.find({})
-   res.render("./listing/listing.ejs",{listingData})
+   res.render("./listing/listing.ejs",{listingData , justLoggedIn});
 }
 
 module.exports.listingShow = async (req, res, next) => {

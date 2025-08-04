@@ -337,7 +337,7 @@ width: 0rem;
         transform: scale(1);
       }
       50% {
-        transform: scale(0.9);
+        transform: scale(0.98);
       }
       100% {
         transform: scale(1);

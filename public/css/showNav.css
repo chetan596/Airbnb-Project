@@ -130,7 +130,8 @@
 
 .herae {
     height: 60%;
-    width: 40%;
+    min-width: 40%;
+    max-width: 70%;
     /* background-color: #cc5f5f9d; */
     display: flex;
     align-items: center;
