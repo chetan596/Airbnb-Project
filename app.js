@@ -20,6 +20,7 @@ const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+const airbnbUser = require("./routes/airbnbUser.js");
 
 
 
@@ -58,7 +59,8 @@ app.set("views", path.join(__dirname, "views"))
 app.get('/favicon.ico', (req, res) => res.status(204).end());
 
 app.use("/", listingRouter);
-app.use("/", userRouter)
+app.use("/", userRouter);
+app.use("/user", airbnbUser);
 app.use("/", reviewRouter)
 app.use("/listing", createListingRouter)
 app.use("/listingData", createListingDataRouter)

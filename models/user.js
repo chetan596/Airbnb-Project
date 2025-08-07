@@ -42,6 +42,19 @@ const userSchema = new mongoose.Schema({
     type : Boolean,
      default : false
 
+  },
+
+  wishlist : {
+    recentViewed : [{
+      hotelId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Listing"
+      },
+      viewdAt: {
+        type: Date,
+        default: Date.now
+      }
+    }]
   }
 
 });

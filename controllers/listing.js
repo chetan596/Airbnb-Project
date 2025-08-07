@@ -34,9 +34,9 @@ module.exports.listingData =  async (req, res) => {
 
 module.exports.isUser = (req, res) => {
   if (req.user) {
-    console.log(req.user);
     res.json({
       user: true,
+      username: req.user.username, // ✅ only username sent
       avatar: req.user.avatar // ✅ only avatar object sent
     });
   } else {

@@ -135,3 +135,85 @@ document.querySelectorAll(".swiper").forEach((box) => {
   })
 });
 
+document.querySelectorAll(".swiper-button-next").forEach((box) => {
+  box.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  })
+
+})
+
+document.querySelectorAll(".swiper-button-prev").forEach((box) => {
+  box.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  })
+
+})
+
+
+
+// Called from login file, sets up click tracking
+function wishlistUpdate(isUserLoggedIn) {
+  console.log(isUserLoggedIn, "isUserLoggedIn","wishlistUpdate called");
+  document.querySelectorAll(".listing-box-link").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const hotelId = link.getAttribute("href").split("/").pop();
+      const visitDate = new Date().toISOString();
+
+      if (isUserLoggedIn) {
+        updateRecentHotels({ id: hotelId, date: visitDate });
+      } else {
+        saveToLocalStorage(hotelId, visitDate);
+      }
+    });
+  });
+}
+
+// Save for guest
+function saveToLocalStorage(hotelId, visitDate) {
+    console.log("Saving to localStorage for guest user", hotelId, visitDate);
+  const username = localStorage.getItem("currentUsername") || "guest";
+  let recentHotels = JSON.parse(localStorage.getItem(`recentHotels_${username}`)) || [];
+
+  recentHotels = recentHotels.filter(h => h.id !== hotelId);
+  recentHotels.unshift({ id: hotelId, date: visitDate });
+  localStorage.setItem(`recentHotels_${username}`, JSON.stringify(recentHotels));
+}
+
+// Sync guest data to backend on login
+function syncRecentToDatabase(username) {
+
+  console.log("Syncing recent hotels for user:", username);
+  const key = `recentHotels_${username}`;
+  const recentHotels = JSON.parse(localStorage.getItem(key)) || [];
+  console.log("Recent hotels to sync:", recentHotels);
+  if (!recentHotels.length) return;
+
+  fetch("/user/wishlist/recentHotels", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ recentHotels })
+  })
+    .then(res => res.json())
+    .then(data => {
+      localStorage.removeItem(key); // ✅ Clean up after sync
+      console.log("Synced recent hotels for", username, data);
+    })
+    .catch(err => console.error("Sync error:", err));
+}
+
+// Logged-in user's direct updates
+function updateRecentHotels(entry) {
+  console.log("Updating recent hotels for logged-in user", entry);
+  fetch("/user/wishlist/recentHotels", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ recentHotels: [entry] })
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log("Updated hotel for logged-in user", data);
+    })
+    .catch(err => console.error("Update error:", err));
+}

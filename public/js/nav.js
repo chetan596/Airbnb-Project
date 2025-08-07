@@ -1,20 +1,30 @@
 
+
 document.addEventListener("DOMContentLoaded", () => {
   let userIs = document.querySelector(".navMainBox2")
   let userNot = document.querySelector(".navMainBox23w")
   let notificationIcon = document.querySelector(".notificationIcon")
 
+ let isUserLoggedIn = false;
 
-  fetch("/navBox")
-    .then(res => res.json())
-    .then(data => {
+fetch("/navBox")
+  .then(res => res.json())
+  .then(data => {
+    if (data.user) {
+      userIs.style.display = "block";
+      notificationIcon.style.display = "block";
+      userNot.style.display = "none";
+      handleLoginResponse(data);
+      renderAvatar(".login-img", data.avatar);
+    } else {
+      userIs.style.display = "none";
+      userNot.style.display = "block";
+      handleLoginResponse({ user: false, username: "guest" }); // <-- Important: call for guest also
+    }
+  });
 
-      if (data.user) {
-        userIs.style.display = "block"
-        notificationIcon.style.display = "block"
-        userNot.style.display = "none"
-
-      function renderAvatar(selector, avatar) {
+// Function to handle avatar
+function renderAvatar(selector, avatar) {
   const container = document.querySelector(selector);
   if (!container || !avatar) return;
 
@@ -34,20 +44,36 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 }
 
-// ✅ Usage
-renderAvatar(".login-img", data.avatar);
+// Function to handle login response
+function handleLoginResponse(data) {
+  const isLoggedIn = data.user || false;
+  const username = data.username || "guest";
+
+  localStorage.setItem("currentUsername", username);
+
+  if (isLoggedIn && !sessionStorage.getItem(`recentSyncDone_${username}`)) {
+
+    // 🔁 Migrate guest data → user data
+    const guestKey = "recentHotels_guest";
+    const loggedInKey = `recentHotels_${username}`;
+    const guestData = JSON.parse(localStorage.getItem(guestKey)) || [];
+
+    if (guestData.length) {
+      localStorage.setItem(loggedInKey, JSON.stringify(guestData));
+      localStorage.removeItem(guestKey);
+    }
+
+    // ✅ Sync to server
+    sessionStorage.setItem(`recentSyncDone_${username}`, 'true');
+    syncRecentToDatabase(username);
+  }
+
+  wishlistUpdate(isLoggedIn);
+}
 
 
 
-        console.log(data)
 
-
-      } else {
-        userIs.style.display = "none"
-        userNot.style.display = "block"
-      }
-
-    })
 
 
 
@@ -90,6 +116,7 @@ renderAvatar(".login-img", data.avatar);
 
 
   function loginFrom() {
+    console.log("function was call")
     fetch("/singup")
       .then(res => res.text())
       .then(html => {
@@ -180,7 +207,7 @@ renderAvatar(".login-img", data.avatar);
             body: JSON.stringify({ email: input.value })
           }).then(res => res.text())
             .then(html => {
-              console.log("Chetan comingdata" , html)
+              console.log("Chetan comingdata", html)
               logineContant.innerHTML = html
               let boxss = document.querySelectorAll(".fornBox22s")
               let form = document.querySelector("form")
@@ -644,9 +671,43 @@ renderAvatar(".login-img", data.avatar);
     loginFrom()
   }
 
+  let login = document.querySelector(".login-popopu");
+
+  // wislist opation
+
+
+  const wishlistButtons = document.querySelectorAll(".wislist-conttainer svg");
+
+  wishlistButtons.forEach((button) => {
+    button.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      fetch("/user/wishlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json/x-www-form-urlencoded"
+        },
+      }).then(res => res.json())
+        .then(data => {
+          if (!data.isLoggedIn) {
+            login.style.display = "flex";
+            loginFrom()
+
+            console.log("User is not logged in", data);
+          } else {
+            console.log("User is logged in", data);
+          }
+        })
+        .catch(err => {
+          console.error("Error:", err);
+        });
+
+    })
+  })
+
+});
 
 
 
-})
 
 
