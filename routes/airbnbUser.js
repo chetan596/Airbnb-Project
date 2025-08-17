@@ -63,8 +63,16 @@ router.post("/wishlist/recentHotels",isLoggedIn,async(req,res)=>{
 
  
 })
-router.get("/wishlist", (req, res) => {
-    res.render("user/wishList")
+router.get("/wishlist", isLoggedIn,async(req, res) => {
+    const userId = req.user._id;
+    const user = await User.findById(userId);
+
+  const wishList = user.wishlist;
+// for (const [key, value] of Object.entries(wishList)) {
+//   console.log(key, value);
+// }
+
+    res.render("user/wishList",{wishList})
 })
 
 

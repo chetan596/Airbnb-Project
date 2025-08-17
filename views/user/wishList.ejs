@@ -2,4 +2,50 @@
 
 <body>
      <%- include('../listing/navsmall.ejs') %>
+
+     <main class="wishlist">
+          <span class="wishlist_hading">
+               <h1>Wishlists</h1>
+          </span>
+          <div class="wishlist_container">
+                <% for(let [wishlistBox, items] of Object.entries(wishList)) { %>
+                          <div class="wishlist_boxs">
+
+                   
+
+                    <div class="wishList-image-box">
+                         <div class="image_box_con">
+                              <div class="wishList-hotel-images recent_image1"></div>
+                              <div class="wishList-hotel-images  recent_image2"></div>
+                         </div>
+                         <div class="image_box_con">
+                              <div class="wishList-hotel-images recent_image3"></div>
+                              <div class="wishList-hotel-images recent_image4"></div>
+                         </div>
+                    </div>
+                    <div class="wishlist_distele">
+                         <p>Recently viewed</p>
+                         <p>Today</p>
+                    </div>
+               </div>
+                    <% } %>
+              
+               <!-- <div class="wishlist_boxs">
+                    <div class="wishList-image-box">
+
+                    </div>
+               </div>
+               <div class="wishlist_boxs">
+                    <div class="wishList-image-box">
+
+                    </div>
+               </div>
+               <div class="wishlist_boxs">
+                    <div class="wishList-image-box">
+
+                    </div>
+               </div> -->
+             
+          </div>
+     </main>
 </body>

@@ -377,6 +377,8 @@ function setupHoverEffects() {
   setupHoverEffect(".navCheckIN", ".gap13r", ".gap12r");
   setupHoverEffect(".navCheckOut", ".gap12r", ".gap11r");
   setupSingleHoverEffect(".MainSearch", ".gap11r");
+
+  
 }
 
 function setupHoverEffect(hoverSelector, aboveSelector, belowSelector) {
@@ -413,7 +415,7 @@ function setupSingleHoverEffect(hoverSelector, targetSelector) {
     }
   });
 
-  hoverEl.addEventListener("mouseleave", (e) => {
+  hoverEl.addEventListener("mouseleave", (e) => {``
     if (e.target.classList.contains("dp")) {
       targetEl.style.opacity = "1";
     }

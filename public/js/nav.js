@@ -14,12 +14,23 @@ fetch("/navBox")
       userIs.style.display = "block";
       notificationIcon.style.display = "block";
       userNot.style.display = "none";
-      handleLoginResponse(data);
+      try{
+        handleLoginResponse(data);
+      } catch (error) {
+        console.error("Error handling login response:", error);
+      }
       renderAvatar(".login-img", data.avatar);
     } else {
       userIs.style.display = "none";
       userNot.style.display = "block";
-      handleLoginResponse({ user: false, username: "guest" }); // <-- Important: call for guest also
+     
+           try{
+       handleLoginResponse({ user: false, username: "guest" }); // <-- Important: call for guest also
+     }catch (error) {
+       console.error("Error handling guest login response:", error);
+    }
+
+
     }
   });
 
@@ -704,7 +715,7 @@ function handleLoginResponse(data) {
 
     })
   })
-
+  console.log(document.querySelector(".chetan1233"), "nav2 is hear..")
 });
 
 

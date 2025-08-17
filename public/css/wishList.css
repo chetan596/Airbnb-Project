@@ -1,0 +1,91 @@
+.wishlist{
+    height: 100%;
+    width: 100%;
+    margin-top: 20.5vh !important;
+   font-family: "Cal Sans", sans-serif;
+   padding: 0rem 5rem;
+}
+.wishlist_hading{
+    margin-bottom: 2rem;
+}
+.wishlist_hading h1{
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    color: #222222;
+}
+
+.wishlist_container{
+        margin-top: 1.6rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 279.55px));
+    grid-auto-rows: 19.85rem;
+    column-gap: 1.5rem;
+    row-gap: 1.6rem;
+}
+
+.wishlist_boxs{
+    width: 100%;
+    height: 100%;
+
+
+    /* background-color: #992f2f; */
+}
+
+.wishList-image-box{
+    width: 100%;
+    height: 16.599rem;
+    background-color: blue;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.image_box_con{
+    width: 100%;
+    height: 49%;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.wishList-hotel-images{
+    height: 100%;
+    width: 49%;
+    background-color: rgba(21, 255, 0, 0.596);
+}
+
+.recent_image1{
+    border-top-left-radius: 1.5rem;
+}
+.recent_image2{
+    border-top-right-radius: 1.5rem;
+}
+.recent_image3{
+    border-bottom-left-radius: 1.5rem;
+}
+.recent_image4{
+    border-bottom-right-radius: 1.5rem;
+}
+
+
+.wishlist_distele{
+    margin-top: 0.8rem;
+    font-family: "Poppins", sans-serif;
+}
+
+.wishlist_distele p:nth-child(1){
+    color: #222222;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.wishlist_distele p:nth-child(2){
+    color: #6A6A6A;
+    font-size: 0.95rem;
+    font-weight: 400;
+       font-family: "Rubik", sans-serif;
+}
+
