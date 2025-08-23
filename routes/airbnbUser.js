@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user.js");
 const { isLoggedIn } = require("../loginMiddle.js");
-
+const Listing = require("../models/listing")
 router.post("/wishList", (req, res) => {
     if(!req.user){
         return res.status(401).json({ isLoggedIn: false});
@@ -27,7 +27,7 @@ router.post("/wishlist/recentHotels",isLoggedIn,async(req,res)=>{
       return res.status(404).json({ error: "User not found" });
     }
 
-    const existingRecent = user.wishlist.recentViewed || [];
+    const existingRecent = user.wishlist.Recently_viewed || [];
         // Map old entries (ObjectId to index)
     const map = new Map();
     existingRecent.forEach((entry) => {
@@ -50,7 +50,7 @@ router.post("/wishlist/recentHotels",isLoggedIn,async(req,res)=>{
     }
 
     // Convert back to array
-    user.wishlist.recentViewed = Array.from(map.values());
+    user.wishlist.Recently_viewed = Array.from(map.values());
 
     await user.save();
 
@@ -67,12 +67,36 @@ router.get("/wishlist", isLoggedIn,async(req, res) => {
     const userId = req.user._id;
     const user = await User.findById(userId);
 
-  const wishList = user.wishlist;
-// for (const [key, value] of Object.entries(wishList)) {
-//   console.log(key, value);
-// }
+    const wishList = user.wishlist;
+    
+   const arr = Object.entries(wishList);
+const rtrr = [];
 
-    res.render("user/wishList",{wishList})
+for (const [key, user] of arr) {
+  const keyObj = { key, hotelImgs: [] , viewDate : null };
+
+  for (const eeee of user) {
+
+    const hotelDe = await Listing.findById(eeee.hotelId);
+    const hotelImg = hotelDe.image[0];
+
+    keyObj.hotelImgs.push(hotelImg);
+    console.log(eeee.viewdAt)
+    keyObj.viewDate = eeee.viewdAt;
+    
+  }
+
+  rtrr.push(keyObj);
+}
+
+  
+
+
+
+
+
+
+    res.render("user/wishList",{rtrr})
 })
 
 

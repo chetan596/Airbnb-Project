@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema({
   },
 
  wishlist : {
-    recentViewed : [{
+    Recently_viewed : [{
       hotelId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Listing"
@@ -55,7 +55,6 @@ const userSchema = new mongoose.Schema({
         default: Date.now
       }
     }],
-    
 
   }
 
