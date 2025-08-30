@@ -72,7 +72,7 @@ router.get("/wishlist", isLoggedIn,async(req, res) => {
    const arr = Object.entries(wishList);
 const rtrr = [];
 
-for (const [key, user] of arr) {
+  for (const [key, user] of arr) {
   const keyObj = { key, hotelImgs: [] , viewDate : null };
 
   for (const eeee of user) {
@@ -88,17 +88,26 @@ for (const [key, user] of arr) {
 
   rtrr.push(keyObj);
 }
-
-  
-
-
-
-
-
-
-    res.render("user/wishList",{rtrr})
+  res.render("user/wishList",{rtrr})
 })
 
+router.post("/wishlistCreate",isLoggedIn, async (req, res) => {
+  try{
+    const { wishListName } = req.body;
+  const userId = req.user._id;
+  const user = await User.findById(userId);
 
+
+
+  user.userWishlist.set(wishListName, []);
+  await user.save();
+
+  console.log("Received:", wishListName);
+    res.json({ status: "ok", wishListName });
+  }catch{
+    res.status(500).json({ status: "error", message: "Internal Server Error" });
+  }
+
+});
 
 module.exports = router;

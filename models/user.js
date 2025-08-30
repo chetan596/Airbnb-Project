@@ -1,6 +1,23 @@
 const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
 
+
+const wishlistitemSchema = new mongoose.Schema({
+  hotelId : {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Listing",
+    required : true
+  },
+  viewedAt: {
+    type: Date,
+    default: Date.now
+  }
+})
+
+
+
+
+
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -56,6 +73,12 @@ const userSchema = new mongoose.Schema({
       }
     }],
 
+  },
+
+  userWishlist : {
+    type : Map,
+    of : [wishlistitemSchema],
+    default : {}
   }
 
 });

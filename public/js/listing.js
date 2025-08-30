@@ -217,3 +217,72 @@ function updateRecentHotels(entry) {
     })
     .catch(err => console.error("Update error:", err));
 }
+
+
+
+const wishListCreateInpute = document.querySelector(".inputBoxWishList input"); 
+const wishListCreateLabel = document.querySelector(".inputBoxWishList label");
+const wishListCreateBox = document.querySelector(".inputBoxWishList");
+
+wishListCreateInpute.addEventListener("focus",()=>{
+  wishListCreateLabel.classList.add("focusedLabel");
+  wishListCreateBox.classList.add("wishListInputBoxBorderFocus");
+  console.log("focused");
+})
+
+
+
+wishListCreateInpute.addEventListener("focusout",(e)=>{
+  wishListCreateInpute.value.length < 1 && wishListCreateLabel.classList.remove("focusedLabel");
+  wishListCreateBox.classList.remove("wishListInputBoxBorderFocus");
+  console.log("focusedout");
+})
+
+wishListCreateInpute.addEventListener("input", (e) => {
+  const value = e.target.value.trim();
+  const length = value.length;
+  const inputeLenght = document.querySelector(".wishListNameLength");
+  const createButton = document.querySelector(".createWishlIstBtnFrom");  
+  inputeLenght.textContent = `${length}/50 characters`;
+  if(length >=1){
+    console.log(length, "ON");
+    createButton.classList.add("createWishlIstBtnFromActive");
+    createButton.disabled = false;
+  }else{
+     console.log(length, "OFF")
+      createButton.classList.remove("createWishlIstBtnFromActive");
+    createButton.disabled = true;
+  }
+});
+
+
+const wishListFromData = document.getElementById("wishListFrom");
+
+wishListFromData.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(e.target); 
+  const data = Object.fromEntries(formData.entries());
+
+fetch("/user/wishlistCreate", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(data)
+})
+.then(async (res) => {
+  const contentType = res.headers.get("content-type");
+  if (contentType && contentType.includes("application/json")) {
+    return res.json();
+  } else {
+    const text = await res.text(); // fallback for HTML
+    throw new Error("Non-JSON response: " + text);
+  }
+})
+.then(data => {
+  console.log("Wish list created:", data);
+})
+.catch(err => console.error("Error creating wish list:", err));
+
+});
+
+

@@ -542,3 +542,203 @@ padding-top: 0.5rem;
   font-family: "Lato", sans-serif;
   position: relative;
 }
+
+
+.wishCreateContante{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.NewWishListCreate{
+
+    height: 41.5%;
+    width: 42%;
+    border-radius: 2rem;
+  background-color: white;
+}
+
+.wishListHadingBOx{
+  height: 21%;
+  width: 100%;
+  color: #222222;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.wishListHadingBOx h1{
+  font-size: 1.05rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.wishListHadingBOx button{
+  position: absolute;
+  left: 1.1rem;
+  border-radius: 50%;
+  height: 1.86rem;
+  width: 1.86rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.wishListHadingBOx button i{
+  font-size: 1.28rem;
+}
+
+.wishListHadingBOx button:hover{
+  background-color: rgba(236, 236, 236, 0.904);
+
+}
+
+.wishListinputFrom{
+  height: 79%;
+  width: 100%;
+
+  /* background-color: rgba(255, 0, 0, 0.322); */
+}
+
+.wishListinputFrom form{
+  height: 100%;
+  width: 100%;
+}
+
+.wishListNameCreate{
+  /* height: 60%; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  margin: 1.1rem 0rem;
+  margin-bottom: 0.7rem;
+    padding: 0.5rem 1.4rem;
+
+  /* background-color: aqua; */
+}
+
+.inputBoxWishList{
+  height: 3.6rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #22222259;
+  position: relative;
+  /* background-color: red; */
+  
+}
+
+
+.inputBoxWishList input{
+       font-family: "Roboto", sans-serif;
+ width: 90%;
+    height: 54%;
+    margin-top: 1.5rem;
+    align-items: revert;
+    border: none;
+    outline: none;
+      padding-left: 0.7rem;
+      font-size: 1.03rem;
+      color: #222222;
+  background-color: transparent;
+}
+
+.wishListNameLength{
+  font-family: "Poppins", sans-serif;
+  display: block;
+  padding: 0.5rem 0rem;
+  font-size: 0.77rem;
+  font-weight: 500;
+  
+
+  color: #6A6A6A;
+}
+
+.createWishlIstContanerBTn{
+     font-family: "Roboto", sans-serif;
+  height: 31%;
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.createWishlIstBtn{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1.4rem;
+  justify-content: space-between;
+}
+
+.createWishlIstBtn button{
+  color: #222222;
+  border: none;
+  outline: none;
+  background-color: #DDDDDD;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: not-allowed;
+  color: white;
+  padding: 0.778rem 1.7rem;
+  border-radius: 0.5rem;
+}
+
+.createWishlIstBtn span{
+  color: #222222;
+  font-size: 1.05rem;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 0.48rem 0.39rem;
+  border-radius: 0.5rem;
+}
+
+.createWishlIstBtn span:hover{
+
+    background-color: #ddddddc7;
+}
+
+.wishListNameLabel{
+ position: absolute;
+    top: 1.3rem;
+    left: 0.7rem;
+    font-size: 1.0rem;
+    color: #6A6A6A;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.focusedLabel{
+         font-family: "Roboto", sans-serif;
+  top: 0.5rem;
+  left: 0.7rem;
+  font-size: 0.85rem;
+  color: #6A6A6A;
+  font-weight: 500;
+}
+
+
+.wishListInputBoxBorderFocus{
+  border: 2px solid #222222 !important;
+}
+
+.createWishlIstBtnFromActive{
+  background-color: #000000 !important;
+  cursor: pointer !important;
+}
+
+.labelErrorInpute{
+  color: red !important;
+}
