@@ -706,7 +706,20 @@ function handleLoginResponse(data) {
 
             console.log("User is not logged in", data);
           } else {
-            console.log("User is logged in", data);
+            const hotelIdAtag = button.closest("a");
+            const hotelId = hotelIdAtag.getAttribute("href");
+            const id = hotelId.replace("/","");
+
+          //  const hotelId = e.currentTarget.closest("a").dataset.hotelId;
+            if(!selectedWishlist) {
+              console.log("No wishlist selected : ", selectedWishlist);
+              addWishListCreateFrom(id)
+            }else{
+              console.log("Selected wishlist : ", selectedWishlist);
+              addToWishList(id, selectedWishlist);
+            }
+            
+            console.log("User is logged in", data, id);
           }
         })
         .catch(err => {

@@ -1,4 +1,4 @@
-
+let selectedWishlist = localStorage.getItem("selectedWishlist");
 
 document.querySelectorAll(".swipar-bnt").forEach((box) => {
   box.style.display = "none";
@@ -218,7 +218,63 @@ function updateRecentHotels(entry) {
     .catch(err => console.error("Update error:", err));
 }
 
+const inputeWishListFromHtml = `      <div class="wishCreateContante">
+        <div class="NewWishListCreate">
+          <div class="wishListHadingBOx">
+            <h1>Create wishlist</h1>
+            <button><i class="ri-arrow-left-line"></i></button>
+          </div>
 
+          <div class="wishListinputFrom">
+            <form id="wishListFrom">
+              <div class="wishListNameCreate">
+                <div class="inputBoxWishList">
+                  <label for="wishListName" class="wishListNameLabel">Name</label>
+                  <input type="text" id="wishListName" name="wishListName" maxlength="50" required>
+                </div>
+                <span class="wishListNameLength">0/50 characters</span>
+              </div>
+
+              <div class="createWishlIstContanerBTn">
+                <div class="createWishlIstBtn">
+                  <div>
+                    <span>Cancel</span>
+                  </div>
+                 <div>
+                   <button class="createWishlIstBtnFrom" type="submit" disabled>Create</button>
+                 </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+`
+const wishCreateSavePopHtml = `
+      <div class="wishListCreatePoP">
+        <div class="wishListCreatecontaner">
+          <div class="wishListCreateImgBox">
+            <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+          </div>
+          <div class="whisListsaveName">
+            <p>save to <span>WishList</span></p>
+          </div>
+        </div>
+
+        <div class="wishListChangeBtn">
+          <button class="wishListChangeBtnbtn">Change</button>
+        </div>
+      </div>
+`;
+
+
+
+
+function addWishListCreateFrom(id){
+  console.log("addWishListCreateFrom called with id:", id);
+  document.body.insertAdjacentHTML("beforeend", inputeWishListFromHtml);
+  
+  
 
 const wishListCreateInpute = document.querySelector(".inputBoxWishList input"); 
 const wishListCreateLabel = document.querySelector(".inputBoxWishList label");
@@ -248,6 +304,7 @@ wishListCreateInpute.addEventListener("input", (e) => {
     console.log(length, "ON");
     createButton.classList.add("createWishlIstBtnFromActive");
     createButton.disabled = false;
+
   }else{
      console.log(length, "OFF")
       createButton.classList.remove("createWishlIstBtnFromActive");
@@ -267,7 +324,7 @@ wishListFromData.addEventListener("submit", (e) => {
 fetch("/user/wishlistCreate", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(data)
+  body: JSON.stringify({ ...data, id })
 })
 .then(async (res) => {
   const contentType = res.headers.get("content-type");
@@ -280,9 +337,63 @@ fetch("/user/wishlistCreate", {
 })
 .then(data => {
   console.log("Wish list created:", data);
+
+  if(data.status){
+
+    selectedWishlist = data.wishListName;
+    localStorage.setItem("selectedWishlist", data.wishListName);
+    document.querySelector(".wishCreateContante").remove();
+
+        document.body.insertAdjacentHTML("beforeend", wishCreateSavePopHtml);
+    const wishCreateContante = document.querySelector(".wishListCreateImgBox img");
+    wishCreateContante.src = data.hotelImg;
+    document.querySelector(".whisListsaveName span").textContent = data.wishListName;
+
+    setTimeout(removeWishListPOP, 3000);
+    console.log("Hotel Image URL:", data.hotelImg);
+
+  }
 })
 .catch(err => console.error("Error creating wish list:", err));
 
 });
 
+}
+
+function addToWishList(id, selectedWishlist){
+  console.log("Adding to wishlist:", id, selectedWishlist);
+  fetch("/user/wishlistAdd", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id, wishListName: selectedWishlist })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if(data.status){
+       document.body.insertAdjacentHTML("beforeend", wishCreateSavePopHtml);
+      setTimeout(() => {
+        const wishCreateContante = document.querySelector(".wishListCreateImgBox img");
+    const wishListNameSpan = document.querySelector(".whisListsaveName span");
+    wishListNameSpan.textContent = data.wishListName;
+    console.log("Hotel Image URL:", wishCreateContante);
+    wishCreateContante.src = data.hotelImg;
+      }, 100); // slight delay to ensure DOM is updated
+    setTimeout(removeWishListPOP, 3000);
+    }
+  })
+  .catch(err => console.error("Error adding to wishlist:", err));
+}
+
+
+function removeWishListPOP(){
+  const wishListCreatePop = document.querySelector(".wishListCreatePoP");
+  console.log("Removing wishlist popup", wishListCreatePop);
+  if (wishListCreatePop) {
+     console.log("Removing wishlist popup22", wishListCreatePop);
+    wishListCreatePop.classList.add("wishListCreatePoPFadeOut22");
+    setTimeout(() => {
+      wishListCreatePop.remove();
+    }, 500); // Match the CSS animation duration
+  }
+}
 

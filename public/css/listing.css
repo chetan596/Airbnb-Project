@@ -742,3 +742,112 @@ padding-top: 0.5rem;
 .labelErrorInpute{
   color: red !important;
 }
+
+
+.wishListCreatePoP{
+    height: 4rem;
+    width: 17.6em;
+    border-radius: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    display: flex;
+    bottom: 2rem;
+    left: 0rem;
+    opacity: 0;
+    z-index: 1000;
+    font-family: "Poppins", sans-serif;
+    animation: wishlistsavepop 0.5s ease-out 0s 1 normal forwards;
+    animation-delay: 0.8s;
+}
+
+.wishListCreatecontaner{
+  height: 100%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  /* background-color: aqua; */
+
+}
+.wishListCreateImgBox{
+  height: 100%;
+  width: 4rem;
+  /* background-color: blue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wishListCreateImgBox img{
+  height: 70%;
+  width: 70%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+
+}
+
+.whisListsaveName{
+  font-size: 0.8rem;
+  color: #222222;
+}
+
+.whisListsaveName span{
+  font-weight: 600;
+}
+
+.wishListChangeBtn{
+  height: 100%;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+  /* background-color: rgba(173, 31, 31, 0.904); */
+}
+
+.wishListChangeBtn button{
+background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+    text-decoration: underline;
+    font-weight: 500;
+    color: #222222;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+
+}
+
+.wishListChangeBtn button:hover{
+  color: #000000;
+}
+
+
+@keyframes wishlistsavepop{
+  0%{
+    transform: translateX(0%);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(10%);
+    opacity: 1;
+  }
+  
+}
+
+
+.wishListCreatePoPFadeOut22{
+   animation: wishlistremovepop 0.5s ease-out 0s 1 normal forwards !important;
+    /* animation-delay: 0.8s !important; */
+}
+
+@keyframes wishlistremovepop {
+  0%{
+    transform: translateX(10%);
+    opacity: 1;
+  }
+  100%{
+    transform: translateX(0%);
+    opacity: 0;
+  }
+}

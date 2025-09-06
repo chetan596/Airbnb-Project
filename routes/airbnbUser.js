@@ -63,6 +63,8 @@ router.post("/wishlist/recentHotels",isLoggedIn,async(req,res)=>{
 
  
 })
+
+
 router.get("/wishlist", isLoggedIn,async(req, res) => {
     const userId = req.user._id;
     const user = await User.findById(userId);
@@ -91,23 +93,112 @@ const rtrr = [];
   res.render("user/wishList",{rtrr})
 })
 
-router.post("/wishlistCreate",isLoggedIn, async (req, res) => {
-  try{
-    const { wishListName } = req.body;
-  const userId = req.user._id;
-  const user = await User.findById(userId);
+router.post("/wishlistCreate", isLoggedIn, async (req, res) => {
+  try {
+    const { wishListName, id } = req.body;   // frontend sends 'id'
+    const hotelId = id;                      // map it to hotelId for schema
+    const userId = req.user._id;
+
+    const user = await User.findById(userId);
+    const userId22 = user.userWishlist;
+
+        const listing = await Listing.findById(id);
+    console.log("Listing found:", listing.image[0]);
 
 
+    console.log("User Wishlist:", userId22);
 
-  user.userWishlist.set(wishListName, []);
-  await user.save();
+    if (!user) {
+      return res.status(404).json({ status: "error", message: "User not found" });
+    }
 
-  console.log("Received:", wishListName);
-    res.json({ status: "ok", wishListName });
-  }catch{
+    // Create wishlist if not already present
+    if (!user.userWishlist.has(wishListName)) {
+      user.userWishlist.set(wishListName, []);
+    }
+
+    const hotels = user.userWishlist.get(wishListName) || [];
+
+    // Check if hotel already exists in wishlist
+    const already = hotels.some(
+      (h) => h.hotelId.toString() === hotelId
+    );
+
+    if (already) {
+      return res.status(400).json({ 
+        status: "error", 
+        message: "Hotel already exists in wishlist" 
+      });
+    }
+
+    // Add new hotel
+    hotels.push({ hotelId });
+    user.userWishlist.set(wishListName, hotels);
+
+    await user.save();
+
+    return res.json({ 
+      status: true, 
+      message: "Hotel added to wishlist", 
+      wishListName, 
+      hotelId,
+      hotelImg: listing.image[0].path
+    });
+
+  } catch (err) {
+    console.error("Wishlist error:", err);
     res.status(500).json({ status: "error", message: "Internal Server Error" });
   }
-
 });
+
+
+router.post("/wishlistAdd", isLoggedIn, async (req, res) => {
+  try {
+    const { id, wishListName } = req.body;
+    const userId = req.user._id;
+
+    const user = await User.findById(userId);
+    const listing = await Listing.findById(id);
+    console.log("Listing found:", listing.image[0]);
+
+
+
+    if (!user) {
+      return res.status(404).json({ status: "error", message: "User not found" });
+    }
+
+    // Check if wishlist exists
+    if (!user.userWishlist.has(wishListName)) {
+      return res.status(404).json({ status: "error", message: "Wishlist not found" });
+    }
+
+    const hotels = user.userWishlist.get(wishListName) || [];
+    const already = hotels.some((h) => h.hotelId.toString() === id);
+    if (already) {
+      return res.status(400).json({ status: false, message: "Hotel already exists in wishlist" });
+    }
+
+    // Add new hotel
+    hotels.push({ hotelId: id });
+    user.userWishlist.set(wishListName, hotels);
+ 
+
+    await user.save();
+
+    return res.json({
+      status: true,
+      message: "Hotel added to wishlist",
+      wishListName,
+      hotelId: id,
+      hotelImg: listing.image[0].path
+// Send back the image URL
+    });
+
+  } catch (err) {
+    console.error("Wishlist error:", err);
+    res.status(500).json({ status: false, message: "Internal Server Error" });
+  }
+});
+
 
 module.exports = router;
