@@ -4,35 +4,10 @@
     <!-- nav tam -->
     <%- include('nav.ejs') %>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <main>
         <div class="listing">
           <% for( listing of listingData ) { %>
-            <a href="/<%=listing._id%>" target="_blank" class="listing-box-link">
+            <a href="/<%=listing._id%>" dataId="<%=listing._id%>" target="_blank" class="listing-box-link">
               <div class="listing-box ">
                 <div class="swiper mySwiper">
                   <div class="swiper-wrapper">
@@ -100,6 +75,15 @@
 
         </div>
       </div>
+
+
+<!-- 
+    <div class="whislLstcollBox">
+      <div class="colltionOfWishListcontance">
+        
+      </div>
+    </div> -->
+
 
   </body>
   <script src="/listing.js"></script>

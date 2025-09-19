@@ -90,6 +90,24 @@ const rtrr = [];
 
   rtrr.push(keyObj);
 }
+
+  const userWishlist = user.userWishlist;
+
+  const entries = Array.from(userWishlist.entries());
+  console.log("all wishListdd",userWishlist);
+  for (const [key, hotels] of entries) {
+
+    const keyObj = { key, hotelImgs: [] ,viewDate:[]};
+    for (const hotel of hotels) {
+      const hotelDe = await Listing.findById(hotel.hotelId);
+      const hotelImg = hotelDe.image[0];
+      keyObj.hotelImgs.push(hotelImg);
+      keyObj.viewDate.push(hotel.viewedAt);
+    }
+    rtrr.push(keyObj);
+  }
+
+  console.log(rtrr);
   res.render("user/wishList",{rtrr})
 })
 
@@ -125,10 +143,8 @@ router.post("/wishlistCreate", isLoggedIn, async (req, res) => {
     );
 
     if (already) {
-      return res.status(400).json({ 
-        status: "error", 
-        message: "Hotel already exists in wishlist" 
-      });
+      return res.status(400).json({ status: false, wishListName,
+      hotelId: id, allreadyExty : true, message: "Hotel already exists in wishlist" });
     }
 
     // Add new hotel
@@ -175,7 +191,8 @@ router.post("/wishlistAdd", isLoggedIn, async (req, res) => {
     const hotels = user.userWishlist.get(wishListName) || [];
     const already = hotels.some((h) => h.hotelId.toString() === id);
     if (already) {
-      return res.status(400).json({ status: false, message: "Hotel already exists in wishlist" });
+      return res.status(400).json({ status: false, wishListName,
+      hotelId: id, allreadyExty : true, message: "Hotel already exists in wishlist" });
     }
 
     // Add new hotel
@@ -190,6 +207,7 @@ router.post("/wishlistAdd", isLoggedIn, async (req, res) => {
       message: "Hotel added to wishlist",
       wishListName,
       hotelId: id,
+       allreadyExty : false,
       hotelImg: listing.image[0].path
 // Send back the image URL
     });
@@ -200,5 +218,62 @@ router.post("/wishlistAdd", isLoggedIn, async (req, res) => {
   }
 });
 
+
+router.delete("/wishlist", isLoggedIn, async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const { wishListName, hotelId } = req.body;
+
+    const user = await User.findById(userId);
+    const listing = await Listing.findById(hotelId);  
+    if (!user) {
+      return res.status(404).json({ status: "error", message: "User not found" });
+    }
+
+    if (!user.userWishlist.has(wishListName)) {
+      return res.status(404).json({ status: "error", message: "Wishlist not found" });
+    }
+
+    // get hotels array for that wishlist
+    let hotels = user.userWishlist.get(wishListName) || [];
+
+    // filter out the hotelId to remove
+    hotels = hotels.filter(h => h.hotelId.toString() !== hotelId);
+
+    // set updated array back
+    user.userWishlist.set(wishListName, hotels);
+
+    await user.save();
+
+    return res.json({ status: "ok", message: "Hotel removed", wishListName, hotelId , hotelImg: listing.image[0].path });
+  } catch (err) {
+    console.error("Remove from wishlist error:", err);
+    return res.status(500).json({ status: "error", message: "Internal Server Error"});
+  }
+});
+
+
+router.delete("/wishlistDelete", isLoggedIn, async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const { wishListName } = req.body;  
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+    if (!user.userWishlist.has(wishListName)) {
+      return res.status(404).json({ success: false, message: "Wishlist not found" });
+    }
+    user.userWishlist.delete(wishListName);
+    await user.save();
+
+    return res.json({ success: true, message: "Wishlist deleted", wishListName });
+  }
+  catch (err) {
+    console.error("Delete wishlist error:", err);
+    return res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+}); 
 
 module.exports = router;

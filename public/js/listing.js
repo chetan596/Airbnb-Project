@@ -262,138 +262,208 @@ const wishCreateSavePopHtml = `
         </div>
 
         <div class="wishListChangeBtn">
-          <button class="wishListChangeBtnbtn">Change</button>
+          <button class="wishListChangeBtnbtn goudiennde" id="goudiennde">Change</button>
         </div>
       </div>
 `;
 
 
-
-
-function addWishListCreateFrom(id){
+function addWishListCreateFrom(id) {
   console.log("addWishListCreateFrom called with id:", id);
+
   document.body.insertAdjacentHTML("beforeend", inputeWishListFromHtml);
-  
-  
 
-const wishListCreateInpute = document.querySelector(".inputBoxWishList input"); 
-const wishListCreateLabel = document.querySelector(".inputBoxWishList label");
-const wishListCreateBox = document.querySelector(".inputBoxWishList");
+  // Wait until the element is actually added
+  const wishListCreateInpute = document.querySelector(".inputBoxWishList input");
+  if (!wishListCreateInpute) {
+    console.error("Wishlist input element not found!");
+    return;
+  }
 
-wishListCreateInpute.addEventListener("focus",()=>{
-  wishListCreateLabel.classList.add("focusedLabel");
-  wishListCreateBox.classList.add("wishListInputBoxBorderFocus");
-  console.log("focused");
-})
+  const wishListCreateLabel = document.querySelector(".inputBoxWishList label");
+  const wishListCreateBox = document.querySelector(".inputBoxWishList");
 
+  // Input focus handlers
+  wishListCreateInpute.addEventListener("focus", () => {
+    wishListCreateLabel.classList.add("focusedLabel");
+    wishListCreateBox.classList.add("wishListInputBoxBorderFocus");
+  });
 
+  wishListCreateInpute.addEventListener("focusout", () => {
+    if (wishListCreateInpute.value.length < 1) {
+      wishListCreateLabel.classList.remove("focusedLabel");
+    }
+    wishListCreateBox.classList.remove("wishListInputBoxBorderFocus");
+  });
 
-wishListCreateInpute.addEventListener("focusout",(e)=>{
-  wishListCreateInpute.value.length < 1 && wishListCreateLabel.classList.remove("focusedLabel");
-  wishListCreateBox.classList.remove("wishListInputBoxBorderFocus");
-  console.log("focusedout");
-})
+  // Input change handler
+  wishListCreateInpute.addEventListener("input", (e) => {
+    const value = e.target.value.trim();
+    const length = value.length;
+    const inputLength = document.querySelector(".wishListNameLength");
+    const createButton = document.querySelector(".createWishlIstBtnFrom");
 
-wishListCreateInpute.addEventListener("input", (e) => {
-  const value = e.target.value.trim();
-  const length = value.length;
-  const inputeLenght = document.querySelector(".wishListNameLength");
-  const createButton = document.querySelector(".createWishlIstBtnFrom");  
-  inputeLenght.textContent = `${length}/50 characters`;
-  if(length >=1){
-    console.log(length, "ON");
-    createButton.classList.add("createWishlIstBtnFromActive");
-    createButton.disabled = false;
+    inputLength.textContent = `${length}/50 characters`;
 
-  }else{
-     console.log(length, "OFF")
+    if (length >= 1) {
+      createButton.classList.add("createWishlIstBtnFromActive");
+      createButton.disabled = false;
+    } else {
       createButton.classList.remove("createWishlIstBtnFromActive");
-    createButton.disabled = true;
+      createButton.disabled = true;
+    }
+  });
+
+  const wishListFromData = document.getElementById("wishListFrom");
+  if (!wishListFromData) {
+    console.error("Wishlist form not found!");
+    return;
   }
-});
 
+  // Handle form submit
+  wishListFromData.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-const wishListFromData = document.getElementById("wishListFrom");
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
 
-wishListFromData.addEventListener("submit", (e) => {
-  e.preventDefault();
+    fetch("/user/wishlistCreate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...data, id }),
+    })
+      .then(async (res) => {
+        const contentType = res.headers.get("content-type");
+        if (contentType?.includes("application/json")) {
+          return res.json();
+        } else {
+          const text = await res.text();
+          throw new Error("Non-JSON response: " + text);
+        }
+      })
+      .then((data) => {
+        console.log("Wish list created:", data);
 
-  const formData = new FormData(e.target); 
-  const data = Object.fromEntries(formData.entries());
+        if (data.status) {
+          selectedWishlist = data.wishListName;
+          localStorage.setItem("selectedWishlist", data.wishListName);
 
-fetch("/user/wishlistCreate", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ ...data, id })
-})
-.then(async (res) => {
-  const contentType = res.headers.get("content-type");
-  if (contentType && contentType.includes("application/json")) {
-    return res.json();
-  } else {
-    const text = await res.text(); // fallback for HTML
-    throw new Error("Non-JSON response: " + text);
-  }
-})
-.then(data => {
-  console.log("Wish list created:", data);
+          document.querySelector(".wishCreateContante")?.remove();
 
-  if(data.status){
+          let aTage = document.querySelector(`a[href='/${data.hotelId}']`);
+          if (aTage) {
+            aTage.querySelector(".wislist-conttainer svg").style.fill = "#FF385C";
+          }
 
-    selectedWishlist = data.wishListName;
-    localStorage.setItem("selectedWishlist", data.wishListName);
-    document.querySelector(".wishCreateContante").remove();
+          document.body.insertAdjacentHTML("beforeend", wishCreateSavePopHtml);
+          const imgBox = document.querySelector(".wishListCreateImgBox img");
+          const nameSpan = document.querySelector(".whisListsaveName span");
+          if (imgBox && nameSpan) {
+            imgBox.src = data.hotelImg;
+            nameSpan.textContent = data.wishListName;
+            document.querySelector(".goudiennde")?.addEventListener("click", addWishListCreateFrom.bind(null,data.hotelId));
+          }
 
-        document.body.insertAdjacentHTML("beforeend", wishCreateSavePopHtml);
-    const wishCreateContante = document.querySelector(".wishListCreateImgBox img");
-    wishCreateContante.src = data.hotelImg;
-    document.querySelector(".whisListsaveName span").textContent = data.wishListName;
-
-    setTimeout(removeWishListPOP, 3000);
-    console.log("Hotel Image URL:", data.hotelImg);
-
-  }
-})
-.catch(err => console.error("Error creating wish list:", err));
-
-});
-
+          setTimeout(removeWishListPOP, 3000);
+        } else if (data.allreadyExty) {
+          console.warn("Hotel already exists in wishlist");
+          removeWishlist(data.wishListName, data.hotelId);
+        }
+      })
+      .catch((err) => console.error("Error creating wish list:", err));
+  });
 }
 
-function addToWishList(id, selectedWishlist){
+function addToWishList(id, selectedWishlist) {
   console.log("Adding to wishlist:", id, selectedWishlist);
+
   fetch("/user/wishlistAdd", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ id, wishListName: selectedWishlist })
+    body: JSON.stringify({ id, wishListName: selectedWishlist }),
   })
-  .then(res => res.json())
-  .then(data => {
-    if(data.status){
-       document.body.insertAdjacentHTML("beforeend", wishCreateSavePopHtml);
-      setTimeout(() => {
-        const wishCreateContante = document.querySelector(".wishListCreateImgBox img");
-    const wishListNameSpan = document.querySelector(".whisListsaveName span");
-    wishListNameSpan.textContent = data.wishListName;
-    console.log("Hotel Image URL:", wishCreateContante);
-    wishCreateContante.src = data.hotelImg;
-      }, 100); // slight delay to ensure DOM is updated
-    setTimeout(removeWishListPOP, 3000);
-    }
-  })
-  .catch(err => console.error("Error adding to wishlist:", err));
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.status) {
+        document.body.insertAdjacentHTML("beforeend", wishCreateSavePopHtml);
+
+        let aTage = document.querySelector(`a[href='/${data.hotelId}']`);
+        if (aTage) {
+          aTage.querySelector(".wislist-conttainer svg").style.fill = "#FF385C";
+        }
+
+        setTimeout(() => {
+          const imgBox = document.querySelector(".wishListCreateImgBox img");
+          const nameSpan = document.querySelector(".whisListsaveName span");
+          if (imgBox && nameSpan) {
+            imgBox.src = data.hotelImg;
+            nameSpan.innerHTML = data.wishListName;
+          }
+          document.querySelector(".goudiennde")?.addEventListener("click", addWishListCreateFrom.bind(null,data.hotelId));
+
+        }, 2000);
+
+
+        setTimeout(removeWishListPOP, 3000);
+      } else if (data.allreadyExty) {
+        removeWishlist(data.wishListName, data.hotelId);
+      }
+    })
+    .catch((err) => console.error("Error adding to wishlist:", err));
 }
 
+function removeWishlist(wishListName, hotelId) {
+  console.log("Removing from wishlist:", wishListName, hotelId);
 
-function removeWishListPOP(){
+  fetch("/user/wishlist", {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ wishListName, hotelId }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Hotel removed from wishlist", data);
+
+      if (data.status === "ok") {
+        let aTage = document.querySelector(`a[href='/${data.hotelId}']`);
+        if (aTage) {
+          aTage.querySelector(".wislist-conttainer svg").style.fill =
+            "rgba(0, 0, 0, 0.5)";
+        }
+
+        setTimeout(() => {
+          document.body.insertAdjacentHTML("beforeend", wishCreateSavePopHtml);
+          document.querySelector(".wishListChangeBtn").style.display = "none";
+
+          const imgBox = document.querySelector(".wishListCreateImgBox img");
+          const container = document.querySelector(".whisListsaveName");
+
+          if (imgBox && container) {
+            imgBox.src = data.hotelImg;
+            container.innerHTML = `<p>Removed from <span>${data.wishListName}</span></p>`;
+          }
+
+          setTimeout(removeWishListPOP, 3000);
+        }, 1300);
+      } else {
+        alert("Error: " + data.message);
+      }
+    })
+    .catch((err) => console.error("Error removing wishlist:", err));
+}
+
+function removeWishListPOP() {
   const wishListCreatePop = document.querySelector(".wishListCreatePoP");
-  console.log("Removing wishlist popup", wishListCreatePop);
   if (wishListCreatePop) {
-     console.log("Removing wishlist popup22", wishListCreatePop);
     wishListCreatePop.classList.add("wishListCreatePoPFadeOut22");
-    setTimeout(() => {
-      wishListCreatePop.remove();
-    }, 500); // Match the CSS animation duration
+    setTimeout(() => wishListCreatePop.remove(), 500);
   }
 }
+
+
+
+
+
+// wishList detele contaner
+
 

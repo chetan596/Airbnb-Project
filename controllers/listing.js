@@ -37,7 +37,8 @@ module.exports.isUser = (req, res) => {
     res.json({
       user: true,
       username: req.user.username, // ✅ only username sent
-      avatar: req.user.avatar // ✅ only avatar object sent
+      avatar: req.user.avatar, // ✅ only avatar object sent
+      wishlist: req.user.userWishlist // ✅ only wishlist object sent
     });
   } else {
     res.json({ user: false });

@@ -10,10 +10,29 @@ document.addEventListener("DOMContentLoaded", () => {
 fetch("/navBox")
   .then(res => res.json())
   .then(data => {
+    console.log("Nav data:", data);
     if (data.user) {
       userIs.style.display = "block";
       notificationIcon.style.display = "block";
       userNot.style.display = "none";
+
+      let allHotelIds = [];
+      Object.values(data.wishlist).forEach(userWishlist => {
+        userWishlist.forEach(item => {
+        allHotelIds.push(item.hotelId);
+      });
+});
+
+      allHotelIds = [...new Set(allHotelIds)];
+
+      allHotelIds.forEach(hotelId => {
+        let aTage = document.querySelector(`a[href='/${hotelId}']`);
+        if(aTage) {
+          aTage.querySelector(".wislist-conttainer svg").style.fill = "#FF385C";
+        }
+      })
+  console.log("All Hotel IDs from wishlists:", allHotelIds);
+
       try{
         handleLoginResponse(data);
       } catch (error) {

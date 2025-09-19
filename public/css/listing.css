@@ -763,7 +763,7 @@ padding-top: 0.5rem;
 
 .wishListCreatecontaner{
   height: 100%;
-  width: 70%;
+  min-width: 70%;
   display: flex;
   align-items: center;
   /* background-color: aqua; */
@@ -851,3 +851,27 @@ background-color: transparent;
     opacity: 0;
   }
 }
+
+
+.whislLstcollBox{
+  position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.colltionOfWishListcontance{
+  height: 80%;
+  width: 50%;
+  border-radius: 3rem;
+  background-color: white;
+
+}
+
+
