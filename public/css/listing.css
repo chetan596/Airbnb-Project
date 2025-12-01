@@ -134,15 +134,16 @@ main {
 
 
 .listing-cont {
-  padding: 0.1rem 0.4rem;
+  padding: 0.5rem 0.4rem;
 }
 
 .reting {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 1rem;
-  font-weight: 500;
+ display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: #222222;
+    font-weight: 500;
 }
 
 .star {

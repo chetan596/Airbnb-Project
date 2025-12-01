@@ -1,0 +1,125 @@
+.spicWishlistMain{
+    height: 100vh;
+    width: 100%;
+    /* background-color: red; */
+    margin-top: 6.19% !important;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+
+.ShowwishListAll{
+    height: 100%;
+    width: 62%;
+    /* background-color: yellow; */
+    padding-left: 1.4rem;
+}
+
+.wishtlistMapshow{
+    height: 100%;
+    width: 38%;
+    position: fixed;
+    right: 0;
+    /* background-color: blue; */
+}
+
+
+.showwishList_Hading{
+    height: 29%;
+    width: 100%;
+    position: sticky;
+    top: 1.5rem !important;
+    z-index: 99 !important;
+    background-color: white;
+    /* background-color: green; */
+}
+
+.showSmall_Whading{
+    height: 3.3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 5.2rem;
+    background-color: white;
+    /* background-color: purple; */
+}
+
+.showSmall_Whading span i{
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.lagerW_hadinge h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+}
+
+.sameW_Furewst{
+    width: 36%;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: aqua; */
+}
+
+.wishtDataAdd1{
+   height: 2.5rem;
+    width: 6.2rem;
+    border: 1px solid #b6b6b6d7;
+    border-radius: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #222222;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.wishtDataAdd2{
+   height: 2.5rem;
+    width: 5.5rem;
+    border: 1px solid #b6b6b6d7;
+    border-radius: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #222222;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.mains_box_wishShoww{
+   font-family: "Poppins", sans-serif;
+  height: 100%;
+  width: 100%;
+  display: grid;
+
+  /* Dynamically adjust number of columns based on screen size */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 205.55px));
+
+  /* Fixed row height */
+  grid-auto-rows: 24rem;
+
+  column-gap: 1.3rem;
+  row-gap: 1.6rem;
+
+  /* margin-top: 19rem; */
+}
+
+.wishList_listtingBox{
+    height: 250px;
+    border-radius: 22px !important;
+
+}
+
+
+.wishList_listtingBox_swiper{
+    height: 250px;
+}
+

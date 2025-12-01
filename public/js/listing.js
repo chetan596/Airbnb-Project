@@ -1,4 +1,20 @@
 let selectedWishlist = localStorage.getItem("selectedWishlist");
+const wishCreateSavePopHtml = `
+      <div class="wishListCreatePoP">
+        <div class="wishListCreatecontaner">
+          <div class="wishListCreateImgBox">
+            <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+          </div>
+          <div class="whisListsaveName">
+            <p>save to <span>WishList</span></p>
+          </div>
+        </div>
+
+        <div class="wishListChangeBtn">
+          <button class="wishListChangeBtnbtn goudiennde" id="goudiennde">Change</button>
+        </div>
+      </div>
+`;
 
 document.querySelectorAll(".swipar-bnt").forEach((box) => {
   box.style.display = "none";
@@ -250,22 +266,6 @@ const inputeWishListFromHtml = `      <div class="wishCreateContante">
         </div>
       </div>
 `
-const wishCreateSavePopHtml = `
-      <div class="wishListCreatePoP">
-        <div class="wishListCreatecontaner">
-          <div class="wishListCreateImgBox">
-            <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-          </div>
-          <div class="whisListsaveName">
-            <p>save to <span>WishList</span></p>
-          </div>
-        </div>
-
-        <div class="wishListChangeBtn">
-          <button class="wishListChangeBtnbtn goudiennde" id="goudiennde">Change</button>
-        </div>
-      </div>
-`;
 
 
 function addWishListCreateFrom(id) {

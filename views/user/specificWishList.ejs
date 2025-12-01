@@ -1,0 +1,87 @@
+<%- include('../header/header.ejs') %>
+<body>
+        <%- include('../listing/navsmall.ejs') %>
+        <main class="spicWishlistMain">
+                <div class="ShowwishListAll">
+                        <div class="showwishList_Hading">
+                                <div class="showSmall_Whading">
+                                       <a href="/user/wishList">
+                                         <span><i class="fa-solid fa-angle-left"></i></span>
+                                       </a>
+                                </div>
+                                <div class="lagerW_hadinge">
+                                        <h2><%= WishListName %></h2>
+                                </div>
+                                <div class="sameW_Furewst">
+                                        <div class="wishtDataAdd1">
+                                                <span>Add dates</span>
+                                        </div>
+                                         <div class="wishtDataAdd2">
+                                                <span>1 guest</span>
+                                        </div>
+                                         <div class="wishtDataAdd2">
+                                                <span>Share <i class="ri-upload-2-line"></i></span>
+                                        </div>
+                                </div>
+                        </div>
+
+                        <div class="mains_box_wishShoww">
+                                 <% for( listing of wishlists_Listings ) { %>
+            <a href="/<%=listing._id%>" dataId="<%=listing._id%>" target="_blank" class="listing-box-link">
+              <div class="listing-box wishList_listtingBox">
+                <div class="swiper mySwiper wishList_listtingBox_swiper">
+                  <div class="swiper-wrapper">
+                    <% for (let img of listing.image) { %>
+                      <div class="swiper-slide">
+                        <img src="<%= img.path %>" alt="<%= img.originalname %>">
+                      </div>
+                      <% } %>
+                  </div>
+                  <div class="swiper-button-next swipar-bnt  swipar-bnt2"></div>
+                  <div class="swiper-button-prev swipar-bnt "></div>
+
+                  <div class="hhueuheuh"></div>
+                  <div class="swiper-pagination"></div>
+                </div>
+                <div class="listing-cont">
+                  <div class="reting">
+                    <p>
+                      <%= listing.title %>
+                    </p>
+                    <div class="star">
+                      <i class="ri-star-fill"></i>
+                      <p>4.3</p>
+                    </div>
+                  </div>
+                  <p class="kol">
+                    <%= listing.country %>
+                  </p>
+                  <p class="kol">12-13 Mar</p>
+                  <div class="price"><span>&#8377;<%=listing.price.toLocaleString("en-IN")%></span>
+                    <p>for 5 nights</p>
+                  </div>
+                </div>
+                <div class="wislist-conttainer">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation"
+                    focusable="false">
+                    <path
+                      d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z">
+                    </path>
+                  </svg>
+                </div>
+              </div>
+
+
+            </a>
+            <% } %>
+                        </div>
+                </div>
+                <div class="wishtlistMapshow">
+                         <div id="map" class="mapppd"></div>
+                </div>
+        </main>
+        <script src="/listing.js"></script>
+         <script src="/map.js"></script>
+</body>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFSQ2y8X-grdmadDulb4Pas6WwZqn5Ass&callback=initMap"
+        async defer></script>

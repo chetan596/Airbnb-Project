@@ -9,7 +9,7 @@
           <% for( listing of listingData ) { %>
             <a href="/<%=listing._id%>" dataId="<%=listing._id%>" target="_blank" class="listing-box-link">
               <div class="listing-box ">
-                <div class="swiper mySwiper">
+                <div class="swiper mySwiper loding">
                   <div class="swiper-wrapper">
                     <% for (let img of listing.image) { %>
                       <div class="swiper-slide">

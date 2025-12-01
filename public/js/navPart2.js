@@ -773,9 +773,23 @@ function initializeCalendar() {
     return;
   }
 
+  function getTodayDateAsDateObj() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth(); // 0 se start hota hai
+  const day = today.getDate();
+  return new Date(year, month, day);
+ }
+  function getTodayDateAsDateObj2() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth(); // 0 se start hota hai
+  const day = today.getDate();
+  return new Date(year, month+6, day);
+ }
   calendarInstance = new Calendar2('calendar');
   calendarInstance.init(
-    [new Date(2025, 5, 30), new Date(2025, 7, 10)],
+    [getTodayDateAsDateObj(), getTodayDateAsDateObj2()],
     []
   );
 }

@@ -9,7 +9,15 @@
         </span>
         <div class="wishlist_container">
           <% for (data of rtrr) { %>
-            <a href="">
+           
+           
+            <a href=" <% if (data.key.split("_").join(" ") != "Recently viewed") { %>
+              /user/wishList/<%= data.key %>
+              <% } else { %>
+                /user/wishlist/recentlyViewed
+                <% } %>
+            "> 
+             
             <div class="wishlist_boxs">
               <% if (data.key.split("_").join(" ") != "Recently viewed") { %>
                  <div class="DeletewishListContanter">
@@ -68,10 +76,12 @@ function formatViewDate(dateString) {
                       const options={ day: "2-digit" , month: "short" }; return date.toLocaleDateString("en-US",
                       options); } %>
 
-                      <p>
-                        <%= formatViewDate(data.viewDate) %>
-                      </p>
-
+                      <p> <% if (data.key.split("_").join(" ") != "Recently viewed") { %>
+                                  <%= data.hotelImgs.length %> Saved
+              <% } else { %>
+                  <%= formatViewDate(data.viewDate) %>
+                <% } %> </p>
+  
                 </div>
 
                 <% } else { %>
@@ -113,24 +123,21 @@ function formatViewDate(dateString) {
                    
                     
               
-               <!-- <div class=" wishlist_boxs">
-                        <div class="wishList-image-box">
-
-                        </div>
-                  </div>
-                  <div class="wishlist_boxs">
-                    <div class="wishList-image-box">
-
-                    </div>
-                  </div>
-                  <div class="wishlist_boxs">
-                    <div class="wishList-image-box">
-
-                    </div>
-                  </div> -->
+               
 
             </div>
       </main>
+
+
+
+     
+
+
+   
+
+
+
   </body>
 
   <script src="/wishList.js"></script>
+

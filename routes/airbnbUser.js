@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require("../models/user.js");
 const { isLoggedIn } = require("../loginMiddle.js");
 const Listing = require("../models/listing")
+
+
 router.post("/wishList", (req, res) => {
     if(!req.user){
         return res.status(401).json({ isLoggedIn: false});
@@ -65,51 +67,75 @@ router.post("/wishlist/recentHotels",isLoggedIn,async(req,res)=>{
 })
 
 
-router.get("/wishlist", isLoggedIn,async(req, res) => {
+router.get("/wishlist", isLoggedIn, async (req, res) => {
+  try {
     const userId = req.user._id;
     const user = await User.findById(userId);
 
-    const wishList = user.wishlist;
-    
-   const arr = Object.entries(wishList);
-const rtrr = [];
-
-  for (const [key, user] of arr) {
-  const keyObj = { key, hotelImgs: [] , viewDate : null };
-
-  for (const eeee of user) {
-
-    const hotelDe = await Listing.findById(eeee.hotelId);
-    const hotelImg = hotelDe.image[0];
-
-    keyObj.hotelImgs.push(hotelImg);
-    console.log(eeee.viewdAt)
-    keyObj.viewDate = eeee.viewdAt;
-    
-  }
-
-  rtrr.push(keyObj);
-}
-
-  const userWishlist = user.userWishlist;
-
-  const entries = Array.from(userWishlist.entries());
-  console.log("all wishListdd",userWishlist);
-  for (const [key, hotels] of entries) {
-
-    const keyObj = { key, hotelImgs: [] ,viewDate:[]};
-    for (const hotel of hotels) {
-      const hotelDe = await Listing.findById(hotel.hotelId);
-      const hotelImg = hotelDe.image[0];
-      keyObj.hotelImgs.push(hotelImg);
-      keyObj.viewDate.push(hotel.viewedAt);
+    if (!user) {
+      return res.status(404).send("User not found");
     }
-    rtrr.push(keyObj);
-  }
 
-  console.log(rtrr);
-  res.render("user/wishList",{rtrr})
-})
+    const rtrr = [];
+
+    // --- Handle old wishlist format ---
+    if (user.wishlist) {
+      const arr = Object.entries(user.wishlist);
+
+      for (const [key, hotels] of arr) {
+        const keyObj = { key, hotelImgs: [], viewDate: [] };
+
+        for (const entry of hotels) {
+          const hotelDe = await Listing.findById(entry.hotelId);
+
+          if (!hotelDe) {
+            console.warn(`Listing not found for hotelId: ${entry.hotelId}`);
+            continue;
+          }
+
+          const hotelImg = hotelDe.image?.[0] || null;
+          keyObj.hotelImgs.push(hotelImg);
+          keyObj.viewDate.push(entry.viewdAt || null);
+        }
+
+        rtrr.push(keyObj);
+       
+      }
+    }
+
+    // --- Handle new userWishlist format ---
+    if (user.userWishlist) {
+      const entries = Array.from(user.userWishlist.entries());
+
+      for (const [key, hotels] of entries) {
+        const keyObj = { key, hotelImgs: [], viewDate: [] };
+
+        for (const hotel of hotels) {
+          const hotelDe = await Listing.findById(hotel.hotelId);
+
+          if (!hotelDe) {
+            console.warn(`Listing not found for hotelId: ${hotel.hotelId}`);
+            continue;
+          }
+
+          const hotelImg = hotelDe.image?.[0] || null;
+          keyObj.hotelImgs.push(hotelImg);
+          keyObj.viewDate.push(hotel.viewedAt || null);
+        }
+
+        rtrr.push(keyObj);
+      }
+    }
+
+    console.log("Final_Wishlist:-----------", rtrr);
+    res.render("user/wishList", { rtrr });
+
+  } catch (err) {
+    console.error("Error in /wishlist route:", err);
+    res.status(500).send("Server error");
+  }
+});
+
 
 router.post("/wishlistCreate", isLoggedIn, async (req, res) => {
   try {
@@ -276,4 +302,27 @@ router.delete("/wishlistDelete", isLoggedIn, async (req, res) => {
   }
 }); 
 
+
+router.get("/wishlist/:wishListName", isLoggedIn, async (req,res) => {
+    const WishListName = req.params.wishListName;
+    const userId = req.user._id;
+
+    const user =  await User.findById(userId);
+    
+    const hotelsInWishlist = user.userWishlist.get(WishListName) || [];
+    
+    const wishlists_Listings = [];
+    
+    for (const hotelEntry of hotelsInWishlist) {
+      const listing = await Listing.findById(hotelEntry.hotelId);
+      if (listing) {
+        wishlists_Listings.push(listing);
+      }
+    }
+
+    res.render("user/specificWishList", { hotelsInWishlist, WishListName, wishlists_Listings });
+})
+
+
 module.exports = router;
+

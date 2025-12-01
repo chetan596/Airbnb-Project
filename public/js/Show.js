@@ -887,13 +887,26 @@ const pricePerNight = this.listingPage.price;
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     const listingPage = new ListingPage();
-
+function getTodayDateAsDateObj() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth(); // 0 se start hota hai
+  const day = today.getDate();
+  return new Date(year, month, day);
+ }
+  function getTodayDateAsDateObj2() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth(); // 0 se start hota hai
+  const day = today.getDate();
+  return new Date(year, month+6, day);
+ }
     // Wait for data to load
     listingPage.loadListingData().then(() => {
         const calendar = new Calendar('calendar', listingPage);
         calendar.init(
-            [new Date(2025, 5, 30), new Date(2025, 7, 10)],
-            [new Date(2025, 5, 30), new Date(2025, 6, 5)]
+            [getTodayDateAsDateObj(), getTodayDateAsDateObj2()],
+            [getTodayDateAsDateObj(), getTodayDateAsDateObj2()]
         );
     });
 });
