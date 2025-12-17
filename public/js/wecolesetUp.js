@@ -68,6 +68,7 @@ function Setprofile() {
                 <img 
                   src="https://res.cloudinary.com/dmenkblkq/image/upload/v1754136875/WhatsApp_Image_2025-08-02_at_17.24.45_84c813fa-Pica-removebg-preview_1_jm5uja.png"
                   alt="">
+                  
               </div>
             </div>
             <input type="file" class="dp-upload" accept="image/*" style="display: none;">
@@ -160,21 +161,53 @@ function Setprofile() {
         const formData = new FormData();
         formData.append("profileImage", file);
 
-        fetch("/profile", {
-          method: "POST",
-          body: formData
-        })
-          .then(response => response.json()) // handle non-JSON gracefully
-          .then(responseText => {
-            console.log("Upload successful:", responseText.success, responseText);
-            if (responseText.success) {
-                document.querySelector(".login-img").innerHTML = `<img src="${responseText.file}" alt="user avatar">`;
-                 document.querySelector(".login-img").style.backgroundColor = "transparent";
+       function uploadProfile(formData) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "/profile");
+
+        // Progress only in console
+        xhr.upload.onprogress = function (event) {
+            if (event.lengthComputable) {
+                let percent = Math.round((event.loaded / event.total) * 100);
+                console.log(percent + "% uploaded");
             }
-          })
-          .catch(error => {
-            console.error("Upload error:", error);
-          });
+        };
+
+        // Response
+        xhr.onload = function () {
+            try {
+                let res = JSON.parse(xhr.responseText);
+                resolve(res);
+            } catch (err) {
+                reject(err);
+            }
+        };
+
+        xhr.onerror = function () {
+            reject("Network error");
+        };
+
+        xhr.send(formData);
+    });
+}
+
+
+// 🟢 Use same as your fetch code
+uploadProfile(formData)
+    .then(responseText => {
+        console.log("Upload successful:", responseText.success, responseText);
+        if (responseText.success) {
+            document.querySelector(".login-img").innerHTML = 
+                `<img src="${responseText.file}" alt="user avatar">`;
+            document.querySelector(".login-img").style.backgroundColor = "transparent";
+        }
+    })
+    .catch(error => {
+        console.error("Upload error:", error);
+    });
+
       });
 
     }

@@ -423,6 +423,7 @@ padding-top: 0.5rem;
 .Dp-uplode-container{
   height: 86%;
   width: 41%;
+  overflow: hidden;
   background-color: white;
   border-radius: 2rem;
 }

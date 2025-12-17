@@ -2,7 +2,9 @@ const Listing = require("../models/listing");
 const Review = require("../models/Review");
 
 module.exports.renderReview = (req, res) => {
-    res.render("show/review.ejs")
+
+    const id = req.params.id;
+    res.render("show/review.ejs",{id})
 }
 module.exports.renderReviewData = async (req, res) => {
     let listingNew = await Listing.findById(req.params.id);
@@ -11,5 +13,5 @@ module.exports.renderReviewData = async (req, res) => {
     listingNew.reviews.push(newReview)
     await listingNew.save();
     await newReview.save();
-    res.redirect("/")
+    res.redirect(`/${req.params.id}`)
 }
